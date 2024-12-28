@@ -33,6 +33,11 @@ class City extends Model
         return $this->belongsTo(Country::class);
     }
 
+    public function address()
+    {
+        return $this->hasOne(Address::class);
+    }
+
     public static function createCity(CityRequest $request)
     {
         $data = $request->validated();

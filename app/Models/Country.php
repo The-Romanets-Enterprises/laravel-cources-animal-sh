@@ -18,6 +18,11 @@ class Country extends Model
         return $this->hasMany(City::class);
     }
 
+    public function addresses()
+    {
+        return $this->hasManyThrough(Address::class, City::class);
+    }
+
     public static function createCountry(CountryRequest $request)
     {
         $data = $request->validated();

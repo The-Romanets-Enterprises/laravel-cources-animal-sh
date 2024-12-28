@@ -53,6 +53,21 @@ class User extends Authenticatable
         ];
     }
 
+    public function address()
+    {
+        return $this->hasOne(Address::class);
+    }
+
+    public static function getRegularUsers()
+    {
+        $users = self::query();
+
+        $users->with('address');
+        $users->where('role', Role::USER);
+
+        return $users->get();
+    }
+
     public static function registerUser(RegisterRequest $request)
     {
         $data = $request->validated();
