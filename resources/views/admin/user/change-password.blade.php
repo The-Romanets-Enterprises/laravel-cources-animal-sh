@@ -1,10 +1,10 @@
-@extends('admin.layouts.layout')
+@extends('layouts.layout')
 
 @section('title') {{ $title ?? null }} @endsection
 
 @section('content')
     <!-- Content Header (Page header) -->
-    @include('admin.layouts.page-header')
+    @include('layouts.page-header')
 
     <!-- Main content -->
     <section class="content">
@@ -22,21 +22,29 @@
                         <form action="{{ route('admin.change-password.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
-                                @include('admin.layouts.form.password', [
-                                    'title' => 'Старый пароль*',
-                                    'name' => 'current_password',
-                                    'placeholder' => "Старый пароль*",
-                                ])
-                                @include('admin.layouts.form.password', [
-                                    'title' => 'Новый пароль*',
-                                    'name' => 'new_password',
-                                    'placeholder' => "Новый пароль*",
-                                ])
-                                @include('admin.layouts.form.password', [
-                                    'title' => 'Повторить новый пароль*',
-                                    'name' => 'new_password_confirmation',
-                                    'placeholder' => "Повторить новый пароль*",
-                                ])
+                                <div class="row">
+                                    <div class="col-4">
+                                        @include('layouts.form.password', [
+                                            'title' => 'Старый пароль*',
+                                            'name' => 'current_password',
+                                            'placeholder' => "Старый пароль*",
+                                        ])
+                                    </div>
+                                    <div class="col-4">
+                                        @include('layouts.form.password', [
+                                            'title' => 'Новый пароль*',
+                                            'name' => 'new_password',
+                                            'placeholder' => "Новый пароль*",
+                                        ])
+                                    </div>
+                                    <div class="col-4">
+                                        @include('layouts.form.password', [
+                                            'title' => 'Повторить новый пароль*',
+                                            'name' => 'new_password_confirmation',
+                                            'placeholder' => "Повторить новый пароль*",
+                                        ])
+                                    </div>
+                                </div>
                             </div>
                             <!-- /.card-body -->
 

@@ -35,7 +35,7 @@
                     </div>
                 </form>
                 @if(count($users))
-                    <table id="table" class="table table-bordered table-striped">
+                    <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th style="width: 10px">#</th>
@@ -88,5 +88,5 @@
     </section>
     <!-- /.content -->
 
-    @include('admin.layouts.datatable-script')
+{{--    @include('admin.layouts.datatable-script')--}}
 @endsection

@@ -23,9 +23,9 @@ Route::prefix('/admin')->name('admin.')->group(function () {
             Route::resource('/users', UserController::class);
         });
 
-//        Route::controller(UserController::class)->group(function () {
-//            Route::get('/change-password', 'changePassword')->name('change-password');
-//            Route::post('/change-password', 'passwordStore')->name('change-password.store');
-//        });
+        Route::controller(UserController::class)->group(function () {
+            Route::get('/change-password', 'changePassword')->name('change-password');
+            Route::post('/change-password', 'passwordStore')->name('change-password.store');
+        });
     });
 });

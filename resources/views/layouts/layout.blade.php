@@ -81,7 +81,7 @@
                     </div>
                     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                         <div class="info">
-{{--                            <a href="<?=route('admin.change-password')?>" class="d-block">{{ __('messages.user.change-password') }}</a>--}}
+                            <a href="<?=route('admin.change-password')?>" class="d-block">{{ __('messages.user.change-password') }}</a>
                         </div>
                     </div>
                 @endauth
