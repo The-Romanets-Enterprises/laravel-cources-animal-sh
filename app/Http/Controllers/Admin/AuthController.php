@@ -32,7 +32,7 @@ class AuthController extends Controller
     {
         $title = __('messages.auth.login');
 
-        return view('admin.auth.login', compact('title'));
+        return view('auth.login', compact('title'));
     }
 
     // Store information in session

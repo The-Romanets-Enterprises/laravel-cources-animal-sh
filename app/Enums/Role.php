@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Enum;
+namespace App\Enums;
 
 use Illuminate\Support\Collection;
 
@@ -12,7 +12,7 @@ enum Role: string
 
     public static function getValues(): Collection
     {
-        return collect(\App\Enum\Role::cases())->pluck('value');
+        return collect(\App\Enums\Role::cases())->pluck('value');
     }
 
     public function getTitle()

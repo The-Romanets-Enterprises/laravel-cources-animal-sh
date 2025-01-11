@@ -25,7 +25,7 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => ['required', 'string', 'email'],
+            'email' => ['required', 'string', 'email', 'exists:users'],
             'password' => ['required', 'string', new CheckCredentialsRule($this->email)],
         ];
     }
