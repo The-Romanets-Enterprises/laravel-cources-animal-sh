@@ -41,7 +41,8 @@
                                 <th style="width: 10px">#</th>
                                 <th>Эл. почта</th>
                                 <th>Имя</th>
-                                <th>Токен</th>
+                                <th>Фамилия</th>
+                                <th>Полное имя</th>
                                 <th>Действия</th>
                             </tr>
                         </thead>
@@ -51,7 +52,8 @@
                                     <td>{{ $user->id }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->name }}</td>
-                                    <td>{{ $user->remember_token }}</td>
+                                    <td>{{ $user->lastname }}</td>
+                                    <td>{{ $user->full_name }}</td>
                                     <td>
                                         <a href="{{ route("admin.users.edit", ['user' => $user->id]) }}" class="btn btn-info btn-sm float-left">
                                             <i class="fas fa-pencil-alt"></i>
