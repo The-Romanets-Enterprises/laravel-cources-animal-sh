@@ -1,10 +1,10 @@
-@extends('admin.layouts.layout')
+@extends('layouts.layout')
 
 @section('title') {{ $title ?? null }} @endsection
 
 @section('content')
     <!-- Content Header (Page header) -->
-    @include('admin.layouts.page-header')
+    @include('layouts.page-header')
 
     <!-- Main content -->
     <section class="content">
@@ -19,7 +19,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{ route('admin.users.update', ['user' => $user->id]) }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.users.update', [$user]) }}" method="post" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="card-body">

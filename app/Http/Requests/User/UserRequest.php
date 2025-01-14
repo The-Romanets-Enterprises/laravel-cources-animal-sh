@@ -34,7 +34,7 @@ class UserRequest extends FormRequest
             'name' => ['required', 'max:255'],
             'lastname' => ['required', 'max:255'],
             'phone' => ['required', 'max:20'],
-            'role' => [$user?->role == Role::ADMIN ? 'nullable' : 'required', Rule::enum(Role::class)],
+            'role' => ['required', Rule::enum(Role::class)],
             'password' => ['nullable', 'max:255', 'confirmed'],
         ];
     }
