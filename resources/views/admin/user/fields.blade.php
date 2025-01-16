@@ -3,7 +3,7 @@
 @endphp
 
 
-@include('admin.layouts.form.email', [
+@include('layouts.form.email', [
     'title' => 'Эл. почта*',
     'name' => 'email',
     'placeholder' => "Эл. почта",
@@ -12,7 +12,7 @@
 
 <div class="row">
     <div class="col-6">
-        @include('admin.layouts.form.text', [
+        @include('layouts.form.text', [
            'title' => 'Имя пользователя*',
            'name' => 'name',
            'placeholder' => "Имя пользователя",
@@ -20,7 +20,7 @@
        ])
     </div>
     <div class="col-6">
-        @include('admin.layouts.form.text', [
+        @include('layouts.form.text', [
            'title' => 'Фамилия пользователя*',
            'name' => 'lastname',
            'placeholder' => "Фамилия пользователя",
@@ -29,7 +29,7 @@
     </div>
 </div>
 
-@include('admin.layouts.form.text', [
+@include('layouts.form.text', [
     'title' => 'Телефон*',
     'name' => 'phone',
     'placeholder' => "Телефон",
@@ -41,8 +41,8 @@
     <select class="form-control select2 select2-danger select2-hidden-accessible @error('role') is-invalid @enderror"
             @disabled(isset($user) && auth()->user()->id === $user->id) name="role" id="role"
             data-dropdown-css-class="select2-danger" style="width: 100%;">
-        <option selected="selected" value="">Выбрать роль</option>
-        @foreach(Role::getManagerRoles() as $role)
+        <option value="">Выбрать роль</option>
+        @foreach(Role::cases() as $role)
             <option value="{{ $role->value }}" @selected(old('role', $user->role ?? null) === $role)>
                 {{ $role->getTitle() }}
             </option>
@@ -53,15 +53,15 @@
 @isset($have_password)
     <div class="row">
         <div class="col-md-6">
-            @include('admin.layouts.form.password', [
-               'title' => 'Пароль*',
+            @include('layouts.form.password', [
+               'title' => 'Пароль',
                'name' => 'password',
                'placeholder' => "Пароль",
             ])
         </div>
         <div class="col-md-6">
-            @include('admin.layouts.form.password', [
-               'title' => 'Подтверждение пароля*',
+            @include('layouts.form.password', [
+               'title' => 'Подтверждение пароля',
                'name' => 'password_confirmation',
                'placeholder' => "Подтверждение пароля",
             ])
