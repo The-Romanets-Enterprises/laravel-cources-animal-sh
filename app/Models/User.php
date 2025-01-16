@@ -53,6 +53,11 @@ class User extends Authenticatable
         ];
     }
 
+    public function animalPets()
+    {
+        return $this->hasMany(Animal_pet::class);
+    }
+
     public function address()
     {
         return $this->hasOne(Address::class);

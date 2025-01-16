@@ -14,13 +14,20 @@ class Animal extends Model
     /** @use HasFactory<\Database\Factories\AnimalFactory> */
     use HasFactory, MediaTrait;
 
-    protected $fillable = ['name', 'photo'];
+    protected $fillable = [
+        'name',
+        'photo'
+    ];
 
 //    public function cities()
 //    {
 //        return $this->hasMany(City::class);
 //    }
 
+    public function animalPets()
+    {
+        return $this->hasMany(Animal_pet::class);
+    }
     public static function createAnimal(AnimalRequest $request)
     {
         $data = $request->validated();
