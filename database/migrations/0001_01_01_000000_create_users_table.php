@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('phone', 20)->comment('Мобильный номер');
+            $table->string('phone', 20);
             $table->enum('role', Role::getValues()->all())->default(Role::USER);
             $table->rememberToken();
             $table->timestamps();

@@ -2,13 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\Country;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\City>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\AnimalPet>
  */
-class CityFactory extends Factory
+class AnimalPetFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,8 +17,7 @@ class CityFactory extends Factory
     public function definition(): array
     {
         return [
-//            'name' => fake()->unique()->city(),
-//            'country_id' => Country::query()->inRandomOrder()->first()->id,
+            //
         ];
     }
 }
