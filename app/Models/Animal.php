@@ -26,7 +26,7 @@ class Animal extends Model
 
     public function animalPets()
     {
-        return $this->hasMany(Animal_pet::class);
+        return $this->hasMany(AnimalPet::class);
     }
     public static function createAnimal(AnimalRequest $request)
     {

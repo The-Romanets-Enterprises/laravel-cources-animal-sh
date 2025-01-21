@@ -18,7 +18,6 @@ class AnimalFactory extends Factory
     {
         return [
             'name' => fake()->streetName(),
-            'photo' => fake()->imageUrl(),
         ];
     }
 }

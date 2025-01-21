@@ -9,6 +9,7 @@ use App\Http\Requests\User\UserRequest;
 use App\Mail\CreateUserMail;
 use Illuminate\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
@@ -58,9 +59,14 @@ class User extends Authenticatable
         ];
     }
 
+    public function photos() : MorphMany
+    {
+        return $this->morphMany(Photo::class, 'imageable');
+    }
+
     public function animalPets()
     {
-        return $this->hasMany(Animal_pet::class);
+        return $this->hasMany(AnimalPet::class);
     }
 
     public function address()

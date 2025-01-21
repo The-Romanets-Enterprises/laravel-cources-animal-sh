@@ -18,7 +18,7 @@ class AddressSeeder extends Seeder
 
         /** @var User $user */
         foreach ($users as $user) {
-            if ($user->address()->exists()) {
+            if (!$user->address()->exists()) {
                 Address::factory()->create([
                     'user_id' => $user->id
                 ]);

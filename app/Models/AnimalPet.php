@@ -5,8 +5,9 @@ namespace App\Models;
 use App\Enums\Sex;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
-class Animal_pet extends Model
+class AnimalPet extends Model
 {
     /** @use HasFactory<\Database\Factories\AnimalPetFactory> */
     use HasFactory;
@@ -35,6 +36,11 @@ class Animal_pet extends Model
             'is_confirmed' => 'boolean',
             'user_id' => 'integer',
         ];
+    }
+
+    public function photos() : MorphMany
+    {
+        return $this->morphMany(Photo::class, 'imageable');
     }
     public function videos()
     {

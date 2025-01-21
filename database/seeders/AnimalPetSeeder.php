@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\AnimalPet;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -12,6 +13,6 @@ class AnimalPetSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        AnimalPet::factory(100)->create();
     }
 }

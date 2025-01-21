@@ -24,6 +24,6 @@ class Video extends Model
 
     public function animalPet()
     {
-        return $this->belongsTo(Animal_pet::class);
+        return $this->belongsTo(AnimalPet::class);
     }
 }
