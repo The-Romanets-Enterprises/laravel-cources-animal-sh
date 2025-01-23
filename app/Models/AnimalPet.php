@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Enums\Sex;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -27,7 +29,12 @@ class AnimalPet extends Model
     {
         return [
             'animal_id' => 'integer',
+            'sex' => Sex::class,
+            'is_confirmed' => 'boolean',
             'user_id' => 'integer',
+            'birth_date' => Carbon::class,
+            'is_sterilized' => 'boolean',
+            'has_vaccination' => 'boolean',
         ];
     }
 
@@ -35,11 +42,16 @@ class AnimalPet extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function animal(){
+    public function animal()
+    {
         return $this->belongsTo(Animal::class);
     }
     public function videos()
     {
         return $this->hasMany(Video::class);
+    }
+    public function photos()
+    {
+        return $this->morphMany(Photo::class, 'imageable');
     }
 }

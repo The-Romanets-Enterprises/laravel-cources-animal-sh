@@ -22,4 +22,9 @@ class Photo extends Model
             'imageable_id' => 'integer',
         ];
     }
+
+    public function imageable()
+    {
+        return $this->morphTo();
+    }
 }

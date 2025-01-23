@@ -25,8 +25,8 @@ class DatabaseSeeder extends Seeder
 //        User::factory(10)->create();
 
  //       $this->call(CountrySeeder::class);
-        $this->call(CitySeeder::class);
-//        $this->call(AddressSeeder::class);
+//        $this->call(CitySeeder::class);
+//          $this->call(AddressSeeder::class);
 //          $this->call(AnimalSeeder::class);
     }
 }

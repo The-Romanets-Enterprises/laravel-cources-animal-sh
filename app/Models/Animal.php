@@ -21,6 +21,11 @@ class Animal extends Model
 //        return $this->hasMany(City::class);
 //    }
 
+    public function animalPets()
+    {
+        return $this->hasMany(AnimalPet::class);
+    }
+
     public static function createAnimal(AnimalRequest $request)
     {
         $data = $request->validated();

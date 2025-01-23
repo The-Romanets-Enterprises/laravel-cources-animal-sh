@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\Sex;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,7 +15,7 @@ return new class extends Migration
         Schema::create('animal_pets', function (Blueprint $table) {
             $table->id();
             $table->foreignId('animal_id')->constrained()->cascadeOnDelete();
-            //$table->foreignId('sex');
+            $table->enum('sex', Sex::getValues()->all());
             $table->text('description');
             $table->boolean('is_confirmed')->default(false);
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();

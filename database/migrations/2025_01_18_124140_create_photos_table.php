@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('photos', function (Blueprint $table) {
             $table->id();
             $table->string('path');
-            $table->foreignId('imageable_id')->constrained()->cascadeOnDelete();
+            $table->unsignedBigInteger('imageable_id');
             $table->string('imageable_type');
             $table->timestamps();
         });

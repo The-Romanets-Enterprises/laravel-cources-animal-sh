@@ -10,7 +10,7 @@ enum Sex: string
 
     public static function getValues(): Collection
     {
-        return collect(\App\Enums\Sex::cases())->pluck('value');
+        return collect(Sex::cases())->pluck('value');
     }
 
     public function getTitle()
