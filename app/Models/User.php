@@ -14,11 +14,12 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable, MustVerifyEmail;
+    use HasFactory, Notifiable, MustVerifyEmail, HasApiTokens;
 
     /**
      * The attributes that are mass assignable.

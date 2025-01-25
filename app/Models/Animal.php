@@ -21,9 +21,9 @@ class Animal extends Model
 //        return $this->hasMany(City::class);
 //    }
 
-    public function animalPets()
+    public static function getAnimals()
     {
-        return $this->hasMany(AnimalPet::class);
+        return self::query()->orderBy('name')->get();
     }
 
     public static function createAnimal(AnimalRequest $request)
