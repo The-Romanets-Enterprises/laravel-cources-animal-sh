@@ -129,9 +129,6 @@ class UserController extends Controller
     {
         $redirect = redirect()->back();
 
-        if (!auth()->user()->is_superadmin) {
-            return $redirect->with('error', __('messages.user.error.restricted'));
-        }
 
         $is_destroyed = User::deleteUser($user);
 

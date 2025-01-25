@@ -1,10 +1,10 @@
-@extends('admin.layouts.layout')
+@extends('layouts.layout')
 
 @section('title') {{ $title ?? null }} @endsection
 
 @section('content')
     <!-- Content Header (Page header) -->
-    @include('admin.layouts.page-header')
+    @include('layouts.page-header')
 
     <!-- Main content -->
     <section class="content">

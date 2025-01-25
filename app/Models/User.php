@@ -23,6 +23,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'lastname',
         'email',
         'password',
         'phone',
@@ -58,6 +59,12 @@ class User extends Authenticatable
         return $this->hasOne(Address::class);
     }
 
+    public function getFullNameAttribute()
+    {
+        return "{$this->lastname} {$this->name}";
+    }
+
+    // full_name
     public static function getRegularUsers()
     {
         $users = self::query();
@@ -74,6 +81,53 @@ class User extends Authenticatable
         $data['password'] = Hash::make($data['password']);
 
         return self::query()->create($data);
+    }
+
+    public static function createUser(UserRequest $request)
+    {
+        $data = $request->validated();
+        $password = Str::password(
+            length: 8,
+        );
+        $data['password'] = bcrypt($password);
+
+        $user = User::query()->create($data);
+
+        if (!$user) {
+            return false;
+        }
+
+        try {
+            $result = Mail::to([$request->email])->send(new CreateUserMail($user, $password));
+        } catch (\Exception $e) {
+            $user->delete();
+
+            return false;
+        }
+
+        return $result;
+    }
+
+    public static function updateUser(UserRequest $request, User $user)
+    {
+        $data = $request->validated();
+
+        if ($data['password']) {
+            $data['password'] = bcrypt($data['password']);
+        } else {
+            unset($data['password']);
+        }
+
+        return $user->update($data);
+    }
+
+    public static function deleteUser(User $user)
+    {
+        if ($user->id == auth()->id()) {
+            return null;
+        }
+
+        return $user->delete();
     }
 
 }

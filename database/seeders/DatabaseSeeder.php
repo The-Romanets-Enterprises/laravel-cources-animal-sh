@@ -6,6 +6,7 @@ use App\Enums\Role;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,11 +17,12 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-//        User::factory()->create([
-//            'name' => 'SuperAdmin',
-//            'email' => 'root@gmail.com',
-//            'role' => Role::ADMIN,
-//        ]);
+        User::factory()->create([
+            'name' => 'SuperUser',
+            'email' => 'root@gmail.com',
+            'password' => bcrypt('123456'),
+            'role' => Role::ADMIN,
+        ]);
 //
 //        User::factory(10)->create();
 
