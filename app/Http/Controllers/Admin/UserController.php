@@ -8,6 +8,7 @@ use App\Http\Requests\User\ChangePasswordRequest;
 use App\Http\Requests\User\UserRequest;
 use App\Models\User;
 use App\Rules\Auth\MatchOldPasswordRule;
+use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -15,6 +16,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -35,6 +37,67 @@ class UserController extends Controller
         }
         $users->orderBy('created_at', 'DESC');
         $users = $users->paginate(config('settings.paginate'));
+
+//        $date_now = now();
+//        $date_create = Carbon::create();
+//        $date_parse = Carbon::parse('2008-10-05');
+//
+//        dump($date_now->format('d M Y'));
+//        dump($date_create->format('d M Y'));
+//        dump($date_parse->translatedFormat('d M Y'));
+//
+//        $date_end = $date_now->clone()->addDays(10);
+////        $date_end->subDays(10);
+//
+//        dump('==================');
+//
+//        dump($date_now->format('d M Y'));
+//        dump($date_end->format('d M Y'));
+//
+//        dump($date_now->diffInHours($date_end));
+//        dump($date_now->clone());
+//        dump($date_now->days(1));
+//        dump($date_now->days(1));
+
+//        $str = str('Hello world Привет мир');
+//        $random = Str::random(20);
+//        $password = Str::password();
+//        $my_str = Str::of('MY string');
+//
+//        dump($str);
+//        dump($str->upper());
+//        dump($str->lower());
+//        dump($str->title());
+//        dump($str->take(4));
+//        dump($str->words(2, '...'));
+//        dump($str->camel());
+//        dump($str->reverse());
+//        dump($random);
+
+//        $values = collect([
+//            4, 8, 10, 25, 9, 3, 5, 8
+//        ]);
+//        dump($values->skip(2)->take(2));
+//        dump($values->contains(25));
+//        dump($values->search(25));
+//        dump($values->search(444));
+//        dump((bool)$values->search(4));
+//        dump($values->filter(function ($value) {
+//            return true;
+//        }));
+//        $values->put('hello', 'World');
+//        $values->push([
+//            '84' => 454
+//        ]);
+//        $values->add([
+//            '84' => 454
+//        ]);
+
+//        $values->forget(5);
+//        $values->pull(5);
+//        $values->chunk(5);
+//        $values->pluck();
+//        dump($values);
 
         return view('admin.user.index', compact(
             'title',
