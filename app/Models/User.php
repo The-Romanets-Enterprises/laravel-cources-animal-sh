@@ -68,6 +68,11 @@ class User extends Authenticatable
         return $this->hasMany(AnimalPet::class);
     }
 
+    public function photos()
+    {
+        return $this->morphMany(Photo::class, 'imageable');
+    }
+
     // full_name
     public function getFullNameAttribute()
     {

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\AnimalPet;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,8 @@ class VideoFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'path' => fake()->imageUrl(),
+            'animal_pet_id' => AnimalPet::query()->inRandomOrder()->first()->id,
         ];
     }
 }
