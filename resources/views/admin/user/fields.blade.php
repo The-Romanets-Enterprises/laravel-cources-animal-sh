@@ -1,5 +1,5 @@
 @php
-    use App\Enums\Role;
+    use App\Enum\Role;
 @endphp
 
 

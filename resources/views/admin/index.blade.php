@@ -1,6 +1,8 @@
 @extends('layouts.layout')
 
-@section('title') {{ $title ?? null }} @endsection
+@section('title')
+    {{ $title ?? null }}
+@endsection
 
 @section('content')
     <!-- Content Header (Page header) -->
@@ -23,7 +25,9 @@
                             <div class="icon">
                                 <i class="fas fa-car"></i>
                             </div>
-                            <a href="<?=route('admin.brands.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="<?=route('admin.brands.index')?>"
+                               class="small-box-footer">{{ __('messages.more') }} <i
+                                        class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -40,7 +44,9 @@
                             <div class="icon">
                                 <i class="fas fa-car"></i>
                             </div>
-                            <a href="<?=route('admin.car-models.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="<?=route('admin.car-models.index')?>"
+                               class="small-box-footer">{{ __('messages.more') }} <i
+                                        class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -57,7 +63,8 @@
                             <div class="icon">
                                 <i class="fas fa-car"></i>
                             </div>
-                            <a href="<?=route('admin.cars.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="<?=route('admin.cars.index')?>" class="small-box-footer">{{ __('messages.more') }}
+                                <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -77,7 +84,9 @@
                             <div class="icon">
                                 <i class="fas fa-gears"></i>
                             </div>
-                            <a href="<?=route('admin.car-pieces.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="<?=route('admin.car-pieces.index')?>"
+                               class="small-box-footer">{{ __('messages.more') }} <i
+                                        class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -94,7 +103,8 @@
                             <div class="icon">
                                 <i class="fas fa-question"></i>
                             </div>
-                            <a href="<?=route('admin.faqs.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="<?=route('admin.faqs.index')?>" class="small-box-footer">{{ __('messages.more') }}
+                                <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -111,7 +121,9 @@
                             <div class="icon">
                                 <i class="fas fa-newspaper"></i>
                             </div>
-                            <a href="<?=route('admin.articles.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="<?=route('admin.articles.index')?>"
+                               class="small-box-footer">{{ __('messages.more') }} <i
+                                        class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -131,7 +143,9 @@
                             <div class="icon">
                                 <i class="fas fa-palette"></i>
                             </div>
-                            <a href="<?=route('admin.colors.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="<?=route('admin.colors.index')?>"
+                               class="small-box-footer">{{ __('messages.more') }} <i
+                                        class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -148,7 +162,9 @@
                             <div class="icon">
                                 <i class="fas fa-palette"></i>
                             </div>
-                            <a href="<?=route('admin.interior-colors.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="<?=route('admin.interior-colors.index')?>"
+                               class="small-box-footer">{{ __('messages.more') }} <i
+                                        class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -165,7 +181,9 @@
                             <div class="icon">
                                 <i class="fas fa-swatchbook"></i>
                             </div>
-                            <a href="<?=route('admin.interior-materials.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="<?=route('admin.interior-materials.index')?>"
+                               class="small-box-footer">{{ __('messages.more') }} <i
+                                        class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -182,7 +200,9 @@
                             <div class="icon">
                                 <i class="fas fa-gear"></i>
                             </div>
-                            <a href="<?=route('admin.equipment-categories.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="<?=route('admin.equipment-categories.index')?>"
+                               class="small-box-footer">{{ __('messages.more') }} <i
+                                        class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -202,7 +222,9 @@
                             <div class="icon">
                                 <i class="fas fa-screwdriver-wrench"></i>
                             </div>
-                            <a href="<?=route('admin.damage-types.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="<?=route('admin.damage-types.index')?>"
+                               class="small-box-footer">{{ __('messages.more') }} <i
+                                        class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -219,7 +241,9 @@
                             <div class="icon">
                                 <i class="fas fa-screwdriver-wrench"></i>
                             </div>
-                            <a href="<?=route('admin.tech-damages.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="<?=route('admin.tech-damages.index')?>"
+                               class="small-box-footer">{{ __('messages.more') }} <i
+                                        class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -236,7 +260,9 @@
                             <div class="icon">
                                 <i class="fas fa-screwdriver-wrench"></i>
                             </div>
-                            <a href="<?=route('admin.special-damages.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="<?=route('admin.special-damages.index')?>"
+                               class="small-box-footer">{{ __('messages.more') }} <i
+                                        class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -253,7 +279,9 @@
                             <div class="icon">
                                 <i class="fas fa-screwdriver-wrench"></i>
                             </div>
-                            <a href="<?=route('admin.internal-damages.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="<?=route('admin.internal-damages.index')?>"
+                               class="small-box-footer">{{ __('messages.more') }} <i
+                                        class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -273,7 +301,9 @@
                             <div class="icon">
                                 <i class="fas fa-wind"></i>
                             </div>
-                            <a href="<?=route('admin.ecology-classes.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="<?=route('admin.ecology-classes.index')?>"
+                               class="small-box-footer">{{ __('messages.more') }} <i
+                                        class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -290,7 +320,9 @@
                             <div class="icon">
                                 <i class="fas fa-gears"></i>
                             </div>
-                            <a href="<?=route('admin.transmission-types.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="<?=route('admin.transmission-types.index')?>"
+                               class="small-box-footer">{{ __('messages.more') }} <i
+                                        class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -307,7 +339,9 @@
                             <div class="icon">
                                 <i class="fas fa-car-side"></i>
                             </div>
-                            <a href="<?=route('admin.body-types.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="<?=route('admin.body-types.index')?>"
+                               class="small-box-footer">{{ __('messages.more') }} <i
+                                        class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -324,7 +358,9 @@
                             <div class="icon">
                                 <i class="fas fa-gas-pump"></i>
                             </div>
-                            <a href="<?=route('admin.fuel-types.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="<?=route('admin.fuel-types.index')?>"
+                               class="small-box-footer">{{ __('messages.more') }} <i
+                                        class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -344,7 +380,9 @@
                             <div class="icon">
                                 <i class="fas fa-globe"></i>
                             </div>
-                            <a href="<?=route('admin.cities.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="<?=route('admin.cities.index')?>"
+                               class="small-box-footer">{{ __('messages.more') }} <i
+                                        class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -361,7 +399,9 @@
                             <div class="icon">
                                 <i class="fas fa-globe"></i>
                             </div>
-                            <a href="<?=route('admin.countries.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="<?=route('admin.countries.index')?>"
+                               class="small-box-footer">{{ __('messages.more') }} <i
+                                        class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -378,7 +418,9 @@
                             <div class="icon">
                                 <i class="fas fa-globe"></i>
                             </div>
-                            <a href="<?=route('admin.languages.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="<?=route('admin.languages.index')?>"
+                               class="small-box-footer">{{ __('messages.more') }} <i
+                                        class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -386,7 +428,7 @@
             </div>
             <!-- Small boxes (Stat box) -->
             <div class="row">
-                @if(auth()->user()->role == \App\Enums\Role::ADMIN)
+                @if(auth()->user()->role == \App\Enum\Role::ADMIN)
                     @isset($token_count)
                         <div class="col-lg-3 col-6">
                             <!-- small box -->
@@ -399,7 +441,9 @@
                                 <div class="icon">
                                     <i class="fas fa-solid fa-key"></i>
                                 </div>
-                                <a href="<?=route('admin.tokens.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="<?=route('admin.tokens.index')?>"
+                                   class="small-box-footer">{{ __('messages.more') }} <i
+                                            class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <!-- ./col -->
@@ -416,7 +460,9 @@
                                 <div class="icon">
                                     <i class="fas fa-solid fa-user"></i>
                                 </div>
-                                <a href="<?=route('admin.admins.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="<?=route('admin.admins.index')?>"
+                                   class="small-box-footer">{{ __('messages.more') }} <i
+                                            class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <!-- ./col -->
@@ -434,7 +480,8 @@
                             <div class="icon">
                                 <i class="fas fa-solid fa-user"></i>
                             </div>
-                            <a href="<?=route('admin.users.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="<?=route('admin.users.index')?>" class="small-box-footer">{{ __('messages.more') }}
+                                <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
