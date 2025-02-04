@@ -17,7 +17,8 @@ class VideoFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'path' => $this->faker->imageUrl(),
+            'animal_pet_id' => AnimalPet::query()->inRandomOrder()->first()->id ?? null,
         ];
     }
 }

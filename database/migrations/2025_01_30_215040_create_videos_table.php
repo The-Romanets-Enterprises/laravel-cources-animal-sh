@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('path');
-            $table->foreignId('animal_id')->constrained();
+            $table->foreignId('animal_pet_id')->constrained()->cascadeOnDelete();
         });
     }
 

@@ -16,8 +16,13 @@ class PhotoFactory extends Factory
      */
     public function definition(): array
     {
+        $imageableType = fake()->randomElement([AnimalPet::class, User::class]);
+        $imageable = $imageableType::query()->inRandomOrder()->first();
+
         return [
-            //
+            'imageable_id' => optional($imageable)->id,
+            'path' => fake()->imageUrl(),
+            'imageable_type' => $imageableType,
         ];
     }
 }

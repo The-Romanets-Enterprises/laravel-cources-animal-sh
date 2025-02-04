@@ -21,4 +21,8 @@ class Video extends Model
             'animal_pet_id' => 'integer',
         ];
     }
+    public function animalPet()
+    {
+        return $this->belongsTo(AnimalPet::class);
+    }
 }

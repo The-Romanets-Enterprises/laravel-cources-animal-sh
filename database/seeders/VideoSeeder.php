@@ -12,6 +12,6 @@ class VideoSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Video::factory(100)->create();
     }
 }
