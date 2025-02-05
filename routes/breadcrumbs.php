@@ -2,7 +2,8 @@
 
 // Note: Laravel will automatically resolve `Breadcrumbs::` without
 // this import. This is nice for IDE syntax and refactoring.
-use App\Models\Article;
+use App\Models\City;
+use App\Models\Country;
 use App\Models\User;
 use Diglactic\Breadcrumbs\Breadcrumbs;
 
@@ -66,6 +67,44 @@ Breadcrumbs::for('admin.users.edit', function (BreadcrumbTrail $trail, User $use
 Breadcrumbs::for('admin.change-password', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.home');
     $trail->push(__('messages.user.change-password'), route('admin.change-password'));
+});
+
+// City
+// Home > City
+Breadcrumbs::for('admin.cities.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.home');
+    $trail->push(__('messages.city.plural'), route('admin.cities.index'));
+});
+
+// Home > City > Create
+Breadcrumbs::for('admin.cities.create', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.cities.index');
+    $trail->push(__('messages.city.create'), route('admin.cities.create'));
+});
+
+// Home > City > Edit
+Breadcrumbs::for('admin.cities.edit', function (BreadcrumbTrail $trail, City $city) {
+    $trail->parent('admin.cities.index');
+    $trail->push($city->name, route('admin.cities.edit', $city));
+});
+
+// Country
+// Home > Country
+Breadcrumbs::for('admin.countries.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.home');
+    $trail->push(__('messages.country.plural'), route('admin.countries.index'));
+});
+
+// Home > Country > Create
+Breadcrumbs::for('admin.countries.create', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.countries.index');
+    $trail->push(__('messages.country.create'), route('admin.countries.create'));
+});
+
+// Home > Country > Edit
+Breadcrumbs::for('admin.countries.edit', function (BreadcrumbTrail $trail, Country $country) {
+    $trail->parent('admin.countries.index');
+    $trail->push($country->name, route('admin.countries.edit', $country));
 });
 
 // Token
