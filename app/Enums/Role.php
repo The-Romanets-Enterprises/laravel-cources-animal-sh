@@ -12,7 +12,7 @@ enum Role: string
 
     public static function getValues(): Collection
     {
-        return collect(\App\Enums\Role::cases())->pluck('value');
+        return collect(Role::cases())->pluck('value');
     }
 
     public function getTitle()
