@@ -32,7 +32,7 @@ class AnimalPet extends Model
             'sex' => Sex::class,
             'is_confirmed' => 'boolean',
             'user_id' => 'integer',
-            'birth_date' => Carbon::class,
+            'birth_date' => 'date:Y-m-d',
             'is_sterilized' => 'boolean',
             'has_vaccination' => 'boolean',
         ];

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Enums\Role;
+use App\Models\AnimalPet;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -24,9 +25,12 @@ class DatabaseSeeder extends Seeder
 //
 //        User::factory(10)->create();
 
- //       $this->call(CountrySeeder::class);
+//        $this->call(CountrySeeder::class);
 //        $this->call(CitySeeder::class);
 //          $this->call(AddressSeeder::class);
 //          $this->call(AnimalSeeder::class);
+//        $this->call(AnimalPetSeeder::class);
+        $this->call(PhotoSeeder::class);
+//        $this->call(VideoSeeder::class);
     }
 }
