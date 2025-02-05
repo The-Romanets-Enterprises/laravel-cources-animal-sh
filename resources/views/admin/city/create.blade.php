@@ -19,10 +19,10 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{ route('admin.users.store') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.cities.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
-                                @include('admin.user.fields')
+                                @include('admin.city.fields')
                             </div>
                             <!-- /.card-body -->
 

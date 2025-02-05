@@ -22,7 +22,8 @@
                         <thead>
                             <tr>
                                 <th style="width: 10px">#</th>
-                                <th>Название</th>
+                                <th>Название города</th>
+                                <th>Страна</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -30,21 +31,22 @@
                                 <tr>
                                     <td>{{ $city->id }}</td>
                                     <td>{{ $city->name }}</td>
-                                    <td>
-                                        <a href="{{ route("admin.cities.edit", ['city' => $city->id]) }}" class="btn btn-info btn-sm float-left">
-                                            <i class="fas fa-pencil-alt"></i>
-                                        </a>
+                                    <td>{{ $city->country->name }}</td>
                                         @if(auth()->user()->role == \App\Enums\Role::ADMIN)
-                                            <form action="{{ route("admin.cities.destroy", ['city' => $city->id]) }}" method="post" class="float-left ml-1">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm"
-                                                        onclick="return confirm('Подтвердите удаление')">
-                                                    <i class="fas fa-trash-alt"></i>
-                                                </button>
-                                            </form>
+                                            <td>
+                                                <a href="{{ route("admin.cities.edit", ['city' => $city->id]) }}" class="btn btn-info btn-sm float-left">
+                                                    <i class="fas fa-pencil-alt"></i>
+                                                </a>
+                                                    <form action="{{ route("admin.cities.destroy", ['city' => $city->id]) }}" method="post" class="float-left ml-1">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger btn-sm"
+                                                                onclick="return confirm('Подтвердите удаление')">
+                                                            <i class="fas fa-trash-alt"></i>
+                                                        </button>
+                                                    </form>
+                                            </td>
                                         @endif
-                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

@@ -30,11 +30,12 @@
                             <tr>
                                 <td>{{ $country->id }}</td>
                                 <td>{{ $country->name }}</td>
-                                <td>
-                                    <a href="{{ route("admin.countries.edit", ['country' => $country->id]) }}" class="btn btn-info btn-sm float-left">
-                                        <i class="fas fa-pencil-alt"></i>
-                                    </a>
-                                    @if(auth()->user()->role == \App\Enums\Role::ADMIN)
+                                @if(auth()->user()->role == \App\Enums\Role::ADMIN)
+                                    <td>
+                                        <a href="{{ route("admin.countries.edit", ['country' => $country->id]) }}" class="btn btn-info btn-sm float-left">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </a>
+
                                         <form action="{{ route("admin.countries.destroy", ['country' => $country->id]) }}" method="post" class="float-left ml-1">
                                             @csrf
                                             @method('DELETE')
@@ -43,8 +44,8 @@
                                                 <i class="fas fa-trash-alt"></i>
                                             </button>
                                         </form>
-                                    @endif
-                                </td>
+                                    </td>
+                                @endif
                             </tr>
                         @endforeach
                         </tbody>
