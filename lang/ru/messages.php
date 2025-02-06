@@ -14,6 +14,9 @@ return [
     'update' => 'Обновить',
     'copy' => 'Скопировано',
 
+    'yes' => 'Да',
+    'no' => 'Нет',
+
     'year_graduation_from' => 'Год начала',
     'year_graduation_to' => 'Год окончания',
     'gave_super_admin' => 'Пользователю :user_name даны права супер администратора',

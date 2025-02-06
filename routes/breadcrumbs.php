@@ -2,6 +2,8 @@
 
 // Note: Laravel will automatically resolve `Breadcrumbs::` without
 // this import. This is nice for IDE syntax and refactoring.
+use App\Models\Animal;
+use App\Models\AnimalPet;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\User;
@@ -105,6 +107,44 @@ Breadcrumbs::for('admin.countries.create', function (BreadcrumbTrail $trail) {
 Breadcrumbs::for('admin.countries.edit', function (BreadcrumbTrail $trail, Country $country) {
     $trail->parent('admin.countries.index');
     $trail->push($country->name, route('admin.countries.edit', $country));
+});
+
+// Animal
+// Home > Animal
+Breadcrumbs::for('admin.animals.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.home');
+    $trail->push(__('messages.animal.plural'), route('admin.animals.index'));
+});
+
+// Home > Animal > Create
+Breadcrumbs::for('admin.animals.create', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.animals.index');
+    $trail->push(__('messages.animal.create'), route('admin.animals.create'));
+});
+
+// Home > Animal > Edit
+Breadcrumbs::for('admin.animals.edit', function (BreadcrumbTrail $trail, Animal $animal) {
+    $trail->parent('admin.animals.index');
+    $trail->push($animal->name, route('admin.animals.edit', $animal));
+});
+
+// AnimalPet
+// Home > AnimalPet
+Breadcrumbs::for('admin.animal-pets.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.home');
+    $trail->push(__('messages.animal_pet.plural'), route('admin.animal-pets.index'));
+});
+
+// Home > AnimalPet > Create
+Breadcrumbs::for('admin.animal-pets.create', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.animal-pets.index');
+    $trail->push(__('messages.animal_pet.create'), route('admin.animal-pets.create'));
+});
+
+// Home > AnimalPet > Edit
+Breadcrumbs::for('admin.animal-pets.edit', function (BreadcrumbTrail $trail, AnimalPet $animalPet) {
+    $trail->parent('admin.animal-pets.index');
+    $trail->push($animalPet->name, route('admin.animal-pets.edit', $animalPet));
 });
 
 // Token
