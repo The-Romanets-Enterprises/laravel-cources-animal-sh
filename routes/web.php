@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\AnimalController;
+use App\Http\Controllers\Admin\AnimalPetController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\CountryController;
@@ -25,6 +27,8 @@ Route::prefix('/admin')->name('admin.')->group(function () {
             Route::resource('/users', UserController::class);
             Route::resource('/countries', CountryController::class);
             Route::resource('/cities', CityController::class);
+            Route::resource('/animals', AnimalController::class);
+            Route::resource('/animal-pets', AnimalPetController::class);
         });
 
         Route::controller(UserController::class)->group(function () {
