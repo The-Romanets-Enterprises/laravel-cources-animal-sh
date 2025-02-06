@@ -342,7 +342,7 @@
                                 <p>{{ __('messages.city.plural') }}</p>
                             </div>
                             <div class="icon">
-                                <i class="fas fa-globe"></i>
+                                <i class="fas fa-city"></i>
                             </div>
                             <a href="<?=route('admin.cities.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
@@ -359,9 +359,43 @@
                                 <p>{{ __('messages.country.plural') }}</p>
                             </div>
                             <div class="icon">
-                                <i class="fas fa-globe"></i>
+                                <i class="fas fa-earth-americas"></i>
                             </div>
                             <a href="<?=route('admin.countries.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                @endisset
+                @isset($animal_count)
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-gradient-primary">
+                            <div class="inner">
+                                <h3>{{ $animal_count }}</h3>
+
+                                <p>{{ __('messages.animal.plural') }}</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-folder"></i>
+                            </div>
+                            <a href="<?=route('admin.animals.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                @endisset
+                @isset($animal_pet_count)
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-gradient-primary">
+                            <div class="inner">
+                                <h3>{{ $animal_pet_count }}</h3>
+
+                                <p>{{ __('messages.animal_pet.plural') }}</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-paw"></i>
+                            </div>
+                            <a href="<?=route('admin.animal-pets.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
