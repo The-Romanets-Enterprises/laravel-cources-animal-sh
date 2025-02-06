@@ -22,8 +22,8 @@ class AnimalRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'max:255'],
-            'photo' => ['required', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
+            'name' => ['required', 'max:255', 'unique:animals,name'],
+            //'photo' => ['required', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
         ];
     }
 }

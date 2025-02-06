@@ -31,7 +31,7 @@ class Animal extends Model
     public static function createAnimal(AnimalRequest $request)
     {
         $data = $request->validated();
-        $data['photo'] = self::uploadPhoto($request);
+        //$data['photo'] = self::uploadPhoto($request);
 
         return self::query()->create($data);
     }
@@ -39,7 +39,7 @@ class Animal extends Model
     public static function updateAnimal(AnimalRequest $request, self $animal)
     {
         $data = $request->validated();
-        $data['photo'] = self::uploadPhoto($request, $animal->photo);
+        //$data['photo'] = self::uploadPhoto($request, $animal->photo);
 
         return $animal->update($data);
     }
@@ -47,7 +47,7 @@ class Animal extends Model
     public static function deleteAnimal(self $animal)
     {
         if ($animal->photo) {
-            Storage::delete($animal->photo);
+            //Storage::delete($animal->photo);
         }
 
         return $animal->delete();
