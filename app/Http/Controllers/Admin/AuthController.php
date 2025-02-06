@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
+use App\Models\Animal;
+use App\Models\AnimalPet;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\User;
@@ -24,12 +26,18 @@ class AuthController extends Controller
 
         $city_count = City::query()->count();
 
+        $animal_count = Animal::query()->count();
+
+        $animal_pet_count = AnimalPet::query()->count();
+
         return view('admin.index', compact(
                 'title',
 
                 'user_count',
                 'country_count',
                 'city_count',
+                'animal_count',
+                'animal_pet_count',
             )
         );
     }
