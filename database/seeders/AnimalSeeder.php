@@ -13,6 +13,10 @@ class AnimalSeeder extends Seeder
      */
     public function run(): void
     {
-        Animal::factory(100)->create();
+        $categories = ['Собака', 'Кошка', 'Попугай', 'Хомяк', 'Черепаха', 'Кролик', 'Мышь', 'Крыса'];
+
+        foreach ($categories as $category) {
+            Animal::firstOrCreate(['name' => $category]);
+        }
     }
 }
