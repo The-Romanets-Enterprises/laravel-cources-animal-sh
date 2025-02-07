@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AddressController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\CountryController;
@@ -25,6 +26,7 @@ Route::prefix('/admin')->name('admin.')->group(function () {
             Route::resource('/users', UserController::class);
             Route::resource('/cities', CityController::class);
             Route::resource('/countries', CountryController::class);
+            Route::resource('/addresses', AddressController::class);
         });
 
         Route::controller(UserController::class)->group(function () {
