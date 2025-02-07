@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use App\Models\Article;
 use App\Models\City;
+use App\Models\Country;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,11 +21,12 @@ class AuthController extends Controller
 
         $user_count = User::query()->count();
         $city_count = City::query()->count();
+        $country_count = Country::query()->count();
 
         return view('admin.index', compact(
                 'title',
 
-                'user_count', 'city_count',
+                'user_count', 'city_count', 'country_count'
             )
         );
     }
