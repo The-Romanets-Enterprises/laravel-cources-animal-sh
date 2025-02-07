@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
+use App\Models\Address;
 use App\Models\Article;
 use App\Models\City;
 use App\Models\Country;
@@ -22,11 +23,12 @@ class AuthController extends Controller
         $user_count = User::query()->count();
         $city_count = City::query()->count();
         $country_count = Country::query()->count();
+        $address_count = Address::query()->count();
 
         return view('admin.index', compact(
                 'title',
 
-                'user_count', 'city_count', 'country_count'
+                'user_count', 'city_count', 'country_count', 'address_count'
             )
         );
     }
