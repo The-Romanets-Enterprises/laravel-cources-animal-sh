@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,7 @@ Route::prefix('/admin')->name('admin.')->group(function () {
 
         Route::middleware('super-admin')->group(function () {
             Route::resource('/users', UserController::class);
+            Route::resource('/cities', CityController::class);
         });
 
         Route::controller(UserController::class)->group(function () {
