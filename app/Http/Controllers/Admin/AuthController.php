@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use App\Models\Article;
+use App\Models\City;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,11 +19,12 @@ class AuthController extends Controller
         $title = __('messages.main_page');
 
         $user_count = User::query()->count();
+        $city_count = City::query()->count();
 
         return view('admin.index', compact(
                 'title',
 
-                'user_count',
+                'user_count', 'city_count',
             )
         );
     }
