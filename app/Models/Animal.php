@@ -20,7 +20,10 @@ class Animal extends Model
 //    {
 //        return $this->hasMany(City::class);
 //    }
-
+    public static function getAnimals()
+    {
+        return self::query()->orderBy('name')->get();
+    }
     public static function createAnimal(AnimalRequest $request)
     {
         $data = $request->validated();
