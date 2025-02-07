@@ -30,6 +30,7 @@
                                         class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
+
                     <!-- ./col -->
                 @endisset
                 @isset($car_model_count)
@@ -484,6 +485,23 @@
                                 <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
+                    @endif
+                    @isset($animal_count)
+                        <div class="col-lg-3 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-gray">
+                                <div class="inner">
+                                    <h3>{{ $animal_count }}</h3>
+
+                                    <p>{{ __('messages.request.plural') }}</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-solid fa-user"></i>
+                                </div>
+                                <a href="<?=route('admin.requests.index')?>" class="small-box-footer">{{ __('messages.more') }}
+                                    <i class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
                     <!-- ./col -->
                 @endisset
             </div>

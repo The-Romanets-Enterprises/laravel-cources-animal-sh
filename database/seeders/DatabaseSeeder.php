@@ -17,14 +17,14 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'SuperUser',
-            'email' => 'root@gmail.com',
-            'password' => bcrypt('123456'),
-            'role' => Role::ADMIN,
-        ]);
+//        User::factory()->create([
+//            'name' => 'SuperUser',
+//            'email' => 'root@gmail.com',
+//            'password' => bcrypt('123456'),
+//            'role' => Role::ADMIN,
+//        ]);
 //
-//        User::factory(10)->create();
+//        User::factory(11)->create();
 
 //        $this->call(CountrySeeder::class);
 //        $this->call(CitySeeder::class);
