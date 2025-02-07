@@ -11,6 +11,7 @@
     'items' => $countries,
     'value' => $city->country_id ?? null,
     'key_value' => 'id',
+    'display_name' => 'name',
     'pre_text' => 'Выберите страну'
 ])
 
