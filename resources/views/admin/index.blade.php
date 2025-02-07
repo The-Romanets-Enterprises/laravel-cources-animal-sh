@@ -366,6 +366,23 @@
                     </div>
                     <!-- ./col -->
                 @endisset
+                    @isset($address_count)
+                        <div class="col-lg-3 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-gradient-blue">
+                                <div class="inner">
+                                    <h3>{{ $address_count }}</h3>
+
+                                    <p>{{ __('messages.address.plural') }}</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                                <a href="<?=route('admin.addresses.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                    @endisset
                 @isset($language_count)
                     <div class="col-lg-3 col-6">
                         <!-- small box -->
