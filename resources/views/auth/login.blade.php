@@ -25,7 +25,7 @@
             <form action="{{ route('admin.login.auth') }}" method="post">
                 @csrf
                 <div class="input-group mb-3">
-                    <input type="text" name="email" class="form-control" placeholder="Логин"
+                    <input type="text" name="email" class="form-control" placeholder="Адрес эл. почты"
                            value="{{ old('email') }}">
                     <div class="input-group-append">
                         <div class="input-group-text">
