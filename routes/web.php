@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AddressController;
 use App\Http\Controllers\Admin\AnimalController;
+use App\Http\Controllers\Admin\AnimalPetController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\CountryController;
@@ -29,6 +30,7 @@ Route::prefix('/admin')->name('admin.')->group(function () {
             Route::resource('/countries', CountryController::class);
             Route::resource('/addresses', AddressController::class);
             Route::resource('/animals', AnimalController::class);
+            Route::resource('/animal_pets', AnimalPetController::class);
         });
 
         Route::controller(UserController::class)->group(function () {
