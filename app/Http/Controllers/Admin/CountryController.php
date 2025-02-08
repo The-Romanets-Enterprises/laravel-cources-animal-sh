@@ -70,7 +70,7 @@ class CountryController extends Controller
     {
         $redirect = redirect()->back();
 
-        $is_destroyed = Country::deleteCity($country);
+        $is_destroyed = Country::deleteCountry($country);
 
         if ($is_destroyed === null) {
             return $redirect->with('error', __('messages.country.error.my-self'));
