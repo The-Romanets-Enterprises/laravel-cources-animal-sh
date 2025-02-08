@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Requests\PhotoRequest;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -26,5 +27,24 @@ class Photo extends Model
     public function imageable()
     {
         return $this->morphTo();
+    }
+
+    public static function createPhoto(PhotoRequest $request)
+    {
+        $data = $request->validated();
+
+        return self::query()->create($data);
+    }
+
+    public static function updatePhoto(PhotoRequest $request, self $photo)
+    {
+        $data = $request->validated();
+
+        return $photo->update($data);
+    }
+
+    public static function deletePhoto(self $photo)
+    {
+        return $photo->delete();
     }
 }

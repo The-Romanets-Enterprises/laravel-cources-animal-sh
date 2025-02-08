@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\Sex;
+use App\Http\Requests\AnimalPetRequest;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -53,5 +54,25 @@ class AnimalPet extends Model
     public function photos()
     {
         return $this->morphMany(Photo::class, 'imageable');
+    }
+
+    public static function createAnimalPet(AnimalPetRequest $request, User $user)
+    {
+        $data = $request->validated();
+        $data['user_id'] = $user->id;
+
+        return self::query()->create($data);
+    }
+
+    public static function updateAnimalPet(AnimalPetRequest $request, self $animalPet)
+    {
+        $data = $request->validated();
+
+        return $animalPet->update($data);
+    }
+
+    public static function deleteAnimalPet(self $animalPet)
+    {
+        return $animalPet->delete();
     }
 }
