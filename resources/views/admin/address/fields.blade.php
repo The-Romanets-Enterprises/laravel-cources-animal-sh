@@ -18,7 +18,7 @@
     'items' => $users,
     'value' => $address->user_id ?? null,
     'key_value' => 'id',
-    'display_name' => 'name',
+    'display_name' => 'full_name',
     'pre_text' => 'Выберите пользователя'
 ])
 
