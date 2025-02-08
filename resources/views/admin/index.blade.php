@@ -28,19 +28,19 @@
                     </div>
                     <!-- ./col -->
                 @endisset
-                @isset($brand_count)
+                @isset($animal_pet_count)
                     <div class="col-lg-3 col-6">
                         <!-- small box -->
-                        <div class="small-box bg-gradient-primary">
+                        <div class="small-box bg-gradient-info">
                             <div class="inner">
-                                <h3>{{ $brand_count }}</h3>
+                                <h3>{{ $animal_pet_count }}</h3>
 
-                                <p>{{ __('messages.brand.plural') }}</p>
+                                <p>{{ __('messages.animal_pet.plural') }}</p>
                             </div>
                             <div class="icon">
-                                <i class="fas fa-car"></i>
+                                <i class="fas fa-bug"></i>
                             </div>
-                            <a href="<?=route('admin.brands.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="<?=route('admin.animal_pets.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
