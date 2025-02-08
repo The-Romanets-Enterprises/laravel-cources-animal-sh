@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Enums\Sex;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class AnimalPetRequest extends FormRequest
 {

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use App\Models\Address;
 use App\Models\Animal;
+use App\Models\AnimalPet;
 use App\Models\Article;
 use App\Models\City;
 use App\Models\Country;
@@ -26,11 +27,12 @@ class AuthController extends Controller
         $country_count = Country::query()->count();
         $address_count = Address::query()->count();
         $animal_count = Animal::query()->count();
+        $animal_pet_count = AnimalPet::query()->count();
 
         return view('admin.index', compact(
                 'title',
 
-                'user_count', 'city_count', 'country_count', 'address_count', 'animal_count'
+                'user_count', 'city_count', 'country_count', 'address_count', 'animal_count', 'animal_pet_count'
             )
         );
     }
