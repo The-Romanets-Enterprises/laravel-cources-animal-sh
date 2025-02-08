@@ -19,6 +19,9 @@
         <li class="nav-item d-none d-sm-inline-block">
             <a href="<?=route('admin.addresses.index')?>" class="nav-link">{{ __('messages.address.plural') }}</a>
         </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="<?=route('admin.animals.index')?>" class="nav-link">{{ __('messages.animal.plural') }}</a>
+        </li>
     @endif
     <li class="nav-item d-none d-sm-inline-block">
         <a href="<?=route('admin.logout')?>" class="nav-link">{{ __('messages.auth.logout') }}</a>
