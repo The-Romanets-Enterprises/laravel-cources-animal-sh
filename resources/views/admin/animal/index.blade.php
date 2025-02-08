@@ -23,6 +23,7 @@
                         <tr>
                             <th style="width: 10px">#</th>
                             <th>Название</th>
+                            <th>Фото</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -30,6 +31,7 @@
                             <tr>
                                 <td>{{ $animal->id }}</td>
                                 <td>{{ $animal->name }}</td>
+                                <td><img src="{{ $animal->getPhoto() }}" alt="Фото животного" width="100"></td>
                                 @if(auth()->user()->role == \App\Enums\Role::ADMIN)
                                     <td>
                                         <a href="{{ route("admin.animals.edit", ['animal' => $animal->id]) }}" class="btn btn-info btn-sm float-left">

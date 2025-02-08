@@ -9,3 +9,10 @@
            'placeholder' => "Название категории",
            'value' => $animal->name ?? null,
        ])
+
+@include('layouts.form.file', [
+    'title' => 'Фото*',
+    'name' => 'photo',
+    'pre_text' => 'Выберите изображение',
+    'value' => $animal ? $animal->getPhoto() : null,
+])

@@ -16,7 +16,12 @@ class AnimalSeeder extends Seeder
         $categories = ['Собака', 'Кошка', 'Попугай', 'Хомяк', 'Черепаха', 'Кролик', 'Мышь', 'Крыса'];
 
         foreach ($categories as $category) {
-            Animal::firstOrCreate(['name' => $category]);
+            $animal = Animal::firstOrCreate(['name' => $category]);
+
+            // Если у записи нет фото — обновляем его через фабрику
+            if (!$animal->photo) {
+                $animal->update(['photo' => Animal::factory()->make()->photo]);
+            }
         }
     }
 }
