@@ -33,7 +33,7 @@ class UserController extends Controller
         if ($role) {
             $users->where('role', $role);
         }
-        $users->orderBy('created_at', 'DESC');
+        $users->orderBy('lastname', 'ASC');
         $users = $users->paginate(config('settings.paginate'));
 
         return view('admin.user.index', compact(

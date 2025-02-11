@@ -10,6 +10,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use App\Http\Requests\User\UserRequest;
+use App\Mail\CreateUserMail;
+use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -62,7 +66,7 @@ class User extends Authenticatable
 
     public function getFullNameAttribute()
     {
-        return "{$this->lastname} {$this->name}";
+        return "{$this->lastname} {$this->firstname}";
     }
 
     // full_name

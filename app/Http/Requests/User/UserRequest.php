@@ -31,7 +31,7 @@ class UserRequest extends FormRequest
 
         return [
             'email' => ['required', 'max:255', 'email', Rule::unique('users')->ignore($user)],
-            'name' => ['required', 'max:255'],
+            'firstname' => ['required', 'max:255'],
             'lastname' => ['required', 'max:255'],
             'phone' => ['required', 'max:20'],
             'role' => ['required', Rule::enum(Role::class)],
