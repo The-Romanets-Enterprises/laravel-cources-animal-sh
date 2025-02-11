@@ -16,7 +16,7 @@ class AnimalController extends Controller
 
         $animals = Animal::query();
 
-        $animals->orderBy('created_at', 'DESC');
+        $animals->orderBy('name');
         $animals = $animals->paginate(config('settings.paginate'));
 
         return view('admin.animal.index', compact(

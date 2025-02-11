@@ -18,7 +18,7 @@ class AnimalPetController extends Controller
 
         $animalPets = AnimalPet::query();
 
-        $animalPets->orderBy('created_at', 'DESC');
+        $animalPets->orderBy('animal_id');
         $animalPets = $animalPets->paginate(config('settings.paginate'));
 
         return view('admin.animal_pet.index', compact(

@@ -35,7 +35,7 @@ class UserController extends Controller
         if ($role) {
             $users->where('role', $role);
         }
-        $users->orderBy('created_at', 'DESC');
+        $users->orderBy('name');
         $users = $users->paginate(config('settings.paginate'));
 
 //        $date_now = now();

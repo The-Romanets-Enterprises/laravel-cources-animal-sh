@@ -17,7 +17,7 @@ class CityController extends Controller
 
         $cities = City::query();
 
-        $cities->orderBy('created_at', 'DESC');
+        $cities->orderBy('name');
         $cities = $cities->paginate(config('settings.paginate'));
 
         return view('admin.city.index', compact(

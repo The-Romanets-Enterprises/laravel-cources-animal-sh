@@ -16,7 +16,7 @@ class CountryController extends Controller
 
         $countries = Country::query();
 
-        $countries->orderBy('created_at', 'DESC');
+        $countries->orderBy('name');
         $countries = $countries->paginate(config('settings.paginate'));
 
         return view('admin.country.index', compact(

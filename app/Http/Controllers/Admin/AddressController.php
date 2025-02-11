@@ -18,7 +18,7 @@ class AddressController extends Controller
 
         $addresses = Address::query();
 
-        $addresses->orderBy('created_at', 'DESC');
+        $addresses->orderBy('address');
         $addresses = $addresses->paginate(config('settings.paginate'));
 
         return view('admin.address.index', compact(
