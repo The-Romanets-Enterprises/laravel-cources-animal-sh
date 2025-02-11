@@ -15,15 +15,15 @@
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">{{ __('messages.user.single') }} {{ $user->name }}</h3>
+                            <h3 class="card-title">{{ __('messages.request.single') }} {{ $animal_pet->animal->name }}</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{ route('admin.users.update', [$user]) }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.requests.update', [$animal_pet]) }}" method="post" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="card-body">
-                                @include('admin.user.fields', [
+                                @include('admin.request.fields', [
                                     'have_password' => true,
                                 ])
                             </div>
