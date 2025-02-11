@@ -36,4 +36,12 @@ class AnimalPetRequest extends FormRequest
             'character' => ['nullable', 'string'],
         ];
     }
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'is_confirmed' => $this->boolean('is_confirmed'),
+            'is_sterilized' => $this->boolean('is_sterilized'),
+            'has_vaccination' => $this->boolean('has_vaccination'),
+        ]);
+    }
 }
