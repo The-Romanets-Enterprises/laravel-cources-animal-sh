@@ -55,7 +55,7 @@
                             <tr>
                                 <td>{{ $user->id }}</td>
                                 <td>{{ $user->email }}</td>
-                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->firstname }}</td>
                                 <td>{{ $user->lastname }}</td>
                                 <td>{{ $user->full_name }}</td>
                                 <td>

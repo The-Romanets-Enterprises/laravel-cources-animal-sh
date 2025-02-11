@@ -486,19 +486,53 @@
                         </div>
                     </div>
                     @endif
-                    @isset($animal_count)
+                    @isset($animal_pet_count)
                         <div class="col-lg-3 col-6">
                             <!-- small box -->
-                            <div class="small-box bg-gray">
+                            <div class="small-box bg-yellow">
                                 <div class="inner">
-                                    <h3>{{ $animal_count }}</h3>
+                                    <h3>{{ $animal_pet_count }}</h3>
 
                                     <p>{{ __('messages.request.plural') }}</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="fas fa-solid fa-user"></i>
+                                    <i class="fas fa-solid fa-book"></i>
                                 </div>
                                 <a href="<?=route('admin.requests.index')?>" class="small-box-footer">{{ __('messages.more') }}
+                                    <i class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                    @endif
+                    @isset($animal_count)
+                        <div class="col-lg-3 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-cyan">
+                                <div class="inner">
+                                    <h3>{{ $animal_count }}</h3>
+
+                                    <p>{{ __('messages.animal.plural') }}</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-solid fa-dog"></i>
+                                </div>
+                                <a href="<?=route('admin.animals.index')?>" class="small-box-footer">{{ __('messages.more') }}
+                                    <i class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                    @endif
+                    @isset($address_count)
+                        <div class="col-lg-3 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-teal">
+                                <div class="inner">
+                                    <h3>{{ $address_count }}</h3>
+
+                                    <p>{{ __('messages.address.plural') }}</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-solid fa-search-location"></i>
+                                </div>
+                                <a href="<?=route('admin.addresses.index')?>" class="small-box-footer">{{ __('messages.more') }}
                                     <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>

@@ -14,7 +14,7 @@
     <div class="col-6">
         @include('layouts.form.text', [
            'title' => 'Имя пользователя*',
-           'name' => 'name',
+           'name' => 'firstname',
            'placeholder' => "Имя пользователя",
            'value' => $user->name ?? null,
        ])
