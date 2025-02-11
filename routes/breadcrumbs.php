@@ -2,7 +2,12 @@
 
 // Note: Laravel will automatically resolve `Breadcrumbs::` without
 // this import. This is nice for IDE syntax and refactoring.
+use App\Models\Address;
+use App\Models\Animal;
+use App\Models\AnimalPet;
 use App\Models\Article;
+use App\Models\City;
+use App\Models\Country;
 use App\Models\User;
 use Diglactic\Breadcrumbs\Breadcrumbs;
 
@@ -66,6 +71,86 @@ Breadcrumbs::for('admin.users.edit', function (BreadcrumbTrail $trail, User $use
 Breadcrumbs::for('admin.change-password', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.home');
     $trail->push(__('messages.user.change-password'), route('admin.change-password'));
+});
+
+// Address
+Breadcrumbs::for('admin.addresses.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.home');
+    $trail->push(__('messages.address.plural'), route('admin.addresses.index'));
+});
+
+Breadcrumbs::for('admin.addresses.create', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.addresses.index');
+    $trail->push(__('messages.address.create'), route('admin.addresses.create'));
+});
+
+Breadcrumbs::for('admin.addresses.edit', function (BreadcrumbTrail $trail, Address $address) {
+    $trail->parent('admin.addresses.index');
+    $trail->push($address->address, route('admin.addresses.edit', $address));
+});
+
+// Animals
+Breadcrumbs::for('admin.animals.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.home');
+    $trail->push(__('messages.animal.plural'), route('admin.animals.index'));
+});
+
+Breadcrumbs::for('admin.animals.create', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.animals.index');
+    $trail->push(__('messages.animal.create'), route('admin.animals.create'));
+});
+
+Breadcrumbs::for('admin.animals.edit', function (BreadcrumbTrail $trail, Animal $animal) {
+    $trail->parent('admin.animals.index');
+    $trail->push($animal->name, route('admin.animals.edit', $animal));
+});
+
+// Animal_pets
+Breadcrumbs::for('admin.animal_pets.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.home');
+    $trail->push(__('messages.animal_pet.plural'), route('admin.animal_pets.index'));
+});
+
+Breadcrumbs::for('admin.animal_pets.create', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.animal_pets.index');
+    $trail->push(__('messages.animal_pet.create'), route('admin.animal_pets.create'));
+});
+
+Breadcrumbs::for('admin.animal_pets.edit', function (BreadcrumbTrail $trail, AnimalPet $animal_pet) {
+    $trail->parent('admin.animal_pets.index');
+    $trail->push($animal_pet->animal_id, route('admin.animal_pets.edit', $animal_pet));
+});
+
+// City
+Breadcrumbs::for('admin.cities.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.home');
+    $trail->push(__('messages.city.plural'), route('admin.cities.index'));
+});
+
+Breadcrumbs::for('admin.cities.create', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.cities.index');
+    $trail->push(__('messages.city.create'), route('admin.cities.create'));
+});
+
+Breadcrumbs::for('admin.cities.edit', function (BreadcrumbTrail $trail, City $city) {
+    $trail->parent('admin.cities.index');
+    $trail->push($city->name, route('admin.cities.edit', $city));
+});
+
+// Country
+Breadcrumbs::for('admin.countries.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.home');
+    $trail->push(__('messages.country.plural'), route('admin.countries.index'));
+});
+
+Breadcrumbs::for('admin.countries.create', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.countries.index');
+    $trail->push(__('messages.country.create'), route('admin.countries.create'));
+});
+
+Breadcrumbs::for('admin.countries.edit', function (BreadcrumbTrail $trail, Country $country) {
+    $trail->parent('admin.countries.index');
+    $trail->push($country->name, route('admin.countries.edit', $country));
 });
 
 // Token
