@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Http\Requests\VideoRequest;
 
 class Video extends Model
 {
@@ -21,8 +22,28 @@ class Video extends Model
             'animal_pet_id' => 'integer',
         ];
     }
-    public function animalPet()
+    public function animal_pet()
     {
-        return $this->belongsTo(AnimalPet::class);
+        return $this->belongsTo(Animal_pet::class);
+    }
+
+    public static function createVideo(VideoRequest $request)
+    {
+        $data = $request->validated();
+
+        return self::query()->create($data);
+    }
+
+    public static function updateVideo(VideoRequest $request, self $video)
+    {
+        $data = $request->validated();
+
+        return $video->update($data);
+    }
+
+    public static function deleteVideo(self $video)
+    {
+        return $video->delete();
+
     }
 }

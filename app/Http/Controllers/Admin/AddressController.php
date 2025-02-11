@@ -1,0 +1,91 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+
+use App\Http\Controllers\Controller;
+use App\Http\Requests\AddressRequest;
+use App\Models\Address;
+use App\Models\User;
+use App\Models\City;
+use Illuminate\Http\Request;
+
+
+// Class work with authentication and Admin main page
+class AddressController extends Controller
+{
+    public function index(Request $request)
+    {
+
+        $title = __('messages.address.plural');
+
+        $addresses = Address::query();
+
+        $addresses->orderBy('city_id', 'ASC');
+        $addresses = $addresses->paginate(config('settings.paginate'));
+
+        return view('admin.address.index', compact(
+            'title',
+
+            'addresses',
+        ));
+    }
+
+    public function create()
+    {
+        $title = __('messages.address.create');
+        $users = User::all();
+        $cities = City::all();
+
+        return view('admin.address.create', compact('title','users', 'cities'));
+    }
+
+    public function store(AddressRequest $request)
+    {
+        $user = User::findOrFail($request->input('user_id'));
+        $address = Address::createAddress($request, $user);
+
+        $redirect = to_route('admin.addresses.index');
+
+        if (!$address) {
+            return $redirect->with('error', __('messages.address.error.store'));
+        }
+
+        return $redirect->with('success', __('messages.address.success.store'));
+    }
+
+    public function edit(Address $address)
+    {
+        $title = __('messages.address.edit',['address' => $address->address]);
+        $users = User::all();
+        $cities = City::all();
+
+        return view('admin.address.edit', compact('title', 'address', 'users', 'cities'));
+    }
+
+    public function update(AddressRequest $request, Address $address)
+    {
+        $address = Address::updateAddress($request, $address);
+
+        $redirect = to_route('admin.addresses.index');
+
+        if (!$address) {
+            return $redirect->with('error', __('messages.address.error.update'));
+        }
+
+        return $redirect->with('success', __('messages.address.success.update'));
+    }
+
+    public function destroy(Address $address)
+    {
+        $redirect = redirect()->back();
+
+        $is_destroyed = Address::deleteAddress($address);
+
+        if ($is_destroyed === null) {
+            return $redirect->with('error', __('messages.address.error.destroy'));
+        }
+
+        return $redirect->with('success', __('messages.address.success.destroy'));
+    }
+}

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Animal_pet;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,7 +17,7 @@ class PhotoFactory extends Factory
      */
     public function definition(): array
     {
-        $imageableType = fake()->randomElement([AnimalPet::class, User::class]);
+        $imageableType = fake()->randomElement([Animal_pet::class, User::class]);
         $imageable = $imageableType::query()->inRandomOrder()->first();
 
         return [
