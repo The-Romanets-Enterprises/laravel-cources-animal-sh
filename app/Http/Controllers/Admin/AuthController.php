@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
-//use App\Models\Article;
 use App\Models\Animal_pet;
+use App\Models\Animal;
+use App\Models\Address;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,12 +18,17 @@ class AuthController extends Controller
     public function index()
     {
         $title = __('messages.main_page');
-        $animal_count = Animal_pet::query()->count();
+        $address_count = Address::query()->count();
+        $animal_pet_count = Animal_pet::query()->count();
+        $animal_count = Animal::query()->count();
         $user_count = User::query()->count();
 
         return view('admin.index', compact(
                 'title',
-                'user_count', 'animal_count',
+                'user_count',
+                'animal_count',
+                'animal_pet_count',
+                'address_count',
             )
         );
     }

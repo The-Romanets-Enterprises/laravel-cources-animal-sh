@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Enum\Sex;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AnimalRequest;
-//use App\Models\Article;
 use App\Models\Animal;
-use App\Models\Animal_pet;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 // Class work with authentication and Admin main page
 class AnimalController extends Controller
@@ -17,21 +13,17 @@ class AnimalController extends Controller
     // Admin Main Page
     public function index(Request $request)
     {
-        $sex = $request->enum('sex', Sex::class);
 
-        $title = __('messages.request.plural');
+        $title = __('messages.animal.plural');
 
-        $animal = Animal::query();
-       if ($sex) {     //filtering by gender
-           $animal->where('role', $sex);
-       }
-        $animal->orderBy('created_at', 'DESC');
-        $animal = $animal->paginate(config('settings.paginate'));
+        $animals = Animal::query();
 
-        return view('admin.index', compact(
+        $animals->orderBy('name', 'ASC')->get();
+        $animals = $animals->paginate(config('settings.paginate'));
+
+        return view('admin.animal.index', compact(
             'title',
-            'sex',
-            'animal',
+            'animals',
 
         ));
     }
@@ -44,9 +36,9 @@ class AnimalController extends Controller
      */
     public function create()
     {
-        $title = __('messages.request.create');
-
-        return view('admin.request.create', compact('title'));
+        $title = __('messages.animal.create');
+        $animals = Animal::all();
+        return view('admin.animal.create', compact('title', 'animals'));
     }
 
 
@@ -54,13 +46,13 @@ class AnimalController extends Controller
     {
         $animal = Animal::createAnimal($request);
 
-        $redirect = to_route('admin.requests.index');
+        $redirect = to_route('admin.animals.index');
 
         if (!$animal) {
-            return $redirect->with('error', __('messages.request.error.store'));
+            return $redirect->with('error', __('messages.animal.error.store'));
         }
 
-        return $redirect->with('success', __('messages.request.success.store'));
+        return $redirect->with('success', __('messages.animal.success.store'));
     }
 
 
@@ -72,9 +64,9 @@ class AnimalController extends Controller
 
     public function edit(Animal $animal)
     {
-        $title = __('messages.request.edit', ['animal' => $animal->name]);
-
-        return view('admin.request.edit', compact('title', 'animal'));
+        $title = __('messages.animal.edit', ['animal' => $animal->name]);
+        $animals = Animal::all();
+        return view('admin.animal.edit', compact('title', 'animal', 'animals'));
     }
 
 
@@ -82,13 +74,13 @@ class AnimalController extends Controller
     {
         $animal = Animal::updateAnimal($request, $animal);
 
-        $redirect = to_route('admin.requests.index');
+        $redirect = to_route('admin.animals.index');
 
         if (!$animal) {
-            return $redirect->with('error', __('messages.request.error.update'));
+            return $redirect->with('error', __('messages.animal.error.update'));
         }
 
-        return $redirect->with('success', __('messages.request.success.update'));
+        return $redirect->with('success', __('messages.animal.success.update'));
     }
 
 

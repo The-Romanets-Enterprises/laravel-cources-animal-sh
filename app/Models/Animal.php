@@ -14,12 +14,8 @@ class Animal extends Model
     /** @use HasFactory<\Database\Factories\AnimalFactory> */
     use HasFactory, MediaTrait;
 
-    protected $fillable = ['name', 'photo'];
+    protected $fillable = ['name', 'photo', 'animalId'];
 
-//    public function cities()
-//    {
-//        return $this->hasMany(City::class);
-//    }
     public static function getAnimals()
     {
         return self::query()->orderBy('name')->get();
