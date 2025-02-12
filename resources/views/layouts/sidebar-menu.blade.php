@@ -39,6 +39,24 @@
                 <p>{{ __('messages.city.plural') }}</p>
             </a>
         </li>
+        <li class="nav-item">
+            <a href="<?=route('admin.addresses.index')?>" class="nav-link">
+                <i class="nav-icon fas fa-map-marked-alt"></i>
+                <p>{{ __('messages.address.plural') }}</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="<?=route('admin.photos.index')?>" class="nav-link">
+                <i class="nav-icon fas fa-camera"></i>
+                <p>{{ __('messages.photo.plural') }}</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="<?=route('admin.videos.index')?>" class="nav-link">
+                <i class="nav-icon fas fa-play-circle"></i>
+                <p>{{ __('messages.video.plural') }}</p>
+            </a>
+        </li>
 {{--        <li class="nav-item has-treeview">--}}
 {{--            <a href="#" class="nav-link">--}}
 {{--                <i class="nav-icon fas fa-newspaper"></i>--}}

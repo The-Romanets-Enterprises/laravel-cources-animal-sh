@@ -369,7 +369,7 @@
                 @isset($animal_count)
                     <div class="col-lg-3 col-6">
                         <!-- small box -->
-                        <div class="small-box bg-gradient-primary">
+                        <div class="small-box bg-gradient-fuchsia">
                             <div class="inner">
                                 <h3>{{ $animal_count }}</h3>
 
@@ -469,6 +469,57 @@
                                 <i class="fas fa-solid fa-user"></i>
                             </div>
                             <a href="<?=route('admin.users.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                @endisset
+                @isset($address_count)
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-gradient-indigo">
+                            <div class="inner">
+                                <h3>{{ $address_count }}</h3>
+
+                                <p>{{ __('messages.address.plural') }}</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-solid fa-map-marked-alt"></i>
+                            </div>
+                            <a href="<?=route('admin.addresses.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                @endisset
+                @isset($photo_count)
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-gradient-maroon">
+                            <div class="inner">
+                                <h3>{{ $photo_count }}</h3>
+
+                                <p>{{ __('messages.photo.plural') }}</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-solid fa-camera"></i>
+                            </div>
+                            <a href="<?=route('admin.photos.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                @endisset
+                @isset($video_count)
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-gradient-cyan">
+                            <div class="inner">
+                                <h3>{{ $video_count }}</h3>
+
+                                <p>{{ __('messages.video.plural') }}</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-solid fa-play-circle"></i>
+                            </div>
+                            <a href="<?=route('admin.videos.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->

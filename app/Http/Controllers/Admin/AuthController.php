@@ -4,11 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
+use App\Models\Address;
 use App\Models\Animal;
 use App\Models\AnimalPet;
 use App\Models\City;
 use App\Models\Country;
+use App\Models\Photo;
 use App\Models\User;
+use App\Models\Video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,12 +26,12 @@ class AuthController extends Controller
         $user_count = User::query()->count();
 
         $country_count = Country::query()->count();
-
         $city_count = City::query()->count();
-
         $animal_count = Animal::query()->count();
-
         $animal_pet_count = AnimalPet::query()->count();
+        $address_count = Address::query()->count();
+        $photo_count = Photo::query()->count();
+        $video_count = Video::query()->count();
 
         return view('admin.index', compact(
                 'title',
@@ -38,6 +41,9 @@ class AuthController extends Controller
                 'city_count',
                 'animal_count',
                 'animal_pet_count',
+                'address_count',
+                'photo_count',
+                'video_count'
             )
         );
     }

@@ -2,11 +2,14 @@
 
 // Note: Laravel will automatically resolve `Breadcrumbs::` without
 // this import. This is nice for IDE syntax and refactoring.
+use App\Models\Address;
 use App\Models\Animal;
 use App\Models\AnimalPet;
 use App\Models\City;
 use App\Models\Country;
+use App\Models\Photo;
 use App\Models\User;
+use App\Models\Video;
 use Diglactic\Breadcrumbs\Breadcrumbs;
 
 // This import is also not required, and you could replace `BreadcrumbTrail $trail`
@@ -146,6 +149,64 @@ Breadcrumbs::for('admin.animal-pets.edit', function (BreadcrumbTrail $trail, Ani
     $trail->parent('admin.animal-pets.index');
     $trail->push($animal_pet->id, route('admin.animal-pets.edit', $animal_pet));
 });
+
+// Address
+// Home > Address
+Breadcrumbs::for('admin.addresses.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.home');
+    $trail->push(__('messages.address.plural'), route('admin.addresses.index'));
+});
+
+// Home > Address > Create
+Breadcrumbs::for('admin.addresses.create', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.addresses.index');
+    $trail->push(__('messages.address.create'), route('admin.addresses.create'));
+});
+
+// Home > Address > Edit
+Breadcrumbs::for('admin.addresses.edit', function (BreadcrumbTrail $trail, Address $address) {
+    $trail->parent('admin.addresses.index');
+    $trail->push($address->id, route('admin.addresses.edit', $address));
+});
+
+// Photo
+// Home > Photo
+Breadcrumbs::for('admin.photos.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.home');
+    $trail->push(__('messages.photo.plural'), route('admin.photos.index'));
+});
+
+// Home > Photo > Create
+Breadcrumbs::for('admin.photos.create', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.photos.index');
+    $trail->push(__('messages.photo.create'), route('admin.photos.create'));
+});
+
+// Home > Photo > Edit
+Breadcrumbs::for('admin.photos.edit', function (BreadcrumbTrail $trail, Photo $photo) {
+    $trail->parent('admin.photos.index');
+    $trail->push($photo->id, route('admin.photos.edit', $photo));
+});
+
+// Video
+// Home > Video
+Breadcrumbs::for('admin.videos.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.home');
+    $trail->push(__('messages.video.plural'), route('admin.videos.index'));
+});
+
+// Home > Video > Create
+Breadcrumbs::for('admin.videos.create', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.videos.index');
+    $trail->push(__('messages.video.create'), route('admin.videos.create'));
+});
+
+// Home > Video > Edit
+Breadcrumbs::for('admin.videos.edit', function (BreadcrumbTrail $trail, Video $video) {
+    $trail->parent('admin.videos.index');
+    $trail->push($video->id, route('admin.videos.edit', $video));
+});
+
 
 // Token
 // Home > Token

@@ -1,11 +1,14 @@
 <?php
 
+use App\Http\Controllers\Admin\AddressController;
 use App\Http\Controllers\Admin\AnimalController;
 use App\Http\Controllers\Admin\AnimalPetController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\CountryController;
+use App\Http\Controllers\Admin\PhotoController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\VideoController;
 use Illuminate\Support\Facades\Route;
 
 //Route::get('/', function () {
@@ -29,6 +32,9 @@ Route::prefix('/admin')->name('admin.')->group(function () {
             Route::resource('/cities', CityController::class);
             Route::resource('/animals', AnimalController::class);
             Route::resource('/animal-pets', AnimalPetController::class);
+            Route::resource('/addresses', AddressController::class);
+            Route::resource('/photos', PhotoController::class);
+            Route::resource('/videos', VideoController::class);
         });
 
         Route::controller(UserController::class)->group(function () {
