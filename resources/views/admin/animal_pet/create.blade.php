@@ -19,10 +19,10 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{ route('admin.countries.store') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.animal-pets.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
-                                @include('admin.country.fields')
+                                @include('admin.animal_pet.fields')
                             </div>
                             <!-- /.card-body -->
 

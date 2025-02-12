@@ -24,6 +24,7 @@
                             <th style="width: 10px">#</th>
                             <th>Название</th>
                             <th>Фото</th>
+                            <th>Действия</th>
                         </tr>
                         </thead>
                         <tbody>

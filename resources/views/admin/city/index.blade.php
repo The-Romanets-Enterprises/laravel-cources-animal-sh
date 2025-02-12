@@ -24,6 +24,7 @@
                                 <th style="width: 10px">#</th>
                                 <th>Название города</th>
                                 <th>Страна</th>
+                                <th>Действия</th>
                             </tr>
                         </thead>
                         <tbody>

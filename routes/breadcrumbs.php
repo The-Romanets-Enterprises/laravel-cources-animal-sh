@@ -142,9 +142,9 @@ Breadcrumbs::for('admin.animal-pets.create', function (BreadcrumbTrail $trail) {
 });
 
 // Home > AnimalPet > Edit
-Breadcrumbs::for('admin.animal-pets.edit', function (BreadcrumbTrail $trail, AnimalPet $animalPet) {
+Breadcrumbs::for('admin.animal-pets.edit', function (BreadcrumbTrail $trail, AnimalPet $animal_pet) {
     $trail->parent('admin.animal-pets.index');
-    $trail->push($animalPet->name, route('admin.animal-pets.edit', $animalPet));
+    $trail->push($animal_pet->id, route('admin.animal-pets.edit', $animal_pet));
 });
 
 // Token

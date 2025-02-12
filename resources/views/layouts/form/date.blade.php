@@ -10,7 +10,11 @@
 
     <input type="date" name="{{ $name }}" class="form-control @error($name) is-invalid @enderror"
        @if(isset($readonly) && $readonly) readonly @endif
-       id="{{ $id ?? $name }}" @isset($placeholder) placeholder="{{ $placeholder }}" @endisset
-       @if(old($old, $value ?? null)) value="{{ old($old, $value ?? null) }}" @endif
+           id="{{ $id ?? $name }}" @isset($placeholder) placeholder="{{ $placeholder }}" @endisset
+           @if(old($old, $value ?? null))
+               value="{{ isset($date_format)
+                    ? \Carbon\Carbon::parse(old($old, $value ?? null))->format($date_format)
+                    : old($old, $value ?? null) }}"
+           @endif
     >
 </div>

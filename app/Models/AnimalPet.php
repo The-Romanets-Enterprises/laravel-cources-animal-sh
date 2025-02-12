@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\Sex;
+use App\Http\Requests\AnimalPetRequest;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
@@ -30,7 +31,7 @@ class AnimalPet extends Model
         return [
             'animal_id' => 'integer',
             'sex' => Sex::class,
-            'birth_date' => 'datetime',
+            'birth_date' => 'date',
             'is_sterilized' => 'boolean',
             'has_vaccination' => 'boolean',
             'is_confirmed' => 'boolean',
@@ -53,5 +54,24 @@ class AnimalPet extends Model
     }
     public function animal(){
         return $this->belongsTo(Animal::class);
+    }
+
+    public static function createAnimalPet(AnimalPetRequest $request)
+    {
+        $data = $request->validated();
+
+        return self::query()->create($data);
+    }
+
+    public static function updateAnimalPet(AnimalPetRequest $request, self $animal_pet)
+    {
+        $data = $request->validated();
+
+        return $animal_pet->update($data);
+    }
+
+    public static function deleteAnimalPet(self $animal_pet)
+    {
+        return $animal_pet->delete();
     }
 }

@@ -15,15 +15,15 @@
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">{{ __('messages.country.single') }} {{ $country->name }}</h3>
+                            <h3 class="card-title">{{ __('messages.animal_pet.single') }} {{ $animal_pet->id }}</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{ route('admin.countries.update', [$country]) }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.animal-pets.update', [$animal_pet]) }}" method="post" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="card-body">
-                                @include('admin.country.fields')
+                                @include('admin.animal_pet.fields')
                             </div>
                             <!-- /.card-body -->
 

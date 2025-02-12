@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('animal_id')->constrained()->cascadeOnDelete();
             $table->enum('sex', Sex::getValues()->all());
             $table->text('description');
-            $table->timestamp('birth_date');
+            $table->date('birth_date');
             $table->boolean('is_sterilized')->default(false);
             $table->boolean('has_vaccination')->default(false);
             $table->string('wool_type', 100)->nullable();

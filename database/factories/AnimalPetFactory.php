@@ -23,7 +23,7 @@ class AnimalPetFactory extends Factory
             'animal_id' => Animal::query()->inRandomOrder()->first()->id,
             'sex' => fake()->randomElement(Sex::getValues()->all()),
             'description' => fake()->text(),
-            'birth_date' => fake()->dateTimeBetween('-10 years', 'now'),
+            'birth_date' => fake()->date(),
             'is_sterilized' => fake()->boolean(),
             'has_vaccination' => fake()->boolean(),
             'wool_type' => fake()->randomElement(['гладкая', 'пушистая', 'блестящая', 'короткая', 'длинная']),

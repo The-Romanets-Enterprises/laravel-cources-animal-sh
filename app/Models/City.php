@@ -33,9 +33,9 @@ class City extends Model
         return $this->belongsTo(Country::class);
     }
 
-    public function address()
+    public function addresses()
     {
-        return $this->hasOne(Address::class);
+        return $this->hasMany(Address::class);
     }
 
     public static function createCity(CityRequest $request)

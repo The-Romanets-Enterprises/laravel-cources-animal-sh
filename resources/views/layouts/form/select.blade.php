@@ -37,7 +37,11 @@
 
                 @selected(old($old, $value ?? null) == $pk)
             >
-                {{ $v }}
+                @if(isset($print_attribute))
+                    {{ $v->$print_attribute }}
+                @else
+                    {{ $v }}
+                @endif
             </option>
         @endforeach
     </select>
