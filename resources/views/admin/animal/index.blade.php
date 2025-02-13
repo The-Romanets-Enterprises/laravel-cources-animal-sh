@@ -31,7 +31,7 @@
                             <tr>
                                 <td>{{ $animal->id }}</td>
                                 <td>{{ $animal->name }}</td>
-                                <td>{{ $animal->photo }}</td>
+                                <td><img src="{{ $animal->getPhoto() }}" style="max-width: 100px; max-height: 100px;"></td>
                                 <td>
                                     <a href="{{ route("admin.animals.edit", ['animal' => $animal->id]) }}" class="btn btn-info btn-sm float-left">
                                         <i class="fas fa-pencil-alt"></i>
