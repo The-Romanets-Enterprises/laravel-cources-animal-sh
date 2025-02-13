@@ -14,16 +14,26 @@
 
 <div class="form-group">
     <label for="sex">Пол*</label>
-    <select class="form-control select2 select2-danger select2-hidden-accessible @error('sex') is-invalid @enderror"
-            name="sex" id="sex"
-            data-dropdown-css-class="select2-danger" style="width: 100%;">
-        <option value="">Выбрать пол</option>
-        @foreach(Sex::cases() as $sex)
-            <option value="{{ $sex->value }}" @selected(old('sex', $animalPet->sex ?? null) === $sex->value)>
-                {{ $sex->getTitle() }}
-            </option>
+    <div class="form-check">
+        @foreach(\App\Enums\Sex::cases() as $sex)
+            <div class="form-check">
+                <input class="form-check-input @error('sex') is-invalid @enderror"
+                       type="radio"
+                       name="sex"
+                       id="sex-{{ $sex->value }}"
+                       value="{{ $sex->value }}"
+                    @checked(old('sex', $animalPet->sex?->value ?? $animalPet->sex) === $sex->value)>
+                <label class="form-check-label" for="sex-{{ $sex->value }}">
+                    {{ $sex->getTitle() }}
+                </label>
+            </div>
         @endforeach
-    </select>
+    </div>
+    @error('sex')
+    <span class="invalid-feedback" role="alert">
+        <strong>{{ $message }}</strong>
+    </span>
+    @enderror
 </div>
 
 @include('layouts.form.textarea', [
@@ -46,7 +56,7 @@
 @include('layouts.form.date', [
     'title' => 'Дата рождения*',
     'name' => 'birth_date',
-    'value' => $animalPet->birth_date ?? null,
+    'value' => isset($animalPet) ? ($animalPet->birth_date ? $animalPet->birth_date->toDateString() : null) : null,
 ])
 
 @include('layouts.form.switch', [
@@ -60,6 +70,7 @@
     'name' => 'has_vaccination',
     'value' => $animalPet->has_vaccination ?? false,
 ])
+
 @include('layouts.form.switch', [
     'title' => 'Подтверждение заявки*',
     'name' => 'is_confirmed',

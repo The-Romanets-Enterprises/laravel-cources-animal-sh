@@ -30,17 +30,19 @@ class AnimalPetController extends Controller
 
     public function create()
     {
+        $animalPet = new AnimalPet();
         $title = __('messages.animal_pet.create');
         $users = User::all();
         $animals = Animal::all();
 
-        return view('admin.animal_pet.create', compact('title','users', 'animals'));
+        return view('admin.animal_pet.create', compact('title','animalPet', 'users', 'animals'));
     }
 
     public function store(AnimalPetRequest $request)
     {
         $user = User::findOrFail($request->input('user_id'));
         $animalPet = AnimalPet::createAnimalPet($request, $user);
+
 
         $redirect = to_route('admin.animal_pets.index');
 

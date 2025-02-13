@@ -21,7 +21,7 @@
                                 <p>{{ __('messages.animal.plural') }}</p>
                             </div>
                             <div class="icon">
-                                <i class="fas fa-globe"></i>
+                                <i class="fas fa-paw"></i>
                             </div>
                             <a href="<?=route('admin.animals.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
@@ -359,7 +359,7 @@
                                 <p>{{ __('messages.city.plural') }}</p>
                             </div>
                             <div class="icon">
-                                <i class="fas fa-globe"></i>
+                                <i class="fas fa-city"></i>
                             </div>
                             <a href="<?=route('admin.cities.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
@@ -376,7 +376,7 @@
                                 <p>{{ __('messages.country.plural') }}</p>
                             </div>
                             <div class="icon">
-                                <i class="fas fa-globe"></i>
+                                <i class="fas fa-flag"></i>
                             </div>
                             <a href="<?=route('admin.countries.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
@@ -393,7 +393,7 @@
                                     <p>{{ __('messages.address.plural') }}</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="fas fa-globe"></i>
+                                    <i class="fas fa-map"></i>
                                 </div>
                                 <a href="<?=route('admin.addresses.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
                             </div>

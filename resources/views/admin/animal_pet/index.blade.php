@@ -40,10 +40,10 @@
                             <tr>
                                 <td>{{ $animalPet->id }}</td>
                                 <td>{{ $animalPet->animal->name }}</td>
-                                <td>{{ $animalPet->sex }}</td>
+                                <td>{{ $animalPet->sex instanceof \App\Enums\Sex ? $animalPet->sex->getTitle() : \App\Enums\Sex::from($animalPet->sex)->getTitle() }}</td>
                                 <td>{{ $animalPet->description }}</td>
                                 <td>{{ $animalPet->user->full_name }}</td>
-                                <td>{{ $animalPet->birth_date }}</td>
+                                <td>{{ $animalPet->birth_date ? $animalPet->birth_date->format('d.m.Y') : 'Нет данных' }}</td>
                                 <td>{{ $animalPet->is_sterilized ? 'Да' : 'Нет' }}</td>
                                 <td>{{ $animalPet->has_vaccination ? 'Да' : 'Нет' }}</td>
                                 <td>{{ $animalPet->is_confirmed ? 'Да' : 'Нет' }}</td>
