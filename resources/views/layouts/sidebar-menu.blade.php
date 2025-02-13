@@ -9,6 +9,31 @@
                 <p>{{ __('messages.main') }}</p>
             </a>
         </li>
+        <li class="nav-item">
+            <a href="<?=route('admin.cities.index')?>" class="nav-link">
+                <i class="fas fa-city"></i>
+                <p>{{ __('messages.city.plural') }}</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="<?=route('admin.countries.index')?>" class="nav-link">
+                <i class="fas fa-flag"></i>
+                <p>{{ __('messages.country.plural') }}</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="<?=route('admin.addresses.index')?>" class="nav-link">
+                <i class="fas fa-map"></i>
+                <p>{{ __('messages.address.plural') }}</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="<?=route('admin.animals.index')?>" class="nav-link">
+                <i class="fas fa-paw"></i>
+                <p>{{ __('messages.animal.plural') }}</p>
+            </a>
+        </li>
+
 {{--        <li class="nav-item has-treeview">--}}
 {{--            <a href="#" class="nav-link">--}}
 {{--                <i class="nav-icon fas fa-newspaper"></i>--}}

@@ -11,18 +11,6 @@
             <a href="<?=route('admin.users.index')?>" class="nav-link">{{ __('messages.user.plural') }}</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="<?=route('admin.cities.index')?>" class="nav-link">{{ __('messages.city.plural') }}</a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="<?=route('admin.countries.index')?>" class="nav-link">{{ __('messages.country.plural') }}</a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="<?=route('admin.addresses.index')?>" class="nav-link">{{ __('messages.address.plural') }}</a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="<?=route('admin.animals.index')?>" class="nav-link">{{ __('messages.animal.plural') }}</a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
             <a href="<?=route('admin.animal_pets.index')?>" class="nav-link">{{ __('messages.animal_pet.plural') }}</a>
         </li>
     @endif
