@@ -25,6 +25,7 @@
                                 <th style="width: 10px">#</th>
                                 <th>Категория</th>
                                 <th>Пол</th>
+                                <th>Кличка</th>
                                 <th>Описание</th>
                                 <th>Дата рождения</th>
                                 <th>Шерсть</th>
@@ -42,6 +43,7 @@
                                     <td>{{ $animal_pet->id }}</td>
                                     <td>{{ $animal_pet->animal->name }}</td>
                                     <td>{{ $animal_pet->sex->getTitle() }}</td>
+                                    <td>{{ $animal_pet->name }}</td>
                                     <td>{{ $animal_pet->description }}</td>
                                     <td>{{ $animal_pet->birth_date }}</td>
                                     <td>{{ $animal_pet->wool_type }}</td>

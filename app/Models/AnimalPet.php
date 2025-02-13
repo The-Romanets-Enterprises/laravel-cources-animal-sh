@@ -16,6 +16,7 @@ class AnimalPet extends Model
     protected $fillable = [
         'animal_id',
         'sex',
+        'name',
         'description',
         'birth_date',
         'is_sterilized',
@@ -31,6 +32,7 @@ class AnimalPet extends Model
         return [
             'animal_id' => 'integer',
             'sex' => Sex::class,
+            'name' => 'string',
             'birth_date' => 'date',
             'is_sterilized' => 'boolean',
             'has_vaccination' => 'boolean',

@@ -22,14 +22,16 @@ class AnimalPetFactory extends Factory
         return [
             'animal_id' => Animal::query()->inRandomOrder()->first()->id,
             'sex' => fake()->randomElement(Sex::getValues()->all()),
+            'name' => fake()->firstName(),
             'description' => fake()->text(),
             'birth_date' => fake()->date(),
-            'is_sterilized' => fake()->boolean(),
-            'has_vaccination' => fake()->boolean(),
             'wool_type' => fake()->randomElement(['гладкая', 'пушистая', 'блестящая', 'короткая', 'длинная']),
             'character' => fake()->text(),
-            'is_confirmed' => fake()->boolean(),
             'user_id' => User::query()->inRandomOrder()->first()->id,
+            'is_sterilized' => fake()->boolean(),
+            'has_vaccination' => fake()->boolean(),
+            'is_confirmed' => fake()->boolean(),
+
         ];
     }
 }

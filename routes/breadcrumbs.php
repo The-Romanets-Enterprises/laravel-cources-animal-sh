@@ -147,7 +147,7 @@ Breadcrumbs::for('admin.animal-pets.create', function (BreadcrumbTrail $trail) {
 // Home > AnimalPet > Edit
 Breadcrumbs::for('admin.animal-pets.edit', function (BreadcrumbTrail $trail, AnimalPet $animal_pet) {
     $trail->parent('admin.animal-pets.index');
-    $trail->push($animal_pet->id, route('admin.animal-pets.edit', $animal_pet));
+    $trail->push($animal_pet->name, route('admin.animal-pets.edit', $animal_pet));
 });
 
 // Address
@@ -204,7 +204,7 @@ Breadcrumbs::for('admin.videos.create', function (BreadcrumbTrail $trail) {
 // Home > Video > Edit
 Breadcrumbs::for('admin.videos.edit', function (BreadcrumbTrail $trail, Video $video) {
     $trail->parent('admin.videos.index');
-    $trail->push($video->id, route('admin.videos.edit', $video));
+    $trail->push($video->animalPet->name, route('admin.videos.edit', $video));
 });
 
 

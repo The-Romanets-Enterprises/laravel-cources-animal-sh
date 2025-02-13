@@ -70,7 +70,7 @@ class AnimalPetController extends Controller
      */
     public function edit(AnimalPet $animal_pet)
     {
-        $title = __('messages.animal_pet.edit', ['animal_pet' => $animal_pet->id]);
+        $title = __('messages.animal_pet.edit', ['animal_pet' => $animal_pet->name]);
         $animals = Animal::query()->get();
         $users = User::query()->get();
 

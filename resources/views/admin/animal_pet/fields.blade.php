@@ -3,6 +3,13 @@
 @endphp
 
 
+@include('layouts.form.text', [
+           'title' => 'Кличка*',
+           'name' => 'name',
+           'placeholder' => "Введите кличку животного",
+           'value' => $animal_pet->name ?? null,
+       ])
+
 <div class="row">
     <div class="col-6">
         @include('layouts.form.select', [

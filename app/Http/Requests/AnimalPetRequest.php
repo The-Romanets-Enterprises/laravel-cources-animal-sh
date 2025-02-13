@@ -26,6 +26,7 @@ class AnimalPetRequest extends FormRequest
         return [
             'animal_id' => ['required', 'integer', 'exists:animals,id'],
             'sex' => ['required', Rule::enum(Sex::class)],
+            'name' => ['required', 'string'],
             'description' => ['required'],
             'birth_date' => ['required'],
             'is_sterilized' => ['required', 'boolean'],

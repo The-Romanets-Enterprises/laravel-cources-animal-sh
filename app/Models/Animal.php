@@ -19,11 +19,6 @@ class Animal extends Model
         'photo'
     ];
 
-//    public function cities()
-//    {
-//        return $this->hasMany(City::class);
-//    }
-
     public function animalPets()
     {
         return $this->hasMany(AnimalPet::class);

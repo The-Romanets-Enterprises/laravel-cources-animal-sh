@@ -32,9 +32,8 @@ class AnimalController extends Controller
     public function create()
     {
         $title = __('messages.animal.create');
-        $animal = null;
 
-        return view('admin.animal.create', compact('title', 'animal'));
+        return view('admin.animal.create', compact('title'));
     }
 
     /**

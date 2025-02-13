@@ -16,14 +16,15 @@ return new class extends Migration
             $table->id();
             $table->foreignId('animal_id')->constrained()->cascadeOnDelete();
             $table->enum('sex', Sex::getValues()->all());
+            $table->string('name');
             $table->text('description');
             $table->date('birth_date');
-            $table->boolean('is_sterilized')->default(false);
-            $table->boolean('has_vaccination')->default(false);
             $table->string('wool_type', 100)->nullable();
             $table->text('character')->nullable();
-            $table->boolean('is_confirmed')->default(false);
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->boolean('is_sterilized')->default(false);
+            $table->boolean('has_vaccination')->default(false);
+            $table->boolean('is_confirmed')->default(false);
             $table->timestamps();
         });
     }
