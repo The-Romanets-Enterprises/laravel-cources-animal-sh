@@ -45,19 +45,19 @@
                     </div>
                     <!-- ./col -->
                 @endisset
-                @isset($car_model_count)
+                @isset($video_count)
                     <div class="col-lg-3 col-6">
                         <!-- small box -->
-                        <div class="small-box bg-gradient-orange">
+                        <div class="small-box bg-gradient-orange text-light">
                             <div class="inner">
-                                <h3>{{ $car_model_count }}</h3>
+                                <h3>{{ $video_count }}</h3>
 
-                                <p>{{ __('messages.car_model.plural') }}</p>
+                                <p>{{ __('messages.video.plural') }}</p>
                             </div>
                             <div class="icon">
-                                <i class="fas fa-car"></i>
+                                <i class="fas fa-video"></i>
                             </div>
-                            <a href="<?=route('admin.car-models.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="<?=route('admin.videos.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
