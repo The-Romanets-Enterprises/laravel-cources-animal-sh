@@ -12,7 +12,7 @@
             <a href="<?=route('admin.users.index')?>" class="nav-link">{{ __('messages.user.plural') }}</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="<?=route('admin.requests.index')?>" class="nav-link">{{ __('messages.request.plural') }}</a>
+            <a href="<?=route('admin.animal_pets.index')?>" class="nav-link">{{ __('messages.request.plural') }}</a>
         </li>
     @endif
     <li class="nav-item d-none d-sm-inline-block">

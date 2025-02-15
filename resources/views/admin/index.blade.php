@@ -498,7 +498,7 @@
                                 <div class="icon">
                                     <i class="fas fa-solid fa-book"></i>
                                 </div>
-                                <a href="<?=route('admin.requests.index')?>" class="small-box-footer">{{ __('messages.more') }}
+                                <a href="<?=route('admin.animal_pets.index')?>" class="small-box-footer">{{ __('messages.more') }}
                                     <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
@@ -533,6 +533,40 @@
                                     <i class="fas fa-solid fa-search-location"></i>
                                 </div>
                                 <a href="<?=route('admin.addresses.index')?>" class="small-box-footer">{{ __('messages.more') }}
+                                    <i class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                    @endif
+                    @isset($video_count)
+                        <div class="col-lg-3 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-danger">
+                                <div class="inner">
+                                    <h3>{{ $video_count }}</h3>
+
+                                    <p>{{ __('messages.video.plural') }}</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-solid fa-video"></i>
+                                </div>
+                                <a href="<?=route('admin.videos.index')?>" class="small-box-footer">{{ __('messages.more') }}
+                                    <i class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                    @endif
+                    @isset($photo_count)
+                        <div class="col-lg-3 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-orange">
+                                <div class="inner">
+                                    <h3>{{ $photo_count }}</h3>
+
+                                    <p>{{ __('messages.photo.plural') }}</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-solid fa-camera-retro"></i>
+                                </div>
+                                <a href="<?=route('admin.photos.index')?>" class="small-box-footer">{{ __('messages.more') }}
                                     <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>

@@ -16,7 +16,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="<?=route('admin.requests.index')?>" class="nav-link">
+            <a href="<?=route('admin.animal_pets.index')?>" class="nav-link">
                 <i class="nav-icon fas fa-book"></i>
                 <p>{{ __('messages.request.plural') }}</p>
             </a>
@@ -43,6 +43,18 @@
             <a href="<?=route('admin.countries.index')?>" class="nav-link">
                 <i class="nav-icon fas fa-flag"></i>
                 <p>{{ __('messages.country.plural') }}</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="<?=route('admin.videos.index')?>" class="nav-link">
+                <i class="nav-icon fas fa-video-camera"></i>
+                <p>{{ __('messages.video.plural') }}</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="<?=route('admin.photos.index')?>" class="nav-link">
+                <i class="nav-icon fas fa-camera-retro"></i>
+                <p>{{ __('messages.photo.plural') }}</p>
             </a>
         </li>
 
