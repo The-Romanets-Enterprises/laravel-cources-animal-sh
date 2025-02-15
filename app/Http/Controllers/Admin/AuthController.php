@@ -10,6 +10,7 @@ use App\Models\AnimalPet;
 use App\Models\Article;
 use App\Models\City;
 use App\Models\Country;
+use App\Models\Photo;
 use App\Models\User;
 use App\Models\Video;
 use Illuminate\Http\Request;
@@ -30,12 +31,13 @@ class AuthController extends Controller
         $animal_count = Animal::query()->count();
         $animal_pet_count = AnimalPet::query()->count();
         $video_count = Video::query()->count();
+        $photo_count = Photo::query()->count();
 
         return view('admin.index', compact(
                 'title',
 
                 'user_count', 'city_count', 'country_count', 'address_count', 'animal_count', 'animal_pet_count',
-                'video_count'
+                'video_count', 'photo_count'
             )
         );
     }

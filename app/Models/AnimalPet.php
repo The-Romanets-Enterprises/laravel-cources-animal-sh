@@ -59,9 +59,8 @@ class AnimalPet extends Model
     public static function createAnimalPet(AnimalPetRequest $request, User $user)
     {
         $data = $request->validated();
-        $data['user_id'] = $user->id;
 
-        return self::query()->create($data);
+        return $user->animalPets()->create($data);
     }
 
     public static function updateAnimalPet(AnimalPetRequest $request, self $animalPet)
