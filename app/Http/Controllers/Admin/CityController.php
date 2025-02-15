@@ -79,7 +79,7 @@ class CityController extends Controller
         $is_destroyed = City::deleteCity($city);
 
         if ($is_destroyed === null) {
-            return $redirect->with('error', __('messages.city.error.my-self'));
+            return $redirect->with('error', __('messages.city.error.destroy'));
         }
 
         return $redirect->with('success', __('messages.city.success.destroy'));

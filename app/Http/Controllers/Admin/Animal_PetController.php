@@ -21,10 +21,10 @@ class Animal_PetController extends Controller
 
         $animal_pets = Animal_pet::query();
 
-        $animal_pets->orderBy('name', 'ASC');
+        $animal_pets->orderBy('created_at', 'ASC');
         $animal_pets = $animal_pets->paginate(config('settings.paginate'));
 
-        return view('admin.request.index', compact(
+        return view('admin.animal_pet.index', compact(
             'title',
 
             'animal_pets'
@@ -37,7 +37,7 @@ class Animal_PetController extends Controller
         $users = User::all();
         $animals = Animal::all();
 
-        return view('admin.request.create', compact('title','users', 'animals'));
+        return view('admin.animal_pet.create', compact('title','users', 'animals'));
     }
 
     public function store(Animal_PetRequest $request)
@@ -45,7 +45,7 @@ class Animal_PetController extends Controller
         $user = User::findOrFail($request->input('user_id'));
         $animal_pet = Animal_pet::createAnimal_pet($request, $user);
 
-        $redirect = to_route('admin.requests.index');
+        $redirect = to_route('admin.animal_pets.index');
 
         if (!$animal_pet) {
             return $redirect->with('error', __('messages.request.error.store'));
@@ -60,20 +60,20 @@ class Animal_PetController extends Controller
         $users = User::all();
         $animals = Animal::all();
 
-        return view('admin.request.edit', compact('title', 'animal_pet', 'users', 'animals'));
+        return view('admin.animal_pet.edit', compact('title', 'animal_pet', 'users', 'animals'));
     }
 
     public function update(Animal_PetRequest $request, Animal_pet $animal_pet)
     {
         $animal_pet = Animal_pet::updateAnimal_pet($request, $animal_pet);
 
-        $redirect = to_route('admin.requests.index');
+        $redirect = to_route('admin.animal_pets.index');
 
         if (!$animal_pet) {
-            return $redirect->with('error', __('messages.request.error.update'));
+            return $redirect->with('error', __('messages.animal_pets.error.update'));
         }
 
-        return $redirect->with('success', __('messages.request.success.update'));
+        return $redirect->with('success', __('messages.animal_pets.success.update'));
     }
 
     public function destroy(Animal_pet $animal_pet)

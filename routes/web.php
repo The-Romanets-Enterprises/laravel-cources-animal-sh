@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin\AddressController;
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\Animal_PetController;
+use App\Http\Controllers\Admin\PhotoController;
+use App\Http\Controllers\Admin\VideoController;
 use Illuminate\Support\Facades\Route;
 
 //Route::get('/', function () {
@@ -26,11 +28,13 @@ Route::prefix('/admin')->name('admin.')->group(function () {
 
         Route::middleware('super-admin')->group(function () {
             Route::resource('/users', UserController::class);
-            Route::resource('/requests', Animal_PetController::class );
+            Route::resource('/animal_pets', Animal_PetController::class );
             Route::resource('/cities', CityController::class );
             Route::resource('/countries', CountryController::class );
             Route::resource('/addresses', AddressController::class );
             Route::resource('/animals', AnimalController::class );
+            Route::resource('/videos', VideoController::class );
+            Route::resource('/photos', PhotoController::class );
         });
 
         Route::controller(UserController::class)->group(function () {

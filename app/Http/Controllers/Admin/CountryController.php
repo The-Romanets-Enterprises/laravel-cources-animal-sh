@@ -75,7 +75,7 @@ class CountryController extends Controller
         $is_destroyed = Country::deleteCountry($country);
 
         if ($is_destroyed === null) {
-            return $redirect->with('error', __('messages.country.error.my-self'));
+            return $redirect->with('error', __('messages.country.error.destroy'));
         }
 
         return $redirect->with('success', __('messages.country.success.destroy'));

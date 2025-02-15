@@ -14,7 +14,7 @@ class Animal extends Model
     /** @use HasFactory<\Database\Factories\AnimalFactory> */
     use HasFactory, MediaTrait;
 
-    protected $fillable = ['name', 'photo', 'animalId'];
+    protected $fillable = ['name', 'photo'];
 
     public static function getAnimals()
     {

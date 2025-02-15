@@ -7,7 +7,9 @@ use App\Http\Requests\LoginRequest;
 use App\Models\Animal_pet;
 use App\Models\Animal;
 use App\Models\Address;
+use App\Models\Photo;
 use App\Models\User;
+use App\Models\Video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,6 +21,8 @@ class AuthController extends Controller
     {
         $title = __('messages.main_page');
         $address_count = Address::query()->count();
+        $video_count = Video::query()->count();
+        $photo_count = Photo::query()->count();
         $animal_pet_count = Animal_pet::query()->count();
         $animal_count = Animal::query()->count();
         $user_count = User::query()->count();
@@ -29,6 +33,8 @@ class AuthController extends Controller
                 'animal_count',
                 'animal_pet_count',
                 'address_count',
+                'video_count',
+                'photo_count',
             )
         );
     }
