@@ -62,19 +62,19 @@
                     </div>
                     <!-- ./col -->
                 @endisset
-                @isset($car_count)
+                @isset($photo_count)
                     <div class="col-lg-3 col-6">
                         <!-- small box -->
-                        <div class="small-box bg-gradient-warning">
+                        <div class="small-box bg-gradient-warning text-light">
                             <div class="inner">
-                                <h3>{{ $car_count }}</h3>
+                                <h3>{{ $photo_count }}</h3>
 
-                                <p>{{ __('messages.car.plural') }}</p>
+                                <p>{{ __('messages.photo.plural') }}</p>
                             </div>
                             <div class="icon">
-                                <i class="fas fa-car"></i>
+                                <i class="fas fa-camera"></i>
                             </div>
-                            <a href="<?=route('admin.cars.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="<?=route('admin.photos.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->

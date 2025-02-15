@@ -170,6 +170,12 @@ Breadcrumbs::for('admin.videos.edit', function (BreadcrumbTrail $trail, Video $v
     $trail->push($video->path, route('admin.videos.edit', $video));
 });
 
+// Photo
+Breadcrumbs::for('admin.photos.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.home');
+    $trail->push(__('messages.photo.plural'), route('admin.photos.index'));
+});
+
 // Token
 // Home > Token
 Breadcrumbs::for('admin.tokens.index', function (BreadcrumbTrail $trail) {
