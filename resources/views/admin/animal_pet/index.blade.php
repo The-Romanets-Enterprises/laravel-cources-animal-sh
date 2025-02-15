@@ -16,8 +16,8 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <a href="{{ route("admin.requests.create") }}"
-                   class="btn btn-primary mb-3">{{ __('messages.request.create') }}</a>
+                <a href="{{ route("admin.animal_pets.create") }}"
+                   class="btn btn-dark mb-3">{{ __('messages.request.create') }}</a>
 
                 @if(count($animal_pets))
                     <table class="table table-bordered table-striped">
@@ -52,12 +52,12 @@
                                 <td>{{ $animal_pet->is_sterilized ? 'Да' : 'Нет' }}</td>
                                 <td>{{ $animal_pet->has_vaccination ? 'Да' : 'Нет' }}</td>
                                 <td>
-                                    <a href="{{ route("admin.requests.edit", ['request' => $animal_pet->id]) }}"
+                                    <a href="{{ route("admin.animal_pets.edit", ['animal_pet' => $animal_pet->id]) }}"
                                        class="btn btn-info btn-sm float-left">
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
                                     @if(auth()->user()->role == \App\Enum\Role::ADMIN)
-                                        <form action="{{ route("admin.requests.destroy", ['request' => $animal_pet->id]) }}"
+                                        <form action="{{ route("admin.animal_pets.destroy", ['animal_pet' => $animal_pet->id]) }}"
                                               method="post" class="float-left ml-1">
                                             @csrf
                                             @method('DELETE')

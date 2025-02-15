@@ -1,5 +1,5 @@
 @php
-    use App\Enum\Sex;
+
 @endphp
 
 
@@ -14,5 +14,5 @@
     'title' => 'Фото*',
     'name' => 'photo',
     'pre_text' => 'Выберите изображение',
-    'value' => $animal ? $animal->getPhoto() : null,
+    'value' => isset($animal) ? $animal->getPhoto() : null,
 ])
