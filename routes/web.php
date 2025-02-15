@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AnimalPetController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\CountryController;
+use App\Http\Controllers\Admin\PhotoController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\VideoController;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +34,7 @@ Route::prefix('/admin')->name('admin.')->group(function () {
             Route::resource('/animals', AnimalController::class);
             Route::resource('/animal_pets', AnimalPetController::class);
             Route::resource('/videos', VideoController::class);
+            Route::resource('/photos', PhotoController::class);
         });
 
         Route::controller(UserController::class)->group(function () {
