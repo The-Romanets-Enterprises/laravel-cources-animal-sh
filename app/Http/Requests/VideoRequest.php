@@ -22,7 +22,7 @@ class VideoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'path' => ['required', 'mimes:mp4, x-msvideo'],
+            'path' => ['required', 'mimes:mp4, x-msvideo', 'max:20000'],
             'animal_pet_id' => ['required', 'exists:animal_pets,id'],
         ];
     }

@@ -15,8 +15,10 @@
                 data-placeholder="{{ $pre_text }}"
             @endisset
             @if(isset($disabled) && $disabled) disabled @endif
-            data-dropdown-css-class="select2-danger" style="width: 100%;" @isset($on_change) onchange="this.form.submit()" @endisset >
-
+            data-dropdown-css-class="select2-danger" style="width: 100%;"
+            @isset($on_change)
+                onchange="{{ isset($change_fun) ? $change_fun : 'this.form.submit()' }}"
+            @endisset>
         @if(!isset($multiple))
             @isset($pre_text)
                 <option selected="selected" value="">{{ $pre_text }}</option>
