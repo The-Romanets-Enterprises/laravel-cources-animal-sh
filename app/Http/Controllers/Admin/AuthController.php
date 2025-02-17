@@ -24,7 +24,6 @@ class AuthController extends Controller
         $title = __('messages.main_page');
 
         $user_count = User::query()->count();
-
         $country_count = Country::query()->count();
         $city_count = City::query()->count();
         $animal_count = Animal::query()->count();
@@ -35,7 +34,6 @@ class AuthController extends Controller
 
         return view('admin.index', compact(
                 'title',
-
                 'user_count',
                 'country_count',
                 'city_count',
@@ -74,6 +72,7 @@ class AuthController extends Controller
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+
         return redirect()->route('admin.login.show');
     }
 }

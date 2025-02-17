@@ -16,9 +16,8 @@ class VideoController extends Controller
     public function index()
     {
         $title = __('messages.video.plural');
-        $videos = Video::query();
 
-        $videos->orderBy('created_at', 'desc');
+        $videos = Video::query()->orderBy('created_at', 'desc');
         $videos = $videos->paginate(config('settings.paginate'));
 
         return view('admin.video.index', compact(
@@ -35,7 +34,10 @@ class VideoController extends Controller
         $title = __('messages.video.create');
         $animal_pets = AnimalPet::query()->orderBy('name')->get();
 
-        return view('admin.video.create', compact('title', 'animal_pets'));
+        return view('admin.video.create', compact(
+            'title',
+            'animal_pets',
+        ));
     }
 
     /**
@@ -46,7 +48,8 @@ class VideoController extends Controller
         $video = Video::createVideo($request);
         $redirect = to_route('admin.videos.index');
 
-        if (!$video) {
+        if (!$video)
+        {
             return $redirect->with('error', __('messages.video.error.store'));
         }
 
@@ -69,7 +72,11 @@ class VideoController extends Controller
         $title = __('messages.video.edit');
         $animal_pets = AnimalPet::query()->orderBy('name')->get();
 
-        return view('admin.video.edit', compact('title', 'video', 'animal_pets'));
+        return view('admin.video.edit', compact(
+            'title',
+            'video',
+            'animal_pets',
+        ));
     }
 
     /**
@@ -80,7 +87,8 @@ class VideoController extends Controller
         $video = Video::updateVideo($request, $video);
         $redirect = to_route('admin.videos.index');
 
-        if (!$video) {
+        if (!$video)
+        {
             return $redirect->with('error', __('messages.video.error.update'));
         }
 
@@ -96,7 +104,8 @@ class VideoController extends Controller
 
         $is_destroyed = Video::deleteVideo($video);
 
-        if ($is_destroyed === null) {
+        if ($is_destroyed === null)
+        {
             return $redirect->with('error', __('messages.video.error.destroy'));
         }
 

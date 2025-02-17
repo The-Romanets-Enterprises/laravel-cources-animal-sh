@@ -28,7 +28,7 @@ class AnimalPetRequest extends FormRequest
             'sex' => ['required', Rule::enum(Sex::class)],
             'name' => ['required', 'string'],
             'description' => ['required'],
-            'birth_date' => ['required'],
+            'birth_date' => ['required', 'date'],
             'is_sterilized' => ['required', 'boolean'],
             'has_vaccination' => ['required', 'boolean'],
             'wool_type' => ['required', 'string', 'max:100'],

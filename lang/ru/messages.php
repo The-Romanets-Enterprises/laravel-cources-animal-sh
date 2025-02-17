@@ -3,7 +3,7 @@
 // lang/en/messages.php
 
 return [
-    'site_name' => 'Template',
+    'site_name' => 'AnimalShelter',
     'main' => 'Главная',
     'main_page' => 'Главная страница',
     'search' => 'Поиск',

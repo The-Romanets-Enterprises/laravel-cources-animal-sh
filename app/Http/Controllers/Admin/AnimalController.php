@@ -22,7 +22,7 @@ class AnimalController extends Controller
 
         return view('admin.animal.index', compact(
             'title',
-            'animals'
+            'animals',
         ));
     }
 
@@ -44,7 +44,8 @@ class AnimalController extends Controller
         $animal = Animal::createAnimal($request);
         $redirect = to_route('admin.animals.index');
 
-        if (!$animal) {
+        if (!$animal)
+        {
             return $redirect->with('error', __('messages.animal.error.store'));
         }
 
@@ -66,7 +67,10 @@ class AnimalController extends Controller
     {
         $title = __('messages.animal.edit', ['animal' => $animal->name]);
 
-        return view('admin.animal.edit', compact('title', 'animal'));
+        return view('admin.animal.edit', compact(
+            'title',
+            'animal',
+        ));
     }
 
     /**
@@ -75,10 +79,10 @@ class AnimalController extends Controller
     public function update(AnimalRequest $request, Animal $animal)
     {
         $animal = Animal::updateAnimal($request, $animal);
-
         $redirect = to_route('admin.animals.index');
 
-        if (!$animal) {
+        if (!$animal)
+        {
             return $redirect->with('error', __('messages.animal.error.update'));
         }
 
@@ -94,7 +98,8 @@ class AnimalController extends Controller
 
         $is_destroyed = Animal::deleteAnimal($animal);
 
-        if ($is_destroyed === null) {
+        if ($is_destroyed === null)
+        {
             return $redirect->with('error', __('messages.animal.error.destroy'));
         }
 

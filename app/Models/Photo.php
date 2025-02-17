@@ -45,7 +45,8 @@ class Photo extends Model
     {
         $data = $request->validated();
 
-        if ($request->hasFile('path')) {
+        if ($request->hasFile('path'))
+        {
             $data['path'] = self::uploadPhoto($request, $photo->path);
         }
 
@@ -54,7 +55,8 @@ class Photo extends Model
 
     public static function deletePhoto(self $photo)
     {
-        if ($photo->path) {
+        if ($photo->path)
+        {
             Storage::delete($photo->path);
         }
 

@@ -109,7 +109,8 @@ class User extends Authenticatable
 
         $user = User::query()->create($data);
 
-        if (!$user) {
+        if (!$user)
+        {
             return false;
         }
 
@@ -128,7 +129,8 @@ class User extends Authenticatable
     {
         $data = $request->validated();
 
-        if ($data['password']) {
+        if ($data['password'])
+        {
             $data['password'] = bcrypt($data['password']);
         } else {
             unset($data['password']);
@@ -139,7 +141,8 @@ class User extends Authenticatable
 
     public static function deleteUser(User $user)
     {
-        if ($user->id == auth()->id()) {
+        if ($user->id == auth()->id())
+        {
             return null;
         }
 

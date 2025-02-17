@@ -43,7 +43,11 @@ class PhotoController extends Controller
         });
         $animals = AnimalPet::select('id', 'name')->get();
 
-        return view('admin.photo.create', compact('title', 'users', 'animals'));
+        return view('admin.photo.create', compact(
+            'title',
+            'users',
+            'animals',
+        ));
     }
 
     /**
@@ -54,7 +58,8 @@ class PhotoController extends Controller
         $photo = Photo::createPhoto($request);
         $redirect = to_route('admin.photos.index');
 
-        if (!$photo) {
+        if (!$photo)
+        {
             return $redirect->with('error', __('messages.photo.error.store'));
         }
 
@@ -83,7 +88,12 @@ class PhotoController extends Controller
         });
         $animals = AnimalPet::select('id', 'name')->get();
 
-        return view('admin.photo.edit', compact('title', 'photo', 'users', 'animals'));
+        return view('admin.photo.edit', compact(
+            'title',
+            'photo',
+            'users',
+            'animals',
+        ));
     }
 
     /**
@@ -95,7 +105,8 @@ class PhotoController extends Controller
 
         $redirect = to_route('admin.photos.index');
 
-        if (!$photo) {
+        if (!$photo)
+        {
             return $redirect->with('error', __('messages.photo.error.update'));
         }
 
@@ -111,7 +122,8 @@ class PhotoController extends Controller
 
         $is_destroyed = Photo::deletePhoto($photo);
 
-        if ($is_destroyed === null) {
+        if ($is_destroyed === null)
+        {
             return $redirect->with('error', __('messages.photo.error.destroy'));
         }
 

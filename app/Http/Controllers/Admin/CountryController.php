@@ -44,7 +44,8 @@ class CountryController extends Controller
         $country = Country::createCountry($request);
         $redirect = to_route('admin.countries.index');
 
-        if (!$country) {
+        if (!$country)
+        {
             return $redirect->with('error', __('messages.country.error.store'));
         }
 
@@ -66,7 +67,10 @@ class CountryController extends Controller
     {
         $title = __('messages.country.edit', ['country' => $country->name]);
 
-        return view('admin.country.edit', compact('title', 'country'));
+        return view('admin.country.edit', compact(
+            'title',
+            'country',
+        ));
     }
 
     /**
@@ -78,7 +82,8 @@ class CountryController extends Controller
 
         $redirect = to_route('admin.countries.index');
 
-        if (!$country) {
+        if (!$country)
+        {
             return $redirect->with('error', __('messages.country.error.update'));
         }
 
@@ -94,7 +99,8 @@ class CountryController extends Controller
 
         $is_destroyed = Country::deleteCountry($country);
 
-        if ($is_destroyed === null) {
+        if ($is_destroyed === null)
+        {
             return $redirect->with('error', __('messages.country.error.destroy'));
         }
 

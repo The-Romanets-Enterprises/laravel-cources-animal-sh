@@ -45,7 +45,7 @@
                                     <td>{{ $animal_pet->sex->getTitle() }}</td>
                                     <td>{{ $animal_pet->name }}</td>
                                     <td>{{ $animal_pet->description }}</td>
-                                    <td>{{ $animal_pet->birth_date }}</td>
+                                    <td>{{ $animal_pet->birth_date->format('d.m.Y') }}</td>
                                     <td>{{ $animal_pet->wool_type }}</td>
                                     <td>{{ $animal_pet->character }}</td>
                                     <td>{{ $animal_pet->user->getFullNameAttribute() }}</td>

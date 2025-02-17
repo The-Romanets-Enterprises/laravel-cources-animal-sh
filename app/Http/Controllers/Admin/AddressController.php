@@ -23,6 +23,7 @@ class AddressController extends Controller
         $addresses->orderBy('created_at', 'desc');
 
         $addresses = $addresses->paginate(config('settings.paginate'));
+
         return view('admin.address.index', compact(
             'title',
             'addresses'));
@@ -34,10 +35,15 @@ class AddressController extends Controller
     public function create()
     {
         $title = __('messages.address.create');
-        $users = User::query()->get();
-        $cities = City::query()->get();
 
-        return view('admin.address.create', compact('title', 'users', 'cities'));
+        $users = User::query()->orderBy('lastname')->get();
+        $cities = City::query()->orderBy('name')->get();
+
+        return view('admin.address.create', compact(
+            'title',
+            'users',
+            'cities',
+        ));
     }
 
     /**
@@ -47,9 +53,11 @@ class AddressController extends Controller
     {
         $user = User::findOrFail($request->input('user_id'));
         $animal = Address::createAddress($request, $user);
+
         $redirect = to_route('admin.addresses.index');
 
-        if (!$animal) {
+        if (!$animal)
+        {
             return $redirect->with('error', __('messages.address.error.store'));
         }
 
@@ -70,10 +78,16 @@ class AddressController extends Controller
     public function edit(Address $address)
     {
         $title = __('messages.address.edit');
-        $users = User::query()->get();
-        $cities = City::query()->get();
 
-        return view('admin.address.edit', compact('title', 'address' , 'users', 'cities'));
+        $users = User::query()->orderBy('lastname')->get();
+        $cities = City::query()->orderBy('name')->get();
+
+        return view('admin.address.edit', compact(
+            'title',
+            'address',
+            'users',
+            'cities',
+        ));
     }
 
     /**
@@ -82,10 +96,11 @@ class AddressController extends Controller
     public function update(AddressRequest $request, Address $address)
     {
         $animal = Address::updateAddress($request, $address);
-
+        
         $redirect = to_route('admin.addresses.index');
 
-        if (!$animal) {
+        if (!$animal)
+        {
             return $redirect->with('error', __('messages.address.error.update'));
         }
 
@@ -101,7 +116,8 @@ class AddressController extends Controller
 
         $is_destroyed = Address::deleteAddress($address);
 
-        if ($is_destroyed === null) {
+        if ($is_destroyed === null)
+        {
             return $redirect->with('error', __('messages.address.error.destroy'));
         }
 

@@ -18,14 +18,12 @@ class AnimalPetController extends Controller
     {
         $title = __('messages.animal_pet.plural');
 
-        $animal_pets = AnimalPet::query();
-
-        $animal_pets->orderBy('created_at', 'desc');
-        $animal_pets = $animal_pets->paginate(config('settings.paginate_pets'));
+        $animal_pets = AnimalPet::query()->orderBy('created_at', 'desc');
+        $animal_pets = $animal_pets->paginate(config('settings.paginate'));
 
         return view('admin.animal_pet.index', compact(
             'title',
-            'animal_pets'
+            'animal_pets',
         ));
     }
 
@@ -36,10 +34,14 @@ class AnimalPetController extends Controller
     {
         $title = __('messages.animal_pet.create');
 
-        $animals = Animal::query()->get();
-        $users = User::query()->get();
+        $animals = Animal::query()->orderBy('name')->get();
+        $users = User::query()->orderBy('lastname')->get();
 
-        return view('admin.animal_pet.create', compact('title', 'animals', 'users'));
+        return view('admin.animal_pet.create', compact(
+            'title',
+            'animals',
+            'users',
+        ));
     }
 
     /**
@@ -48,9 +50,11 @@ class AnimalPetController extends Controller
     public function store(AnimalPetRequest $request)
     {
         $animal = AnimalPet::createAnimalPet($request);
+
         $redirect = to_route('admin.animal-pets.index');
 
-        if (!$animal) {
+        if (!$animal)
+        {
             return $redirect->with('error', __('messages.animal_pet.error.store'));
         }
 
@@ -71,10 +75,16 @@ class AnimalPetController extends Controller
     public function edit(AnimalPet $animal_pet)
     {
         $title = __('messages.animal_pet.edit', ['animal_pet' => $animal_pet->name]);
-        $animals = Animal::query()->get();
-        $users = User::query()->get();
 
-        return view('admin.animal_pet.edit', compact('title', 'animal_pet', 'animals', 'users'));
+        $animals = Animal::query()->orderBy('name')->get();
+        $users = User::query()->orderBy('lastname')->get();
+
+        return view('admin.animal_pet.edit', compact(
+            'title',
+            'animal_pet',
+            'animals',
+            'users',
+        ));
     }
 
     /**
@@ -86,7 +96,8 @@ class AnimalPetController extends Controller
 
         $redirect = to_route('admin.animal-pets.index');
 
-        if (!$animal_pet) {
+        if (!$animal_pet)
+        {
             return $redirect->with('error', __('messages.animal_pet.error.update'));
         }
 
@@ -102,7 +113,8 @@ class AnimalPetController extends Controller
 
         $is_destroyed = AnimalPet::deleteAnimalPet($animal_pet);
 
-        if ($is_destroyed === null) {
+        if ($is_destroyed === null)
+        {
             return $redirect->with('error', __('messages.animal_pet.error.destroy'));
         }
 

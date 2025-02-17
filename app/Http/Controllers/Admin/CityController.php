@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CityRequest;
 use App\Models\City;
+use App\Models\Country;
 use Illuminate\Http\Request;
 
 class CityController extends Controller
@@ -15,9 +16,8 @@ class CityController extends Controller
     public function index()
     {
         $title = __('messages.city.plural');
-        $cities = City::query();
 
-        $cities->orderBy('name');
+        $cities = City::query()->orderBy('name');
         $cities = $cities->paginate(config('settings.paginate'));
 
         return view('admin.city.index', compact(
@@ -33,7 +33,12 @@ class CityController extends Controller
     {
         $title = __('messages.city.create');
 
-        return view('admin.city.create', compact('title'));
+        $countries = Country::query()->orderBy('name')->get();
+
+        return view('admin.city.create', compact(
+            'title',
+            'countries',
+        ));
     }
 
     /**
@@ -44,7 +49,8 @@ class CityController extends Controller
         $city = City::createCity($request);
         $redirect = to_route('admin.cities.index');
 
-        if (!$city) {
+        if (!$city)
+        {
             return $redirect->with('error', __('messages.city.error.store'));
         }
 
@@ -66,7 +72,13 @@ class CityController extends Controller
     {
         $title = __('messages.city.edit', ['city' => $city->name]);
 
-        return view('admin.city.edit', compact('title', 'city'));
+        $countries = Country::query()->orderBy('name')->get();
+
+        return view('admin.city.edit', compact(
+            'title',
+            'city',
+            'countries',
+        ));
     }
 
     /**
@@ -78,7 +90,8 @@ class CityController extends Controller
 
         $redirect = to_route('admin.cities.index');
 
-        if (!$city) {
+        if (!$city)
+        {
             return $redirect->with('error', __('messages.city.error.update'));
         }
 
@@ -94,7 +107,8 @@ class CityController extends Controller
 
         $is_destroyed = City::deleteCity($city);
 
-        if ($is_destroyed === null) {
+        if ($is_destroyed === null)
+        {
             return $redirect->with('error', __('messages.city.error.destroy'));
         }
 

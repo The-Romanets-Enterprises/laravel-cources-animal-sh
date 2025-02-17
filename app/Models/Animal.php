@@ -23,6 +23,7 @@ class Animal extends Model
     {
         return $this->hasMany(AnimalPet::class);
     }
+
     public static function createAnimal(AnimalRequest $request)
     {
         $data = $request->validated();
@@ -35,7 +36,8 @@ class Animal extends Model
     {
         $data = $request->validated();
 
-        if ($request->hasFile('photo')) {
+        if ($request->hasFile('photo'))
+        {
             $data['photo'] = self::uploadPhoto($request, $animal->photo);
         }
 
@@ -44,7 +46,8 @@ class Animal extends Model
 
     public static function deleteAnimal(self $animal)
     {
-        if ($animal->photo) {
+        if ($animal->photo)
+        {
             Storage::delete($animal->photo);
         }
 

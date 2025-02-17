@@ -50,10 +50,10 @@
         @include('layouts.form.date', [
             'title' => 'Дата рождения*',
             'name' => 'birth_date',
-            'value' => $animal_pet->birth_date ?? null,
-            'date_format' => 'Y-m-d',
+            'value' => isset($animal_pet) ? $animal_pet->birth_date->format('Y-m-d') : null,
         ])
     </div>
+
     <div class="col-6">
         @include('layouts.form.select', [
             'title' => 'Пользователь*',
@@ -65,6 +65,7 @@
         ])
     </div>
 </div>
+
 
 @include('layouts.form.textarea',[
     'title' => 'Характер*',
@@ -83,21 +84,21 @@
 <div class="row">
     <div class="col-4">
         @include('layouts.form.switch', [
-           'title' => 'Кастрирован*',
+           'title' => 'Кастрирован',
            'name' => 'is_sterilized',
            'value' => $animal_pet->is_sterilized ?? null,
        ])
     </div>
     <div class="col-4">
         @include('layouts.form.switch', [
-           'title' => 'Вакцинирован*',
+           'title' => 'Вакцинирован',
            'name' => 'has_vaccination',
            'value' => $animal_pet->has_vaccination ?? null,
        ])
     </div>
     <div class="col-4">
         @include('layouts.form.switch', [
-           'title' => 'Подтвержден*',
+           'title' => 'Подтвержден',
            'name' => 'is_confirmed',
            'value' => $animal_pet->is_confirmed ?? null,
        ])

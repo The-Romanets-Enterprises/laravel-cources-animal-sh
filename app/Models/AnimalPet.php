@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\Sex;
+use Carbon\Carbon;
 use App\Http\Requests\AnimalPetRequest;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -45,6 +46,7 @@ class AnimalPet extends Model
     {
         return $this->morphMany(Photo::class, 'imageable');
     }
+
     public function videos()
     {
         return $this->hasMany(Video::class);
@@ -54,7 +56,9 @@ class AnimalPet extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function animal(){
+
+    public function animal()
+    {
         return $this->belongsTo(Animal::class);
     }
 

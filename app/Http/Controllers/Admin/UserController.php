@@ -32,7 +32,8 @@ class UserController extends Controller
         $title = __('messages.user.plural');
 
         $users = User::query();
-        if ($role) {
+        if ($role)
+        {
             $users->where('role', $role);
         }
         $users->orderBy('created_at', 'DESC');
@@ -102,7 +103,6 @@ class UserController extends Controller
         return view('admin.user.index', compact(
             'title',
             'role',
-
             'users',
         ));
     }
@@ -131,7 +131,8 @@ class UserController extends Controller
 
         $redirect = to_route('admin.users.index');
 
-        if (!$user) {
+        if (!$user)
+        {
             return $redirect->with('error', __('messages.user.error.store'));
         }
 
@@ -159,7 +160,10 @@ class UserController extends Controller
     {
         $title = __('messages.user.edit', ['user' => $user->name]);
 
-        return view('admin.user.edit', compact('title', 'user'));
+        return view('admin.user.edit', compact(
+            'title',
+            'user',
+        ));
     }
 
     /**
@@ -175,7 +179,8 @@ class UserController extends Controller
 
         $redirect = to_route('admin.users.index');
 
-        if (!$user) {
+        if (!$user)
+        {
             return $redirect->with('error', __('messages.user.error.update'));
         }
 
@@ -194,7 +199,8 @@ class UserController extends Controller
 
         $is_destroyed = User::deleteUser($user);
 
-        if ($is_destroyed === null) {
+        if ($is_destroyed === null)
+        {
             return $redirect->with('error', __('messages.user.error.my-self'));
         }
 
