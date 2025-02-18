@@ -30,7 +30,7 @@ class CityController extends Controller
     public function create()
     {
         $title = __('messages.city.create');
-        $countries = Country::all();
+        $countries = Country::orderBy('name')->get();
 
         return view('admin.city.create', compact('title','countries'));
     }
@@ -51,7 +51,7 @@ class CityController extends Controller
     public function edit(City $city)
     {
         $title = __('messages.city.edit',['city' => $city->name]);
-        $countries = Country::all();
+        $countries = Country::orderBy('name')->get();
 
         return view('admin.city.edit', compact('title', 'city', 'countries'));
     }

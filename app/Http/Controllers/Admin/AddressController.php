@@ -31,8 +31,8 @@ class AddressController extends Controller
     public function create()
     {
         $title = __('messages.address.create');
-        $users = User::all();
-        $cities = City::all();
+        $users = User::orderBy('lastname')->get();
+        $cities = City::orderBy('name')->get();
 
         return view('admin.address.create', compact('title','users', 'cities'));
     }
@@ -54,8 +54,8 @@ class AddressController extends Controller
     public function edit(Address $address)
     {
         $title = __('messages.address.edit',['address' => $address->address]);
-        $users = User::all();
-        $cities = City::all();
+        $users = User::orderBy('name')->get();
+        $cities = City::orderBy('name')->get();
 
         return view('admin.address.edit', compact('title', 'address', 'users', 'cities'));
     }
