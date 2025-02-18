@@ -33,18 +33,6 @@
                 <p>{{ __('messages.animal.plural') }}</p>
             </a>
         </li>
-        <li class="nav-item">
-            <a href="<?=route('admin.videos.index')?>" class="nav-link">
-                <i class="fas fa-video"></i>
-                <p>{{ __('messages.video.plural') }}</p>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="<?=route('admin.photos.index')?>" class="nav-link">
-                <i class="fas fa-camera"></i>
-                <p>{{ __('messages.photo.plural') }}</p>
-            </a>
-        </li>
 
 {{--        <li class="nav-item has-treeview">--}}
 {{--            <a href="#" class="nav-link">--}}

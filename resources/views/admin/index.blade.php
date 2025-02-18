@@ -45,40 +45,6 @@
                     </div>
                     <!-- ./col -->
                 @endisset
-                @isset($video_count)
-                    <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-gradient-orange text-light">
-                            <div class="inner">
-                                <h3>{{ $video_count }}</h3>
-
-                                <p>{{ __('messages.video.plural') }}</p>
-                            </div>
-                            <div class="icon">
-                                <i class="fas fa-video"></i>
-                            </div>
-                            <a href="<?=route('admin.videos.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                    <!-- ./col -->
-                @endisset
-                @isset($photo_count)
-                    <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-gradient-warning text-light">
-                            <div class="inner">
-                                <h3>{{ $photo_count }}</h3>
-
-                                <p>{{ __('messages.photo.plural') }}</p>
-                            </div>
-                            <div class="icon">
-                                <i class="fas fa-camera"></i>
-                            </div>
-                            <a href="<?=route('admin.photos.index')?>" class="small-box-footer">{{ __('messages.more') }} <i class="fas fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                    <!-- ./col -->
-                @endisset
             </div>
             <!-- Small boxes (Stat box) -->
             <div class="row">
