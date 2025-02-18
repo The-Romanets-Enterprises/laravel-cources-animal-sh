@@ -154,28 +154,6 @@ Breadcrumbs::for('admin.countries.edit', function (BreadcrumbTrail $trail, Count
     $trail->push($country->name, route('admin.countries.edit', $country));
 });
 
-// Video
-Breadcrumbs::for('admin.videos.index', function (BreadcrumbTrail $trail) {
-    $trail->parent('admin.home');
-    $trail->push(__('messages.video.plural'), route('admin.videos.index'));
-});
-
-Breadcrumbs::for('admin.videos.create', function (BreadcrumbTrail $trail) {
-    $trail->parent('admin.videos.index');
-    $trail->push(__('messages.video.create'), route('admin.videos.create'));
-});
-
-Breadcrumbs::for('admin.videos.edit', function (BreadcrumbTrail $trail, Video $video) {
-    $trail->parent('admin.videos.index');
-    $trail->push($video->path, route('admin.videos.edit', $video));
-});
-
-// Photo
-Breadcrumbs::for('admin.photos.index', function (BreadcrumbTrail $trail) {
-    $trail->parent('admin.home');
-    $trail->push(__('messages.photo.plural'), route('admin.photos.index'));
-});
-
 // Token
 // Home > Token
 Breadcrumbs::for('admin.tokens.index', function (BreadcrumbTrail $trail) {

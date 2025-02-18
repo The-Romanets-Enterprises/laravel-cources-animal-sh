@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\PhotoController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\VideoController;
+use App\Http\Controllers\FilePondController;
 use Illuminate\Support\Facades\Route;
 
 //Route::get('/', function () {
@@ -33,8 +34,6 @@ Route::prefix('/admin')->name('admin.')->group(function () {
             Route::resource('/addresses', AddressController::class);
             Route::resource('/animals', AnimalController::class);
             Route::resource('/animal_pets', AnimalPetController::class);
-            Route::resource('/videos', VideoController::class);
-            Route::resource('/photos', PhotoController::class);
         });
 
         Route::controller(UserController::class)->group(function () {
