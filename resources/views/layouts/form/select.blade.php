@@ -37,7 +37,7 @@
 
                 @selected(old($old, $value ?? null) == $pk)
             >
-                {{ $v->$display_name }}
+                {{ $v }}
             </option>
         @endforeach
     </select>

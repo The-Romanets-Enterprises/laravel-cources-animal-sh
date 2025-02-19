@@ -28,6 +28,11 @@ class City extends Model
         ];
     }
 
+    public function __toString()
+    {
+        return $this->name ?? '';
+    }
+
     public function country()
     {
         return $this->belongsTo(Country::class);

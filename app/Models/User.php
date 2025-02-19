@@ -59,6 +59,11 @@ class User extends Authenticatable
         ];
     }
 
+    public function __toString()
+    {
+        return $this->full_name ?? '';
+    }
+
     public function address()
     {
         return $this->hasOne(Address::class);
