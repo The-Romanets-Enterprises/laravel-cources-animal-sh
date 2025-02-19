@@ -1,30 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
-use App\Models\Article;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-// Class work with authentication and Admin main page
+// Class work with authentication
 class AuthController extends Controller
 {
-    // Admin Main Page
+    // Dashboard Main Page
     public function index()
     {
-        $title = __('messages.main_page');
+        $title = __('messages.dashboard.main_page');
 
-        $user_count = User::query()->count();
-
-        return view('dashboard.index', compact(
-                'title',
-
-                'user_count',
-            )
-        );
+        return view('dashboard.index', compact('title'));
     }
 
     // Enter into an account page (ONLY VIEW)

@@ -85,7 +85,7 @@
                             <div class="mb-3"></div>
                             <button class="btn btn-primary d-block w-100 mt-3" type="submit" name="submit">Отправить ссылку для сброса пароля</button>
                         </form>
-                        <a class="fs-10 text-600" href="">Вернуться на главную</a>
+                        <a class="fs-10 text-600" href="{{ route('auth.login') }}">Вернуться на главную</a>
                     </div>
                 </div>
             </div>

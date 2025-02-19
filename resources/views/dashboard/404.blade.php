@@ -84,7 +84,7 @@
                         <p>Убедитесь, что адрес правильный и страница не перемещена. Если вы считаете, что это ошибка,
                             <a href="">свяжитесь с нами</a>.
                         </p>
-                        <a class="btn btn-primary btn-sm mt-3" href="">
+                        <a class="btn btn-primary btn-sm mt-3" href="{{ route('dashboard.home') }}">
                             <span class="fas fa-home me-2"></span>Вернуться на главную
                         </a>
                     </div>

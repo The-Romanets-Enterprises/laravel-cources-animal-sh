@@ -10,7 +10,7 @@
     <!-- ===============================================-->
     <!--    Document Title-->
     <!-- ===============================================-->
-    <title>{{ $title ?? ''  }}</title>
+    <title>{{ $title ?? 'Авторизация'  }}</title>
 
 
     <!-- ===============================================-->
@@ -90,11 +90,11 @@
                                     <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 2 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16h13M4 16l4-4m-4 4 4 4M20 8H7m13 0-4 4m4-4-4-4"/></svg>
                                 </span>
                                 <span>
-                                    <a href="">Регистрация</a>
+                                    <a href="{{ route('auth.register') }}">Регистрация</a>
                                 </span>
                             </div>
                         </div>
-                        <form action="{{ route('login.auth') }}" method="post">
+                        <form action="{{ route('auth.login.auth') }}" method="post">
                             @csrf
                             <div class="mb-3">
                                 <input class="form-control" type="text" name="email" placeholder="Электронная почта" value="{{ old('email') }}" />
@@ -110,7 +110,7 @@
                                     </div>
                                 </div>
                                 <div class="col-auto">
-                                    <a class="fs-10" href="">Забыли пароль?</a>
+                                    <a class="fs-10" href="{{ route('auth.forgot-password') }}">Забыли пароль?</a>
                                 </div>
                             </div>
                             <div class="mb-3">

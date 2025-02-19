@@ -1,51 +1,72 @@
 <?php
 
-use App\Http\Controllers\Admin\AuthController;
-use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Dashboard\AuthController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/register', function () {
-    return view('auth.register');
-})->name('register');
+// 🌟 Главный сайт
+Route::get('/', function () {
+    return view('mainwebsite.main');
+})->name('main');
 
-Route::get('/forgot-password', function () {
-    return view('layouts.forgot-password');
-})->name('forgot-password');
+// 🔹 Выход (Logout) через GET
+Route::middleware('auth')->get('/logout', [AuthController::class, 'logout'])->name('auth.logout'); // Выход работает здесь
 
-Route::get('/logout', function () {
-    return view('layouts.logout');
-})->name('logout');
+// 🔹 Переадресация /auth → /auth/login (НО! Если пользователь авторизован → panel)
+Route::get('/auth', function () {
+    return auth()->check() ? redirect()->route('dashboard.home') : redirect()->route('auth.login');
+})->name('auth.redirect');
 
-Route::get('/confirm-mail', function () {
-    return view('layouts.confirm-mail');
-})->name('confirm-mail');
+// 🔹 Аутентификация (только для НЕавторизованных пользователей)
+Route::prefix('auth')->name('auth.')->group(function () {
+    Route::middleware('guest')->controller(AuthController::class)->group(function () {
+        Route::get('/login', 'login')->name('login');
+        Route::post('/login', 'auth')->name('login.auth');
+        Route::get('/logout', function () {
+            return view('auth.logout');
+        })->name('auth.logout'); // Страница после выхода
 
-Route::get('/reset-password', function () {
-    return view('layouts.reset-password');
-})->name('reset-password');
+        Route::get('/register', function () {
+            return view('auth.register');
+        })->name('register');
 
-Route::get('/google-authenticator-lock', function () {
-    return view('layouts.google-authenticator-lock');
-})->name('google-authenticator-lock');
+        Route::get('/confirm-mail', function () {
+            return view('auth.confirm-mail');
+        })->name('confirm-mail');
 
+        Route::get('/forgot-password', function () {
+            return view('auth.forgot-password');
+        })->name('forgot-password');
 
-Route::get('/404', function () {
-    return view('dashboard.404');
-})->name('404');
+        Route::get('/google-authenticator-lock', function () {
+            return view('auth.google-authenticator-lock');
+        })->name('google-authenticator-lock');
 
-
-Route::middleware('guest')->controller(AuthController::class)->group(function () {
-    Route::get('/login', 'login')->name('login.show');
-    Route::post('/login', 'auth')->name('login.auth');
-});
-
-Route::prefix('/admin')->name('admin.')->middleware('auth')->group(function () {
-    Route::controller(AuthController::class)->group(function () {
-        Route::get('/logout', 'logout')->name('logout');
-        Route::get('/', 'index')->name('home');
+        Route::get('/reset-password', function () {
+            return view('auth.reset-password');
+        })->name('reset-password');
     });
 
-    Route::middleware('super-admin')->group(function () {
-        Route::resource('/users', UserController::class);
+    // 🔹 Если авторизованный пользователь заходит в auth/, его переадресует в panel/
+    Route::middleware('auth')->group(function () {
+        Route::get('{any}', function () {
+            return redirect()->route('dashboard.home');
+        })->where('any', '.*');
+    });
+});
+
+// 🌟 Панель управления (dashboard, только для авторизованных пользователей)
+Route::prefix('panel')->name('dashboard.')->middleware('auth')->group(function () {
+    Route::controller(AuthController::class)->group(function () {
+        Route::get('/', 'index')->name('home'); // Главная страница dashboard
+    });
+
+    // 🛑 Страница 404 для panel/
+    Route::get('/404', function () {
+        return view('dashboard.404');
+    })->name('404');
+
+    // 🔹 Перенаправление всех несуществующих ссылок в panel/ на panel/404
+    Route::fallback(function () {
+        return redirect()->route('dashboard.404');
     });
 });
