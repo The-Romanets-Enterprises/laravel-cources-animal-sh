@@ -16,6 +16,7 @@ class AnimalPet extends Model
     protected $fillable = [
         'animal_id',
         'sex',
+        'name',
         'description',
         'is_confirmed',
         'user_id',
@@ -37,6 +38,11 @@ class AnimalPet extends Model
             'is_sterilized' => 'boolean',
             'has_vaccination' => 'boolean',
         ];
+    }
+
+    public function __toString()
+    {
+        return $this->name ?? '';
     }
 
     public function user()

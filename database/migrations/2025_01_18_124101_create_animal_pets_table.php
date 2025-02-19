@@ -16,6 +16,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('animal_id')->constrained()->cascadeOnDelete();
             $table->enum('sex', Sex::getValues()->all());
+            $table->string('name');
             $table->text('description');
             $table->boolean('is_confirmed')->default(false);
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();

@@ -22,6 +22,7 @@ class AnimalPetFactory extends Factory
         return [
             'animal_id' => Animal::query()->inRandomOrder()->first()->id,
             'sex' => fake()->boolean(50) ? Sex::MALE : Sex::FEMALE,
+            'name' => fake()-> firstName(),
             'description' => fake()->text(),
             'is_confirmed' => fake()->boolean(),
             'user_id' => User::query()->inRandomOrder()->first()->id,
