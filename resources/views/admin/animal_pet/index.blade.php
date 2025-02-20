@@ -24,6 +24,7 @@
                             <th style="width: 10px">#</th>
                             <th>Вид животного</th>
                             <th>Пол</th>
+                            <th>Кличка</th>
                             <th>Описание</th>
                             <th>Пользователь</th>
                             <th>Дата рождения</th>
@@ -32,6 +33,8 @@
                             <th>Подтверждение заявки</th>
                             <th>Тип шерсти</th>
                             <th>Характер</th>
+                            <th>Фото</th>
+                            <th>Видео</th>
                             <th>Действия</th>
                         </tr>
                         </thead>
@@ -41,6 +44,7 @@
                                 <td>{{ $animalPet->id }}</td>
                                 <td>{{ $animalPet->animal->name }}</td>
                                 <td>{{ $animalPet->sex instanceof \App\Enums\Sex ? $animalPet->sex->getTitle() : \App\Enums\Sex::from($animalPet->sex)->getTitle() }}</td>
+                                <td>{{ $animalPet->name }}</td>
                                 <td>{{ $animalPet->description }}</td>
                                 <td>{{ $animalPet->user->full_name }}</td>
                                 <td>{{ $animalPet->birth_date ? $animalPet->birth_date->format('d.m.Y') : 'Нет данных' }}</td>
@@ -49,6 +53,19 @@
                                 <td>{{ $animalPet->is_confirmed ? 'Да' : 'Нет' }}</td>
                                 <td>{{ $animalPet->wool_type }}</td>
                                 <td>{{ $animalPet->character }}</td>
+                                <td>
+                                    @foreach($animalPet->photos as $photo)
+                                        <img src="{{ asset('storage/' . $photo->path) }}" width="320" height="240" alt="Фото {{ $animalPet->name }}">
+                                    @endforeach
+                                </td>
+                                <td>
+                                    @foreach($animalPet->videos as $video)
+                                        <video width="320" height="240" controls>
+                                            <source src="{{ asset('storage/' . $video->path) }}" type="video/mp4">
+                                            Your browser does not support the video tag.
+                                        </video>
+                                    @endforeach
+                                </td>
                                 <td>
                                     <a href="{{ route('admin.animal_pets.edit', ['animal_pet' => $animalPet->id]) }}" class="btn btn-info btn-sm float-left">
                                         <i class="fas fa-pencil-alt"></i>

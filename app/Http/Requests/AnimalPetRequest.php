@@ -43,6 +43,9 @@ class AnimalPetRequest extends FormRequest
             'is_confirmed' => $this->boolean('is_confirmed'),
             'is_sterilized' => $this->boolean('is_sterilized'),
             'has_vaccination' => $this->boolean('has_vaccination'),
+
+            'character' => strip_tags($this->character),
+            'description'=> strip_tags($this->description),
         ]);
     }
 }
