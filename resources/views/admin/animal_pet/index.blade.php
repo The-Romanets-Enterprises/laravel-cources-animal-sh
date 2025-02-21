@@ -8,16 +8,16 @@
 
     <!-- Main content -->
     <section class="content">
-
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">{{ $title ?? null }}</h3>
             </div>
             <!-- /.card-header -->
+
             <div class="card-body">
                 <a href="{{ route('admin.animal_pets.create') }}" class="btn btn-primary mb-3">{{ __('messages.animal_pet.create') }}</a>
 
-                @if(count($animalPets))
+                @if (count($animalPets))
                     <table class="table table-bordered table-striped">
                         <thead>
                         <tr>
@@ -39,7 +39,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($animalPets as $animalPet)
+                        @foreach ($animalPets as $animalPet)
                             <tr>
                                 <td>{{ $animalPet->id }}</td>
                                 <td>{{ $animalPet->animal->name }}</td>
@@ -54,17 +54,28 @@
                                 <td>{{ $animalPet->wool_type }}</td>
                                 <td>{{ $animalPet->character }}</td>
                                 <td>
-                                    @foreach($animalPet->photos as $photo)
-                                        <img src="{{ asset('storage/' . $photo->path) }}" width="320" height="240" alt="Фото {{ $animalPet->name }}">
-                                    @endforeach
+                                    @if ($animalPet->photos->isNotEmpty())
+                                        @foreach ($animalPet->photos as $photo)
+                                            <img src="{{ asset('storage/' . $photo->path) }}"
+                                                 width="150" height="150"
+                                                 alt="Фото {{ $animalPet->name }}"
+                                                 class="mr-2">
+                                        @endforeach
+                                    @else
+                                        <span>Фотографии отсутствуют</span>
+                                    @endif
                                 </td>
                                 <td>
-                                    @foreach($animalPet->videos as $video)
-                                        <video width="320" height="240" controls>
-                                            <source src="{{ asset('storage/' . $video->path) }}" type="video/mp4">
-                                            Your browser does not support the video tag.
-                                        </video>
-                                    @endforeach
+                                    @if ($animalPet->videos->isNotEmpty())
+                                        @foreach ($animalPet->videos as $video)
+                                            <video width="150" height="150" controls>
+                                                <source src="{{ asset('storage/' . $video->path) }}" type="video/mp4">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        @endforeach
+                                    @else
+                                        <span>Видео отсутствуют</span>
+                                    @endif
                                 </td>
                                 <td>
                                     <a href="{{ route('admin.animal_pets.edit', ['animal_pet' => $animalPet->id]) }}" class="btn btn-info btn-sm float-left">
@@ -94,7 +105,6 @@
             </div>
         </div>
         <!-- /.card -->
-
     </section>
     <!-- /.content -->
 @endsection

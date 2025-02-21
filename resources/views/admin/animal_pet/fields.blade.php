@@ -8,7 +8,6 @@
     'items' => $animals,
     'value' => $animalPet->animal_id ?? null,
     'key_value' => 'id',
-    'display_name' => 'name',
     'pre_text' => 'Выберите животное'
 ])
 
@@ -36,21 +35,18 @@
     @enderror
 </div>
 
+@include('layouts.form.text', [
+    'title' => 'Кличка',
+    'name' => 'name',
+    'placeholder' => "Кличка",
+    'value' => $animalPet->name ?? null,
+])
+
 @include('layouts.form.textarea', [
     'title' => 'Описание*',
     'name' => 'description',
     'placeholder' => "Описание животного",
     'value' => $animalPet->description ?? null,
-])
-
-@include('layouts.form.select', [
-    'title' => 'Пользователь*',
-    'name' => 'user_id',
-    'items' => $users,
-    'value' => $animalPet->user_id ?? null,
-    'key_value' => 'id',
-    'display_name' => 'full_name',
-    'pre_text' => 'Выберите пользователя'
 ])
 
 @include('layouts.form.date', [
@@ -90,3 +86,50 @@
     'placeholder' => "Характер животного",
     'value' => $animalPet->character ?? null,
 ])
+
+@include('layouts.form.file', [
+    'title' => 'Фотографии',
+    'name' => 'photos[]',
+    'multiple' => true,
+    'pre_text' => 'Перетащите фото сюда или выберите файлы',
+    'value' => isset($animalPet) ? optional($animalPet->photos->first())->path : null,
+])
+
+
+@if ($animalPet->photos->isNotEmpty())
+    <div>
+        <strong>Выберите фото для удаления:</strong>
+        @foreach ($animalPet->photos as $photo)
+            <label>
+                <input type="checkbox" name="photos_to_delete[]" value="{{ $photo->id }}">
+                <img src="{{ asset('storage/' . $photo->path) }}" width="100" height="75" alt="Фото {{ $animalPet->name }}">
+            </label><br>
+        @endforeach
+    </div>
+@else
+    <p>Нет доступных фотографий.</p>
+@endif
+
+@include('layouts.form.file', [
+    'title' => 'Видео',
+    'name' => 'videos[]',
+    'multiple' => true,
+    'pre_text' => 'Перетащите видео сюда или выберите файлы',
+    'value' => isset($animalPet) ? optional($animalPet->videos->first())->path : null,
+])
+
+@if ($animalPet->videos->isNotEmpty())
+    <div>
+        <strong>Выберите видео для удаления:</strong>
+        @foreach ($animalPet->videos as $video)
+            <label>
+                <input type="checkbox" name="videos_to_delete[]" value="{{ $video->id }}">
+                <video width="100" height="75" controls>
+                    <source src="{{ asset('storage/' . $video->path) }}" type="video/mp4">
+                </video>
+            </label><br>
+        @endforeach
+    </div>
+@else
+    <p>Нет доступных видео.</p>
+@endif
