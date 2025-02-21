@@ -72,8 +72,9 @@ class AnimalPet extends Model
     public static function updateAnimalPet(AnimalPetRequest $request, self $animalPet)
     {
         $data = $request->validated();
+        $animalPet->update($data);
 
-        return $animalPet->update($data);
+        return $animalPet;
     }
 
     public static function deleteAnimalPet(self $animalPet)

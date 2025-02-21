@@ -46,6 +46,7 @@ class AnimalPetRequest extends FormRequest
 
             'character' => strip_tags($this->character),
             'description'=> strip_tags($this->description),
+            'user_id' => auth()->id(),
         ]);
     }
 }

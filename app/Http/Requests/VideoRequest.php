@@ -16,14 +16,11 @@ class VideoRequest extends FormRequest
 
     /**
      * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
     {
         return [
-            'path' => ['required', 'string', 'max:255'],
-            'animal_pet_id' => ['required', 'integer', 'exists:animal_pets,id'],
+            'videos.*' => ['nullable', 'file', 'mimes:mp4,avi,mov', 'max:10240'],
         ];
     }
 }

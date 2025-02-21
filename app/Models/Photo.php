@@ -31,10 +31,20 @@ class Photo extends Model
 
     public static function createPhoto(PhotoRequest $request)
     {
-        $data = $request->validated();
+        if ($request->hasFile('photos')) {
+            foreach ($request->file('photos') as $photoFile) {
+                $path = $photoFile->store('photos', 'public');
+                self::query()->create([
+                    'path' => $path,
+                    'imageable_id' => $request->input('imageable_id'),
+                    'imageable_type' => $request->input('imageable_type'),
+                ]);
+            }
+        }
 
-        return self::query()->create($data);
+        return true;
     }
+
 
     public static function updatePhoto(PhotoRequest $request, self $photo)
     {

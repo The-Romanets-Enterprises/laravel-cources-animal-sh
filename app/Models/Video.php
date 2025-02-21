@@ -30,10 +30,21 @@ class Video extends Model
 
     public static function createVideo(VideoRequest $request)
     {
-        $data = $request->validated();
+        $videos = [];
 
-        return self::query()->create($data);
+        if ($request->hasFile('videos')) {
+            foreach ($request->file('videos') as $videoFile) {
+                $path = $videoFile->store('videos', 'public');
+                $videos[] = self::query()->create([
+                    'path' => $path,
+                    'animal_pet_id' => $request->input('animal_pet_id'),
+                ]);
+            }
+        }
+
+        return $videos;
     }
+
 
     public static function updateVideo(VideoRequest $request, self $video)
     {

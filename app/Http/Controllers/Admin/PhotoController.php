@@ -31,8 +31,8 @@ class PhotoController extends Controller
     public function create()
     {
         $title = __('messages.photo.create');
-        $animalPets = AnimalPet::all();
-        $users = User::all();
+        $animalPets = AnimalPet::orderBy('name')->get();;
+        $users = User::orderBy('name')->get();;
 
         return view('admin.photo.create', compact('title','animalPets', 'users'));
     }
@@ -53,8 +53,8 @@ class PhotoController extends Controller
     public function edit(Photo $photo)
     {
         $title = __('messages.photo.edit',['photo' => $photo->path]);
-        $animalPets = AnimalPet::all();
-        $users = User::all();
+        $animalPets = AnimalPet::orderBy('name')->get();
+        $users = User::orderBy('name')->get();
 
         return view('admin.photo.edit', compact('title', 'photo', 'animalPets', 'users'));
     }
