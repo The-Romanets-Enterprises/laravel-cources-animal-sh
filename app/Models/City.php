@@ -56,4 +56,8 @@ class City extends Model
     {
         return $city->delete();
     }
+    public function __toString():string
+    {
+        return $this->name;
+    }
 }

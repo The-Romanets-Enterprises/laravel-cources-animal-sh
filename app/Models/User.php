@@ -134,5 +134,8 @@ class User extends Authenticatable
 
         return $user->delete();
     }
-
+    public function __toString():string
+    {
+        return $this->lastname . ' ' .$this->firstname ;
+    }
 }
