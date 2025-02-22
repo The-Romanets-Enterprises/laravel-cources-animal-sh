@@ -79,7 +79,7 @@
                                 <a href="<?=route('user.logout')?>" class="d-block">
                           @endif
                                 <i class="fas fa-sign-out-alt"></i> Выход
-                            </a>
+                            </a></a>
                         </div>
                     </div>
                     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
@@ -90,7 +90,7 @@
                                 <a href="<?=route('user.change-password')?>" class="d-block">
                             @endif
                                 <i class="fas fa-key"></i> {{ __('messages.user.change-password') }}
-                            </a>
+                            </a></a>
                         </div>
                     </div>
                 @endauth
