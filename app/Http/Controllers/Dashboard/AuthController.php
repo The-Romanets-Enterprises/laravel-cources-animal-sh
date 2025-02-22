@@ -13,7 +13,7 @@ class AuthController extends Controller
     // Dashboard Main Page
     public function index()
     {
-        $title = __('messages.dashboard.main_page');
+        $title = __('messages.main_page');
 
         return view('dashboard.index', compact('title'));
     }

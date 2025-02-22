@@ -72,7 +72,7 @@
         </script>
         <div class="row flex-center min-vh-100 py-6">
             <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4">
-                <a class="d-flex flex-center mb-4" href="">
+                <a class="d-flex flex-center mb-4" href="{{ route('main') }}">
                     <img class="me-2" src="{{ asset('assets/dashboard/img/icons/spot-illustrations/falcon.png') }}" alt="" width="58" />
                     <span class="font-sans-serif text-primary fw-bolder fs-4 d-inline-block">AnimalSafe</span>
                 </a>

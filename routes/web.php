@@ -2,28 +2,31 @@
 
 use App\Http\Controllers\Dashboard\AuthController;
 use Illuminate\Support\Facades\Route;
+use App\Enums\Role;
 
 // 🌟 Главный сайт
 Route::get('/', function () {
     return view('mainwebsite.main');
 })->name('main');
 
-// 🔹 Выход (Logout) через GET
-Route::middleware('auth')->get('/logout', [AuthController::class, 'logout'])->name('auth.logout'); // Выход работает здесь
-
-// 🔹 Переадресация /auth → /auth/login (НО! Если пользователь авторизован → panel)
+// 🔹 Переадресация /auth → /panel/{role}/home (если авторизован)
 Route::get('/auth', function () {
-    return auth()->check() ? redirect()->route('dashboard.home') : redirect()->route('auth.login');
+    if (!auth()->check()) {
+        return redirect()->route('auth.login');
+    }
+
+    return match (auth()->user()->role) {
+        'admin' => redirect()->route('dashboard.admin.home'),
+        'employee' => redirect()->route('dashboard.employee.home'),
+        default => redirect()->route('dashboard.user.home'),
+    };
 })->name('auth.redirect');
 
 // 🔹 Аутентификация (только для НЕавторизованных пользователей)
-Route::prefix('auth')->name('auth.')->group(function () {
-    Route::middleware('guest')->controller(AuthController::class)->group(function () {
+Route::prefix('auth')->name('auth.')->middleware('guest')->group(function () {
+    Route::controller(AuthController::class)->group(function () {
         Route::get('/login', 'login')->name('login');
         Route::post('/login', 'auth')->name('login.auth');
-        Route::get('/logout', function () {
-            return view('auth.logout');
-        })->name('auth.logout'); // Страница после выхода
 
         Route::get('/register', function () {
             return view('auth.register');
@@ -46,18 +49,76 @@ Route::prefix('auth')->name('auth.')->group(function () {
         })->name('reset-password');
     });
 
-    // 🔹 Если авторизованный пользователь заходит в auth/, его переадресует в panel/
-    Route::middleware('auth')->group(function () {
-        Route::get('{any}', function () {
-            return redirect()->route('dashboard.home');
-        })->where('any', '.*');
+    Route::get('/404', function () {
+        return view('auth.404');
+    })->name('404');
+
+    // 🔹 Перенаправление всех несуществующих страниц auth/ → auth/404
+    Route::fallback(function () {
+        return redirect()->route('auth.404');
     });
+});
+
+// 🔹 Если авторизованный пользователь заходит в /auth/что-то → редирект в panel/{role}/home
+Route::middleware('auth')->prefix('auth')->group(function () {
+    Route::get('{any}', function () {
+        return match (auth()->user()->role) {
+            'admin' => redirect()->route('dashboard.admin.home'),
+            'employee' => redirect()->route('dashboard.employee.home'),
+            default => redirect()->route('dashboard.user.home'),
+        };
+    })->where('any', '.*');
 });
 
 // 🌟 Панель управления (dashboard, только для авторизованных пользователей)
 Route::prefix('panel')->name('dashboard.')->middleware('auth')->group(function () {
-    Route::controller(AuthController::class)->group(function () {
-        Route::get('/', 'index')->name('home'); // Главная страница dashboard
+    Route::get('/', function () {
+        return match (auth()->user()->role) {
+            'admin' => redirect()->route('dashboard.admin.home'),
+            'employee' => redirect()->route('dashboard.employee.home'),
+            default => redirect()->route('dashboard.user.home'),
+        };
+    })->name('home');
+
+    // 🔹 Администратор (видит всё)
+    Route::prefix('admin')->name('admin.')->middleware('role:admin')->group(function () {
+        Route::get('/home', function () {
+            return view('dashboard.admin.home');
+        })->name('home');
+
+        // 🛑 404 для admin/
+        Route::fallback(function () {
+            return redirect()->route('dashboard.404');
+        });
+    });
+
+    // 🔹 Работник (видит employee + user)
+    Route::prefix('employee')->name('employee.')->middleware('role:employee')->group(function () {
+        Route::get('/home', function () {
+            return view('dashboard.employee.home');
+        })->name('home');
+
+        // 🛑 Доступ к admin запрещён → 404
+        Route::get('/admin/{any}', function () {
+            return redirect()->route('dashboard.404');
+        })->where('any', '.*');
+
+        // 🛑 404 для employee/
+        Route::fallback(function () {
+            return redirect()->route('dashboard.404');
+        });
+    });
+
+    // 🔹 Обычный пользователь (видит только user)
+    Route::prefix('user')->name('user.')->middleware('role:user')->group(function () {
+        Route::get('/home', function () {
+            return view('dashboard.user.home');
+        })->name('home');
+
+        // 🛑 404 для user/
+        Route::fallback(function () {
+            return redirect()->route('dashboard.404');
+        });
     });
 
     // 🛑 Страница 404 для panel/
