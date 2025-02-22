@@ -11,9 +11,9 @@
        ])
 
 @include('layouts.form.file', [
-    'title' => 'Фото*',
+    'title' => 'Видео*',
     'name' => 'photo',
-    'pre_text' => 'Выберите изображение',
+    'pre_text' => 'Выберите видео',
     'value' => $video -> path ?? null,
 ])
 

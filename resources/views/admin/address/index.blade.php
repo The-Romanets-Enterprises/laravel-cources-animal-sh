@@ -17,7 +17,7 @@
         <!-- /.card-header -->
         <div class="card-body">
             <a href="{{ route("admin.addresses.create") }}"
-            class="btn btn-primary mb-3">{{ __('messages.address.create') }}</a>
+            class="btn btn-dark mb-3">{{ __('messages.address.create') }}</a>
 
             @if(count($addresses))
             <table class="table table-bordered table-striped">

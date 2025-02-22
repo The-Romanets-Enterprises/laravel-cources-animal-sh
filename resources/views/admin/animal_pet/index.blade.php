@@ -47,7 +47,7 @@
                                 <td>{{ $animal_pet->user->full_name }}</td>
                                 <td>{{ $animal_pet->description }}</td>
                                 <td>{{ $animal_pet->character}}</td>
-                                <td>{{ $animal_pet->bith_date }}</td>
+                                <td>{{ $animal_pet->birth_date->format('Y-m-d') }}</td>
                                 <td>{{ $animal_pet->wool_type}}</td>
                                 <td>{{ $animal_pet->is_sterilized ? 'Да' : 'Нет' }}</td>
                                 <td>{{ $animal_pet->has_vaccination ? 'Да' : 'Нет' }}</td>

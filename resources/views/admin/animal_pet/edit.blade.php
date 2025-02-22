@@ -22,11 +22,6 @@
                         <form action="{{ route('admin.animal_pets.update', [$animal_pet]) }}" method="post" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
-                            <div class="card-body">
-                                @include('admin.animal_pet.fields', [
-                                    'have_password' => true,
-                                ])
-                            </div>
                             <!-- /.card-body -->
 
                             <div class="card-footer">
