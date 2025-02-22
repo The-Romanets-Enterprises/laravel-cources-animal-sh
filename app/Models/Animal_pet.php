@@ -34,7 +34,7 @@ class Animal_pet extends Model
             'user_id' => 'integer',
             'is_confirmed' => 'boolean',
             'animal_id' => 'integer',
-            'birth_date' => Carbon::class,
+            'birth_date' => 'datetime',
             'sex' => Sex::class,
             'has_vaccination' => 'boolean',
             'is_sterilized' => 'boolean',

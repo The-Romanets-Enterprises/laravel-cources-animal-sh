@@ -57,8 +57,8 @@ class Animal_PetController extends Controller
     public function edit(Animal_pet $animal_pet)
     {
         $title = __('messages.request.edit',['animal_pet' => $animal_pet->name]);
-        $users = User::all();
-        $animals = Animal::all();
+        $users = User::query()->get();
+        $animals = Animal::query()->get();
 
         return view('admin.animal_pet.edit', compact('title', 'animal_pet', 'users', 'animals'));
     }
