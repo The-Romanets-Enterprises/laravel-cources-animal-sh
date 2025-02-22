@@ -14,7 +14,7 @@
 
 @include('layouts.form.filepond-file', [
     'title' => 'Видео*',
-    'name' => 'path',
-    'pre_text' => 'Выберите видеозапись',
+    'name' => 'files[]',
+    'multiple' => true,
     'value' => isset($video) ? $video->getVideo() : null,
 ])

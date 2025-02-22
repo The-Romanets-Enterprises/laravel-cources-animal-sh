@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AnimalPetController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\CountryController;
+use App\Http\Controllers\Admin\FileUploadController;
 use App\Http\Controllers\Admin\PhotoController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\VideoController;
@@ -14,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 //Route::get('/', function () {
 //    return view('welcome');
 //});
+
+Route::post('/file/upload', [FileUploadController::class, 'upload'])->name('file.upload');
+Route::delete('/file/delete', [FileUploadController::class, 'delete'])->name('file.delete');
 
 Route::prefix('/admin')->name('admin.')->group(function () {
     Route::middleware('guest')->controller(AuthController::class)->group(function () {
@@ -24,6 +28,7 @@ Route::prefix('/admin')->name('admin.')->group(function () {
         Route::controller(AuthController::class)->group(function () {
             Route::get('/logout', 'logout')->name('logout');
             Route::get('/', 'index')->name('home');
+
         });
 
         Route::middleware('super-admin')->group(function () {

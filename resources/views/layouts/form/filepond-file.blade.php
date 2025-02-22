@@ -4,30 +4,27 @@
     @endisset
     <input type="file" name="{{ $name }}" id="{{ $id ?? $name }}" class="file-pond"
            @isset($multiple) multiple data-allow-reorder="true" @endisset
+           @isset($data_files) data-files="{{ json_encode($data_files) }}" @endisset
     >
+    @isset($hidden)<input type="hidden" name="{{ $name }}" class="{{ $hidden }}" multiple>@endisset
     @isset($value)
-        @isset($is_file)
-            @if($value)
-                <div>
-                    <a href="{{ $value }}" target="_blank">Документ</a>
-                </div>
-            @endif
-        @else
+        @foreach($value as $path)
             @php
-                $host = request()->getHost();
-                $path = str_replace("https://{$host}/public/storage/", '', $value);
-                $mime_type = \Illuminate\Support\Facades\Storage::mimeType($path);
+                $mime_type = \Illuminate\Support\Facades\Storage::mimeType(str_replace("public/", "", $path));
+                dump($mime_type);
+                dump($path);
             @endphp
             <div>
                 @if($mime_type == 'video/mp4' || $mime_type == 'video/x-msvideo')
-                    <video class="img-thumbnail mt-2" src="{{ asset("storage/{$path}") }}" controls autoplay style="width: 100%;"></video>
+                    <video class="img-thumbnail mt-2" src="{{ $path }}" controls autoplay style="width: 100%;"></video>
                 @else
-                    <img src="{{ $value }}" alt="{{ $name }}" class="img-thumbnail mt-2" width="500" @isset($dark_image) style="background: #303030;" @endisset>
+                    <img src="{{ $path }}" alt="{{ $name }}" class="img-thumbnail mt-2" width="500">
                 @endif
             </div>
-        @endisset
+        @endforeach
     @endisset
 </div>
+
 
 {{--<script>--}}
 {{--    document.addEventListener('DOMContentLoaded', function () {--}}

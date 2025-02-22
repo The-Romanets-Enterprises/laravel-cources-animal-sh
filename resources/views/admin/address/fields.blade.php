@@ -11,7 +11,6 @@
             'items' => $users,
             'value' => $address->user_id ?? null,
             'pre_text' => 'Выбрать пользователя',
-            'print_attribute' => 'full_name',
         ])
     </div>
 

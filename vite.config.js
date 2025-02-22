@@ -24,6 +24,8 @@ export default defineConfig({
                 'resources/assets/admin/js/adminlte.min.js',
                 'resources/assets/admin/js/demo.js',
 
+                'resources/assets/admin/js/filepond-init.js',
+
                 'resources/assets/admin/css/admin.css',
 
                 'resources/assets/admin/plugins/filepond/filepond.min.css',

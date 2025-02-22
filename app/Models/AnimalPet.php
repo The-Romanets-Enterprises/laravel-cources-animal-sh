@@ -80,4 +80,9 @@ class AnimalPet extends Model
     {
         return $animal_pet->delete();
     }
+
+    public function __toString()
+    {
+        return "{$this['id']}: {$this['name']} ({$this->animal->name})";
+    }
 }

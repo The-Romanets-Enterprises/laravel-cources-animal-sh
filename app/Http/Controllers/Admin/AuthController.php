@@ -29,8 +29,8 @@ class AuthController extends Controller
         $animal_count = Animal::query()->count();
         $animal_pet_count = AnimalPet::query()->count();
         $address_count = Address::query()->count();
-        $photo_count = Photo::query()->count();
-        $video_count = Video::query()->count();
+//        $photo_count = Photo::query()->count();
+//        $video_count = Video::query()->count();
 
         return view('admin.index', compact(
                 'title',
@@ -40,8 +40,8 @@ class AuthController extends Controller
                 'animal_count',
                 'animal_pet_count',
                 'address_count',
-                'photo_count',
-                'video_count'
+//                'photo_count',
+//                'video_count'
             )
         );
     }

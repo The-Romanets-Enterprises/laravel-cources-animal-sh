@@ -27,14 +27,18 @@ class AnimalPetRequest extends FormRequest
             'animal_id' => ['required', 'integer', 'exists:animals,id'],
             'sex' => ['required', Rule::enum(Sex::class)],
             'name' => ['required', 'string'],
-            'description' => ['required'],
-            'birth_date' => ['required', 'date'],
+            'description' => ['nullable'],
+            'birth_date' => ['nullable', 'date'],
             'is_sterilized' => ['required', 'boolean'],
             'has_vaccination' => ['required', 'boolean'],
-            'wool_type' => ['required', 'string', 'max:100'],
-            'character' => ['required'],
+            'wool_type' => ['nullable', 'string', 'max:100'],
+            'character' => ['nullable'],
             'is_confirmed' => ['required', 'boolean'],
             'user_id' => ['required', 'integer', 'exists:users,id'],
+            'videos' => ['nullable','array'],
+            'videos.*' => ['nullable', 'string'],
+            'photos' => ['nullable', 'array'],
+            'photos.*' => ['nullable', 'string'],
         ];
     }
 

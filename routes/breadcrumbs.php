@@ -169,43 +169,43 @@ Breadcrumbs::for('admin.addresses.edit', function (BreadcrumbTrail $trail, Addre
     $trail->push($address->id, route('admin.addresses.edit', $address));
 });
 
-// Photo
-// Home > Photo
-Breadcrumbs::for('admin.photos.index', function (BreadcrumbTrail $trail) {
-    $trail->parent('admin.home');
-    $trail->push(__('messages.photo.plural'), route('admin.photos.index'));
-});
-
-// Home > Photo > Create
-Breadcrumbs::for('admin.photos.create', function (BreadcrumbTrail $trail) {
-    $trail->parent('admin.photos.index');
-    $trail->push(__('messages.photo.create'), route('admin.photos.create'));
-});
-
-// Home > Photo > Edit
-Breadcrumbs::for('admin.photos.edit', function (BreadcrumbTrail $trail, Photo $photo) {
-    $trail->parent('admin.photos.index');
-    $trail->push($photo->id, route('admin.photos.edit', $photo));
-});
-
-// Video
-// Home > Video
-Breadcrumbs::for('admin.videos.index', function (BreadcrumbTrail $trail) {
-    $trail->parent('admin.home');
-    $trail->push(__('messages.video.plural'), route('admin.videos.index'));
-});
-
-// Home > Video > Create
-Breadcrumbs::for('admin.videos.create', function (BreadcrumbTrail $trail) {
-    $trail->parent('admin.videos.index');
-    $trail->push(__('messages.video.create'), route('admin.videos.create'));
-});
-
-// Home > Video > Edit
-Breadcrumbs::for('admin.videos.edit', function (BreadcrumbTrail $trail, Video $video) {
-    $trail->parent('admin.videos.index');
-    $trail->push($video->animalPet->name, route('admin.videos.edit', $video));
-});
+//// Photo
+//// Home > Photo
+//Breadcrumbs::for('admin.photos.index', function (BreadcrumbTrail $trail) {
+//    $trail->parent('admin.home');
+//    $trail->push(__('messages.photo.plural'), route('admin.photos.index'));
+//});
+//
+//// Home > Photo > Create
+//Breadcrumbs::for('admin.photos.create', function (BreadcrumbTrail $trail) {
+//    $trail->parent('admin.photos.index');
+//    $trail->push(__('messages.photo.create'), route('admin.photos.create'));
+//});
+//
+//// Home > Photo > Edit
+//Breadcrumbs::for('admin.photos.edit', function (BreadcrumbTrail $trail, Photo $photo) {
+//    $trail->parent('admin.photos.index');
+//    $trail->push($photo->id, route('admin.photos.edit', $photo));
+//});
+//
+//// Video
+//// Home > Video
+//Breadcrumbs::for('admin.videos.index', function (BreadcrumbTrail $trail) {
+//    $trail->parent('admin.home');
+//    $trail->push(__('messages.video.plural'), route('admin.videos.index'));
+//});
+//
+//// Home > Video > Create
+//Breadcrumbs::for('admin.videos.create', function (BreadcrumbTrail $trail) {
+//    $trail->parent('admin.videos.index');
+//    $trail->push(__('messages.video.create'), route('admin.videos.create'));
+//});
+//
+//// Home > Video > Edit
+//Breadcrumbs::for('admin.videos.edit', function (BreadcrumbTrail $trail, Video $video) {
+//    $trail->parent('admin.videos.index');
+//    $trail->push($video->animalPet->name, route('admin.videos.edit', $video));
+//});
 
 
 // Token

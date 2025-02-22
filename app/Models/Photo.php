@@ -41,6 +41,15 @@ class Photo extends Model
         return self::query()->create($data);
     }
 
+    public static function createFromPath(string $path, int $imageableId, string $imageableType)
+    {
+        return self::query()->create([
+            'path' => $path,
+            'imageable_id' => $imageableId,
+            'imageable_type' => $imageableType,
+        ]);
+    }
+
     public static function updatePhoto(PhotoRequest $request, self $photo)
     {
         $data = $request->validated();

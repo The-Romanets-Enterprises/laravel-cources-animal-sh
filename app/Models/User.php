@@ -149,4 +149,9 @@ class User extends Authenticatable
         return $user->delete();
     }
 
+    public function __toString()
+    {
+        return "{$this['id']}: {$this['lastname']} {$this['name']}";
+    }
+
 }

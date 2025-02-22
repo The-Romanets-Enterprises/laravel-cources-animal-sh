@@ -61,7 +61,26 @@
             'items' => $users,
             'value' => $animal_pet->user_id ?? null,
             'pre_text' => 'Выбрать пользователя',
-            'print_attribute' => 'full_name',
+        ])
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        @include('layouts.form.filepond-file', [
+            'title' => 'Видео*',
+            'multiple' => true,
+            'name' => 'videos[]',
+            'data_files' => $videosFiles ?? null,
+            'hidden' => 'video-paths'
+        ])
+    </div>
+    <div class="col-6">
+        @include('layouts.form.filepond-file', [
+            'title' => 'Фото*',
+            'multiple' => true,
+            'name' => 'photos[]',
+            'data_files' => $photosFiles ?? null,
+            'hidden' => 'photo-paths'
         ])
     </div>
 </div>

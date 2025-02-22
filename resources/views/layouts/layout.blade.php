@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@section('title') AdminLTE 3 | Blank Page @show</title>
 
     <!-- Google Font: Source Sans Pro -->
@@ -125,6 +126,7 @@
 
     @vite([
         'resources/assets/admin/plugins/fontawesome-kit/fontawesome.js',
+        'resources/assets/admin/js/filepond-init.js',
     ])
 
     <script src="{{ asset('assets/admin/js/admin.js') }}"></script>

@@ -41,6 +41,14 @@ class Video extends Model
         return self::query()->create($data);
     }
 
+    public static function createFromPath(string $path, int $animalPetId)
+    {
+        return self::query()->create([
+            'path' => $path,
+            'animal_pet_id' => $animalPetId,
+        ]);
+    }
+
     public static function updateVideo(VideoRequest $request, self $video)
     {
         $data = $request->validated();
