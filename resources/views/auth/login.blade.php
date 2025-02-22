@@ -22,8 +22,12 @@
 
             @include('layouts.message')
 
-            <form action="{{ route('admin.login.auth') }}" method="post">
-                @csrf
+            @php
+                $isAdmin = request()->routeIs('admin.*');
+            @endphp
+
+            <form action="{{ $isAdmin ? route('admin.login.auth') : route('user.login.auth') }}" method="post">
+            @csrf
                 <div class="input-group mb-3">
                     <input type="text" name="email" class="form-control" placeholder="Адрес эл. почты"
                            value="{{ old('email') }}">
@@ -42,7 +46,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-8 d-flex align-items-center">
                         <div class="icheck-primary">
                             <input type="checkbox" id="remember" name="remember">
                             <label for="remember">
@@ -50,11 +54,12 @@
                             </label>
                         </div>
                     </div>
-                    <!-- /.col -->
                     <div class="col-4">
-                        <button type="submit" class="btn btn-primary btn-block">Войти</button>
+                        <button type="submit" class="btn btn-primary w-100">Войти</button>
                     </div>
-                    <!-- /.col -->
+                </div>
+                <div class="mt-3">
+                    <a href="{{ route('user.register.show') }}" class="btn btn-success w-100">Зарегистрироваться</a>
                 </div>
             </form>
         </div>

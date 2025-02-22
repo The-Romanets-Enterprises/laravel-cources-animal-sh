@@ -3,6 +3,7 @@
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
+        @if(auth()->user()->role == \App\Enums\Role::ADMIN)
         <li class="nav-item">
             <a href="<?=route('admin.home')?>" class="nav-link">
                 <i class="nav-icon fas fa-home"></i>
@@ -33,6 +34,14 @@
                 <p>{{ __('messages.animal.plural') }}</p>
             </a>
         </li>
+        @else
+            <li class="nav-item">
+                <a href="<?=route('user.home')?>" class="nav-link">
+                    <i class="nav-icon fas fa-home"></i>
+                    <p>{{ __('messages.main') }}</p>
+                </a>
+            </li>
+        @endif
 
 {{--        <li class="nav-item has-treeview">--}}
 {{--            <a href="#" class="nav-link">--}}

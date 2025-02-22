@@ -73,15 +73,24 @@
                             <a href="#" class="d-block">{{ auth()->user()->name }}</a>
                         </div>
                         <div class="info">
-                            <a href="<?=route('admin.logout')?>" class="d-block">
-                                <i class="fas fa-sign-out-alt"></i>
-                                Выход
+                            @if(auth()->user()->role == \App\Enums\Role::ADMIN)
+                                <a href="<?=route('admin.logout')?>" class="d-block">
+                            @else
+                                <a href="<?=route('user.logout')?>" class="d-block">
+                          @endif
+                                <i class="fas fa-sign-out-alt"></i> Выход
                             </a>
                         </div>
                     </div>
                     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                         <div class="info">
-                            <a href="<?=route('admin.change-password')?>" class="d-block">{{ __('messages.user.change-password') }}</a>
+                            @if(auth()->user()->role == \App\Enums\Role::ADMIN)
+                                <a href="<?=route('admin.change-password')?>" class="d-block">
+                            @else
+                                <a href="<?=route('user.change-password')?>" class="d-block">
+                            @endif
+                                <i class="fas fa-key"></i> {{ __('messages.user.change-password') }}
+                            </a>
                         </div>
                     </div>
                 @endauth
