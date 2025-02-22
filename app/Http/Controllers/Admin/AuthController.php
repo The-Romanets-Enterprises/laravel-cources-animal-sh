@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
-use App\Models\Animal_pet;
+use App\Models\AnimalPet;
 use App\Models\Animal;
 use App\Models\Address;
 use App\Models\Photo;
@@ -23,7 +23,7 @@ class AuthController extends Controller
         $address_count = Address::query()->count();
         $video_count = Video::query()->count();
         $photo_count = Photo::query()->count();
-        $animal_pet_count = Animal_pet::query()->count();
+        $animalPet_count = AnimalPet::query()->count();
         $animal_count = Animal::query()->count();
         $user_count = User::query()->count();
 
@@ -31,7 +31,7 @@ class AuthController extends Controller
                 'title',
                 'user_count',
                 'animal_count',
-                'animal_pet_count',
+                'animalPet_count',
                 'address_count',
                 'video_count',
                 'photo_count',

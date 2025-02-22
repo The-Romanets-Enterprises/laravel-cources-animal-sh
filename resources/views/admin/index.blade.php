@@ -486,19 +486,19 @@
                         </div>
                     </div>
                     @endif
-                    @isset($animal_pet_count)
+                    @isset($animalPet_count)
                         <div class="col-lg-3 col-6">
                             <!-- small box -->
                             <div class="small-box bg-yellow">
                                 <div class="inner">
-                                    <h3>{{ $animal_pet_count }}</h3>
+                                    <h3>{{ $animalPet_count }}</h3>
 
                                     <p>{{ __('messages.request.plural') }}</p>
                                 </div>
                                 <div class="icon">
                                     <i class="fas fa-solid fa-book"></i>
                                 </div>
-                                <a href="<?=route('admin.animal_pets.index')?>" class="small-box-footer">{{ __('messages.more') }}
+                                <a href="<?=route('admin.animalPets.index')?>" class="small-box-footer">{{ __('messages.more') }}
                                     <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>

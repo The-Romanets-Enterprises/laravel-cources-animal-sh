@@ -3,14 +3,14 @@
 namespace App\Models;
 
 use App\Enum\Sex;
-use App\Http\Requests\Animal_PetRequest;
+use App\Http\Requests\AnimalPetRequest;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
 
-class Animal_pet extends Model
+class AnimalPet extends Model
 {
     /** @use HasFactory<\Database\Factories\AnimalPetFactory> */
     use HasFactory;
@@ -58,7 +58,7 @@ class Animal_pet extends Model
         return $this->morphMany(Photo::class, 'imageable');
     }
 
-    public static function createAnimal_pet(Animal_PetRequest $request, User $user)
+    public static function createAnimalPet(AnimalPetRequest $request, User $user)
     {
         $data = $request->validated();
         $data['user_id'] = $user->id;
@@ -66,15 +66,15 @@ class Animal_pet extends Model
         return self::query()->create($data);
     }
 
-    public static function updateAnimal_pet(Animal_PetRequest $request, self $animal_pet)
+    public static function updateAnimalPet(AnimalPetRequest $request, self $animalPet)
     {
         $data = $request->validated();
 
-        return $animal_pet->update($data);
+        return $animalPet->update($data);
     }
 
-    public static function deleteAnimal_pet(self $animal_pet)
+    public static function deleteAnimalPet(self $animalPet)
     {
-        return $animal_pet->delete();
+        return $animalPet->delete();
     }
 }

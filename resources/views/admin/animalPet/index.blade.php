@@ -16,10 +16,10 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <a href="{{ route("admin.animal_pets.create") }}"
+                <a href="{{ route("admin.animalPets.create") }}"
                    class="btn btn-dark mb-3">{{ __('messages.request.create') }}</a>
 
-                @if(count($animal_pets))
+                @if(count($animalPets))
                     <table class="table table-bordered table-striped">
                         <thead>
                         <tr>
@@ -38,26 +38,26 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($animal_pets as $animal_pet)
+                        @foreach($animalPets as $animalPet)
                             <tr>
-                                <td>{{ $animal_pet->id}}</td>
-                                <td>{{ $animal_pet->is_confirmed ? 'Да' : 'Нет' }}</td>
-                                <td>{{ $animal_pet->animal->name}}</td>
-                                <td>{{ $animal_pet->sex->getTitle() }}</td>
-                                <td>{{ $animal_pet->user->full_name }}</td>
-                                <td>{{ $animal_pet->description }}</td>
-                                <td>{{ $animal_pet->character}}</td>
-                                <td>{{ $animal_pet->birth_date->format('Y-m-d') }}</td>
-                                <td>{{ $animal_pet->wool_type}}</td>
-                                <td>{{ $animal_pet->is_sterilized ? 'Да' : 'Нет' }}</td>
-                                <td>{{ $animal_pet->has_vaccination ? 'Да' : 'Нет' }}</td>
+                                <td>{{ $animalPet->id}}</td>
+                                <td>{{ $animalPet->is_confirmed ? 'Да' : 'Нет' }}</td>
+                                <td>{{ $animalPet->animal->name}}</td>
+                                <td>{{ $animalPet->sex->getTitle() }}</td>
+                                <td>{{ $animalPet->user->full_name }}</td>
+                                <td>{{ $animalPet->description }}</td>
+                                <td>{{ $animalPet->character}}</td>
+                                <td>{{ $animalPet->birth_date->format('Y-m-d') }}</td>
+                                <td>{{ $animalPet->wool_type}}</td>
+                                <td>{{ $animalPet->is_sterilized ? 'Да' : 'Нет' }}</td>
+                                <td>{{ $animalPet->has_vaccination ? 'Да' : 'Нет' }}</td>
                                 <td>
-                                    <a href="{{ route("admin.animal_pets.edit", ['animal_pet' => $animal_pet->id]) }}"
+                                    <a href="{{ route("admin.animalPets.edit", ['animalPet' => $animalPet->id]) }}"
                                        class="btn btn-info btn-sm float-left">
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
                                     @if(auth()->user()->role == \App\Enum\Role::ADMIN)
-                                        <form action="{{ route("admin.animal_pets.destroy", ['animal_pet' => $animal_pet->id]) }}"
+                                        <form action="{{ route("admin.animalPets.destroy", ['animalPet' => $animalPet->id]) }}"
                                               method="post" class="float-left ml-1">
                                             @csrf
                                             @method('DELETE')
@@ -79,7 +79,7 @@
             <!-- /.card-body -->
 
             <div class="card-footer clearfix">
-                {{ $animal_pets->appends(request()->query())->links('vendor.pagination.my-pagination') }}
+                {{ $animalPets->appends(request()->query())->links('vendor.pagination.my-pagination') }}
             </div>
         </div>
         <!-- /.card -->

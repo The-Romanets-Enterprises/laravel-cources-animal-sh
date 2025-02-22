@@ -4,7 +4,7 @@
 // this import. This is nice for IDE syntax and refactoring.
 use App\Models\User;
 use App\Models\Animal;
-use App\Models\Animal_pet;
+use App\Models\AnimalPet;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\Address;
@@ -68,21 +68,21 @@ Breadcrumbs::for('admin.users.edit', function (BreadcrumbTrail $trail, User $use
 
 // Request
 // Home > Request
-Breadcrumbs::for('admin.animal_pets.index', function (BreadcrumbTrail $trail) {
+Breadcrumbs::for('admin.animalPets.index', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.home');
-    $trail->push(__('messages.request.plural'), route('admin.animal_pets.index'));
+    $trail->push(__('messages.request.plural'), route('admin.animalPets.index'));
 });
 
 // Home > Request > Create
-Breadcrumbs::for('admin.animal_pets.create', function (BreadcrumbTrail $trail) {
-    $trail->parent('admin.animal_pets.index');
-    $trail->push(__('messages.request.create'), route('admin.animal_pets.create'));
+Breadcrumbs::for('admin.animalPets.create', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.animalPets.index');
+    $trail->push(__('messages.request.create'), route('admin.animalPets.create'));
 });
 
 // Home > Request > Edit
-Breadcrumbs::for('admin.animal_pets.edit', function (BreadcrumbTrail $trail, Animal_pet $animal_pet) {
-    $trail->parent('admin.animal_pets.index');
-    $trail->push($animal_pet->name, route('admin.animal_pets.edit', $animal_pet));
+Breadcrumbs::for('admin.animalPets.edit', function (BreadcrumbTrail $trail, AnimalPet $animalPet) {
+    $trail->parent('admin.animalPets.index');
+    $trail->push($animalPet->name, route('admin.animalPets.edit', $animalPet));
 });
 
 // Animal

@@ -6,7 +6,7 @@ use App\Enum\Sex;
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class Animal_PetRequest extends FormRequest
+class AnimalPetRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

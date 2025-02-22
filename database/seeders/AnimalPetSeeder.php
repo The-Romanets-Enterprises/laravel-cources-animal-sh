@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Animal_pet;
+use App\Models\AnimalPet;
 
 class AnimalPetSeeder extends Seeder
 {
@@ -13,6 +13,6 @@ class AnimalPetSeeder extends Seeder
      */
     public function run(): void
     {
-        Animal_pet::factory(100)->create();
+        AnimalPet::factory(100)->create();
     }
 }

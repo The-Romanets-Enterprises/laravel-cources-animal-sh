@@ -16,7 +16,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="<?=route('admin.animal_pets.index')?>" class="nav-link">
+            <a href="<?=route('admin.animalPets.index')?>" class="nav-link">
                 <i class="nav-icon fas fa-book"></i>
                 <p>{{ __('messages.request.plural') }}</p>
             </a>

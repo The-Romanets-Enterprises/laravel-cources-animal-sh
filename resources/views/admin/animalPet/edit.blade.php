@@ -13,21 +13,19 @@
                 <!-- left column -->
                 <div class="col-12">
                     <!-- general form elements -->
-                    <div class="card card-dark">
+                    <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">{{ $title ?? null }}</h3>
+                            <h3 class="card-title">{{ __('messages.request.single') }} {{ $animalPet->id }}</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{ route('admin.animal_pets.store') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.animalPets.update', [$animalPet]) }}" method="post" enctype="multipart/form-data">
                             @csrf
-                            <div class="card-body">
-                                @include('admin.animal_pet.fields')
-                            </div>
+                            @method('PUT')
                             <!-- /.card-body -->
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">{{ __('messages.save') }}</button>
+                                <button type="submit" class="btn btn-primary">{{ __('messages.update') }}</button>
                             </div>
                         </form>
                     </div>

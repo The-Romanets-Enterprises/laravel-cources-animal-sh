@@ -1,6 +1,8 @@
 @extends('layouts.layout')
 
-@section('title') {{ $title ?? null }} @endsection
+@section('title')
+    {{ $title ?? null }}
+@endsection
 
 @section('content')
     <!-- Content Header (Page header) -->
@@ -13,19 +15,22 @@
                 <!-- left column -->
                 <div class="col-12">
                     <!-- general form elements -->
-                    <div class="card card-primary">
+                    <div class="card card-dark">
                         <div class="card-header">
-                            <h3 class="card-title">{{ __('messages.request.single') }} {{ $animal_pet->id }}</h3>
+                            <h3 class="card-title">{{ $title ?? null }}</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{ route('admin.animal_pets.update', [$animal_pet]) }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.animalPets.store') }}" method="post"
+                              enctype="multipart/form-data">
                             @csrf
-                            @method('PUT')
+                            <div class="card-body">
+                                @include('admin.animalPet.fields')
+                            </div>
                             <!-- /.card-body -->
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">{{ __('messages.update') }}</button>
+                                <button type="submit" class="btn btn-primary">{{ __('messages.save') }}</button>
                             </div>
                         </form>
                     </div>
