@@ -20,7 +20,7 @@ enum Role: string
         return match ($this) {
             self::ADMIN => 'Администратор',
             self::EMPLOYEE => 'Работник',
-            self::USER => 'Заявитель',
+            self::USER => 'Пользователь',
         };
     }
 }

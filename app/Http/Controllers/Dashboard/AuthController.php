@@ -6,44 +6,44 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Enums\Role;
 
-// Class work with authentication
+// Контроллер для аутентификации
 class AuthController extends Controller
 {
-    // Dashboard Main Page
-    public function index()
-    {
-        $title = __('messages.main_page');
-
-        return view('dashboard.index', compact('title'));
-    }
-
-    // Enter into an account page (ONLY VIEW)
+    // Страница входа (GET /login)
     public function login()
     {
         $title = __('messages.auth.login');
-
         return view('auth.login', compact('title'));
     }
 
-    // Store information in session
+    // Обработка входа (POST /login)
     public function auth(LoginRequest $request)
     {
-        $is_accepted = Auth::attempt([
-            'email' => $request->email,
-            'password' => $request->password,
-        ], $request->remember);
+        if (Auth::attempt($request->only('email', 'password'), $request->remember)) {
+            $request->session()->regenerate(); // Обновляем сессию после входа
+            $user = Auth::user();
 
-        return to_route('dashboard.home')->with('success', __('messages.auth.success'));
+            // Редирект в зависимости от роли
+            return match ($user->role) {
+                Role::ADMIN => to_route('dashboard.admin.home'),
+                Role::EMPLOYEE => to_route('dashboard.employee.home'),
+                Role::USER => to_route('dashboard.user.home'),
+                default => to_route('dashboard.index'),
+            };
+        }
+
+        return back()->withErrors(['email' => __('messages.auth.failed')])->onlyInput('email');
     }
 
-    // Logout from the account
+    // Выход из аккаунта (POST /logout)
     public function logout(Request $request)
     {
         Auth::logout();
-
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('auth.logout');
+
+        return view('auth.logout');
     }
 }

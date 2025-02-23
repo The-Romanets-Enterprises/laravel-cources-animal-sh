@@ -2,7 +2,7 @@
     <div class="container footer-top">
         <div class="row gy-4">
             <div class="col-lg-4 col-md-6 footer-about">
-                <a href="" class="logo d-flex align-items-center">
+                <a href="{{ route('mainwebsite.home') }}" class="logo d-flex align-items-center">
                     <span class="sitename">AnimalSafe</span>
                 </a>
                 <div class="footer-contact pt-3">
@@ -84,9 +84,6 @@
 
     <div class="container copyright text-center mt-4">
         <p><?php echo date('Y'); ?> © <span>Copyright</span> <strong class="px-1 sitename">AnimalSafe</strong> <span>All Rights Reserved</span></p>
-        <div class="credits">
-            Designed by <a href="">BootstrapMade</a> Distributed by <a href="">ThemeWagon</a>
-        </div>
     </div>
 
 </footer>

@@ -107,4 +107,14 @@ return [
         'success' => 'Вы авторизованы',
         'error' => 'Неправильный логин и/или пароль',
     ],
+
+    'days' => [
+        'Monday' => 'пн',
+        'Tuesday' => 'вт',
+        'Wednesday' => 'ср',
+        'Thursday' => 'чт',
+        'Friday' => 'пт',
+        'Saturday' => 'сб',
+        'Sunday' => 'вс',
+    ],
 ];

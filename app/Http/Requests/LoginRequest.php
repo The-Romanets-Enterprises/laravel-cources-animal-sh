@@ -8,9 +8,7 @@ use Illuminate\Foundation\Http\FormRequest;
 class LoginRequest extends FormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
+     * Определяет, авторизован ли пользователь для выполнения запроса.
      */
     public function authorize()
     {
@@ -18,14 +16,12 @@ class LoginRequest extends FormRequest
     }
 
     /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, mixed>
+     * Правила валидации запроса.
      */
     public function rules()
     {
         return [
-            'email' => ['required', 'string', 'email', 'exists:users'],
+            'email' => ['required', 'string', 'email'],
             'password' => ['required', 'string', new CheckCredentialsRule($this->email)],
         ];
     }

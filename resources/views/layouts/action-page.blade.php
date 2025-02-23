@@ -10,7 +10,7 @@
     <!-- ===============================================-->
     <!--    Document Title-->
     <!-- ===============================================-->
-    <title>{{ $title ?? 'Сброс пароля' }}</title>
+    <title>@section('title')@show</title>
 
 
     <!-- ===============================================-->
@@ -70,30 +70,9 @@
                 container.classList.add('container-fluid');
             }
         </script>
-        <div class="row flex-center min-vh-100 py-6">
-            <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4">
-                <a class="d-flex flex-center mb-4" href="">
-                    <img class="me-2" src="{{ asset('assets/dashboard/img/icons/spot-illustrations/falcon.png') }}" alt="" width="58" />
-                    <span class="font-sans-serif text-primary fw-bolder fs-4 d-inline-block">AnimalSafe</span>
-                </a>
-                <div class="card">
-                    <div class="card-body p-4 p-sm-5">
-                        <h5 class="text-center">Создать новый пароль</h5>
-                        <form class="mt-3">
-                            @csrf
-                            <div class="mb-3">
-                                <label class="form-label"></label>
-                                <input class="form-control" type="password" placeholder="Новый пароль" />
-                            </div>
-                            <div class="mb-3">
-                                <input class="form-control" type="password" placeholder="Подтвердите новый пароль" />
-                            </div>
-                            <button class="btn btn-primary d-block w-100 mt-3" type="submit" name="submit">Изменить пароль</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+        @yield('content')
+
     </div>
 </main>
 <!-- ===============================================-->
@@ -113,6 +92,8 @@
 <script src="{{ asset('assets/dashboard/vendors/list.js/list.min.js') }}"></script>
 
 <script src="{{ asset('assets/dashboard/js/theme.js') }}"></script>
+
+@yield('scripts')
 
 </body>
 

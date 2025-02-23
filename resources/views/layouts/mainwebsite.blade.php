@@ -47,6 +47,7 @@
 
 
 <script src="{{ asset('assets/mainwebsite/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('assets/mainwebsite/vendor/bootstrap-icons/bootstrap-icons.min.css') }}"></script>
 <script src="{{ asset('assets/mainwebsite/vendor/php-email-form/validate.js') }}"></script>
 <script src="{{ asset('assets/mainwebsite/vendor/aos/aos.js') }}"></script>
 <script src="{{ asset('assets/mainwebsite/vendor/glightbox/js/glightbox.min.js') }}"></script>

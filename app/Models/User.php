@@ -76,4 +76,19 @@ class User extends Authenticatable
         return self::query()->create($data);
     }
 
+    // Методы для проверки ролей
+    public function isAdmin(): bool
+    {
+        return $this->role === Role::ADMIN;
+    }
+
+    public function isEmployee(): bool
+    {
+        return $this->role === Role::EMPLOYEE;
+    }
+
+    public function isUser(): bool
+    {
+        return $this->role === Role::USER;
+    }
 }

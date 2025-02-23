@@ -1,7 +1,7 @@
 <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
-        <a href="" class="logo d-flex align-items-center me-auto">
+        <a href="{{ route('mainwebsite.home') }}" class="logo d-flex align-items-center me-auto">
             <img src="{{ asset('assets/mainwebsite/img/logo.png') }}" alt="">
             <h1 class="sitename">AnimalSafe</h1>
         </a>
@@ -89,6 +89,16 @@
             </ul>
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
-        <a class="btn-getstarted" href="{{ route('auth.login') }}">Войти / Регистрация</a>
+
+        @if(Auth::guest())
+            <!-- Видно только для НЕавторизованных пользователей -->
+            <a class="btn-getstarted" href="{{ route('auth.login') }}">Войти / Регистрация</a>
+        @else
+            <!-- Видно только для авторизованных пользователей -->
+            <a class="btn-getstarted" href="{{ route(auth()->user()->isAdmin() ? 'dashboard.admin.home' : (auth()->user()->isEmployee() ? 'dashboard.employee.home' : 'dashboard.user.home')) }}">
+                <i class="bi bi-person-fill"></i>
+                {{ auth()->user()->name }}
+            </a>
+        @endif
     </div>
 </header>

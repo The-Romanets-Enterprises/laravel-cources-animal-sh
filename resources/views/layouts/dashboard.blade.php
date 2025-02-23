@@ -21,7 +21,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/dashboard/img/favicons/favicon-16x16.png') }}">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/dashboard/img/favicons/favicon.ico') }}">
     <link rel="manifest" href="{{ asset('assets/dashboard/img/favicons/manifest.json') }}">
-    <meta name="msapplication-TileImage" content="{{ asset('assets/img/favicons/mstile-150x150.png') }}">
+    <meta name="msapplication-TileImage" content="{{ asset('assets/dashboard/img/favicons/mstile-150x150.png') }}">
     <meta name="theme-color" content="#ffffff">
     <script src="{{ asset('assets/dashboard/js/config.js') }}"></script>
     <script src="{{ asset('assets/dashboard/vendors/simplebar/simplebar.min.js') }}"></script>
@@ -56,11 +56,6 @@
 
 
 <body>
-
-@php
-    $role = auth()->user()->role ?? 'guest';
-@endphp
-
 <!-- ===============================================-->
 <!--    Main Content-->
 <!-- ===============================================-->

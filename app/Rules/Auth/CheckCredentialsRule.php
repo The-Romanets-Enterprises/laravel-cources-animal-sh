@@ -11,32 +11,20 @@ class CheckCredentialsRule implements ValidationRule
 {
     private string $email;
 
-    public function __construct(string|null $email)
+    public function __construct(?string $email)
     {
-        if ($email) {
-            $this->email = $email;
-        }
+        $this->email = $email ?? ''; // Если email = null, присваиваем пустую строку
     }
 
     /**
-     * Run the validation rule.
-     *
-     * @param  \Closure(string): \Illuminate\Translation\PotentiallyTranslatedString  $fail
+     * Валидация учетных данных.
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        if ($this->email) {
-            $user = User::query()->where('email', $this->email)->first();
+        $user = User::where('email', $this->email)->first();
 
-            if (!$user) {
-                $fail(__('messages.user.error.no-user'));
-            }
-
-            if ($user) {
-                if (!Hash::check($value, $user->password)) {
-                    $fail(__('messages.user.error.wrong-password'));
-                }
-            }
+        if (!$user || !Hash::check($value, $user->password)) {
+            $fail(__('messages.user.error.invalid-credentials')); // Одно сообщение вместо двух
         }
     }
 }

@@ -4,7 +4,7 @@
                         <span class="toggle-line"></span>
                     </span>
     </button>
-    <a class="navbar-brand me-1 me-sm-3" href="">
+    <a class="navbar-brand me-1 me-sm-3" href="{{ route(auth()->user()->isAdmin() ? 'dashboard.admin.home' : (auth()->user()->isEmployee() ? 'dashboard.employee.home' : 'dashboard.user.home')) }}">
         <div class="d-flex align-items-center">
             <img class="me-2" src="{{ asset('assets/dashboard/img/icons/spot-illustrations/falcon.png') }}" alt="" width="20" />
             <span class="font-sans-serif text-primary fs-8">AnimalSafe</span>
@@ -199,7 +199,7 @@
                                 <div class="col-4">
                                     <a class="d-block hover-bg-200 px-2 py-3 rounded-3 text-center text-decoration-none" href="" target="_blank">
                                         <div class="avatar avatar-2xl">
-                                            <img class="rounded-circle" src="{{ asset('assets/dashboard/img/team/3.jpg') }}" alt="" />
+                                            <img class="rounded-circle" src="{{ asset('assets/dashboard/img/team/2.jpg') }}" alt="" />
                                         </div>
                                         <p class="mb-0 fw-medium text-800 text-truncate fs-11">Вы</p>
                                     </a>
@@ -256,25 +256,30 @@
         <li class="nav-item dropdown">
             <a class="nav-link pe-0 ps-2" id="navbarDropdownUser" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="avatar avatar-xl">
-                    <img class="rounded-circle" src="{{ asset('assets/dashboard/img/team/3-thumb.png') }}" alt="" />
+                    <img class="rounded-circle" src="{{ asset('assets/dashboard/img/team/2.jpg') }}" alt="" />
                 </div>
             </a>
             <div class="dropdown-menu dropdown-caret dropdown-caret dropdown-menu-end py-0" aria-labelledby="navbarDropdownUser">
                 @auth
                     <div class="bg-white dark__bg-1000 rounded-2 py-2">
-                        @if($role === 'admin')
+
+                        @if(Auth::user()->isAdmin())
                             <div class="dropdown-item fw-bold text-danger">
                                 <span class="fas fa-crown me-1"></span>
                                 <span>Администратор</span>
                             </div>
-                        @elseif($role === 'employee')
-                            <div class="dropdown-item fw-bold text-primary">
-                                <span class="fas fa-crown me-1"></span>
-                                <span>Сотрудник</span>
+                        @endif
+
+                        @if(Auth::user()->isEmployee())
+                            <div class="dropdown-item fw-bold text-warning">
+                                <span class="fas fa-mail-bulk me-1"></span>
+                                <span>Работник</span>
                             </div>
-                        @else
+                        @endif
+
+                        @if(Auth::user()->isUser())
                             <div class="dropdown-item fw-bold text-primary">
-                                <span class="fas fa-crown me-1"></span>
+                                <span class="fas fa-user me-1"></span>
                                 <span>Пользователь</span>
                             </div>
                         @endif
@@ -286,7 +291,16 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="">Настройки</a>
                         <a class="dropdown-item" href="">Помощь</a>
-                        <a class="dropdown-item" href="{{ route('dashboard.logout') }}">Выйти</a>
+
+                        <div class="dropdown-divider"></div>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+
+                        <a class="dropdown-item text-danger" href="" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            Выйти
+                        </a>
                     </div>
                 @endauth
             </div>
