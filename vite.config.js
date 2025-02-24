@@ -8,7 +8,7 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
-                //'resources/assets/admin/vendors/simplebar/simplebar.min.css',
+                // 'resources/assets/mainwebsite/css/docs.css',
             ],
             refresh: true,
         }),
