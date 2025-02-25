@@ -4,6 +4,9 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\User\UserRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,6 +17,19 @@ class UserAuthController extends Controller
         $title = __('messages.main_page');
 
         return view('user.index', compact('title'));
+    }
+
+    public function store(RegisterRequest $request)
+    {
+        $user = User::registerUser($request);
+
+        if (!$user) {
+            return to_route('user.register.show')->with('error', __('messages.user.error.store'));
+        }
+
+        Auth::login($user);
+
+        return redirect()->route('user.home')->with('success', __('messages.user.success.store'));
     }
 
     public function login()

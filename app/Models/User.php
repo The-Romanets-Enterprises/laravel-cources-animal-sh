@@ -99,6 +99,7 @@ class User extends Authenticatable
     {
         $data = $request->validated();
         $data['password'] = Hash::make($data['password']);
+        $data['role'] = Role::USER;
 
         return self::query()->create($data);
     }

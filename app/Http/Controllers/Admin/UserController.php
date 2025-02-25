@@ -203,9 +203,15 @@ class UserController extends Controller
 
     public function changePassword()
     {
+        $user = Auth::user();
+
         $title = __('messages.user.change-password');
 
-        return view('admin.user.change-password', compact('title'));
+        if ($user->role === \App\Enums\Role::ADMIN) {
+            return view('admin.user.change-password', compact('title'));
+        } else {
+            return view('user.change-password', compact('title'));
+        }
     }
 
     public function passwordStore(ChangePasswordRequest $request)
@@ -216,6 +222,10 @@ class UserController extends Controller
         $user->password = Hash::make($request->new_password);
         $user->update();
 
-        return to_route('admin.home')->with('success', __('messages.user.success.change-password'));
+        if ($user->role === \App\Enums\Role::ADMIN) {
+            return to_route('admin.home')->with('success', __('messages.user.success.change-password'));
+        } else {
+            return to_route('user.home')->with('success', __('messages.user.success.change-password'));
+        }
     }
 }

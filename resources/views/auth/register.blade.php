@@ -22,11 +22,25 @@
 
             <form action="{{ route('user.register.store') }}" method="post">
                 @csrf
-                <div class="input-group mb-3">
-                    <input type="text" name="name" class="form-control" placeholder="Имя" required>
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-user"></span>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="input-group mb-3">
+                            <input type="text" name="name" class="form-control" placeholder="Имя" required>
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-user"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-group mb-3">
+                            <input type="text" name="lastname" class="form-control" placeholder="Фамилия" required>
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-user"></span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -39,10 +53,26 @@
                     </div>
                 </div>
                 <div class="input-group mb-3">
+                    <input type="tel" name="phone" class="form-control" placeholder="Номер телефона" pattern="[0-9]{9}" title="Введите 9 цифр номера">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-phone"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
                     <input type="password" name="password" class="form-control" placeholder="Пароль" required>
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="password" name="password_confirmation" class="form-control" placeholder="Подтверждение пароля" required>
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-check"></span>
                         </div>
                     </div>
                 </div>
