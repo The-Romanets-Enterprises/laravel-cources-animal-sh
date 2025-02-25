@@ -41,6 +41,12 @@
                     <p>{{ __('messages.main') }}</p>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="<?=route('user.profile')?>" class="nav-link">
+                    <i class="nav-icon fas fa-user-alt"></i>
+                    <p>{{ __('messages.user.profile') }}</p>
+                </a>
+            </li>
         @endif
 
 {{--        <li class="nav-item has-treeview">--}}

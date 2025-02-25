@@ -21,9 +21,9 @@
         <li class="nav-item d-none d-sm-inline-block">
             <a href="<?=route('user.home')?>" class="nav-link">{{ __('messages.main') }}</a>
         </li>
-{{--        <li class="nav-item d-none d-sm-inline-block">--}}
-{{--            <a href="<?=route('user.profile')?>" class="nav-link">{{ __('messages.profile') }}</a>--}}
-{{--        </li>--}}
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="<?=route('user.profile')?>" class="nav-link">{{ __('messages.user.profile') }}</a>
+        </li>
 {{--        <li class="nav-item d-none d-sm-inline-block">--}}
 {{--            <a href="<?=route('user.animal_pets.index')?>" class="nav-link">{{ __('messages.animal_pet.plural') }}</a>--}}
 {{--        </li>--}}

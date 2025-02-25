@@ -3,7 +3,7 @@
 // lang/en/messages.php
 
 return [
-    'site_name' => 'Template',
+    'site_name' => 'Animal Shelter',
     'main' => 'Главная',
     'main_page' => 'Главная страница',
     'search' => 'Поиск',
@@ -84,6 +84,12 @@ return [
         'edit' => 'Редактировать пользователя :user',
         'none' => 'Пользователей пока что не создано...',
         'change-password' => 'Сменить пароль',
+        'profile' => 'Профиль',
+        'name' => 'Имя',
+        'lastname' => 'Фамилия',
+        'email' => 'Почта',
+        'phone' => 'Номер телефона',
+        'update-profile' => 'Обновить профиль',
         'success' => [
             'store' => 'Пользователь создан',
             'update' => 'Пользователь изменен',

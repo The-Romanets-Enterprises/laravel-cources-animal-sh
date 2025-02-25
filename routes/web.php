@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\UserAuthController;
 use App\Http\Controllers\FilePondController;
 use Illuminate\Support\Facades\Route;
@@ -23,6 +24,11 @@ Route::prefix('/user')->name('user.')->group(function () {
         Route::controller(UserAuthController::class)->group(function () {
             Route::get('/logout', 'logout')->name('logout');
             Route::get('/', 'index')->name('home');
+        });
+
+        Route::controller(ProfileController::class)->group(function () {
+            Route::get('/profile', 'index')->name('profile'); // Просмотр профиля
+            Route::post('/profile/update', 'update')->name('profile.update'); // Обновление данных профиля
         });
     });
 
