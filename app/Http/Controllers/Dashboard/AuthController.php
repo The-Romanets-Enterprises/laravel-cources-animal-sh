@@ -11,11 +11,18 @@ use App\Enums\Role;
 // Контроллер для аутентификации
 class AuthController extends Controller
 {
-    // Страница входа (GET /login)
+    // Страница входа (GET /sign in)
     public function sign_in()
     {
         $title = __('auth.titles.sign-in');
         return view('auth.sign-in', compact('title'));
+    }
+
+    // Страница регистрации (GET /sign up)
+    public function sign_up()
+    {
+        $title = __('auth.titles.sign-up');
+        return view('auth.sign-up', compact('title'));
     }
 
     // Обработка входа (POST /login)
@@ -37,7 +44,7 @@ class AuthController extends Controller
         return back()->withErrors(['email' => __('messages.auth.failed')])->onlyInput('email');
     }
 
-    // Выход из аккаунта (POST /logout)
+    // Выход из аккаунта (POST /sign-out)
     public function sign_out(Request $request)
     {
         Auth::logout();

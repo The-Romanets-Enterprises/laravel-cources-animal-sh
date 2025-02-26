@@ -38,8 +38,6 @@
     <link href="{{ asset('assets/dashboard/css/user-rtl.css') }}" rel="stylesheet" id="user-style-rtl">
     <link href="{{ asset('assets/dashboard/css/user.css') }}" rel="stylesheet" id="user-style-default">
 
-    @yield('styles')
-
     <script>
         var isRTL = JSON.parse(localStorage.getItem('isRTL'));
         if (isRTL) {
@@ -56,10 +54,13 @@
         }
     </script>
 
-    @yield('scripts-head')
-
 </head>
 
+<style>
+    .required-field-text{
+        color: rgb(0, 210, 122);
+    }
+</style>
 
 <body>
 
@@ -77,7 +78,17 @@
             }
         </script>
 
-        @yield('content')
+        <div class="row flex-center min-vh-100 py-6">
+            <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4">
+                <a class="d-flex flex-center mb-4" href="{{ route('mainwebsite.index') }}">
+                    <img class="me-2" src="{{ asset('assets/dashboard/img/icons/spot-illustrations/animalsafe.png') }}" alt="" width="58" />
+                    <span class="font-sans-serif text-primary fw-bolder fs-4 d-inline-block">{{ __('general.project-name') }}</span>
+                </a>
+
+                @yield('content')
+
+            </div>
+        </div>
 
     </div>
 </main>

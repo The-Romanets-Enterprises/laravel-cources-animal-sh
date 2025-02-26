@@ -25,6 +25,8 @@ Route::get('/auth', function () {
 
 // --- 1. Авторизация (auth/) ---
 Route::prefix('auth')->name('auth.')->middleware(\App\Http\Middleware\GuestMiddleware::class)->group(function () {
+    Route::get('/sign-up', [AuthController::class, 'sign_up'])->name('sign-up');
+    // Route::post('/sign-up', [AuthController::class, 'sign_up'])->name('sign-up');
     Route::get('/sign-in', [AuthController::class, 'sign_in'])->name('sign-in');
     Route::post('/sign-in', [AuthController::class, 'auth'])->name('auth');
 });
