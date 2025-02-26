@@ -9,19 +9,31 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $title = __('messages.mainwebsite.home');
+        $title = __('mainwebsite.titles.index');
         return view('mainwebsite.index', compact('title'));
     }
 
-    public function about()
+    public function ourspecialists()
     {
-        $title = __('messages.mainwebsite.about');
-        return view('mainwebsite.about', compact('title'));
+        $title = __('mainwebsite.titles.our-specialists');
+        return view('mainwebsite.our-specialists', compact('title'));
     }
 
-    public function contact()
+    public function contacts()
     {
-        $title = __('messages.mainwebsite.contact');
-        return view('mainwebsite.contact', compact('title'));
+        $title = __('mainwebsite.titles.contacts');
+        return view('mainwebsite.contacts', compact('title'));
+    }
+
+    public function terms()
+    {
+        $title = __('mainwebsite.titles.terms');
+        return view('mainwebsite.terms', compact('title'));
+    }
+
+    public function privacy_policy()
+    {
+        $title = __('mainwebsite.titles.privacy-policy');
+        return view('mainwebsite.privacy-policy', compact('title'));
     }
 }

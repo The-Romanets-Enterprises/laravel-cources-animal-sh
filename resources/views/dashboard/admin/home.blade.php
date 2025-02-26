@@ -9,7 +9,7 @@
                 <div class="col-12">
                     <div class="card bg-transparent-50 overflow-hidden">
                         <div class="card-header position-relative">
-                            <div class="bg-holder d-none d-md-block bg-card z-1" style="background-image:url({{ asset('assets/dashboard/img/illustrations/corner-2.png') }});background-size:270px;background-position:right bottom;z-index:-1;"></div>
+                            <div class="bg-holder d-none d-md-block bg-card z-1" style="background-image:url({{ asset('assets/dashboard/img/illustrations/authentication-corner.png') }});background-size:270px;background-position:right bottom;z-index:-1;"></div>
 
                             <div class="position-relative z-2">
                                 <div>

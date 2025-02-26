@@ -9,7 +9,7 @@ class UserController extends Controller
 {
     public function home()
     {
-        $title = __('messages.dashboard.user_home');
+        $title = __('dashboard.titles.user.home');
         return view('dashboard.index', compact('title'));
     }
 }

@@ -17,7 +17,7 @@
                     <div class="col-lg-8">
                         <h4 class="mb-1">{{ auth()->user()->name }}
                             <span data-bs-toggle="tooltip" data-bs-placement="right" title="Верифицированная страница">
-                                <small class="fa fa-check-circle text-primary" data-fa-transform="shrink-4 down-2"></small>
+                                <small class="fa fa-check-circle text-primary-verif" data-fa-transform="shrink-4 down-2"></small>
                             </span>
                         </h4>
                         <h5 class="fs-9 fw-normal">Senior Software Engineer at Technext Limited</h5>
@@ -191,40 +191,6 @@
                                 <span class="notification-time">October 28, 12:00 PM</span>
                             </div>
                         </a>
-                    </div>
-                </div>
-                <div class="card mb-3 mb-lg-0">
-                    <div class="card-header bg-body-tertiary">
-                        <h5 class="mb-0">Photos</h5>
-                    </div>
-                    <div class="card-body overflow-hidden">
-                        <div class="row g-0">
-                            <div class="col-6 p-1">
-                                <a class="glightbox" href="{{ asset('assets/dashboard/img/generic/4.jpg') }}" data-gallery="gallery1" data-glightbox="data-glightbox">
-                                    <img class="img-fluid rounded" src="{{ asset('assets/dashboard/img/generic/4.jpg') }}" alt="..." />
-                                </a>
-                            </div>
-                            <div class="col-6 p-1">
-                                <a class="glightbox" href="{{ asset('assets/dashboard/img/generic/5.jpg') }}" data-gallery="gallery1" data-glightbox="data-glightbox">
-                                    <img class="img-fluid rounded" src="{{ asset('assets/dashboard/img/generic/5.jpg') }}" alt="..." />
-                                </a>
-                            </div>
-                            <div class="col-4 p-1">
-                                <a class="glightbox" href="{{ asset('assets/dashboard/img/gallery/4.jpg') }}" data-gallery="gallery1" data-glightbox="data-glightbox">
-                                    <img class="img-fluid rounded" src="{{ asset('assets/dashboard/img/gallery/4.jpg') }}" alt="..." />
-                                </a>
-                            </div>
-                            <div class="col-4 p-1">
-                                <a class="glightbox" href="{{ asset('assets/dashboard/img/gallery/5.jpg') }}" data-gallery="gallery1" data-glightbox="data-glightbox">
-                                    <img class="img-fluid rounded" src="{{ asset('assets/dashboard/img/gallery/5.jpg') }}" alt="..." />
-                                </a>
-                            </div>
-                            <div class="col-4 p-1">
-                                <a class="glightbox" href="{{ asset('assets/dashboard/img/gallery/3.jpg') }}" data-gallery="gallery1" data-glightbox="data-glightbox">
-                                    <img class="img-fluid rounded" src="{{ asset('assets/dashboard/img/gallery/3.jpg') }}" alt="..." />
-                                </a>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

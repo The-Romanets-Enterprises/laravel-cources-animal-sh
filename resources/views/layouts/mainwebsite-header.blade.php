@@ -1,27 +1,27 @@
 <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
-        <a href="{{ route('mainwebsite.home') }}" class="logo d-flex align-items-center me-auto">
+        <a href="{{ route('mainwebsite.index') }}" class="logo d-flex align-items-center me-auto">
             <img src="{{ asset('assets/mainwebsite/img/logo.png') }}" alt="">
-            <h1 class="sitename">AnimalSafe</h1>
+            <h1 class="sitename">{{ __('general.project-name') }}</h1>
         </a>
 
         <nav id="navmenu" class="navmenu">
             <ul>
                 <li>
-                    <a href="#home" class="active">Главная</a>
+                    <a class="{{ Route::is('mainwebsite.index') ? 'active' : '' }}" href="{{ route('mainwebsite.index') }}" >{{ __('mainwebsite.header.home') }}</a>
                 </li>
                 <li class="dropdown">
-                    <a href="">
-                        <span>О нас</span>
+                    <a class="" href="">
+                        <span>{{ __('mainwebsite.header.about-drop-links.about-us') }}</span>
                         <i class="bi bi-chevron-down toggle-dropdown"></i>
                     </a>
                     <ul>
                         <li>
-                            <a href="">Наши специалисты</a>
+                            <a href="{{ route('mainwebsite.our-specialists') }}">{{ __('mainwebsite.header.about-drop-links.our-specialists') }}</a>
                         </li>
                         <li>
-                            <a href="">О компании</a>
+                            <a href="">{{ __('mainwebsite.header.about-drop-links.about-company') }}</a>
                         </li>
                         <!-- <li class="dropdown">
                             <a href="">
@@ -49,39 +49,33 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="">Контакты</a>
+                    <a class="{{ Route::is('mainwebsite.contacts') ? 'active' : '' }}" href="{{ route('mainwebsite.contacts') }}">{{ __('mainwebsite.header.contacts') }}</a>
                 </li>
                 <li class="dropdown">
                     <a href="">
-                        <span>Язык: Русский</span>
+                        <span>{{ __('general.language-drop-links.language') }}: {{ __('general.language-drop-links.russian') }}</span>
                         <div class="ms-1 mb-1">
-                            <img src="{{ asset('assets/mainwebsite/css/flags/1x1/ru.svg') }}" width="16" height="16" alt="" />
+                            <img src="{{ asset('assets/mainwebsite/img/flags/russian.png') }}" width="18" height="18" alt="" />
                         </div>
                         <i class="bi bi-chevron-down toggle-dropdown"></i>
                     </a>
                     <ul>
                         <li>
                             <a href="">
-                                <div class="mb-1">
-                                    <img src="{{ asset('assets/mainwebsite/css/flags/1x1/ru.svg') }}" width="16" height="16" alt="" />
-                                </div>
-                                Русский (Russian)
+                                {{ __('general.language-drop-links.russian') }}
+                                <img src="{{ asset('assets/mainwebsite/img/flags/russian.png') }}" width="18" height="18" alt="" />
                             </a>
                         </li>
                         <li>
                             <a href="">
-                                <div class="mb-1">
-                                    <img src="{{ asset('assets/mainwebsite/css/flags/1x1/by.svg') }}" width="16" height="16" alt="" />
-                                </div>
-                                Белорусский (BE)
+                                {{ __('general.language-drop-links.belarusian') }}
+                                <img src="{{ asset('assets/mainwebsite/img/flags/belarusian.png') }}" width="18" height="18" alt="" />
                             </a>
                         </li>
                         <li>
                             <a href="">
-                                <div class="mb-1">
-                                    <img src="{{ asset('assets/mainwebsite/css/flags/1x1/us.svg') }}" width="16" height="16" alt="" />
-                                </div>
-                                Английский (ENG)
+                                {{ __('general.language-drop-links.english') }}
+                                <img src="{{ asset('assets/mainwebsite/img/flags/english.png') }}" width="18" height="18" alt="" />
                             </a>
                         </li>
                     </ul>
@@ -92,12 +86,12 @@
 
         @if(Auth::guest())
             <!-- Видно только для НЕавторизованных пользователей -->
-            <a class="btn-getstarted" href="{{ route('auth.login') }}">Войти / Регистрация</a>
+            <a class="btn-getstarted" href="{{ route('auth.sign-in') }}">{{ __('mainwebsite.header.button') }}</a>
         @else
             <!-- Видно только для авторизованных пользователей -->
             <a class="btn-getstarted" href="{{ route(auth()->user()->isAdmin() ? 'dashboard.admin.home' : (auth()->user()->isEmployee() ? 'dashboard.employee.home' : 'dashboard.user.home')) }}">
                 <i class="bi bi-person-fill"></i>
-                {{ auth()->user()->name }}
+                {{ __('general.deal-you') }}: <strong>{{ auth()->user()->name }}</strong>
             </a>
         @endif
     </div>

@@ -15,7 +15,7 @@
         </div>
         <a class="navbar-brand" href="{{ route(auth()->user()->isAdmin() ? 'dashboard.admin.home' : (auth()->user()->isEmployee() ? 'dashboard.employee.home' : 'dashboard.user.home')) }}">
             <div class="d-flex align-items-center py-3">
-                <img class="me-2" src="{{ asset('assets/dashboard/img/icons/spot-illustrations/falcon.png') }}" alt="" width="20" />
+                <img class="me-2" src="{{ asset('assets/dashboard/img/icons/spot-illustrations/animalsafe.png') }}" alt="" width="20" />
                 <span class="font-sans-serif text-primary fs-8">AnimalSafe</span>
             </div>
         </a>
@@ -273,7 +273,7 @@
                                 <hr class="mb-0 navbar-vertical-divider" />
                             </div>
                         </div>
-                        <a class="nav-link" href="{{ route('mainwebsite.home') }}" role="button">
+                        <a class="nav-link" href="{{ route('mainwebsite.index') }}" role="button">
                             <div class="d-flex align-items-center">
                                     <span class="nav-link-icon">
                                         <span class="fas fa-bookmark"></span>

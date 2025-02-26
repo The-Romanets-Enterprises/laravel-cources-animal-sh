@@ -1,6 +1,6 @@
 @extends('layouts.mainwebsite')
 
-@section('title') {{ $title ?? 'Добро пожаловать!' }}@endsection
+@section('title') {{ $title ?? null }}@endsection
 
 @section('content')
     <section id="home" class="hero section dark-background">
@@ -8,8 +8,8 @@
             <div class="carousel-item active">
                 <img src="{{ asset('assets/mainwebsite/img/hero-carousel/hero-carousel-1.jpg') }}" alt="">
                 <div class="carousel-container">
-                    <h2>Добро пожаловать в AnimalSafe<br></h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <h2>Ваш питомец в надёжных руках<br></h2>
+                    <p>Не можете больше заботиться о своём питомце? Мы поможем найти для него любящую семью или обеспечим заботу в нашем приюте.</p>
                     <a href="" class="btn-get-started">Отдать питомца</a>
                 </div>
             </div>
@@ -17,18 +17,18 @@
             <div class="carousel-item">
                 <img src="{{ asset('assets/mainwebsite/img/hero-carousel/hero-carousel-2.jpg') }}" alt="">
                 <div class="carousel-container">
-                    <h2>At vero eos et accusamus</h2>
-                    <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut.</p>
-                    <a href="" class="btn-get-started">Get Started</a>
+                    <h2>Подари дом тому, кто ждёт</h2>
+                    <p>В нашем приюте есть животные, которые мечтают о любящей семье. Найдите себе верного друга и подарите ему заботу и тепло.</p>
+                    <a href="" class="btn-get-started">Выбрать питомца</a>
                 </div>
             </div>
 
             <div class="carousel-item">
                 <img src="{{ asset('assets/mainwebsite/img/hero-carousel/hero-carousel-3.jpg') }}" alt="">
                 <div class="carousel-container">
-                    <h2>Temporibus autem quibusdam</h2>
-                    <p>Beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt omnis iste natus error sit voluptatem accusantium.</p>
-                    <a href="" class="btn-get-started">Get Started</a>
+                    <h2>Возьми питомца под опеку</h2>
+                    <p>Не можешь забрать питомца домой, но хочешь помочь? Стань его опекуном — поддерживай его питание и уход, пока он ждёт семью.</p>
+                    <a href="" class="btn-get-started">Стать опекуном</a>
                 </div>
             </div>
 
@@ -185,152 +185,6 @@
                                 <a href="" class="stretched-link">Eiusmod Tempor</a>
                             </h4>
                             <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="portfolio" class="portfolio section">
-        <div class="container section-title" data-aos="fade-up">
-            <h2>Portfolio</h2>
-            <p>Necessitatibus eius consequatur</p>
-        </div>
-
-        <div class="container">
-            <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
-                <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
-                    <li data-filter="*" class="filter-active">All</li>
-                    <li data-filter=".filter-app">App</li>
-                    <li data-filter=".filter-product">Card</li>
-                    <li data-filter=".filter-branding">Web</li>
-                </ul>
-
-                <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-                    <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                        <img src="{{ asset('assets/mainwebsite/img/masonry-portfolio/masonry-portfolio-1.jpg') }}" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>App 1</h4>
-                            <p>Lorem ipsum, dolor sit</p>
-                            <a href="{{ asset('assets/mainwebsite/img/masonry-portfolio/masonry-portfolio-1.jpg') }}" title="App 1" data-gallery="portfolio-gallery-app" class="glightbox preview-link">
-                                <i class="bi bi-zoom-in"></i>
-                            </a>
-                            <a href="" title="More Details" class="details-link">
-                                <i class="bi bi-link-45deg"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-                        <img src="{{ asset('assets/mainwebsite/img/masonry-portfolio/masonry-portfolio-2.jpg') }}" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Product 1</h4>
-                            <p>Lorem ipsum, dolor sit</p>
-                            <a href="{{ asset('assets/mainwebsite/img/masonry-portfolio/masonry-portfolio-2.jpg') }}" title="Product 1" data-gallery="portfolio-gallery-product" class="glightbox preview-link">
-                                <i class="bi bi-zoom-in"></i>
-                            </a>
-                            <a href="" title="More Details" class="details-link">
-                                <i class="bi bi-link-45deg"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-                        <img src="{{ asset('assets/mainwebsite/img/masonry-portfolio/masonry-portfolio-3.jpg') }}" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Branding 1</h4>
-                            <p>Lorem ipsum, dolor sit</p>
-                            <a href="{{ asset('assets/mainwebsite/img/masonry-portfolio/masonry-portfolio-3.jpg') }}" title="Branding 1" data-gallery="portfolio-gallery-branding" class="glightbox preview-link">
-                                <i class="bi bi-zoom-in"></i>
-                            </a>
-                            <a href="" title="More Details" class="details-link">
-                                <i class="bi bi-link-45deg"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                        <img src="{{ asset('assets/mainwebsite/img/masonry-portfolio/masonry-portfolio-4.jpg') }}" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>App 2</h4>
-                            <p>Lorem ipsum, dolor sit</p>
-                            <a href="{{ asset('assets/mainwebsite/img/masonry-portfolio/masonry-portfolio-4.jpg') }}" title="App 2" data-gallery="portfolio-gallery-app" class="glightbox preview-link">
-                                <i class="bi bi-zoom-in"></i>
-                            </a>
-                            <a href="" title="More Details" class="details-link">
-                                <i class="bi bi-link-45deg"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-                        <img src="{{ asset('assets/mainwebsite/img/masonry-portfolio/masonry-portfolio-5.jpg') }}" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Product 2</h4>
-                            <p>Lorem ipsum, dolor sit</p>
-                            <a href="{{ asset('assets/mainwebsite/img/masonry-portfolio/masonry-portfolio-5.jpg') }}" title="Product 2" data-gallery="portfolio-gallery-product" class="glightbox preview-link">
-                                <i class="bi bi-zoom-in"></i>
-                            </a>
-                            <a href="" title="More Details" class="details-link">
-                                <i class="bi bi-link-45deg"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-                        <img src="{{ asset('assets/mainwebsite/img/masonry-portfolio/masonry-portfolio-6.jpg') }}" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Branding 2</h4>
-                            <p>Lorem ipsum, dolor sit</p>
-                            <a href="{{ asset('assets/mainwebsite/img/masonry-portfolio/masonry-portfolio-6.jpg') }}" title="Branding 2" data-gallery="portfolio-gallery-branding" class="glightbox preview-link">
-                                <i class="bi bi-zoom-in"></i>
-                            </a>
-                            <a href="" title="More Details" class="details-link">
-                                <i class="bi bi-link-45deg"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                        <img src="{{ asset('assets/mainwebsite/img/masonry-portfolio/masonry-portfolio-7.jpg') }}" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>App 3</h4>
-                            <p>Lorem ipsum, dolor sit</p>
-                            <a href="{{ asset('assets/mainwebsite/img/masonry-portfolio/masonry-portfolio-7.jpg') }}" title="App 3" data-gallery="portfolio-gallery-app" class="glightbox preview-link">
-                                <i class="bi bi-zoom-in"></i>
-                            </a>
-                            <a href="" title="More Details" class="details-link">
-                                <i class="bi bi-link-45deg"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-                        <img src="{{ asset('assets/mainwebsite/img/masonry-portfolio/masonry-portfolio-8.jpg') }}" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Product 3</h4>
-                            <p>Lorem ipsum, dolor sit</p>
-                            <a href="{{ asset('assets/mainwebsite/img/masonry-portfolio/masonry-portfolio-8.jpg') }}" title="Product 3" data-gallery="portfolio-gallery-product" class="glightbox preview-link">
-                                <i class="bi bi-zoom-in"></i>
-                            </a>
-                            <a href="" title="More Details" class="details-link">
-                                <i class="bi bi-link-45deg"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-                        <img src="{{ asset('assets/mainwebsite/img/masonry-portfolio/masonry-portfolio-9.jpg') }}" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Branding 3</h4>
-                            <p>Lorem ipsum, dolor sit</p>
-                            <a href="{{ asset('assets/mainwebsite/img/masonry-portfolio/masonry-portfolio-9.jpg') }}" title="Branding 2" data-gallery="portfolio-gallery-branding" class="glightbox preview-link">
-                                <i class="bi bi-zoom-in"></i>
-                            </a>
-                            <a href="" title="More Details" class="details-link">
-                                <i class="bi bi-link-45deg"></i>
-                            </a>
                         </div>
                     </div>
                 </div>

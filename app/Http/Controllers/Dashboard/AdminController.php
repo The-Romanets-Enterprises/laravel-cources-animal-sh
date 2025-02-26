@@ -10,7 +10,7 @@ class AdminController extends Controller
 {
     public function home()
     {
-        $title = __('messages.dashboard.admin_home');
+        $title = __('dashboard.titles.admin.home');
         return view('dashboard.admin.home', compact('title'));
     }
 }

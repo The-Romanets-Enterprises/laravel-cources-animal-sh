@@ -19,26 +19,28 @@ Route::get('/auth', function () {
         };
     }
 
-    return redirect()->route('auth.login'); // Если не авторизован
+    return redirect()->route('auth.sign-in'); // Если не авторизован
 })->name('auth.redirect');
 
 
 // --- 1. Авторизация (auth/) ---
 Route::prefix('auth')->name('auth.')->middleware(\App\Http\Middleware\GuestMiddleware::class)->group(function () {
-    Route::get('/login', [AuthController::class, 'login'])->name('login');
-    Route::post('/login', [AuthController::class, 'auth'])->name('auth');
+    Route::get('/sign-in', [AuthController::class, 'sign_in'])->name('sign-in');
+    Route::post('/sign-in', [AuthController::class, 'auth'])->name('auth');
 });
 
 Route::middleware('auth')->group(function () {
-    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::post('/sign-out', [AuthController::class, 'sign_out'])->name('sign-out');
 });
 
 
 // --- 2. Основной сайт (/) ---
 Route::prefix('/')->name('mainwebsite.')->group(function () {
-    Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('/about', [HomeController::class, 'about'])->name('about');
-    Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+    Route::get('/', [HomeController::class, 'index'])->name('index');
+    Route::get('/our-specialists', [HomeController::class, 'ourspecialists'])->name('our-specialists');
+    Route::get('/contacts', [HomeController::class, 'contacts'])->name('contacts');
+    Route::get('/terms', [HomeController::class, 'terms'])->name('terms');
+    Route::get('/privacy-policy', [HomeController::class, 'privacy_policy'])->name('privacy-policy');
 });
 
 
@@ -53,7 +55,7 @@ Route::prefix('panel')->name('dashboard.')->middleware(\App\Http\Middleware\Redi
                 default => redirect()->route('dashboard.index'),
             };
         }
-        return redirect()->route('auth.login'); // Если неавторизован
+        return redirect()->route('auth.sign_in'); // Если неавторизован
     })->name('index');
 
     Route::get('/admin', function () {

@@ -6,7 +6,7 @@
     </button>
     <a class="navbar-brand me-1 me-sm-3" href="{{ route(auth()->user()->isAdmin() ? 'dashboard.admin.home' : (auth()->user()->isEmployee() ? 'dashboard.employee.home' : 'dashboard.user.home')) }}">
         <div class="d-flex align-items-center">
-            <img class="me-2" src="{{ asset('assets/dashboard/img/icons/spot-illustrations/falcon.png') }}" alt="" width="20" />
+            <img class="me-2" src="{{ asset('assets/dashboard/img/icons/spot-illustrations/animalsafe.png') }}" alt="" width="20" />
             <span class="font-sans-serif text-primary fs-8">AnimalSafe</span>
         </div>
     </a>
@@ -294,7 +294,7 @@
 
                         <div class="dropdown-divider"></div>
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        <form id="logout-form" action="{{ route('sign-out') }}" method="POST" class="d-none">
                             @csrf
                         </form>
 

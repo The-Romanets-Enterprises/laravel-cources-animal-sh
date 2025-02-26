@@ -29,15 +29,29 @@
     <!-- Main CSS File -->
     <link href="{{ asset('assets/mainwebsite/css/main.css') }}" rel="stylesheet">
 
-    @yield('scripts-head')
-
+    <!-- API -->
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 </head>
 
+@stack('scripts')
 <body class="index-page">
 
 @include('layouts.mainwebsite-header')
 
 <main class="main">
+    <div class="page-title light-background">
+        <div class="container d-lg-flex justify-content-between align-items-center">
+            <h1 class="mb-2 mb-lg-0">@yield('page_title', __('mainwebsite.pages.pre-header.null'))</h1>
+            <nav class="breadcrumbs">
+                <ol>
+                    <li>
+                        <a href="{{ route('mainwebsite.index') }}">{{ __('mainwebsite.pages.pre-header.index') }}</a>
+                    </li>
+                    <li class="current">@yield('page_name', __('mainwebsite.pages.pre-header.null'))</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
     @yield('content')
 </main>
 

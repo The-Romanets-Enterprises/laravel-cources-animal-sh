@@ -12,10 +12,10 @@ use App\Enums\Role;
 class AuthController extends Controller
 {
     // Страница входа (GET /login)
-    public function login()
+    public function sign_in()
     {
-        $title = __('messages.auth.login');
-        return view('auth.login', compact('title'));
+        $title = __('auth.titles.sign-in');
+        return view('auth.sign-in', compact('title'));
     }
 
     // Обработка входа (POST /login)
@@ -38,12 +38,12 @@ class AuthController extends Controller
     }
 
     // Выход из аккаунта (POST /logout)
-    public function logout(Request $request)
+    public function sign_out(Request $request)
     {
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return view('auth.logout');
+        return view('auth.sign-out');
     }
 }

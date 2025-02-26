@@ -11,7 +11,7 @@ class EmployeeController extends Controller
 {
     public function home()
     {
-        $title = __('messages.dashboard.employee_home');
+        $title = __('dashboard.titles.employee.home');
         return view('dashboard.employee.home', compact('title'));
     }
 }
