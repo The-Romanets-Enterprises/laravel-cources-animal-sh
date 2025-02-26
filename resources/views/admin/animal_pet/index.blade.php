@@ -24,14 +24,11 @@
                             <tr>
                                 <th style="width: 10px">#</th>
                                 <th>Вид животного</th>
-                                <th>Пол</th>
-                                <th>Кличка</th>
+                                <th>Пол, Кличка</th>
                                 <th>Описание</th>
                                 <th>Пользователь</th>
                                 <th>Дата рождения</th>
-                                <th>Стерилизован</th>
-                                <th>Вакцинация</th>
-                                <th>Подтверждение заявки</th>
+                                <th>Статус</th>
                                 <th>Тип шерсти</th>
                                 <th>Характер</th>
                                 <th>Фото</th>
@@ -44,14 +41,27 @@
                                 <tr>
                                     <td>{{ $animalPet->id }}</td>
                                     <td>{{ $animalPet->animal->name }}</td>
-                                    <td>{{ $animalPet->sex instanceof \App\Enums\Sex ? $animalPet->sex->getTitle() : \App\Enums\Sex::from($animalPet->sex)->getTitle() }}</td>
-                                    <td>{{ $animalPet->name }}</td>
+                                    <td>
+                                        @php
+                                            $sexTitle = $animalPet->sex instanceof \App\Enums\Sex
+                                                ? $animalPet->sex->getTitle()
+                                                : \App\Enums\Sex::from($animalPet->sex)->getTitle();
+                                        @endphp
+                                        {{ $sexTitle }}, {{ $animalPet->name }}
+                                    </td>
                                     <td>{!! $animalPet->description !!}</td>
                                     <td>{{ $animalPet->user->full_name }}</td>
                                     <td>{{ $animalPet->birth_date ? $animalPet->birth_date->format('d.m.Y') : 'Нет данных' }}</td>
-                                    <td>{{ $animalPet->is_sterilized ? 'Да' : 'Нет' }}</td>
-                                    <td>{{ $animalPet->has_vaccination ? 'Да' : 'Нет' }}</td>
-                                    <td>{{ $animalPet->is_confirmed ? 'Да' : 'Нет' }}</td>
+                                    <td>
+                                        @php
+                                            $statuses = [];
+                                            if ($animalPet->is_sterilized) $statuses[] = 'Стерилизован';
+                                            if ($animalPet->has_vaccination) $statuses[] = 'Вакцинирован';
+                                            if ($animalPet->is_confirmed) $statuses[] = 'Заявка подтверждена';
+                                        @endphp
+                                        {{ count($statuses) ? implode(', ', $statuses) : 'Нет данных' }}
+                                    </td>
+
                                     <td>{{ $animalPet->wool_type }}</td>
                                     <td>{!! $animalPet->character !!}</td>
                                     <td>

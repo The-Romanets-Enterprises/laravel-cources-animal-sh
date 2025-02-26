@@ -40,7 +40,7 @@ class City extends Model
 
     public function address()
     {
-        return $this->hasOne(Address::class);
+        return $this->hasMany(Address::class);
     }
 
     public static function createCity(CityRequest $request)
