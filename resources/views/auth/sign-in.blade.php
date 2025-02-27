@@ -16,7 +16,7 @@
                         </svg>
                     </span>
                     <span>
-                        <a href="{{ route('auth.sign-up') }}">{{ __('auth.pages.sign-in.registration') }}</a>
+                        <a href="{{ route('auth.show-sign-up') }}">{{ __('auth.pages.sign-in.registration') }}</a>
                     </span>
                 </div>
             </div>

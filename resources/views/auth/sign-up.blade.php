@@ -20,32 +20,49 @@
                     </span>
                 </div>
             </div>
-            <form>
+
+            <form action="{{ route('auth.sign-up') }}" method="POST">
                 @csrf
                 <small class="required-field-text">* обязательное поле</small>
+
                 <div class="mb-3">
-                    <input class="form-control" type="text" autocomplete="on" placeholder="Ваше имя*" />
+                    <input class="form-control" type="text" name="name" autocomplete="on" placeholder="Ваше имя*" value="{{ old('name') }}" />
+                    @error('name') <small class="text-danger">{{ $message }}</small> @enderror
                 </div>
+
                 <div class="mb-3">
-                    <input class="form-control" type="text" autocomplete="on" placeholder="Ваша фамилия*" />
+                    <input class="form-control" type="text" name="lastname" autocomplete="on" placeholder="Ваша фамилия*" value="{{ old('lastname') }}" />
+                    @error('lastname') <small class="text-danger">{{ $message }}</small> @enderror
                 </div>
+
                 <div class="mb-3">
-                    <input class="form-control" type="text" autocomplete="on" placeholder="Электронная почта*" />
+                    <input class="form-control" type="text" name="email" autocomplete="on" placeholder="Электронная почта*" value="{{ old('email') }}" />
+                    @error('email') <small class="text-danger">{{ $message }}</small> @enderror
                 </div>
-                <div class="row gx-2">
-                    <div class="mb-3">
-                        <input class="form-control" type="password" autocomplete="on" placeholder="Пароль*" />
-                    </div>
+
+                <div class="mb-3">
+                    <input class="form-control" type="password" name="password" autocomplete="on" placeholder="Пароль*" />
+                    @error('password') <small class="text-danger">{{ $message }}</small> @enderror
                 </div>
-                <div class="row gx-2">
-                    <div class="mb-3">
-                        <input class="form-control" type="password" autocomplete="on" placeholder="Подтвердите пароль*" />
-                    </div>
+
+                <div class="mb-3">
+                    <input class="form-control" type="password" name="password_confirmation" autocomplete="on" placeholder="Подтвердите пароль*" />
                 </div>
+
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="basic-register-checkbox" />
-                    <label class="form-label" for="basic-register-checkbox">Я принимаю <a href="{{ route('mainwebsite.terms') }}">условия </a>и <a class="white-space-nowrap" href="{{ route('mainwebsite.privacy-policy') }}">политику конфиденциальности</a></label>
+                    <input class="form-check-input" type="checkbox" id="basic-register-checkbox" name="terms" />
+                    <label class="form-label" for="basic-register-checkbox">
+                        Я принимаю <a href="{{ route('mainwebsite.terms') }}">условия</a> и
+                        <a class="white-space-nowrap" href="{{ route('mainwebsite.privacy-policy') }}">политику конфиденциальности</a>
+                    </label>
+                    @error('terms') <small class="text-danger">{{ $message }}</small> @enderror
                 </div>
+
+                <div class="mb-3 mt-3">
+                    <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
+                    @error('g-recaptcha-response') <small class="text-danger">{{ $message }}</small> @enderror
+                </div>
+
                 <div class="mb-3">
                     <button class="btn btn-primary d-block w-100 mt-3" type="submit" name="submit">Зарегистрироваться</button>
                 </div>
@@ -53,3 +70,8 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+@endpush
+

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\RecaptchaRule;
 
 class RegisterRequest extends FormRequest
 {
@@ -22,10 +23,12 @@ class RegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'max:255'],
-            'email' => ['required', 'max:255', 'email', 'unique:users'],
-            'password' => ['required', 'max:255', 'confirmed'],
-            'phone' => ['required', 'max:25'],
+            'name' => ['required', 'string', 'alpha', 'min:2', 'max:255'],
+            'lastname' => ['required', 'string', 'alpha', 'min:2', 'max:255'], // Фамилия обязательна!
+            'email' => ['required', 'string', 'email', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'max:32', 'confirmed'], // Проверка пароля + подтверждение
+            'g-recaptcha-response' => ['required', new RecaptchaRule()], // reCAPTCHA v2
+            'terms' => ['accepted'], // Чекбокс политики
         ];
     }
 }

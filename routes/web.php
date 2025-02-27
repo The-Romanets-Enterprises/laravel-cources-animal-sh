@@ -8,6 +8,8 @@ use App\Http\Controllers\Mainwebsite\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Enums\Role;
 
+Route::get('/test', [AuthController::class, 'test'])->name('test');
+
 // --- Перенаправление (auth/) в зависимости от роли ---
 Route::get('/auth', function () {
     if (Auth::check()) {
@@ -25,10 +27,13 @@ Route::get('/auth', function () {
 
 // --- 1. Авторизация (auth/) ---
 Route::prefix('auth')->name('auth.')->middleware(\App\Http\Middleware\GuestMiddleware::class)->group(function () {
-    Route::get('/sign-up', [AuthController::class, 'sign_up'])->name('sign-up');
-    // Route::post('/sign-up', [AuthController::class, 'sign_up'])->name('sign-up');
+    Route::get('/sign-up', [AuthController::class, 'showSignUpForm'])->name('show-sign-up');
+    Route::post('/sign-up', [AuthController::class, 'sign_up'])->name('sign-up');
     Route::get('/sign-in', [AuthController::class, 'sign_in'])->name('sign-in');
     Route::post('/sign-in', [AuthController::class, 'auth'])->name('auth');
+
+    Route::get('/activate/{token}', [AuthController::class, 'activateAccount'])->name('activate');
+
 });
 
 Route::middleware('auth')->group(function () {

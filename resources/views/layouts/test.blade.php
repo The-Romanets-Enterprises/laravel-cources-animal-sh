@@ -10,7 +10,7 @@
     <!-- ===============================================-->
     <!--    Document Title-->
     <!-- ===============================================-->
-    <title>@section('title')@show</title>
+    <title>Активация аккаунта</title>
 
 
     <!-- ===============================================-->
@@ -37,7 +37,6 @@
     <link href="{{ asset('assets/dashboard/css/theme.css') }}" rel="stylesheet" id="style-default">
     <link href="{{ asset('assets/dashboard/css/user-rtl.css') }}" rel="stylesheet" id="user-style-rtl">
     <link href="{{ asset('assets/dashboard/css/user.css') }}" rel="stylesheet" id="user-style-default">
-
     <script>
         var isRTL = JSON.parse(localStorage.getItem('isRTL'));
         if (isRTL) {
@@ -53,16 +52,8 @@
             userLinkRTL.setAttribute('disabled', true);
         }
     </script>
-
-    @stack('scripts')
-
 </head>
 
-<style>
-    .required-field-text{
-        color: rgb(0, 210, 122);
-    }
-</style>
 
 <body>
 
@@ -79,19 +70,27 @@
                 container.classList.add('container-fluid');
             }
         </script>
-
         <div class="row flex-center min-vh-100 py-6">
             <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4">
-                <a class="d-flex flex-center mb-4" href="{{ route('mainwebsite.index') }}">
+                <a class="d-flex flex-center mb-4" href="">
                     <img class="me-2" src="{{ asset('assets/dashboard/img/icons/spot-illustrations/animalsafe.png') }}" alt="" width="58" />
-                    <span class="font-sans-serif text-primary fw-bolder fs-4 d-inline-block">{{ __('general.project-name') }}</span>
+                    <span class="font-sans-serif text-primary fw-bolder fs-4 d-inline-block">AnimalSafe</span>
                 </a>
-
-                @yield('content')
-
+                <div class="card">
+                    <div class="card-body p-4 p-sm-5">
+                        <div class="text-center">
+                            <img class="d-block mx-auto mb-4" src="{{ asset('assets/dashboard/img/icons/spot-illustrations/share-active.png') }}" alt="Email" width="100" />
+                            <h4 class="mb-2">Ошибка активации!</h4>
+                            <p>Срок действия ссылки истёк <br>
+                                или аккаунт уже активирован.</p>
+                            <a class="btn btn-primary btn-sm mt-3" href="{{ route('mainwebsite.index') }}">
+                                <span class="fas fa-chevron-left me-1" data-fa-transform="shrink-4 down-1"></span>Перейти на главную
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
     </div>
 </main>
 <!-- ===============================================-->
@@ -111,8 +110,6 @@
 <script src="{{ asset('assets/dashboard/vendors/list.js/list.min.js') }}"></script>
 
 <script src="{{ asset('assets/dashboard/js/theme.js') }}"></script>
-
-@yield('scripts')
 
 </body>
 

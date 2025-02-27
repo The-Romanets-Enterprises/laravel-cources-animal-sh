@@ -23,10 +23,12 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'lastname',
         'email',
         'password',
-        'phone',
         'role',
+        'activation_token',
+        'activation_expires_at',
     ];
 
     /**
@@ -66,14 +68,6 @@ class User extends Authenticatable
         $users->where('role', Role::USER);
 
         return $users->get();
-    }
-
-    public static function registerUser(RegisterRequest $request)
-    {
-        $data = $request->validated();
-        $data['password'] = Hash::make($data['password']);
-
-        return self::query()->create($data);
     }
 
     // Методы для проверки ролей
