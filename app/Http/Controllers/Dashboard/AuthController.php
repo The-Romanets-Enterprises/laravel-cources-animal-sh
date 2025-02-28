@@ -72,25 +72,20 @@ class AuthController extends Controller
         $user = User::where('activation_token', $token)->first();
 
         // Если пользователь не найден или токен истёк → ошибка
-        if (!$user || now()->setTimezone('Europe/Moscow')->greaterThan($user->activation_expires_at)) {
+        if (!$user || !$user->activation_expires_at || now()->greaterThan($user->activation_expires_at)) {
             return view('auth.activation-failed');
-        }
-
-        // Проверяем, активирован ли уже аккаунт
-        if ($user->email_verified_at) {
-            return view('auth.activation-already');
         }
 
         // Активируем аккаунт
         $user->update([
             'activation_token' => null, // Удаляем токен
             'activation_expires_at' => null, // Удаляем срок активации
-            'email_verified_at' => now(), // Активируем аккаунт
         ]);
 
         // Перенаправляем на страницу с уведомлением об успешной активации
         return view('auth.activation-success');
     }
+
 
     // Обработка входа (POST /login)
     public function auth(LoginRequest $request)
