@@ -2,19 +2,18 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Enums\Role;
 use App\Http\Requests\RegisterRequest;
-use Illuminate\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
 
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable, MustVerifyEmail;
+    use HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -84,5 +83,21 @@ class User extends Authenticatable
     public function isUser(): bool
     {
         return $this->role === Role::USER;
+    }
+
+    // Переопределяем метод для хеширования пароля перед сохранением
+    protected static function booted()
+    {
+        static::creating(function ($user) {
+            if ($user->password) {
+                $user->password = Hash::make($user->password);
+            }
+        });
+    }
+
+    // Переопределяем метод для форматирования даты активации
+    public function getActivationExpiresAtAttribute($value)
+    {
+        return Carbon::parse($value)->format('d.m.Y');
     }
 }
