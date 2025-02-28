@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Http\Requests\PhotoRequest;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Photo extends Model
 {
@@ -29,20 +30,24 @@ class Photo extends Model
         return $this->morphTo();
     }
 
-    public static function createPhoto(PhotoRequest $request)
+    public static function createPhoto($data)
     {
-        if ($request->hasFile('photos')) {
-            foreach ($request->file('photos') as $photoFile) {
+        $files = $data['photo'] ?? $data['photos'] ?? null;
+
+        if ($files) {
+            if (!is_array($files)) {
+                $files = [$files];
+            }
+
+            foreach ($files as $photoFile) {
                 $path = $photoFile->store('photos', 'public');
-                self::query()->create([
+                self::create([
                     'path' => $path,
-                    'imageable_id' => $request->input('imageable_id'),
-                    'imageable_type' => $request->input('imageable_type'),
+                    'imageable_id' => $data['imageable_id'],
+                    'imageable_type' => $data['imageable_type'],
                 ]);
             }
         }
-
-        return true;
     }
 
 
@@ -56,5 +61,10 @@ class Photo extends Model
     public static function deletePhoto(self $photo)
     {
         return $photo->delete();
+    }
+
+    public static function deleteFileFromStorage(string $path): void
+    {
+        Storage::disk('public')->delete($path);
     }
 }

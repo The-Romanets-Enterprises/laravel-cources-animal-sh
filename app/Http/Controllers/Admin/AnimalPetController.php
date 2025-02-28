@@ -11,7 +11,6 @@ use App\Models\AnimalPet;
 use App\Models\Photo;
 use App\Models\Video;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class AnimalPetController extends Controller
 {
@@ -83,7 +82,7 @@ class AnimalPetController extends Controller
             foreach ($request->input('photos_to_delete') as $photoId) {
                 $photo = Photo::find($photoId);
                 if ($photo && $photo->imageable_id === $animalPet->id) {
-                    $this->deleteFileFromStorage($photo->path);
+                    Photo::deleteFileFromStorage($photo->path);
                     $photo->delete();
                 }
             }
@@ -93,7 +92,7 @@ class AnimalPetController extends Controller
             foreach ($request->input('videos_to_delete') as $videoId) {
                 $video = Video::find($videoId);
                 if ($video && $video->animal_pet_id === $animalPet->id) {
-                    $this->deleteFileFromStorage($video->path);
+                    Photo::deleteFileFromStorage($video->path);
                     $video->delete();
                 }
             }
@@ -140,10 +139,5 @@ class AnimalPetController extends Controller
                 'animal_pet_id' => $animalPet->id,
             ]));
         }
-    }
-
-    protected function deleteFileFromStorage(string $path)
-    {
-        Storage::disk('public')->delete($path);
     }
 }
