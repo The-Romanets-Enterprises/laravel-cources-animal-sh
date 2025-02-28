@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PhotoRequest;
 use App\Http\Requests\Profile\ProfileRequest;
-use App\Http\Requests\ProfileUpdateRequest;
-use App\Http\Requests\ChangePasswordRequest;
 use App\Models\Address;
+use App\Models\City;
+use App\Models\Photo;
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
@@ -16,8 +16,9 @@ class ProfileController extends Controller
     public function index()
     {
         $user = Auth::user();
+        $cities = City::orderBy('name')->get();
         $title = __('messages.user.profile');
-        return view('user.profile', compact('user', 'title'));
+        return view('user.profile', compact('user', 'cities', 'title'));
     }
 
     public function update(ProfileRequest $request)
@@ -25,24 +26,34 @@ class ProfileController extends Controller
         $user = Auth::user();
         $data = $request->validated();
 
-//        if ($request->hasFile('photo')) {
-//            $path = $request->file('photo')->store('users/photos', 'public');
-//            $data['photo'] = $path;
-//        }
+        if ($request->hasFile('photo')) {
+            $photoRequest = new PhotoRequest([
+                'photo' => [$request->file('photo')],
+                'imageable_id' => $user->id,
+                'imageable_type' => User::class,
+            ]);
 
-        $user->update([
-            'name' => $data['name'],
-            'lastname' => $data['lastname'],
-            'email' => $data['email'],
-            'phone' => $data['phone'],
-//            'photo' => $data['photo'] ?? $user->photo,
-        ]);
+            Photo::createPhoto($photoRequest);
+        }
+
+        if ($request->filled('photos_to_delete')) {
+            foreach ($request->input('photos_to_delete') as $photoId) {
+                $photo = Photo::find($photoId);
+                if ($photo && $photo->imageable_id === $user->id && $photo->imageable_type === User::class) {
+                    Photo::deleteFileFromStorage($photo->path);
+                    $photo->delete();
+                }
+            }
+        }
+
+        $user->update($data);
 
         Address::updateOrCreate(
             ['user_id' => $user->id],
             [
                 'city_id' => $data['city_id'],
                 'address' => $data['address'],
+                'post_index' => $data['post_index'],
             ]
         );
 

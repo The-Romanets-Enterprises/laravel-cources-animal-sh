@@ -22,7 +22,7 @@ class ProfileRequest extends FormRequest
     public function rules(): array
     {
         return [
-//            'photo' => ['required', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
+            'photo' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
             'name' => ['required', 'max:255'],
             'lastname' => ['required', 'max:255'],
             'email' => ['required', 'email', 'unique:users,email,' . auth()->id()],
@@ -30,6 +30,7 @@ class ProfileRequest extends FormRequest
 
             'city_id' => ['required', 'integer', 'exists:cities,id'],
             'address' => ['required', 'max:255'],
+            'post_index' => ['required', 'max:15'],
         ];
     }
 }

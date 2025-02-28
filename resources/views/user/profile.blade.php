@@ -1,55 +1,127 @@
 @extends('layouts.layout')
 
-@section('title', __('messages.user.profile'))
+@section('title') {{ $title ?? null }} @endsection
 
 @section('content')
-    <div class="card">
-        <div class="card-header">
-            <h3>{{ __('messages.user.profile') }}</h3>
-        </div>
-        <div class="card-body">
-            @include('layouts.message')
+    <!-- Content Header (Page header) -->
+    @include('layouts.page-header')
+    <section class="content">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">{{ $title ?? null }}</h3>
+            </div>
+            <div class="container-fluid">
 
             <form action="{{ route('user.profile.update') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
-{{--                <div class="form-group">--}}
-{{--                    <label for="photo">{{ __('messages.photo.single') }}</label>--}}
-{{--                    <input type="file" name="photo" id="photo" class="form-control-file">--}}
-{{--                    @if (Auth::user()->photo)--}}
-{{--                        <img src="{{ asset('storage/' . Auth::user()->photo) }}" width="100" height="100" alt="Фото профиля">--}}
-{{--                    @endif--}}
-{{--                </div>--}}
-                <div class="form-group">
-                    <label for="name">{{ __('messages.user.name') }}</label>
-                    <input type="text" name="name" id="name" class="form-control" value="{{ old('name', Auth::user()->name) }}" required>
+                <div class="row">
+                    <div class="col-md-6">
+                        @include('layouts.form.text', [
+                            'title' => __('messages.user.name'),
+                            'name' => 'name',
+                            'placeholder' => __('messages.user.name'),
+                            'value' => old('name', Auth::user()->name),
+                            'required' => true
+                        ])
+                    </div>
+
+                    <div class="col-md-6">
+                        @include('layouts.form.text', [
+                            'title' => __('messages.user.lastname'),
+                            'name' => 'lastname',
+                            'placeholder' => __('messages.user.lastname'),
+                            'value' => old('lastname', Auth::user()->lastname),
+                            'required' => true
+                        ])
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="lastname">{{ __('messages.user.lastname') }}</label>
-                    <input type="text" name="lastname" id="lastname" class="form-control" value="{{ old('lastname', Auth::user()->lastname) }}" required>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        @include('layouts.form.text', [
+                            'title' => __('messages.user.email'),
+                            'name' => 'email',
+                            'type' => 'email',
+                            'placeholder' => __('messages.user.email'),
+                            'value' => old('email', Auth::user()->email),
+                            'required' => true
+                        ])
+                    </div>
+                    <div class="col-md-6">
+                        @include('layouts.form.text', [
+                            'title' => __('messages.user.phone'),
+                            'name' => 'phone',
+                            'placeholder' => __('messages.user.phone'),
+                            'value' => old('phone', Auth::user()->phone)
+                        ])
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="email">{{ __('messages.user.email') }}</label>
-                    <input type="email" name="email" id="email" class="form-control" value="{{ old('email', Auth::user()->email) }}" required>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        @include('layouts.form.select', [
+                            'title' => __('messages.city.single'),
+                            'name' => 'city_id',
+                            'items' => $cities ?? [],
+                            'value' => Auth::user()->address?->city_id ?? null,
+                            'key_value' => 'id',
+                            'display_name' => 'name',
+                            'pre_text' => 'Выберите город'
+                        ])
+                    </div>
+                    <div class="col-md-6">
+                        @include('layouts.form.text', [
+                            'title' => __('messages.user.post_index'),
+                            'name' => 'post_index',
+                            'placeholder' => __('messages.user.post_index'),
+                            'value' => old('post_index', Auth::user()->address?->post_index ?? '')
+                        ])
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="phone">{{ __('messages.user.phone') }}</label>
-                    <input type="text" name="phone" id="phone" class="form-control" value="{{ old('phone', Auth::user()->phone) }}">
-                </div>
-                <div class="form-group">
-                    <label for="country">{{ __('messages.country.single') }}</label>
-                    <input type="text" name="country" id="country" class="form-control" value="{{ old('country', Auth::user()->address?->city?->country?->name ?? '') }}">
-                </div>
-                <div class="form-group">
-                    <label for="city">{{ __('messages.city.single') }}</label>
-                    <input type="text" name="city" id="city" class="form-control" value="{{ old('city', Auth::user()->address?->city?->name ?? '') }}">
-                </div>
-                <div class="form-group">
-                    <label for="address">{{ __('messages.address.single') }}</label>
-                    <input type="text" name="address" id="address" class="form-control" value="{{ old('address', Auth::user()->address?->address ?? '') }}">
-                </div>
+
+                @include('layouts.form.text', [
+                        'title' => __('messages.address.single'),
+                        'name' => 'address',
+                        'placeholder' => __('messages.address.single'),
+                        'value' => old('address', Auth::user()->address?->address ?? '')
+                    ])
+
+                @include('layouts.form.file', [
+                    'title' => __('messages.photo.single'),
+                    'name' => 'photo',
+                    'pre_text' => __('messages.photo.create'),
+                    'value' => Auth::user()->photo ? asset('storage/' . Auth::user()->photo) : null
+                ])
+
+                @if (Auth::user()->photos->isNotEmpty())
+                    @foreach (Auth::user()->photos as $photo)
+                        <img src="{{ asset('storage/' . $photo->path) }}"
+                             width="150" height="150"
+                             alt="Фото {{ Auth::user()->name }}"
+                             class="mr-2">
+                    @endforeach
+                @else
+                    <span>Фотографии отсутствуют</span>
+                @endif
+
+                @if ($user->photos->isNotEmpty())
+                    <div>
+                        <strong>Выберите фото для удаления:</strong>
+                        @foreach ($user->photos as $photo)
+                            <label>
+                                <input type="checkbox" name="photos_to_delete[]" value="{{ $photo->id }}">
+                                <img src="{{ asset('storage/' . $photo->path) }}" width="100" height="75" alt="Фото {{ $user->name }}">
+                            </label><br>
+                        @endforeach
+                    </div>
+                @else
+                    <p>Нет доступных фотографий.</p>
+                @endif
+
                 <button type="submit" class="btn btn-primary">{{ __('messages.user.update-profile') }}</button>
             </form>
         </div>
     </div>
+    </section>
 @endsection

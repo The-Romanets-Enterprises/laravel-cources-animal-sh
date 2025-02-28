@@ -9,7 +9,6 @@ use App\Models\Article;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\User;
-use App\Models\Video;
 use Diglactic\Breadcrumbs\Breadcrumbs;
 
 // This import is also not required, and you could replace `BreadcrumbTrail $trail`
@@ -21,6 +20,17 @@ use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 // Home
 Breadcrumbs::for('front.home', function (BreadcrumbTrail $trail) {
     $trail->push(__('messages.main'), route('front.home'));
+});
+
+Breadcrumbs::for('user.home', function (BreadcrumbTrail $trail) {
+    $trail->push(__('messages.main'), route('user.home'));
+});
+
+// User
+// Profile
+Breadcrumbs::for('user.profile', function (BreadcrumbTrail $trail) {
+    $trail->parent('user.home');
+    $trail->push(__('messages.user.profile'), route('user.profile'));
 });
 
 // ======================= ADMIN =========================
@@ -153,6 +163,7 @@ Breadcrumbs::for('admin.countries.edit', function (BreadcrumbTrail $trail, Count
     $trail->parent('admin.countries.index');
     $trail->push($country->name, route('admin.countries.edit', $country));
 });
+
 
 // Token
 // Home > Token
