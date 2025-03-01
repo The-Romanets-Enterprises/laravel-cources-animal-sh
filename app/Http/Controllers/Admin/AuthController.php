@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\Role;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegisterRequest;
 use App\Models\Address;
 use App\Models\Animal;
 use App\Models\AnimalPet;
@@ -18,6 +20,16 @@ use Illuminate\Support\Facades\Auth;
 // Class work with authentication and Admin main page
 class AuthController extends Controller
 {
+    public function welcome()
+    {
+        $title = __('messages.main_page');
+
+        return view('index', compact(
+            'title',
+            )
+        );
+    }
+
     // Admin Main Page
     public function index()
     {
@@ -46,6 +58,30 @@ class AuthController extends Controller
         );
     }
 
+    public function register()
+    {
+        return view('auth.register', ['title' => __('messages.register.register')]);
+    }
+
+    public function signup(RegisterRequest $request)
+    {
+        $user = User::create([
+            'name' => $request->name,
+            'lastname' => $request->lastname,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'phone' => $request->phone,
+        ]);
+
+        if (!$user) {
+            return back()->with('error', __('messages.register.error'));
+        }
+
+        Auth::login($user, true);
+        return to_route('index')->with('success', __('messages.register.success'));
+
+    }
+
     // Enter into an account page (ONLY VIEW)
     public function login()
     {
@@ -62,7 +98,12 @@ class AuthController extends Controller
             'password' => $request->password,
         ], $request->remember);
 
-        return to_route('admin.home')->with('success', __('messages.auth.success'));
+        if (!$is_accepted) {
+            return back()->with('error', __('messages.auth.error'));
+        }
+
+        $redirectRoute = Auth::user()->role == Role::ADMIN ? 'admin.home' : 'index';
+        return to_route($redirectRoute)->with('success', __('messages.auth.success'));
     }
 
     // Logout from the account
@@ -73,6 +114,6 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('admin.login.show');
+        return redirect()->route('index')->with('success', __('messages.auth.logout.success'));
     }
 }

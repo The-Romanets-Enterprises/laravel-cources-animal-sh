@@ -6,7 +6,7 @@
     <li class="nav-item d-none d-sm-inline-block">
         <a href="<?=route('admin.home')?>" class="nav-link">{{ __('messages.main') }}</a>
     </li>
-    @if(auth()->user()->role == \App\Enums\Role::ADMIN)
+    @if(auth()->check() && auth()->user()->role == \App\Enums\Role::ADMIN)
         <li class="nav-item d-none d-sm-inline-block">
             <a href="<?=route('admin.users.index')?>" class="nav-link">{{ __('messages.user.plural') }}</a>
         </li>
@@ -24,6 +24,6 @@
         <a href="<?=route('admin.animal-pets.index')?>" class="nav-link">{{ __('messages.animal_pet.plural') }}</a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-        <a href="<?=route('admin.logout')?>" class="nav-link">{{ __('messages.auth.logout') }}</a>
+        <a href="<?=route('logout')?>" class="nav-link">{{ __('messages.auth.logout.logout') }}</a>
     </li>
 </ul>

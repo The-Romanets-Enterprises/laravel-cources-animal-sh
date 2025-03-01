@@ -420,7 +420,8 @@
             </div>
             <!-- Small boxes (Stat box) -->
             <div class="row">
-                @if(auth()->user()->role == \App\Enums\Role::ADMIN)
+
+                @if(auth()->check() && auth()->user()->role == \App\Enums\Role::ADMIN)
                     @isset($token_count)
                         <div class="col-lg-3 col-6">
                             <!-- small box -->

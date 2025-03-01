@@ -74,7 +74,7 @@
                             <a href="#" class="d-block">{{ auth()->user()->name }}</a>
                         </div>
                         <div class="info">
-                            <a href="<?=route('admin.logout')?>" class="d-block">
+                            <a href="<?=route('logout')?>" class="d-block">
                                 <i class="fas fa-sign-out-alt"></i>
                                 Выход
                             </a>
