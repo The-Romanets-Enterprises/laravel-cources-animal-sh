@@ -33,6 +33,12 @@ Breadcrumbs::for('user.profile', function (BreadcrumbTrail $trail) {
     $trail->push(__('messages.user.profile'), route('user.profile'));
 });
 
+// Home > ChangePassword
+Breadcrumbs::for('user.change-password', function (BreadcrumbTrail $trail) {
+    $trail->parent('user.home');
+    $trail->push(__('messages.user.change-password'), route('user.change-password'));
+});
+
 // ======================= ADMIN =========================
 
 // Home
