@@ -28,12 +28,12 @@
                             <th>Вид</th>
                             <th>Пол</th>
                             <th>Заявитель</th>
-                            <th>Описание</th>
-                            <th>Характер</th>
+                            <th>Описание/характер</th>
                             <th>Дата рождения</th>
-                            <th>Тип шерсти</th>
                             <th>Стерилизован</th>
                             <th>Вакцинирован</th>
+                            <th>Фото</th>
+                            <th>Видео</th>
                             <th>Действия</th>
                         </tr>
                         </thead>
@@ -45,12 +45,34 @@
                                 <td>{{ $animalPet->animal->name}}</td>
                                 <td>{{ $animalPet->sex->getTitle() }}</td>
                                 <td>{{ $animalPet->user->full_name }}</td>
-                                <td>{{ $animalPet->description }}</td>
-                                <td>{{ $animalPet->character}}</td>
+                                <td>Описание: {!! $animalPet->description !!}<br>Характер: {!! $animalPet->character !!}</br><br>Тип шерсти: {!! $animalPet->wool_type !!}</br></td>
                                 <td>{{ $animalPet->birth_date->format('Y-m-d') }}</td>
-                                <td>{{ $animalPet->wool_type}}</td>
                                 <td>{{ $animalPet->is_sterilized ? 'Да' : 'Нет' }}</td>
                                 <td>{{ $animalPet->has_vaccination ? 'Да' : 'Нет' }}</td>
+                                <td>
+                                    @if ($animalPet->photos->isNotEmpty())
+                                        @foreach ($animalPet->photos as $photo)
+                                            <img src="{{ asset('storage/' . $photo->path) }}"
+                                                 width="150" height="150"
+                                                 alt="Фото {{ $animalPet->id }}"
+                                                 class="mr-2">
+                                        @endforeach
+                                    @else
+                                        <span>Фотографии отсутствуют</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($animalPet->videos->isNotEmpty())
+                                        @foreach ($animalPet->videos as $video)
+                                            <video width="150" height="150" controls>
+                                                <source src="{{ asset('storage/' . $video->path) }}" type="video/mp4">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        @endforeach
+                                    @else
+                                        <span>Видео отсутствуют</span>
+                                    @endif
+                                </td>
                                 <td>
                                     <a href="{{ route("admin.animalPets.edit", ['animalPet' => $animalPet->id]) }}"
                                        class="btn btn-info btn-sm float-left">

@@ -27,7 +27,7 @@
                             <!-- /.card-body -->
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-secondary">{{ __('messages.save') }}</button>
+                                <button type="submit" class="btn btn-success">{{ __('messages.save') }}</button>
                             </div>
                         </form>
                     </div>

@@ -49,7 +49,7 @@
                             <!-- /.card-body -->
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Сохранить</button>
+                                <button type="submit" class="btn btn-success">Сохранить</button>
                             </div>
                         </form>
                     </div>

@@ -16,7 +16,7 @@
            'title' => 'Имя пользователя*',
            'name' => 'firstname',
            'placeholder' => "Имя пользователя",
-           'value' => $user->name ?? null,
+           'value' => $user->firstname ?? null,
        ])
     </div>
     <div class="col-6">

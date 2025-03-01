@@ -57,7 +57,7 @@
                 </tbody>
             </table>
             @else
-            <p>{{ __('messages.user.none') }}</p>
+            <p>{{ __('messages.video.none') }}</p>
             @endif
         </div>
         <!-- /.card-body -->
