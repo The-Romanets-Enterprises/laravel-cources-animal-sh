@@ -44,10 +44,10 @@
                                     <td>{{ $animal_pet->animal->name }}</td>
                                     <td>{{ $animal_pet->sex->getTitle() }}</td>
                                     <td>{{ $animal_pet->name }}</td>
-                                    <td>{{ $animal_pet->description }}</td>
+                                    <td>{!! $animal_pet->description !!}</td>
                                     <td>{{ $animal_pet->birth_date->format('d.m.Y') }}</td>
                                     <td>{{ $animal_pet->wool_type }}</td>
-                                    <td>{{ $animal_pet->character }}</td>
+                                    <td>{!! $animal_pet->character !!}</td>
                                     <td>{{ $animal_pet->user->getFullNameAttribute() }}</td>
                                     <td>{{ $animal_pet->is_sterilized ? __('messages.yes') : __('messages.no') }}</td>
                                     <td>{{ $animal_pet->has_vaccination ? __('messages.yes') : __('messages.no') }}</td>
