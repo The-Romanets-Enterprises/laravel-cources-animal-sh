@@ -21,7 +21,7 @@ class VideoController extends Controller
         $videos->orderBy('created_at', 'ASC');
         $videos = $videos->paginate(config('settings.paginate'));
 
-        return view('admin.country.index', compact(
+        return view('admin.video.index', compact(
             'title',
 
             'videos',

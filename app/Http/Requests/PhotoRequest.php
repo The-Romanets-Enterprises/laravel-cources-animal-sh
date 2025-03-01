@@ -22,9 +22,21 @@ class PhotoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'imageable_type' =>['required'],
-            'imageable_id' =>['required','integer'],
-            'path' => ['required', 'string', 'max:255'],
+            'imageable_type' =>['required', 'string', 'in:App\Models\AnimalPet,App\Models\User'],
+            'imageable_id' =>['required','integer', 'exists:'. $this->imageable_table() . ',id'],
+            'path' => ['required', 'image', 'max:2048', 'mimes:jpeg,png,jpg'],
         ];
+    }
+
+    protected function imageable_table()
+    {
+        $type = $this->input('imageable_type');
+        if ($type == 'App\\Models\\AnimalPet') {
+            return 'animal_pets';
+        }
+        if ($type == 'App\\Models\\User') {
+            return 'users';
+        }
+        return '';
     }
 }
