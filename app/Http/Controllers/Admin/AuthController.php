@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegisterRequest;
 use App\Models\AnimalPet;
 use App\Models\Animal;
 use App\Models\Address;
 use App\Models\Photo;
 use App\Models\User;
 use App\Models\Video;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -57,7 +59,29 @@ class AuthController extends Controller
 
         return to_route('admin.home')->with('success', __('messages.auth.success'));
     }
+    public function register()
+    {
+        return view('auth.register');
+    }
 
+    public function reg(RegisterRequest $request)
+    {
+        $user = User::create([
+            'email' => $request->email,
+            'firstname' => $request->firstname,
+            'lastname' => $request->lastname,
+            'phone' => $request->phone,
+            'password' => bcrypt($request->password),
+        ]);
+
+        if (!$user) {
+            return back()->with('error', __('messages.register.error'));
+        }
+
+        Auth::login($user, true);
+        return to_route('index')->with('success', __('messages.register.success'));
+
+    }
     // Logout from the account
     public function logout(Request $request)
     {

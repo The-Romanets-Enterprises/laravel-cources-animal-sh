@@ -63,7 +63,7 @@ Breadcrumbs::for('admin.users.create', function (BreadcrumbTrail $trail) {
 // Home > User > Edit
 Breadcrumbs::for('admin.users.edit', function (BreadcrumbTrail $trail, User $user) {
     $trail->parent('admin.users.index');
-    $trail->push($user->name, route('admin.users.edit', $user));
+    $trail->push($user->firstname, route('admin.users.edit', $user));
 });
 
 // Request
@@ -82,7 +82,7 @@ Breadcrumbs::for('admin.animalPets.create', function (BreadcrumbTrail $trail) {
 // Home > Request > Edit
 Breadcrumbs::for('admin.animalPets.edit', function (BreadcrumbTrail $trail, AnimalPet $animalPet) {
     $trail->parent('admin.animalPets.index');
-    $trail->push($animalPet->name, route('admin.animalPets.edit', $animalPet));
+    $trail->push($animalPet->id, route('admin.animalPets.edit', $animalPet));
 });
 
 // Animal

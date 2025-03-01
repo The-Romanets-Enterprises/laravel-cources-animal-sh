@@ -45,7 +45,30 @@
            'value' => $animalPet->description ?? null,
 ])
 
-@include('layouts.form.text', [
+<div class="row">
+    <div class="col-6">
+        @include('layouts.form.file', [
+            'title' => 'Видео',
+            'multiple' => true,
+            'name' => 'videos[]',
+            'data_files' => $videosFiles ?? null,
+            'hidden' => 'video-paths',
+            'pre_text' => 'Добавьте видео',
+        ])
+    </div>
+    <div class="col-6">
+        @include('layouts.form.file', [
+            'title' => 'Фото*',
+            'multiple' => true,
+            'name' => 'photos[]',
+            'data_files' => $photosFiles ?? null,
+            'hidden' => 'photo-paths',
+            'pre_text' => 'Добавьте фото',
+        ])
+    </div>
+</div>
+
+@include('layouts.form.textarea', [
     'title' => 'Характер*',
     'name' => 'character',
     'placeholder' => "Характер животного",
