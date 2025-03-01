@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Dashboard\AuthController;
+use App\Http\Controllers\Dashboard\VerificationController;
 use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\Dashboard\AdminController;
 use App\Http\Controllers\Dashboard\EmployeeController;
@@ -8,38 +9,27 @@ use App\Http\Controllers\Mainwebsite\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Enums\Role;
 
-Route::get('/test', [AuthController::class, 'test'])->name('test');
-
-// --- Перенаправление (auth/) в зависимости от роли ---
-Route::get('/auth', function () {
-    if (Auth::check()) {
-        return match (Auth::user()->role) {
-            Role::ADMIN => redirect()->route('dashboard.admin.home'),
-            Role::EMPLOYEE => redirect()->route('dashboard.employee.home'),
-            Role::USER => redirect()->route('dashboard.user.home'),
-            default => redirect()->route('dashboard.index'),
-        };
-    }
-
-    return redirect()->route('auth.sign-in'); // Если не авторизован
-})->name('auth.redirect');
-
-
 // --- 1. Авторизация (auth/) ---
-Route::prefix('auth')->name('auth.')->middleware(\App\Http\Middleware\GuestMiddleware::class)->group(function () {
-    Route::get('/sign-up', [AuthController::class, 'showSignUpForm'])->name('show-sign-up');
-    Route::post('/sign-up', [AuthController::class, 'sign_up'])->name('sign-up');
-    Route::get('/sign-in', [AuthController::class, 'sign_in'])->name('sign-in');
-    Route::post('/sign-in', [AuthController::class, 'auth'])->name('auth');
+Route::prefix('auth')->name('auth.')->group(function () {
 
-    Route::get('/activate/{token}', [AuthController::class, 'activateAccount'])->name('activate');
+    // --- Гостевые маршруты --- (для незарегистрированных пользователей)
+    Route::middleware(\App\Http\Middleware\GuestMiddleware::class)->group(function () {
+        Route::get('/sign-up', [AuthController::class, 'showSignUpForm'])->name('show-sign-up');
+        Route::post('/sign-up', [AuthController::class, 'sign_up'])->name('sign-up');
+        Route::get('/sign-in', [AuthController::class, 'sign_in'])->name('sign-in');
+        Route::post('/sign-in', [AuthController::class, 'auth'])->name('auth');
+    });
 
+    // --- Подтверждение Email --- (только для авторизованных пользователей)
+    Route::middleware('auth')->group(function () {
+        Route::get('/verify-email', [VerificationController::class, 'show'])->name('verification.notice');
+        Route::get('/verify-email/{id}/{hash}', [VerificationController::class, 'verify'])->middleware('signed')->name('verification.verify');
+        Route::post('/verify-email/resend', [VerificationController::class, 'resend'])->middleware('throttle:6,1')->name('verification.send');
+    });
+
+    // --- Выход из системы ---
+    Route::post('/sign-out', [AuthController::class, 'sign_out'])->middleware('auth')->name('sign-out');
 });
-
-Route::middleware('auth')->group(function () {
-    Route::post('/sign-out', [AuthController::class, 'sign_out'])->name('sign-out');
-});
-
 
 // --- 2. Основной сайт (/) ---
 Route::prefix('/')->name('mainwebsite.')->group(function () {
@@ -50,28 +40,16 @@ Route::prefix('/')->name('mainwebsite.')->group(function () {
     Route::get('/privacy-policy', [HomeController::class, 'privacy_policy'])->name('privacy-policy');
 });
 
-
 // --- 3. Дэшборд (panel/) ---
-Route::prefix('panel')->name('dashboard.')->middleware(\App\Http\Middleware\RedirectIfNotAuthenticated::class)->group(function () {
+Route::prefix('panel')->name('dashboard.')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/', function () {
-        if (Auth::check()) {
-            return match (Auth::user()->role) {
-                Role::ADMIN => redirect()->route('dashboard.admin.home'),
-                Role::EMPLOYEE => redirect()->route('dashboard.employee.home'),
-                Role::USER => redirect()->route('dashboard.user.home'),
-                default => redirect()->route('dashboard.index'),
-            };
-        }
-        return redirect()->route('auth.sign_in'); // Если неавторизован
+        return match (Auth::user()->role) {
+            Role::ADMIN => redirect()->route('dashboard.admin.home'),
+            Role::EMPLOYEE => redirect()->route('dashboard.employee.home'),
+            Role::USER => redirect()->route('dashboard.user.home'),
+            default => redirect()->route('dashboard.index'),
+        };
     })->name('index');
-
-    Route::get('/admin', function () {
-        return redirect()->route('dashboard.admin.home');
-    });
-
-    Route::get('/employee', function () {
-        return redirect()->route('dashboard.employee.home');
-    });
 
     Route::middleware(\App\Http\Middleware\CheckUserRole::class)->group(function () {
         Route::get('/index', [UserController::class, 'home'])->name('user.home'); // Обычный пользователь

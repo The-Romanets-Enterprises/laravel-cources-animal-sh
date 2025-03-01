@@ -12,6 +12,12 @@
                     Пожалуйста, перейдите по ссылке,
                     <span class="white-space-nowrap">чтобы активировать аккаунт.</span>
                 </p>
+
+                <form action="{{ route('auth.verification.send') }}" method="POST">
+                    @csrf
+                    <button class="btn btn-primary btn-sm mt-3" type="submit">Отправить письмо ещё раз</button>
+                </form>
+
                 <a class="btn btn-primary btn-sm mt-3" href="{{ route('auth.sign-in') }}">
                     <span class="fas fa-chevron-left me-1" data-fa-transform="shrink-4 down-1"></span>Вернуться к авторизации
                 </a>

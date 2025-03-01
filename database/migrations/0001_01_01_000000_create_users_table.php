@@ -17,14 +17,12 @@ return new class extends Migration
             $table->string('name');
             $table->string('lastname');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->timestamp('email_verified_at')->nullable(); // Laravel сам проверяет верификацию
             $table->string('password');
             $table->string('phone', 20)->nullable()->comment('Мобильный номер');
             $table->enum('role', Role::getValues()->all())->default(Role::USER);
             $table->rememberToken();
             $table->timestamps();
-            $table->string('activation_token')->nullable()->unique();
-            $table->timestamp('activation_expires_at')->nullable();
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
