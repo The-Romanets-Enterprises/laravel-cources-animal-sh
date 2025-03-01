@@ -6,7 +6,7 @@
            @isset($multiple) multiple data-allow-reorder="true" @endisset
            @isset($data_files) data-files="{{ json_encode($data_files) }}" @endisset
     >
-    @isset($hidden)<input type="hidden" name="{{ $name }}" class="{{ $hidden }}" multiple>@endisset
+        @isset($hidden)<input type="hidden" name="{{ $name }}" class="{{ $hidden }}" multiple>@endisset
     @isset($value)
         @foreach($value as $path)
             @php
