@@ -16,12 +16,12 @@
                         </svg>
                     </span>
                     <span>
-                        <a href="{{ route('auth.sign-in') }}">Авторизация</a>
+                        <a href="{{ route('login') }}">Авторизация</a>
                     </span>
                 </div>
             </div>
 
-            <form action="{{ route('auth.sign-up') }}" method="POST">
+            <form action="{{ route('register.post') }}" method="POST">
                 @csrf
                 <small class="required-field-text">* обязательное поле</small>
 

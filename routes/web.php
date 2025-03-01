@@ -10,25 +10,21 @@ use Illuminate\Support\Facades\Route;
 use App\Enums\Role;
 
 // --- 1. Авторизация (auth/) ---
-Route::prefix('auth')->name('auth.')->group(function () {
+Route::middleware(\App\Http\Middleware\GuestMiddleware::class)->group(function () {
+    Route::get('/login', [AuthController::class, 'login'])->name('login');
+    Route::post('/login', [AuthController::class, 'auth'])->name('auth');
+    Route::get('/register', [AuthController::class, 'RegisterForm'])->name('register');
+    Route::post('/register', [AuthController::class, 'register'])->name('register.post');
+});
 
-    // --- Гостевые маршруты --- (для незарегистрированных пользователей)
-    Route::middleware(\App\Http\Middleware\GuestMiddleware::class)->group(function () {
-        Route::get('/sign-up', [AuthController::class, 'showSignUpForm'])->name('show-sign-up');
-        Route::post('/sign-up', [AuthController::class, 'sign_up'])->name('sign-up');
-        Route::get('/sign-in', [AuthController::class, 'sign_in'])->name('sign-in');
-        Route::post('/sign-in', [AuthController::class, 'auth'])->name('auth');
-    });
+// --- Выход из системы ---
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 
-    // --- Подтверждение Email --- (только для авторизованных пользователей)
-    Route::middleware('auth')->group(function () {
-        Route::get('/verify-email', [VerificationController::class, 'show'])->name('verification.notice');
-        Route::get('/verify-email/{id}/{hash}', [VerificationController::class, 'verify'])->middleware('signed')->name('verification.verify');
-        Route::post('/verify-email/resend', [VerificationController::class, 'resend'])->middleware('throttle:6,1')->name('verification.send');
-    });
-
-    // --- Выход из системы ---
-    Route::post('/sign-out', [AuthController::class, 'sign_out'])->middleware('auth')->name('sign-out');
+// --- Подтверждение Email ---
+Route::middleware('auth')->group(function () {
+    Route::get('/verify-email', [VerificationController::class, 'show'])->name('verification.notice');
+    Route::get('/verify-email/{id}/{hash}', [VerificationController::class, 'verify'])->middleware('signed')->name('verification.verify');
+    Route::post('/verify-email/resend', [VerificationController::class, 'resend'])->middleware('throttle:6,1')->name('verification.send');
 });
 
 // --- 2. Основной сайт (/) ---

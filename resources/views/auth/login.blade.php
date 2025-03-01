@@ -7,7 +7,7 @@
         <div class="card-body p-4 p-sm-5">
             <div class="row flex-between-center mb-2">
                 <div class="col-auto">
-                    <h5>{{ __('auth.pages.sign-in.authorization') }}</h5>
+                    <h5>{{ __('auth.pages.login.authorization') }}</h5>
                 </div>
                 <div class="col-auto fs-10 text-600">
                     <span class="mb-0 undefined">
@@ -16,31 +16,31 @@
                         </svg>
                     </span>
                     <span>
-                        <a href="{{ route('auth.show-sign-up') }}">{{ __('auth.pages.sign-in.registration') }}</a>
+                        <a href="{{ route('register') }}">{{ __('auth.pages.login.registration') }}</a>
                     </span>
                 </div>
             </div>
-            <form action="{{ route('auth.auth') }}" method="post">
+            <form action="{{ route('auth') }}" method="post">
                 @csrf
                 <div class="mb-3">
-                    <input class="form-control" type="text" name="email" placeholder="{{ __('auth.pages.sign-in.forms.mail') }}" value="{{ old('email') }}" />
+                    <input class="form-control" type="text" name="email" placeholder="{{ __('auth.pages.login.forms.mail') }}" value="{{ old('email') }}" />
                 </div>
                 <div class="mb-3">
-                    <input class="form-control" type="password" name="password" placeholder="{{ __('auth.pages.sign-in.forms.password') }}" />
+                    <input class="form-control" type="password" name="password" placeholder="{{ __('auth.pages.login.forms.password') }}" />
                 </div>
                 <div class="row flex-between-center">
                     <div class="col-auto">
                         <div class="form-check mb-0">
                             <input class="form-check-input" type="checkbox" id="remember" name="remember" checked="checked" />
-                            <label class="form-check-label mb-0" for="remember">{{ __('auth.pages.sign-in.remember') }}</label>
+                            <label class="form-check-label mb-0" for="remember">{{ __('auth.pages.login.remember') }}</label>
                         </div>
                     </div>
                     <div class="col-auto">
-                        <a class="fs-10" href="">{{ __('auth.pages.sign-in.forgot-password') }}</a>
+                        <a class="fs-10" href="">{{ __('auth.pages.login.forgot-password') }}</a>
                     </div>
                 </div>
                 <div class="mb-3">
-                    <button class="btn btn-primary d-block w-100 mt-3" type="submit" name="submit">{{ __('auth.pages.sign-in.button') }}</button>
+                    <button class="btn btn-primary d-block w-100 mt-3" type="submit" name="submit">{{ __('auth.pages.login.button') }}</button>
                 </div>
             </form>
         </div>

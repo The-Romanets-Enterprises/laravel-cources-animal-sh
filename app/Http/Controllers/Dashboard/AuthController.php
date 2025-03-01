@@ -12,12 +12,13 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    public function showSignUpForm()
+    public function RegisterForm()
     {
-        return view('auth.sign-up', ['title' => 'Регистрация']);
+        $title = __('auth.titles.register');
+        return view('auth.register', compact('title'));
     }
 
-    public function sign_up(RegisterRequest $request)
+    public function register(RegisterRequest $request)
     {
         $data = $request->validated();
         $data['password'] = Hash::make($data['password']);
@@ -29,12 +30,12 @@ class AuthController extends Controller
         $user->sendEmailVerificationNotification();
 
         // Перенаправляем на страницу подтверждения email
-        return redirect()->route('auth.verification.notice');
+        return redirect()->route('verification.notice');
     }
 
-    public function sign_in()
+    public function login()
     {
-        return view('auth.sign-in', ['title' => 'Авторизация']);
+        return view('auth.login', ['title' => 'Авторизация']);
     }
 
     public function auth(LoginRequest $request)
@@ -59,12 +60,12 @@ class AuthController extends Controller
         return back()->withErrors(['email' => __('messages.auth.failed')])->onlyInput('email');
     }
 
-    public function sign_out(Request $request)
+    public function logout(Request $request)
     {
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return view('auth.sign-out');
+        return view('auth.logout');
     }
 }

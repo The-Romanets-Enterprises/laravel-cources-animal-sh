@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\Role;
 use Illuminate\Auth\MustVerifyEmail;
+use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -33,6 +34,11 @@ class User extends Authenticatable implements \Illuminate\Contracts\Auth\MustVer
             'password' => 'hashed',
             'role' => Role::class,
         ];
+    }
+
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new VerifyEmail);
     }
 
     public function isAdmin(): bool
