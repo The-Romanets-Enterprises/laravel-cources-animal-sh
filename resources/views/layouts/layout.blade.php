@@ -82,17 +82,27 @@
                             </a></a>
                         </div>
                     </div>
-                    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                        <div class="info">
-                            @if(auth()->user()->role == \App\Enums\Role::ADMIN)
-                                <a href="<?=route('admin.change-password')?>" class="d-block">
-                            @else
-                                <a href="<?=route('user.change-password')?>" class="d-block">
-                            @endif
+                    <div class="user-panel mt-3 pb-3 mb-3">
+                        <div class="d-flex flex-column">
+                            <div class="info mb-2">
+                                @if(auth()->user()->role == \App\Enums\Role::ADMIN)
+                                    <a href="<?=route('admin.change-password')?>" class="d-block">
+                                @else
+                                    <a href="<?=route('user.change-password')?>" class="d-block">
+                                @endif
                                 <i class="fas fa-key"></i> {{ __('messages.user.change-password') }}
-                            </a></a>
+                            </div>
+                            <div class="info">
+                                <form action="{{ route('user.profile.delete') }}" method="POST" onsubmit="return confirm('{{ __('messages.user.confirm-delete') }}');">
+                                    @csrf
+                                    <button type="submit" class="btn btn-link text-danger p-0 border-0">
+                                        <i class="fas fa-trash"></i> {{ __('messages.user.delete-profile') }}
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     </div>
+
                 @endauth
 
                 <!-- SidebarSearch Form -->

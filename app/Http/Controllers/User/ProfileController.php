@@ -59,4 +59,25 @@ class ProfileController extends Controller
 
         return to_route('user.profile')->with('success', __('messages.user.success.update-profile'));
     }
+
+    public function delete()
+    {
+        $user = Auth::user();
+
+        if ($user->photos->isNotEmpty()) {
+            foreach ($user->photos as $photo) {
+                Photo::deleteFileFromStorage($photo->path);
+                $photo->delete();
+            }
+        }
+
+        if ($user->address) {
+            $user->address->delete();
+        }
+
+        $user->delete();
+        Auth::logout();
+
+        return redirect()->route('user.login.show')->with('success', 'Ваш аккаунт был успешно удалён');
+    }
 }
