@@ -92,6 +92,7 @@
                                 @endif
                                 <i class="fas fa-key"></i> {{ __('messages.user.change-password') }}
                             </div>
+                            @if(auth()->user()->role == \App\Enums\Role::USER)
                             <div class="info">
                                 <form action="{{ route('user.profile.delete') }}" method="POST" onsubmit="return confirm('{{ __('messages.user.confirm-delete') }}');">
                                     @csrf
@@ -100,6 +101,7 @@
                                     </button>
                                 </form>
                             </div>
+                            @endif
                         </div>
                     </div>
 
