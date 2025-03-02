@@ -11,7 +11,7 @@
                 <p>Ваш аккаунт успешно <strong>активирован</strong>. <br>
                     Теперь вы можете войти в систему.
                 </p>
-                <a class="btn btn-primary btn-sm mt-3" href="{{ route('auth.login') }}">
+                <a class="btn btn-primary btn-sm mt-3" href="{{ route('login') }}">
                     <span class="fas fa-chevron-left me-1" data-fa-transform="shrink-4 down-1"></span>Перейти к авторизации
                 </a>
             </div>

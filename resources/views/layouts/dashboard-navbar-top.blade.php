@@ -262,9 +262,15 @@
             <div class="dropdown-menu dropdown-caret dropdown-caret dropdown-menu-end py-0" aria-labelledby="navbarDropdownUser">
                 @auth
                     <div class="bg-white dark__bg-1000 rounded-2 py-2">
+                        @if(Auth::user()->isOwner())
+                            <div class="dropdown-item fw-bold text-danger">
+                                <span class="fas fa-users-cog"></span>
+                                <span>Владелец</span>
+                            </div>
+                        @endif
 
                         @if(Auth::user()->isAdmin())
-                            <div class="dropdown-item fw-bold text-danger">
+                            <div class="dropdown-item fw-bold text-success">
                                 <span class="fas fa-crown me-1"></span>
                                 <span>Администратор</span>
                             </div>
@@ -278,7 +284,7 @@
                         @endif
 
                         @if(Auth::user()->isUser())
-                            <div class="dropdown-item fw-bold text-primary">
+                            <div class="dropdown-item fw-bold">
                                 <span class="fas fa-user me-1"></span>
                                 <span>Пользователь</span>
                             </div>

@@ -6,6 +6,7 @@ use Illuminate\Support\Collection;
 
 enum Role: string
 {
+    case OWNER = 'chief';
     case ADMIN = 'admin';
     case EMPLOYEE = 'employee';
     case USER = 'user';
@@ -18,6 +19,7 @@ enum Role: string
     public function getTitle()
     {
         return match ($this) {
+            self::OWNER => 'Владелец',
             self::ADMIN => 'Администратор',
             self::EMPLOYEE => 'Работник',
             self::USER => 'Пользователь',

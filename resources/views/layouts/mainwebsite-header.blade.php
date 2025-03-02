@@ -12,7 +12,7 @@
                     <a class="{{ Route::is('mainwebsite.index') ? 'active' : '' }}" href="{{ route('mainwebsite.index') }}" >{{ __('mainwebsite.header.home') }}</a>
                 </li>
                 <li class="dropdown">
-                    <a class="" href="">
+                    <a class="{{ Route::is('mainwebsite.about-us', 'mainwebsite.our-specialists', 'mainwebsite.our-company') ? 'active' : '' }}" href="{{ route('mainwebsite.about-us') }}">
                         <span>{{ __('mainwebsite.header.about-drop-links.about-us') }}</span>
                         <i class="bi bi-chevron-down toggle-dropdown"></i>
                     </a>
@@ -21,7 +21,10 @@
                             <a href="{{ route('mainwebsite.our-specialists') }}">{{ __('mainwebsite.header.about-drop-links.our-specialists') }}</a>
                         </li>
                         <li>
-                            <a href="">{{ __('mainwebsite.header.about-drop-links.about-company') }}</a>
+                            <a href="{{ route('mainwebsite.our-company') }}">{{ __('mainwebsite.header.about-drop-links.our-company') }}</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('mainwebsite.reviews') }}">{{ __('mainwebsite.header.about-drop-links.reviews') }}</a>
                         </li>
                         <!-- <li class="dropdown">
                             <a href="">

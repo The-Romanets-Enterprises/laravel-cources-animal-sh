@@ -1,9 +1,12 @@
 @extends('layouts.mainwebsite-pages')
 
 @section('page_title', __('mainwebsite.pages.pre-header.text.contacts'))
-@section('page_name', __('mainwebsite.pages.pre-header.text.contacts'))
 
 @section('title') {{ $title ?? null }}@endsection
+
+@section('last-pre-header')
+    <li class="current">@yield('page_name', __('mainwebsite.pages.pre-header.text.contacts'))</li>
+@endsection
 
 @section('content')
     <section id="contact" class="contact section">
@@ -54,7 +57,7 @@
                         <i class="bi bi-envelope flex-shrink-0"></i>
                         <div>
                             <h3>{{ __('general.email') }}</h3>
-                            <p>example@animalsafe.com</p>
+                            <p>support@animalsafe.com</p>
                         </div>
                     </div>
                 </div>

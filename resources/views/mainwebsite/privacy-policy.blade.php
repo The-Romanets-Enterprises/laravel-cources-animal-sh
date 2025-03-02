@@ -1,9 +1,12 @@
 @extends('layouts.mainwebsite-pages')
 
 @section('page_title', __('mainwebsite.pages.pre-header.text.privacy-policy'))
-@section('page_name', __('mainwebsite.pages.pre-header.text.privacy-policy'))
 
 @section('title') {{ $title ?? null }}@endsection
+
+@section('last-pre-header')
+    <li class="current">@yield('page_name', __('mainwebsite.pages.pre-header.text.privacy-policy'))</li>
+@endsection
 
 @section('content')
     <div class="container">
@@ -12,43 +15,111 @@
                 <section id="blog-details" class="blog-details section">
                     <div class="container">
                         <article class="article">
-                            <h2 class="title">Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia</h2>
+                            <h2 class="title">Политика конфиденциальности для сайта приюта животных</h2>
                             <div class="content">
+                                <h3>1. Общие положения</h3>
                                 <p>
-                                    Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi praesentium. Aliquam et laboriosam eius aut nostrum quidem aliquid dicta.
-                                    Et eveniet enim. Qui velit est ea dolorem doloremque deleniti aperiam unde soluta. Est cum et quod quos aut ut et sit sunt. Voluptate porro consequatur assumenda perferendis dolore.
+                                    1.1. Настоящая Политика конфиденциальности (далее — "Политика") определяет порядок сбора, хранения, обработки и защиты персональных данных пользователей веб-приложения AnimalSafe (далее — "Сайт"). <br>
+                                    1.2. Используя Сайт, пользователь выражает согласие на обработку своих персональных данных в соответствии с настоящей Политикой. <br>
+                                    1.3. Если пользователь не согласен с Политикой, он должен прекратить использование Сайта. <br>
+                                    1.4. Администрация Сайта обязуется не передавать персональные данные третьим лицам, за исключением случаев, предусмотренных законодательством.
                                 </p>
 
+                                <h3>2. Какие данные мы собираем?</h3>
+                                <span>Мы собираем только те данные, которые необходимы для работы Сайта и предоставления услуг.</span>
                                 <p>
-                                    Sit repellat hic cupiditate hic ut nemo. Quis nihil sunt non reiciendis. Sequi in accusamus harum vel aspernatur. Excepturi numquam nihil cumque odio. Et voluptate cupiditate.
-                                </p>
-
-                                <blockquote>
-                                    <p>
-                                        Et vero doloremque tempore voluptatem ratione vel aut. Deleniti sunt animi aut. Aut eos aliquam doloribus minus autem quos.
-                                    </p>
-                                </blockquote>
-
-                                <p>
-                                    Sed quo laboriosam qui architecto. Occaecati repellendus omnis dicta inventore tempore provident voluptas mollitia aliquid. Id repellendus quia. Asperiores nihil magni dicta est suscipit perspiciatis. Voluptate ex rerum assumenda dolores nihil quaerat.
-                                    Dolor porro tempora et quibusdam voluptas. Beatae aut at ad qui tempore corrupti velit quisquam rerum. Omnis dolorum exercitationem harum qui qui blanditiis neque.
-                                    Iusto autem itaque. Repudiandae hic quae aspernatur ea neque qui. Architecto voluptatem magni. Vel magnam quod et tempora deleniti error rerum nihil tempora.
-                                </p>
-
-                                <h3>Et quae iure vel ut odit alias.</h3>
-                                <p>
-                                    Officiis animi maxime nulla quo et harum eum quis a. Sit hic in qui quos fugit ut rerum atque. Optio provident dolores atque voluptatem rem excepturi molestiae qui. Voluptatem laborum omnis ullam quibusdam perspiciatis nulla nostrum. Voluptatum est libero eum nesciunt aliquid qui.
-                                    Quia et suscipit non sequi. Maxime sed odit. Beatae nesciunt nesciunt accusamus quia aut ratione aspernatur dolor. Sint harum eveniet dicta exercitationem minima. Exercitationem omnis asperiores natus aperiam dolor consequatur id ex sed. Quibusdam rerum dolores sint consequatur quidem ea.
-                                    Beatae minima sunt libero soluta sapiente in rem assumenda. Et qui odit voluptatem. Cum quibusdam voluptatem voluptatem accusamus mollitia aut atque aut.
-                                </p>
-
-                                <h3>Ut repellat blanditiis est dolore sunt dolorum quae.</h3>
-                                <p>
-                                    Rerum ea est assumenda pariatur quasi et quam. Facilis nam porro amet nostrum. In assumenda quia quae a id praesentium. Quos deleniti libero sed occaecati aut porro autem. Consectetur sed excepturi sint non placeat quia repellat incidunt labore. Autem facilis hic dolorum dolores vel.
-                                    Consectetur quasi id et optio praesentium aut asperiores eaque aut. Explicabo omnis quibusdam esse. Ex libero illum iusto totam et ut aut blanditiis. Veritatis numquam ut illum ut a quam vitae.
+                                    2.1. Данные, которые предоставляет пользователь: <br>
+                                    &bull; При регистрации: имя, email, телефон, пароль. <br>
+                                    &bull; При подаче заявок: данные о передаваемом или усыновляемом животном. <br>
+                                    &bull; При общении с приютом: информация, оставленная в формах обратной связи.
                                 </p>
                                 <p>
-                                    Alias quia non aliquid. Eos et ea velit. Voluptatem maxime enim omnis ipsa voluptas incidunt. Nulla sit eaque mollitia nisi asperiores est veniam.
+                                    2.2. Автоматически собираемые данные: <br>
+                                    &bull; IP-адрес, данные о браузере и устройстве. <br>
+                                    &bull; Файлы cookie (функциональные, аналитические, маркетинговые). <br>
+                                    &bull; Лог-файлы действий на Сайте (например, время входа в систему).
+                                </p>
+
+                                <h3>3. Как мы используем данные?</h3>
+                                <span>Персональные данные используются исключительно в рамках работы Сайта:</span>
+                                <p>
+                                    &bull; Для регистрации и аутентификации пользователей. <br>
+                                    &bull; Для обработки заявок на передачу или усыновление животных. <br>
+                                    &bull; Для отправки уведомлений о статусе заявок и другой важной информации. <br>
+                                    &bull; Для анализа работы Сайта и его улучшения. <br>
+                                    &bull; Для защиты пользователей и предотвращения мошенничества.
+                                </p>
+
+                                <h3>4. Кто имеет доступ к данным?</h3>
+                                <p>
+                                    4.1. Доступ к персональным данным имеют: <br>
+                                    &bull; Администрация Сайта (только для обработки заявок и техподдержки). <br>
+                                    &bull; Сотрудники приюта (только если пользователь подал заявку, связанную с животными). <br>
+                                    &bull; Государственные органы (только в случаях, предусмотренных законом).
+                                </p>
+                                <p>4.2. Мы не продаём и не передаём данные третьим лицам для маркетинговых целей.</p>
+
+                                <h3>5. Использование файлов cookie</h3>
+                                <p>
+                                    5.1. Что такое cookie? <br>
+                                    Файлы cookie — это небольшие текстовые файлы, которые сохраняются на устройстве пользователя при посещении Сайта.
+                                </p>
+                                <p>
+                                    5.2. Какие cookie мы используем? <br>
+                                    &bull; Функциональные (обеспечивают корректную работу Сайта, например, сохранение авторизации). <br>
+                                    &bull; Аналитические (Google Analytics, Yandex.Metrica — анализ поведения пользователей). <br>
+                                    &bull; Маркетинговые (если включены, помогают показывать релевантную рекламу).
+                                </p>
+                                <p>
+                                    5.3. Как отключить cookie? <br>
+                                    Пользователь может отключить cookie в настройках браузера, но это может повлиять на работу некоторых функций Сайта.
+                                </p>
+
+                                <h3>6. Защита персональных данных</h3>
+                                <p>
+                                    6.1. Мы принимаем все необходимые меры для защиты данных, в том числе: <br>
+                                    &bull; Шифрование паролей (bcrypt). <br>
+                                    &bull; SSL-сертификат для безопасного соединения. <br>
+                                    &bull; Ограничение доступа к базе данных только для доверенных сотрудников. <br>
+                                    &bull; Регулярное обновление системы безопасности.
+                                </p>
+                                <p>
+                                    6.2. Однако, ни один сайт не может гарантировать 100% защиту данных. В случае утечки информации мы оперативно уведомим пользователей и примем меры для устранения проблемы.
+                                </p>
+
+                                <h3>7. Хранение данных и срок их удаления</h3>
+                                <p>
+                                    7.1. Срок хранения персональных данных зависит от целей их обработки: <br>
+                                    &bull; Данные аккаунта хранятся до удаления пользователем. <br>
+                                    &bull; Данные заявок хранятся до завершения обработки + 1 год. <br>
+                                    &bull; Лог-файлы хранятся до 6 месяцев.
+                                </p>
+                                <p>
+                                    7.2. Как удалить данные? <br>
+                                    Пользователь может запросить удаление данных через email support@animalsafe.com.
+                                </p>
+
+                                <h3>8. Права пользователей</h3>
+                                <p>
+                                    Пользователь имеет право: <br>
+                                    &bull; Получить информацию о своих данных. <br>
+                                    &bull; Изменить или удалить свои данные. <br>
+                                    &bull; Отозвать согласие на обработку данных. <br>
+                                    &bull; Запретить использование cookie (в настройках браузера). <br>
+                                    &bull; Обратиться в техподдержку по любым вопросам защиты данных.
+                                </p>
+
+                                <h3>9. Изменения в Политике конфиденциальности</h3>
+                                <p>
+                                    9.1. Мы оставляем за собой право обновлять Политику в случае изменения законодательства или работы Сайта. <br>
+                                    9.2. В случае значительных изменений пользователи будут уведомлены через email или сообщение на Сайте.
+                                </p>
+
+                                <h3>10. Контактная информация</h3>
+                                <p>
+                                    Если у вас возникли вопросы или замечания по поводу работы Сайта, вы можете связаться с нами: <br>
+                                    {{ __('general.email') }}: support@animalsafe.com <br>
+                                    {{ __('general.phone') }}: +375 (44) 000-00-00
                                 </p>
                             </div>
                         </article>

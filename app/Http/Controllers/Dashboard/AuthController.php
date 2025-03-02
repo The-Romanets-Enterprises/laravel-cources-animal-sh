@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Enums\Role;
 use App\Models\User;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\LoginRequest;
@@ -29,8 +30,10 @@ class AuthController extends Controller
         // Отправляем письмо для верификации email
         $user->sendEmailVerificationNotification();
 
-        // Перенаправляем на страницу подтверждения email
-        return redirect()->route('verification.notice');
+        Auth::login($user);
+
+        // Перенаправляем с передачей email
+        return redirect()->route('verification.notice')->with('email', $user->email);
     }
 
     public function login()
@@ -50,6 +53,7 @@ class AuthController extends Controller
             }
 
             return match ($user->role) {
+                Role::OWNER => to_route('dashboard.owner.home'),
                 Role::ADMIN => to_route('dashboard.admin.home'),
                 Role::EMPLOYEE => to_route('dashboard.employee.home'),
                 Role::USER => to_route('dashboard.user.home'),

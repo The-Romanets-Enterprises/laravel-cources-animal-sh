@@ -15,19 +15,44 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-//        User::factory(10)->create();
+//        User::factory()->create([
+//            'name' => 'Владислав',
+//            'lastname' => 'Яковицкий',
+//            'email' => 'owner@gmail.com',
+//            'role' => Role::OWNER,
+//        ]);
 //
 //        User::factory()->create([
-//            'name' => 'SuperAdmin',
-//            'email' => 'root@gmail.com',
+//            'name' => 'Павел',
+//            'lastname' => 'Романец',
+//            'email' => 'pavelroma@gmail.com',
+//            'role' => Role::OWNER,
+//        ]);
+//
+//        User::factory()->create([
+//            'name' => 'Вероника',
+//            'lastname' => 'Минзар',
+//            'email' => 'admin@gmail.com',
 //            'role' => Role::ADMIN,
 //        ]);
 //
-//        User::factory(10)->create();
-
-//        $this->call(CountrySeeder::class);
-//        $this->call(CitySeeder::class);
-//        $this->call(AddressSeeder::class);
-        $this->call(AnimalSeeder::class);
+//        User::factory()->create([
+//            'name' => 'Иван',
+//            'lastname' => 'Сергеев',
+//            'email' => 'employee@gmail.com',
+//            'role' => Role::EMPLOYEE,
+//        ]);
+//
+//        User::factory()->create([
+//            'name' => 'Арсений',
+//            'lastname' => 'Дмитриев',
+//            'email' => 'user@gmail.com',
+//            'role' => Role::USER,
+//        ]);
+//
+//        User::factory(3)->create();
+//
+//
+//        $this->call(AnimalSeeder::class);
     }
 }

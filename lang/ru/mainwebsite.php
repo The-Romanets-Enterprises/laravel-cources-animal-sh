@@ -4,7 +4,10 @@ return [
     // Названия страниц
     'titles' => [
         'index' => 'Главная страница',
+        'about-us' => 'О нас',
         'our-specialists' => 'Наши специалисты',
+        'our-company' => 'О компании',
+        'reviews' => 'Отзывы',
         'contacts' => 'Контакты',
         'terms' => 'Условия',
         'privacy-policy' => 'Политика конфиденциальности',
@@ -13,11 +16,13 @@ return [
     // Шапка сайта
     'header' => [
         'home' => 'Главная',
+        'about-us' => 'О нас',
 
         'about-drop-links' => [
             'about-us' => 'О нас',
             'our-specialists' => 'Наши специалисты',
-            'about-company' => 'О компании',
+            'our-company' => 'О компании',
+            'reviews' => 'Отзывы',
         ],
 
         'contacts' => 'Контакты',
@@ -53,9 +58,13 @@ return [
         'pre-header' => [
             'null' => 'null',
             'index' => 'Главная',
+            'about-us' => 'О нас',
 
             'text' => [
+                'about-us' => 'О Нас',
                 'our-specialists' => 'Наши специалисты',
+                'our-company' => 'О компании',
+                'reviews' => 'Отзывы',
                 'contacts' => 'Контакты',
                 'terms' => 'Условия',
                 'privacy-policy' => 'Политика конфиденциальности',

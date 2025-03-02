@@ -25,46 +25,46 @@
         <div class="navbar-vertical-content scrollbar">
             <ul class="navbar-nav flex-column mb-3" id="navbarVerticalNav">
                 @auth
-                    @if(Auth::user()->isAdmin())
+                    @if(Auth::user()->isOwner())
                         <li class="nav-item">
-                            <a class="nav-link dropdown-indicator" href="#admin" role="button" data-bs-toggle="collapse" aria-expanded="true" aria-controls="dashboard">
+                            <a class="nav-link dropdown-indicator" href="#chief" role="button" data-bs-toggle="collapse" aria-expanded="true" aria-controls="dashboard">
                                 <div class="d-flex align-items-center">
                                     <span class="nav-link-icon">
-                                        <span class="fas fa-chart-pie"></span>
+                                        <span class="fas fa-cogs"></span>
                                     </span>
-                                    <span class="nav-link-text ps-1">Администрирование</span>
+                                    <span class="nav-link-text ps-1 text-danger">Управление проектом</span>
                                 </div>
                             </a>
-                            <ul class="nav collapse show" id="admin">
+                            <ul class="nav collapse show" id="chief">
                                 <li class="nav-item">
-                                    <a class="nav-link {{ Route::is('dashboard.admin.home') ? 'active' : '' }}" href="{{ route('dashboard.admin.home') }}">
+                                    <a class="nav-link {{ Route::is('dashboard.owner.home') ? 'text-danger' : '' }}" href="{{ route('dashboard.owner.home') }}">
                                         <div class="d-flex align-items-center">
                                             <span class="nav-link-text ps-1">Главная</span>
                                         </div>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link dropdown-indicator" href="#management" data-bs-toggle="collapse" aria-expanded="false" aria-controls="forms">
+                                    <a class="nav-link dropdown-indicator" href="#managementt" data-bs-toggle="collapse" aria-expanded="false" aria-controls="forms">
                                         <div class="d-flex align-items-center">
                                             <span class="nav-link-text ps-1">Управление</span>
                                             <span class="badge rounded-pill ms-2 badge-subtle-dark">BETA</span>
                                         </div>
                                     </a>
-                                    <ul class="nav collapse" id="management">
+                                    <ul class="nav collapse" id="managementt">
                                         <li class="nav-item">
-                                            <a class="nav-link dropdown-indicator" href="#main-site" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="multi-level">
+                                            <a class="nav-link dropdown-indicator" href="#main-sitee" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="multi-level">
                                                 <div class="d-flex align-items-center">
                                                     <span class="nav-link-text ps-1">Основной сайт</span>
                                                 </div>
                                             </a>
-                                            <ul class="nav collapse" id="main-site">
+                                            <ul class="nav collapse" id="main-sitee">
                                                 <li class="nav-item">
-                                                    <a class="nav-link dropdown-indicator" href="#template1" data-bs-toggle="collapse" aria-expanded="false" aria-controls="multi-level">
+                                                    <a class="nav-link dropdown-indicator" href="#template11" data-bs-toggle="collapse" aria-expanded="false" aria-controls="multi-level">
                                                         <div class="d-flex align-items-center">
                                                             <span class="nav-link-text ps-1">Шаблон №1</span>
                                                         </div>
                                                     </a>
-                                                    <ul class="nav collapse" id="template1">
+                                                    <ul class="nav collapse" id="template11">
                                                         <li class="nav-item">
                                                             <a class="nav-link" href="">
                                                                 <div class="d-flex align-items-center">
@@ -73,12 +73,12 @@
                                                             </a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link dropdown-indicator" href="#template2" data-bs-toggle="collapse" aria-expanded="false" aria-controls="level-four">
+                                                            <a class="nav-link dropdown-indicator" href="#template22" data-bs-toggle="collapse" aria-expanded="false" aria-controls="level-four">
                                                                 <div class="d-flex align-items-center">
                                                                     <span class="nav-link-text ps-1">Шаблон №2</span>
                                                                 </div>
                                                             </a>
-                                                            <ul class="nav collapse" id="template2">
+                                                            <ul class="nav collapse" id="template22">
                                                                 <li class="nav-item">
                                                                     <a class="nav-link" href="">
                                                                         <div class="d-flex align-items-center">
@@ -87,12 +87,12 @@
                                                                     </a>
                                                                 </li>
                                                                 <li class="nav-item">
-                                                                    <a class="nav-link dropdown-indicator" href="#template3" data-bs-toggle="collapse" aria-expanded="false" aria-controls="item-7">
+                                                                    <a class="nav-link dropdown-indicator" href="#template33" data-bs-toggle="collapse" aria-expanded="false" aria-controls="item-7">
                                                                         <div class="d-flex align-items-center">
                                                                             <span class="nav-link-text ps-1">Шаблон №3</span>
                                                                         </div>
                                                                     </a>
-                                                                    <ul class="nav collapse" id="template3">
+                                                                    <ul class="nav collapse" id="template33">
                                                                         <li class="nav-item">
                                                                             <a class="nav-link" href="">
                                                                                 <div class="d-flex align-items-center">
@@ -148,7 +148,39 @@
                         </li>
                     @endif
 
-                    @if(Auth::user()->isAdmin() || Auth::user()->isEmployee())
+                    @if(Auth::user()->isOwner() || Auth::user()->isAdmin())
+                        <li class="nav-item">
+                            <a class="nav-link dropdown-indicator" href="#admin" role="button" data-bs-toggle="collapse" aria-expanded="true" aria-controls="dashboard">
+                                <div class="d-flex align-items-center">
+                                    <span class="nav-link-icon">
+                                        <span class="fas fa-chart-pie"></span>
+                                    </span>
+                                    <span class="nav-link-text ps-1">Администрирование</span>
+                                </div>
+                            </a>
+                            <ul class="nav collapse show" id="admin">
+                                <li class="nav-item">
+                                    <a class="nav-link {{ Route::is('dashboard.admin.home') ? 'active' : '' }}" href="{{ route('dashboard.admin.home') }}">
+                                        <div class="d-flex align-items-center">
+                                            <span class="nav-link-text ps-1">Главная</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <!--
+                                <li class="nav-item">
+                                    <a class="nav-link" href="">
+                                        <div class="d-flex align-items-center">
+                                            <span class="nav-link-text ps-1">Аналитика</span>
+                                            <span class="badge rounded-pill ms-2 badge-subtle-dark">BETA</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                -->
+                            </ul>
+                        </li>
+                    @endif
+
+                    @if(Auth::user()->isOwner() || Auth::user()->isAdmin() || Auth::user()->isEmployee())
                         <li class="nav-item">
                             <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
                                 <div class="col-auto navbar-vertical-label">Раздел сотрудника</div>

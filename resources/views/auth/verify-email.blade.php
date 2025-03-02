@@ -8,7 +8,7 @@
             <div class="text-center">
                 <img class="d-block mx-auto mb-4" src="{{ asset('assets/dashboard/img/icons/spot-illustrations/16.png') }}" alt="Email" width="100" />
                 <h4 class="mb-2">Пожалуйста, проверьте свою электронную почту!</h4>
-                <p>Письмо было отправлено на адрес <strong>{{ $email }}</strong>.
+                <p>Письмо было отправлено на адрес <strong>{{ auth()->user()->email }}</strong>.
                     Пожалуйста, перейдите по ссылке,
                     <span class="white-space-nowrap">чтобы активировать аккаунт.</span>
                 </p>
@@ -18,9 +18,6 @@
                     <button class="btn btn-primary btn-sm mt-3" type="submit">Отправить письмо ещё раз</button>
                 </form>
 
-                <a class="btn btn-primary btn-sm mt-3" href="{{ route('login') }}">
-                    <span class="fas fa-chevron-left me-1" data-fa-transform="shrink-4 down-1"></span>Вернуться к авторизации
-                </a>
             </div>
         </div>
     </div>

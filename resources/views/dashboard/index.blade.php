@@ -15,7 +15,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-8">
-                        <h4 class="mb-1">{{ auth()->user()->name }}
+                        <h4 class="mb-1">{{ ucfirst(auth()->user()->name) }} {{ ucfirst(auth()->user()->lastname) }}
                             <span data-bs-toggle="tooltip" data-bs-placement="right" title="Верифицированная страница">
                                 <small class="fa fa-check-circle text-primary-verif" data-fa-transform="shrink-4 down-2"></small>
                             </span>

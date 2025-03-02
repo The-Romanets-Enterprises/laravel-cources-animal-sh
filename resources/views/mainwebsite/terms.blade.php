@@ -1,9 +1,12 @@
 @extends('layouts.mainwebsite-pages')
 
 @section('page_title', __('mainwebsite.pages.pre-header.text.terms'))
-@section('page_name', __('mainwebsite.pages.pre-header.text.terms'))
 
 @section('title') {{ $title ?? null }}@endsection
+
+@section('last-pre-header')
+    <li class="current">@yield('page_name', __('mainwebsite.pages.pre-header.text.terms'))</li>
+@endsection
 
 @section('content')
     <div class="container">
@@ -12,43 +15,88 @@
                 <section id="blog-details" class="blog-details section">
                     <div class="container">
                         <article class="article">
-                            <h2 class="title">Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia</h2>
+                            <h2 class="title">Условия использования для сайта приюта животных</h2>
                             <div class="content">
+                                <h3>1. Общие положения</h3>
                                 <p>
-                                    Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi praesentium. Aliquam et laboriosam eius aut nostrum quidem aliquid dicta.
-                                    Et eveniet enim. Qui velit est ea dolorem doloremque deleniti aperiam unde soluta. Est cum et quod quos aut ut et sit sunt. Voluptate porro consequatur assumenda perferendis dolore.
+                                    1.1. Настоящие Условия использования регулируют порядок доступа и использования веб-приложения AnimalSafe (далее — "Сайт"). <br>
+                                    1.2. Использование Сайта означает полное и безоговорочное согласие пользователя с настоящими Условиями. <br>
+                                    1.3. Если Вы не согласны с Условиями, пожалуйста, прекратите использование Сайта. <br>
+                                    1.4. Администрация Сайта оставляет за собой право изменять Условия без предварительного уведомления пользователей.
                                 </p>
 
+                                <h3>2. Определения и термины</h3>
                                 <p>
-                                    Sit repellat hic cupiditate hic ut nemo. Quis nihil sunt non reiciendis. Sequi in accusamus harum vel aspernatur. Excepturi numquam nihil cumque odio. Et voluptate cupiditate.
+                                    2.1. Приют — организация, занимающаяся временным содержанием, лечением и пристройством бездомных животных. <br>
+                                    2.2. Пользователь — физическое или юридическое лицо, которое использует Сайт. <br>
+                                    2.3. Администрация — владельцы и операторы, поддерживающие работу Сайта. <br>
+                                    2.4. Контент — любая информация, размещённая на Сайте (тексты, изображения, видеоматериалы).
                                 </p>
 
-                                <blockquote>
-                                    <p>
-                                        Et vero doloremque tempore voluptatem ratione vel aut. Deleniti sunt animi aut. Aut eos aliquam doloribus minus autem quos.
-                                    </p>
-                                </blockquote>
-
+                                <h3>3. Регистрация и доступ к сервису</h3>
                                 <p>
-                                    Sed quo laboriosam qui architecto. Occaecati repellendus omnis dicta inventore tempore provident voluptas mollitia aliquid. Id repellendus quia. Asperiores nihil magni dicta est suscipit perspiciatis. Voluptate ex rerum assumenda dolores nihil quaerat.
-                                    Dolor porro tempora et quibusdam voluptas. Beatae aut at ad qui tempore corrupti velit quisquam rerum. Omnis dolorum exercitationem harum qui qui blanditiis neque.
-                                    Iusto autem itaque. Repudiandae hic quae aspernatur ea neque qui. Architecto voluptatem magni. Vel magnam quod et tempora deleniti error rerum nihil tempora.
+                                    3.1. Доступ к основным разделам Сайта предоставляется без регистрации, однако для использования некоторых функций (например, подачи заявок) требуется создание аккаунта. <br>
+                                    3.2. При регистрации пользователь обязуется предоставить актуальную и достоверную информацию. <br>
+                                    3.3. Администрация оставляет за собой право блокировать или удалять аккаунты, нарушающие правила Сайта. <br>
+                                    3.4. Пользователь несёт ответственность за сохранность своих данных (логина и пароля).
                                 </p>
 
-                                <h3>Et quae iure vel ut odit alias.</h3>
+                                <h3>4. Услуги, предоставляемые через Сайт</h3>
                                 <p>
-                                    Officiis animi maxime nulla quo et harum eum quis a. Sit hic in qui quos fugit ut rerum atque. Optio provident dolores atque voluptatem rem excepturi molestiae qui. Voluptatem laborum omnis ullam quibusdam perspiciatis nulla nostrum. Voluptatum est libero eum nesciunt aliquid qui.
-                                    Quia et suscipit non sequi. Maxime sed odit. Beatae nesciunt nesciunt accusamus quia aut ratione aspernatur dolor. Sint harum eveniet dicta exercitationem minima. Exercitationem omnis asperiores natus aperiam dolor consequatur id ex sed. Quibusdam rerum dolores sint consequatur quidem ea.
-                                    Beatae minima sunt libero soluta sapiente in rem assumenda. Et qui odit voluptatem. Cum quibusdam voluptatem voluptatem accusamus mollitia aut atque aut.
+                                    4.1. Основные услуги, доступные на Сайте: <br>
+                                    &bull; Просмотр списка животных, доступных для усыновления. <br>
+                                    &bull; Подача заявок на передачу или усыновление животного. <br>
+                                    &bull; Запись на посещение приюта. <br>
+                                    &bull; Консультации по уходу за животными.
+                                </p>
+                                <p>4.2. Сайт не является коммерческой платформой и не взимает плату за услуги.</p>
+                                <p>4.3. Администрация не несёт ответственности за действия пользователей вне платформы, включая возможные споры по передаче животных.</p>
+
+                                <h3>5. Обязанности и права пользователя</h3>
+                                <p>
+                                    5.1. Пользователь обязуется: <br>
+                                    &bull; Не размещать ложную информацию о себе или животных. <br>
+                                    &bull; Не использовать Сайт для распространения вредоносного контента. <br>
+                                    &bull; Соблюдать законодательство, касающееся защиты животных.
+                                </p>
+                                <p>
+                                    5.2. Пользователь имеет право: <br>
+                                    &bull; Получать информацию о животных в приюте. <br>
+                                    &bull; Оставлять заявки на усыновление или передачу животных. <br>
+                                    &bull; Обращаться в поддержку при возникновении проблем.
                                 </p>
 
-                                <h3>Ut repellat blanditiis est dolore sunt dolorum quae.</h3>
+                                <h3>6. Ответственность сторон</h3>
                                 <p>
-                                    Rerum ea est assumenda pariatur quasi et quam. Facilis nam porro amet nostrum. In assumenda quia quae a id praesentium. Quos deleniti libero sed occaecati aut porro autem. Consectetur sed excepturi sint non placeat quia repellat incidunt labore. Autem facilis hic dolorum dolores vel.
-                                    Consectetur quasi id et optio praesentium aut asperiores eaque aut. Explicabo omnis quibusdam esse. Ex libero illum iusto totam et ut aut blanditiis. Veritatis numquam ut illum ut a quam vitae.
+                                    6.1. Администрация не несёт ответственности за возможные ошибки, сбои или неточности в данных, размещённых на Сайте. <br>
+                                    6.2. Пользователь несёт полную ответственность за достоверность подаваемых заявок и предоставляемой информации. <br>
+                                    6.3. Сайт не является ветеринарной или юридической организацией, и все рекомендации носят информационный характер.
                                 </p>
+
+                                <h3>7. Политика по защите животных</h3>
                                 <p>
-                                    Alias quia non aliquid. Eos et ea velit. Voluptatem maxime enim omnis ipsa voluptas incidunt. Nulla sit eaque mollitia nisi asperiores est veniam.
+                                    7.1. Сайт категорически против жестокого обращения с животными. <br>
+                                    7.2. Любая попытка использования платформы для незаконной продажи животных приведёт к немедленной блокировке аккаунта. <br>
+                                    7.3. Все животные передаются новым владельцам с учётом их состояния здоровья и характера.
+                                </p>
+
+                                <h3>8. Использование личных данных</h3>
+                                <p>
+                                    8.1. При регистрации пользователь даёт согласие на обработку своих персональных данных в соответствии с Политикой конфиденциальности. <br>
+                                    8.2. Администрация обязуется не передавать персональные данные третьим лицам без согласия пользователя.
+                                </p>
+
+                                <h3>9. Изменения условий</h3>
+                                <p>
+                                    9.1. Администрация оставляет за собой право изменять настоящие Условия без предварительного уведомления пользователей. <br>
+                                    9.2. Продолжение использования Сайта после внесения изменений означает согласие с обновлёнными условиями.
+                                </p>
+
+                                <h3>10. Контактная информация</h3>
+                                <p>
+                                    Если у вас возникли вопросы или замечания по поводу работы Сайта, вы можете связаться с нами: <br>
+                                    {{ __('general.email') }}: support@animalsafe.com <br>
+                                    {{ __('general.phone') }}: +375 (44) 000-00-00
                                 </p>
                             </div>
                         </article>

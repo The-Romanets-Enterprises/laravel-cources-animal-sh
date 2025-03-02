@@ -41,6 +41,11 @@ class User extends Authenticatable implements \Illuminate\Contracts\Auth\MustVer
         $this->notify(new VerifyEmail);
     }
 
+    public function isOwner(): bool
+    {
+        return $this->role === Role::OWNER;
+    }
+
     public function isAdmin(): bool
     {
         return $this->role === Role::ADMIN;

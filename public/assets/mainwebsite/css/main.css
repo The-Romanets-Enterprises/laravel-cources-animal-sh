@@ -1582,7 +1582,7 @@ section,
   }
 
   .features .nav-link.active {
-    color: var(--accent-color);
+    color: #FFFFFF;
     background: var(--accent-color);
   }
 }

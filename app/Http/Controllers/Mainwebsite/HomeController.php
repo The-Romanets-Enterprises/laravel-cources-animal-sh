@@ -13,10 +13,28 @@ class HomeController extends Controller
         return view('mainwebsite.index', compact('title'));
     }
 
-    public function ourspecialists()
+    public function about_us()
+    {
+        $title = __('mainwebsite.titles.about-us');
+        return view('mainwebsite.about-us', compact('title'));
+    }
+
+    public function our_specialists()
     {
         $title = __('mainwebsite.titles.our-specialists');
         return view('mainwebsite.our-specialists', compact('title'));
+    }
+
+    public function our_company()
+    {
+        $title = __('mainwebsite.titles.our-company');
+        return view('mainwebsite.our-company', compact('title'));
+    }
+
+    public function reviews()
+    {
+        $title = __('mainwebsite.titles.reviews');
+        return view('mainwebsite.reviews', compact('title'));
     }
 
     public function contacts()

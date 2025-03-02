@@ -9,17 +9,14 @@
                     <p>ул.Улица д.1</p>
                     <p>Республика Беларусь, Гродно 230005</p>
                     <p class="mt-3"><strong>{{ __('general.phone') }}:</strong> <span>+375 (44) 000-00-00</span></p>
-                    <p><strong>{{ __('general.email') }}:</strong> <span>example@animalsafe.com</span></p>
+                    <p><strong>{{ __('general.email') }}:</strong> <span>support@animalsafe.com</span></p>
                 </div>
                 <div class="social-links d-flex mt-4">
-                    <a href="">
-                        <i class="bi bi-facebook"></i>
-                    </a>
                     <a href="">
                         <i class="bi bi-instagram"></i>
                     </a>
                     <a href="">
-                        <i class="bi bi-linkedin"></i>
+                        <i class="bi bi-telegram"></i>
                     </a>
                 </div>
             </div>
@@ -28,7 +25,7 @@
                 <h4>{{ __('mainwebsite.footer.company.company') }}</h4>
                 <ul>
                     <li>
-                        <a href="">{{ __('mainwebsite.footer.company.about-us') }}</a>
+                        <a href="{{ route('mainwebsite.about-us') }}">{{ __('mainwebsite.footer.company.about-us') }}</a>
                     </li>
                     <li>
                         <a href="{{ route('mainwebsite.contacts') }}">{{ __('mainwebsite.footer.company.contacts') }}</a>
@@ -56,7 +53,7 @@
     </div>
 
     <div class="container copyright text-center mt-4">
-        <p>&#9400 <?php echo date('Y'); ?> <strong class="px-1 sitename">{{ __('general.project-name') }}</strong> <span>{{ __('general.arr') }}</span></p>
+        <p>&#9400 2024 - <?php echo date('Y'); ?> <strong class="px-1 sitename">{{ __('general.project-name') }}</strong> <span>{{ __('general.arr') }}</span></p>
     </div>
 
 </footer>

@@ -16,7 +16,7 @@ class CheckUserRole
     public function handle(Request $request, Closure $next): Response
     {
         if (!Auth::check()) {
-            return redirect()->route('auth.login');
+            return redirect()->route('login');
         }
 
         $user = Auth::user();
@@ -26,7 +26,12 @@ class CheckUserRole
             return $next($request);
         }
 
-        // Админ может заходить в админку и employee
+        // Владелец может заходить в админ и сотрудник и обычный пользователь
+        if ($user->isOwner() && $request->routeIs('dashboard.owner.*', 'dashboard.admin.*', 'dashboard.employee.*')) {
+            return $next($request);
+        }
+
+        // Админ может заходить в админ и сотрудник
         if ($user->isAdmin() && $request->routeIs('dashboard.admin.*', 'dashboard.employee.*')) {
             return $next($request);
         }
@@ -43,6 +48,7 @@ class CheckUserRole
 
         // Если пользователь пытается зайти в чужой раздел, редиректим его домой
         return match ($user->role) {
+            Role::OWNER => redirect()->route('dashboard.owner.home'),
             Role::ADMIN => redirect()->route('dashboard.admin.home'),
             Role::EMPLOYEE => redirect()->route('dashboard.employee.home'),
             Role::USER => redirect()->route('dashboard.user.home'),

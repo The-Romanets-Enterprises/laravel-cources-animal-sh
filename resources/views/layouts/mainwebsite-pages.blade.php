@@ -47,7 +47,8 @@
                     <li>
                         <a href="{{ route('mainwebsite.index') }}">{{ __('mainwebsite.pages.pre-header.index') }}</a>
                     </li>
-                    <li class="current">@yield('page_name', __('mainwebsite.pages.pre-header.null'))</li>
+                    @yield('about-us-link')
+                    @yield('last-pre-header')
                 </ol>
             </nav>
         </div>

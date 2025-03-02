@@ -2,9 +2,10 @@
 
 use App\Http\Controllers\Dashboard\AuthController;
 use App\Http\Controllers\Dashboard\VerificationController;
-use App\Http\Controllers\Dashboard\UserController;
+use App\Http\Controllers\Dashboard\OwnerController;
 use App\Http\Controllers\Dashboard\AdminController;
 use App\Http\Controllers\Dashboard\EmployeeController;
+use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\Mainwebsite\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Enums\Role;
@@ -30,7 +31,10 @@ Route::middleware('auth')->group(function () {
 // --- 2. Основной сайт (/) ---
 Route::prefix('/')->name('mainwebsite.')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('index');
-    Route::get('/our-specialists', [HomeController::class, 'ourspecialists'])->name('our-specialists');
+    Route::get('/about-us', [HomeController::class, 'about_us'])->name('about-us');
+    Route::get('/our-specialists', [HomeController::class, 'our_specialists'])->name('our-specialists');
+    Route::get('/our-company', [HomeController::class, 'our_company'])->name('our-company');
+    Route::get('/reviews', [HomeController::class, 'reviews'])->name('reviews');
     Route::get('/contacts', [HomeController::class, 'contacts'])->name('contacts');
     Route::get('/terms', [HomeController::class, 'terms'])->name('terms');
     Route::get('/privacy-policy', [HomeController::class, 'privacy_policy'])->name('privacy-policy');
@@ -40,6 +44,7 @@ Route::prefix('/')->name('mainwebsite.')->group(function () {
 Route::prefix('panel')->name('dashboard.')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/', function () {
         return match (Auth::user()->role) {
+            Role::OWNER => redirect()->route('dashboard.owner.home'),
             Role::ADMIN => redirect()->route('dashboard.admin.home'),
             Role::EMPLOYEE => redirect()->route('dashboard.employee.home'),
             Role::USER => redirect()->route('dashboard.user.home'),
@@ -51,5 +56,6 @@ Route::prefix('panel')->name('dashboard.')->middleware(['auth', 'verified'])->gr
         Route::get('/index', [UserController::class, 'home'])->name('user.home'); // Обычный пользователь
         Route::get('/employee/home', [EmployeeController::class, 'home'])->name('employee.home'); // Сотрудник
         Route::get('/admin/home', [AdminController::class, 'home'])->name('admin.home'); // Администратор
+        Route::get('/owner/home', [OwnerController::class, 'home'])->name('owner.home'); // Владелец
     });
 });
