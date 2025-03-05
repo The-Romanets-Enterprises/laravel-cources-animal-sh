@@ -22,11 +22,11 @@
 
             @include('layouts.message')
 
-            @php
-                $isAdmin = request()->routeIs('admin.*');
-            @endphp
+{{--            @php--}}
+{{--                $isAdmin = request()->routeIs('admin.*');--}}
+{{--            @endphp--}}
 
-            <form action="{{ $isAdmin ? route('admin.login.auth') : route('user.login.auth') }}" method="post">
+            <form action="{{ route('login.auth') }}" method="post">
             @csrf
                 <div class="input-group mb-3">
                     <input type="text" name="email" class="form-control" placeholder="Адрес эл. почты"
@@ -59,7 +59,7 @@
                     </div>
                 </div>
                 <div class="mt-3">
-                    <a href="{{ route('user.register.show') }}" class="btn btn-success w-100">Зарегистрироваться</a>
+                    <a href="{{ route('register.show') }}" class="btn btn-success w-100">Зарегистрироваться</a>
                 </div>
             </form>
         </div>

@@ -20,7 +20,7 @@
 
             @include('layouts.message')
 
-            <form action="{{ route('user.register.store') }}" method="post">
+            <form action="{{ route('register.store') }}" method="post">
                 @csrf
                 <div class="row">
                     <div class="col-md-6">
@@ -80,7 +80,7 @@
             </form>
 
             <div class="mt-3 text-center">
-                <a href="{{ route('user.login.show') }}" class="btn btn-secondary">Уже есть аккаунт? Войти</a>
+                <a href="{{ route('login.show') }}" class="btn btn-secondary">Уже есть аккаунт? Войти</a>
             </div>
 
         </div>
