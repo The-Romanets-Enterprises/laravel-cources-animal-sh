@@ -10,14 +10,22 @@ class VerificationController extends Controller
 {
     public function show()
     {
-        return view('auth.verify-email');
+        $title = __('mainwebsite.titles.verify-email');
+        return view('auth.verify-email', compact('title'));
     }
 
     public function verify(EmailVerificationRequest $request)
     {
-        $request->fulfill();  // Подтверждаем email
+        $user = $request->user();
 
-        // После успешной активации, показываем страницу успешной активации
+        // Проверяем, был ли уже активирован аккаунт
+        if ($user->hasVerifiedEmail()) {
+            return view('auth.activation-failed');
+        }
+
+        // Подтверждаем email
+        $request->fulfill();
+
         return view('auth.activation-success');
     }
 

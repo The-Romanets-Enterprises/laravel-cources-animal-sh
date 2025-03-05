@@ -89,7 +89,7 @@
 
         @if(Auth::guest())
             <!-- Видно только для НЕавторизованных пользователей -->
-            <a class="btn-getstarted" href="{{ route('login') }}">{{ __('mainwebsite.header.button') }}</a>
+            <a class="btn-getstarted" href="{{ route('auth.login') }}">{{ __('mainwebsite.header.button') }}</a>
         @else
             <!-- Видно только для авторизованных пользователей -->
             <a class="btn-getstarted" href="{{ route(auth()->user()->isAdmin() ? 'dashboard.admin.home' : (auth()->user()->isEmployee() ? 'dashboard.employee.home' : 'dashboard.user.home')) }}">

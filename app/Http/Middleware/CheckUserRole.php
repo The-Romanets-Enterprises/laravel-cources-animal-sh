@@ -16,7 +16,7 @@ class CheckUserRole
     public function handle(Request $request, Closure $next): Response
     {
         if (!Auth::check()) {
-            return redirect()->route('login');
+            return to_route('login');
         }
 
         $user = Auth::user();
@@ -48,10 +48,10 @@ class CheckUserRole
 
         // Если пользователь пытается зайти в чужой раздел, редиректим его домой
         return match ($user->role) {
-            Role::OWNER => redirect()->route('dashboard.owner.home'),
-            Role::ADMIN => redirect()->route('dashboard.admin.home'),
-            Role::EMPLOYEE => redirect()->route('dashboard.employee.home'),
-            Role::USER => redirect()->route('dashboard.user.home'),
+            Role::OWNER => to_route('dashboard.owner.home'),
+            Role::ADMIN => to_route('dashboard.admin.home'),
+            Role::EMPLOYEE => to_route('dashboard.employee.home'),
+            Role::USER => to_route('dashboard.user.home'),
             default => abort(403),
         };
     }

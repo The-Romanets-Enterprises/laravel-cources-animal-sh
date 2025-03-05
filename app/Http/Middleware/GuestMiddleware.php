@@ -14,10 +14,10 @@ class GuestMiddleware
     {
         if (Auth::check()) {
             return match (Auth::user()->role) {
-                Role::ADMIN => redirect()->route('dashboard.admin.home'),
-                Role::EMPLOYEE => redirect()->route('dashboard.employee.home'),
-                Role::USER => redirect()->route('dashboard.user.home'),
-                default => redirect()->route('dashboard.index'),
+                Role::ADMIN => to_route('dashboard.admin.home'),
+                Role::EMPLOYEE => to_route('dashboard.employee.home'),
+                Role::USER => to_route('dashboard.user.home'),
+                default => to_route('dashboard.index'),
             };
         }
 

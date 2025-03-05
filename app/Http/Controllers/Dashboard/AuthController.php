@@ -33,7 +33,7 @@ class AuthController extends Controller
         Auth::login($user);
 
         // Перенаправляем с передачей email
-        return redirect()->route('verification.notice')->with('email', $user->email);
+        return to_route('verification.notice')->with('email', $user->email);
     }
 
     public function login()

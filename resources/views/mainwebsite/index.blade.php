@@ -10,7 +10,7 @@
                 <div class="carousel-container">
                     <h2>Ваш питомец в надёжных руках<br></h2>
                     <p>Не можете больше заботиться о своём питомце? Мы поможем найти для него любящую семью или обеспечим заботу в нашем приюте.</p>
-                    <a href="{{ route('login') }}" class="btn-get-started">Отдать питомца</a>
+                    <a href="{{ route('auth.login') }}" class="btn-get-started">Отдать питомца</a>
                 </div>
             </div>
 
@@ -19,7 +19,7 @@
                 <div class="carousel-container">
                     <h2>Подари дом тому, кто ждёт</h2>
                     <p>В нашем приюте есть животные, которые мечтают о любящей семье. Найдите себе верного друга и подарите ему заботу и тепло.</p>
-                    <a href="{{ route('login') }}" class="btn-get-started">Выбрать питомца</a>
+                    <a href="{{ route('auth.login') }}" class="btn-get-started">Выбрать питомца</a>
                 </div>
             </div>
 
@@ -28,7 +28,7 @@
                 <div class="carousel-container">
                     <h2>Возьми питомца под опеку</h2>
                     <p>Не можешь забрать питомца домой, но хочешь помочь? Стань его опекуном — поддерживай его питание и уход, пока он ждёт семью.</p>
-                    <a href="{{ route('login') }}" class="btn-get-started">Стать опекуном</a>
+                    <a href="{{ route('auth.login') }}" class="btn-get-started">Стать опекуном</a>
                 </div>
             </div>
 

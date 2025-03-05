@@ -12,14 +12,14 @@ class RedirectIfNotAuthenticated
     public function handle(Request $request, Closure $next): Response
     {
         if (!Auth::check()) {
-            return redirect()->route('login');
+            return to_route('login');
         }
 
         $user = Auth::user();
 
         // Если почта не подтверждена, не пускаем в дэшборд
         if (!$user->hasVerifiedEmail()) {
-            return redirect()->route('verification.notice');
+            return to_route('verification.notice');
         }
 
         return $next($request);

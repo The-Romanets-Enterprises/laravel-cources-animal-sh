@@ -16,11 +16,11 @@
                         </svg>
                     </span>
                     <span>
-                        <a href="{{ route('register') }}">{{ __('auth.pages.login.registration') }}</a>
+                        <a href="{{ route('auth.register') }}">{{ __('auth.pages.login.registration') }}</a>
                     </span>
                 </div>
             </div>
-            <form action="{{ route('auth') }}" method="post">
+            <form action="{{ route('auth.auth') }}" method="post">
                 @csrf
                 <div class="mb-3">
                     <input class="form-control" type="text" name="email" placeholder="{{ __('auth.pages.login.forms.mail') }}" value="{{ old('email') }}" />

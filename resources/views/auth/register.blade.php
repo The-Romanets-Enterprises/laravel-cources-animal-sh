@@ -16,12 +16,12 @@
                         </svg>
                     </span>
                     <span>
-                        <a href="{{ route('login') }}">Авторизация</a>
+                        <a href="{{ route('auth.login') }}">Авторизация</a>
                     </span>
                 </div>
             </div>
 
-            <form action="{{ route('register.post') }}" method="POST">
+            <form action="{{ route('auth.register.post') }}" method="POST">
                 @csrf
                 <small class="required-field-text">* обязательное поле</small>
 
@@ -52,8 +52,8 @@
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="basic-register-checkbox" name="terms" />
                     <label class="form-label" for="basic-register-checkbox">
-                        Я принимаю <a href="{{ route('mainwebsite.terms') }}">условия</a> и
-                        <a class="white-space-nowrap" href="{{ route('mainwebsite.privacy-policy') }}">политику конфиденциальности</a>
+                        Я принимаю <a href="{{ route('mainwebsite.terms') }}" target="_blank">условия</a> и
+                        <a class="white-space-nowrap" href="{{ route('mainwebsite.privacy-policy') }}" target="_blank">политику конфиденциальности</a>
                     </label>
                     @error('terms') <small class="text-danger">{{ $message }}</small> @enderror
                 </div>
