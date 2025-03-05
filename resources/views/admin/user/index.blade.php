@@ -40,9 +40,9 @@
                             <tr>
                                 <th style="width: 10px">#</th>
                                 <th>Эл. почта</th>
-                                <th>Имя</th>
-                                <th>Фамилия</th>
                                 <th>Полное имя</th>
+                                <th>Роль</th>
+                                <th>Фото</th>
                                 <th>Действия</th>
                             </tr>
                         </thead>
@@ -51,9 +51,13 @@
                                 <tr>
                                     <td>{{ $user->id }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->lastname }}</td>
                                     <td>{{ $user->full_name }}</td>
+                                    <td>{{ $user->role->getTitle() }}</td>
+                                    <td>
+                                        @foreach($user->photos as $photo)
+                                            <img src="{{ $photo->getPhoto() }}" alt="photo animal" height="125px" width="125px">
+                                        @endforeach
+                                    </td>
                                     <td>
                                         <a href="{{ route("admin.users.edit", ['user' => $user->id]) }}" class="btn btn-info btn-sm float-left">
                                             <i class="fas fa-pencil-alt"></i>

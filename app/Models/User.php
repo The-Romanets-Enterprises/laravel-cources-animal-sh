@@ -114,15 +114,15 @@ class User extends Authenticatable
             return false;
         }
 
-        try {
-            $result = Mail::to([$request->email])->send(new CreateUserMail($user, $password));
-        } catch (\Exception $e) {
-            $user->delete();
+//        try {
+//            $result = Mail::to([$request->email])->send(new CreateUserMail($user, $password));
+//        } catch (\Exception $e) {
+//            $user->delete();
+//
+//            return false;
+//        }
 
-            return false;
-        }
-
-        return $result;
+        return $user;
     }
 
     public static function updateUser(UserRequest $request, User $user)

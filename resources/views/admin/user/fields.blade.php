@@ -29,26 +29,39 @@
     </div>
 </div>
 
-@include('layouts.form.text', [
-    'title' => 'Телефон*',
-    'name' => 'phone',
-    'placeholder' => "Телефон",
-    'value' => $user->phone ?? null,
-])
-
-<div class="form-group">
-    <label for="role">Роль*</label>
-    <select class="form-control select2 select2-danger select2-hidden-accessible @error('role') is-invalid @enderror"
-            @disabled(isset($user) && auth()->user()->id === $user->id) name="role" id="role"
-            data-dropdown-css-class="select2-danger" style="width: 100%;">
-        <option value="">Выбрать роль</option>
-        @foreach(Role::cases() as $role)
-            <option value="{{ $role->value }}" @selected(old('role', $user->role ?? null) === $role)>
-                {{ $role->getTitle() }}
-            </option>
-        @endforeach
-    </select>
+<div class="row">
+    <div class="col-6">
+        @include('layouts.form.text', [
+            'title' => 'Телефон*',
+            'name' => 'phone',
+            'placeholder' => "Телефон",
+            'value' => $user->phone ?? null,
+        ])
+    </div>
+    <div class="col-6">
+        <div class="form-group">
+            <label for="role">Роль*</label>
+            <select class="form-control select2 select2-danger select2-hidden-accessible @error('role') is-invalid @enderror"
+                    @disabled(isset($user) && auth()->user()->id === $user->id) name="role" id="role"
+                    data-dropdown-css-class="select2-danger" style="width: 100%;">
+                <option value="">Выбрать роль</option>
+                @foreach(Role::cases() as $role)
+                    <option value="{{ $role->value }}" @selected(old('role', $user->role ?? null) === $role)>
+                        {{ $role->getTitle() }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+    </div>
 </div>
+
+@include('layouts.form.filepond-file', [
+            'title' => 'Фото*',
+            'multiple' => true,
+            'name' => 'photos[]',
+            'data_files' => $photosFiles ?? null,
+            'hidden' => 'photo-paths'
+        ])
 
 @isset($have_password)
     <div class="row">

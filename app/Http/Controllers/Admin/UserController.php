@@ -6,6 +6,7 @@ use App\Enums\Role;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\ChangePasswordRequest;
 use App\Http\Requests\User\UserRequest;
+use App\Models\Photo;
 use App\Models\User;
 use App\Rules\Auth\MatchOldPasswordRule;
 use Carbon\Carbon;
@@ -15,7 +16,9 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class UserController extends Controller
@@ -136,6 +139,8 @@ class UserController extends Controller
             return $redirect->with('error', __('messages.user.error.store'));
         }
 
+        $this->syncFiles($request, $user, 'photos');
+
         return $redirect->with('success', __('messages.user.success.store'));
     }
 
@@ -160,9 +165,12 @@ class UserController extends Controller
     {
         $title = __('messages.user.edit', ['user' => $user->name]);
 
+        $photosFiles = $this->prepareFileData($user->photos);
+
         return view('admin.user.edit', compact(
             'title',
             'user',
+            'photosFiles',
         ));
     }
 
@@ -175,11 +183,13 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, User $user)
     {
-        $user = User::updateUser($request, $user);
+        $result = User::updateUser($request, $user);
 
         $redirect = to_route('admin.users.index');
 
-        if (!$user)
+        $this->syncFiles($request, $user, 'photos');
+
+        if (!$result)
         {
             return $redirect->with('error', __('messages.user.error.update'));
         }
@@ -195,9 +205,19 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        $redirect = redirect()->back();
+        $is_destroyed = DB::transaction(function () use ($user) {
+            // Удаляем связанные фото
+            foreach ($user->photos as $photo) {
+                if (Storage::disk('public')->exists($photo->path)) {
+                    Storage::disk('public')->delete($photo->path);
+                }
+                $photo->deletePhoto($photo);
+            }
+            // Удаляем саму сущность
+            return User::deleteUser($user) !== null;
+        });
 
-        $is_destroyed = User::deleteUser($user);
+        $redirect = redirect()->back();
 
         if ($is_destroyed === null)
         {
@@ -205,6 +225,47 @@ class UserController extends Controller
         }
 
         return $redirect->with('success', __('messages.user.success.destroy'));
+    }
+
+    protected function prepareFileData($files)
+    {
+        return $files->map(fn($file) => [
+            'source' => asset('storage/' . $file->path),
+            'options' => [
+                'type' => 'local',
+                'file' => [
+                    'name' => basename($file->path),
+                    'type' => mime_content_type(storage_path('app/public/' . $file->path))
+                ]
+            ]
+        ])->toArray();
+    }
+
+    protected function syncFiles($request, $user, $type)
+    {
+        $model = Photo::class;
+        $existingFiles = $user->$type->pluck('path')->toArray();
+        $newFilePaths = array_filter($request->input($type, []), 'is_string');
+
+        // Удаление файлов
+        $filesToDelete = array_diff($existingFiles, $newFilePaths);
+        foreach ($filesToDelete as $path) {
+            if (Storage::disk('public')->exists($path)) {
+                Storage::disk('public')->delete($path);
+            }
+            $user->$type()->where('path', $path)->delete();
+        }
+
+        // Добавление новых файлов
+        if ($request->has($type)) {
+            foreach ($newFilePaths as $path) {
+                if (is_string($path) && Storage::disk('public')->exists($path) && !in_array($path, $existingFiles)) {
+                    $newPath = "users/$type/" . basename($path);
+                    Storage::disk('public')->move($path, $newPath);
+                    $model::createFromPath($newPath, $user->id, User::class);
+                }
+            }
+        }
     }
 
     public function changePassword()

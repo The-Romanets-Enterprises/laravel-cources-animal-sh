@@ -36,6 +36,8 @@ class UserRequest extends FormRequest
             'phone' => ['required', 'max:20'],
             'role' => ['required', Rule::enum(Role::class)],
             'password' => ['nullable', 'max:255', 'confirmed'],
+            'photos' => ['nullable', 'array'],
+            'photos.*' => ['nullable', 'string'],
         ];
     }
 }
