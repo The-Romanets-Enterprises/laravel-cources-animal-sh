@@ -24,16 +24,13 @@
                             <tr>
                                 <th style="width: 10px">#</th>
                                 <th>Категория</th>
-                                <th>Пол</th>
                                 <th>Кличка</th>
                                 <th>Описание</th>
                                 <th>Дата рождения</th>
-                                <th>Шерсть</th>
-                                <th>Характер</th>
                                 <th>Пользователь</th>
-                                <th>Кастрация</th>
-                                <th>Вакцинация</th>
-                                <th>Одобрен</th>
+                                <th>Параметры</th>
+                                <th>Фото</th>
+                                <th>Видео</th>
                                 <th>Действия</th>
                             </tr>
                             </thead>
@@ -42,16 +39,33 @@
                                 <tr>
                                     <td>{{ $animal_pet->id }}</td>
                                     <td>{{ $animal_pet->animal->name }}</td>
-                                    <td>{{ $animal_pet->sex->getTitle() }}</td>
-                                    <td>{{ $animal_pet->name }}</td>
-                                    <td>{!! $animal_pet->description !!}</td>
+                                    <td>
+                                        {{ $animal_pet->name . (($animal_pet->sex == \App\Enums\Sex::MALE) ? ' (М)' : ' (Ж)' )}}
+                                    </td>
+                                    <td>
+                                        {!! $animal_pet->description !!}
+                                        {!! __('messages.animal_pet.character'). ': ' . $animal_pet->character !!}
+                                        {{ __('messages.animal_pet.wool_type'). ': ' . $animal_pet->wool_type }}
+                                    </td>
                                     <td>{{ $animal_pet->birth_date->format('d.m.Y') }}</td>
-                                    <td>{{ $animal_pet->wool_type }}</td>
-                                    <td>{!! $animal_pet->character !!}</td>
                                     <td>{{ $animal_pet->user->getFullNameAttribute() }}</td>
-                                    <td>{{ $animal_pet->is_sterilized ? __('messages.yes') : __('messages.no') }}</td>
-                                    <td>{{ $animal_pet->has_vaccination ? __('messages.yes') : __('messages.no') }}</td>
-                                    <td>{{ $animal_pet->is_confirmed ? __('messages.yes') : __('messages.no') }}</td>
+                                    <td>
+                                        {{ $animal_pet->is_sterilized ? __('messages.animal_pet.sterilized') : '' }}
+                                        {{ $animal_pet->has_vaccination ? __('messages.animal_pet.vaccinated') : '' }}
+                                        {{ $animal_pet->is_confirmed ? __('messages.animal_pet.confirmed') : '' }}
+                                    </td>
+                                    <td>
+                                        @foreach($animal_pet->photos as $photo)
+                                            <img src="{{ $photo->getPhoto() }}" alt="photo animal" height="125px" width="125px">
+                                        @endforeach
+                                    </td>
+                                    <td>
+                                        @foreach($animal_pet->videos as $video)
+                                            <video height="150px" width="200px" controls="controls">
+                                                <source src="{{ $video->getVideo() }}">
+                                            </video>
+                                        @endforeach
+                                    </td>
                                     @if(auth()->user()->role == \App\Enums\Role::ADMIN)
                                         <td>
                                             <a href="{{ route("admin.animal-pets.edit", ['animal_pet' => $animal_pet->id]) }}" class="btn btn-info btn-sm float-left">
