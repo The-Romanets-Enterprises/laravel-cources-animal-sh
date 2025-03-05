@@ -57,6 +57,10 @@
                     <!-- /.col -->
                 </div>
             </form>
+            <div class="login-link">
+                {{ __('messages.auth.no_have_account') }}
+                <a href="{{ route('register.show') }}">{{ __('messages.register.register') }}</a>
+            </div>
         </div>
         <!-- /.form-box -->
     </div><!-- /.card -->
