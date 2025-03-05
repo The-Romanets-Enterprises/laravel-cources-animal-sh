@@ -14,9 +14,6 @@
         <li class="nav-item d-none d-sm-inline-block">
             <a href="<?=route('admin.animal_pets.index')?>" class="nav-link">{{ __('messages.animal_pet.plural') }}</a>
         </li>
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="<?=route('admin.logout')?>" class="nav-link">{{ __('messages.auth.logout') }}</a>
-        </li>
     @else
         <li class="nav-item d-none d-sm-inline-block">
             <a href="<?=route('user.home')?>" class="nav-link">{{ __('messages.main') }}</a>
@@ -27,8 +24,8 @@
 {{--        <li class="nav-item d-none d-sm-inline-block">--}}
 {{--            <a href="<?=route('user.animal_pets.index')?>" class="nav-link">{{ __('messages.animal_pet.plural') }}</a>--}}
 {{--        </li>--}}
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="<?=route('user.logout')?>" class="nav-link">{{ __('messages.auth.logout') }}</a>
-        </li>
     @endif
+    <li class="nav-item d-none d-sm-inline-block">
+        <a href="<?=route('logout')?>" class="nav-link">{{ __('messages.auth.logout') }}</a>
+    </li>
 </ul>
