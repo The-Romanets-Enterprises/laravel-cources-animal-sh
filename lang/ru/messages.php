@@ -6,7 +6,12 @@ return [
     'site_name' => 'Animal Shelter',
     'main' => 'Главная',
     'main_page' => 'Главная страница',
+    'welcome_to' => 'Добро пожаловать на',
+    'logged_in_as' => 'Вы вошли как:',
     'search' => 'Поиск',
+    'login' => 'Вход',
+    'logout' => 'Выход',
+    'register' => 'Регистрация',
     'more' => 'Подробнее',
     'published' => 'Опубликовано',
     'unpublished' => 'Снято с публикации',
@@ -150,7 +155,7 @@ return [
     ],
 
     'address' => [
-        'plural' => 'Адресы',
+        'plural' => 'Адреса',
         'single' => 'Адрес',
         'create' => 'Создать адрес',
         'edit' => 'Редактировать адрес :address',
