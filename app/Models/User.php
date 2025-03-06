@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+ //use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Enums\Role;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\User\UserRequest;
 use App\Mail\CreateUserMail;
-use Illuminate\Auth\MustVerifyEmail;
+ use Illuminate\Auth\Events\Registered;
+ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -16,10 +17,10 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable, MustVerifyEmail, HasApiTokens;
+    use HasFactory, Notifiable, HasApiTokens;
 
     /**
      * The attributes that are mass assignable.
@@ -31,6 +32,7 @@ class User extends Authenticatable
         'lastname',
         'email',
         'password',
+        'email_verified_at',
         'phone',
         'role',
     ];
@@ -101,7 +103,11 @@ class User extends Authenticatable
         $data['password'] = Hash::make($data['password']);
         $data['role'] = Role::USER;
 
-        return self::query()->create($data);
+        $user = self::query()->create($data);
+
+        event(new Registered($user));
+
+        return $user;
     }
 
     public static function createUser(UserRequest $request)
@@ -111,6 +117,7 @@ class User extends Authenticatable
             length: 8,
         );
         $data['password'] = bcrypt($password);
+        $data['email_verified_at'] = now()->toDateString();
 
         $user = User::query()->create($data);
 

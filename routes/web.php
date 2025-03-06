@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Api\VerificationController;
 use App\Http\Controllers\User\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,17 @@ Route::middleware('guest')->controller(AuthController::class)->group(function ()
 });
 
 Route::middleware('auth')->group(function () {
+   Route::get('/email/verify', [VerificationController::class, 'verificationNotice'])->name('verification.notice');
+   Route::post('/email/verification-notification', [VerificationController::class, 'verificationSend'])->middleware('throttle:6,1')->name('verification.send');
+   Route::middleware('signed')->get('/email/verify/{id}/{hash}', [VerificationController::class, 'verificationVerify'])->name('verification.verify');
+});
+
+Route::middleware('guest')->group(function () {
+    Route::get('/password/reset', [AuthController::class, 'passwordReset'])->name('password.reset');
+    Route::post('/password/reset', [AuthController::class, 'passwordResetStore'])->name('password.update');
+});
+
+Route::middleware('auth')->group(function () {
     Route::controller(AuthController::class)->group(function () {
         Route::get('/logout', 'logout')->name('logout');
     });
@@ -29,6 +41,8 @@ Route::prefix('/user')->name('user.')->group(function () {
     Route::middleware('auth')->group(function () {
         Route::controller(AuthController::class)->group(function () {
             Route::get('/', 'index')->name('home');
+            Route::get('/forgot-password', 'forgotPassword')->name('forgot-password.show');
+            Route::get('/forgot-password', 'forgotPasswordStore')->name('forgot-password.store');
         });
         Route::controller(ProfileController::class)->group(function () {
             Route::get('/profile', 'index')->name('profile');
