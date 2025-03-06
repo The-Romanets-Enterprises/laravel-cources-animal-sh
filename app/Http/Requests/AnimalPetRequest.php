@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Enums\Sex;
+use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -30,7 +31,7 @@ class AnimalPetRequest extends FormRequest
             'description' => ['nullable', 'string'],
             'is_confirmed' => ['required', 'boolean'],
             'user_id' => ['required', 'integer', 'exists:users,id'],
-            'birth_date' => ['required', 'date', 'before_or_equal:today'],
+            'birth_date' => ['required', 'date', 'after_or_equal:' . Carbon::today()->subYears(40)->toDateString(), 'before_or_equal:today'],
             'is_sterilized' => ['required', 'boolean'],
             'has_vaccination' => ['required', 'boolean'],
             'wool_type' => ['nullable', 'string'],
