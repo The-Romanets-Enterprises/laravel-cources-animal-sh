@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('phone', 20)->nullable()->comment('Мобильный номер');
             $table->enum('role', Role::getValues()->all())->default(Role::USER);
+            $table->string('timezone')->default('Europe/Moscow');
             $table->rememberToken();
             $table->timestamps();
         });

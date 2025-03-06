@@ -13,8 +13,8 @@
 
                             <div class="position-relative z-2">
                                 <div>
-                                    <h3 class="text-primary mb-1">Добрый день, {{ auth()->user()->name }}!</h3>
-                                    <p>Сегодня: {{ now()->format('d.m.Y') }}, {{ __('messages.days.' . now()->format('l')) }}</p>
+                                    <h3 class="text-primary mb-1">{{ $greeting }}, {{ auth()->user()->name }}!</h3>
+                                    <p>Сегодня: {{ $date }} | <span id="live-time"></span>, {{ $dayName }}</p>
                                     <p>Ваша статистика за сегодня:</p>
                                 </div>
                                 <div class="d-flex py-0.5">
@@ -69,3 +69,28 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const userTimezone = "{{ auth()->user()->timezone ?? 'Europe/Moscow' }}";
+
+            function updateTime() {
+                const now = new Date().toLocaleTimeString('ru-RU', {
+                    timeZone: userTimezone,
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit'
+                });
+
+                const timeElement = document.getElementById("live-time");
+                if (timeElement) {
+                    timeElement.textContent = now;
+                }
+            }
+
+            updateTime();
+            setInterval(updateTime, 1000);
+        });
+    </script>
+@endpush

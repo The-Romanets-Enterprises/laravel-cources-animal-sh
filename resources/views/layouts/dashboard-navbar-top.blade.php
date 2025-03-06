@@ -48,7 +48,7 @@
                         <a class="dropdown-item px-x1 py-2" href="">
                             <div class="d-flex align-items-center">
                                 <div class="avatar avatar-l status-online me-2">
-                                    <img class="rounded-circle" src="{{ asset('assets/dashboard/img/team/2.jpg') }}" alt="" />
+                                    <img class="rounded-circle" src="{{ asset('assets/dashboard/img/team/avatar.jpg') }}" alt="" />
                                 </div>
                                 <div class="flex-1">
                                     <h6 class="mb-0 title">Павел Романец</h6>
@@ -59,7 +59,7 @@
                         <a class="dropdown-item px-x1 py-2" href="">
                             <div class="d-flex align-items-center">
                                 <div class="avatar avatar-l status-online me-2">
-                                    <img class="rounded-circle" src="{{ asset('assets/dashboard/img/team/4.jpg') }}" alt="" />
+                                    <img class="rounded-circle" src="{{ asset('assets/dashboard/img/team/avatar.jpg') }}" alt="" />
                                 </div>
                                 <div class="flex-1">
                                     <h6 class="mb-0 title">Владислав Яковицкий</h6>
@@ -70,7 +70,7 @@
                         <a class="dropdown-item px-x1 py-2" href="">
                             <div class="d-flex align-items-center">
                                 <div class="avatar avatar-l me-2">
-                                    <img class="rounded-circle" src="{{ asset('assets/dashboard/img/team/3.jpg') }}" alt="" />
+                                    <img class="rounded-circle" src="{{ asset('assets/dashboard/img/team/avatar.jpg') }}" alt="" />
                                 </div>
                                 <div class="flex-1">
                                     <h6 class="mb-0 title">Ольга Смирнова</h6>
@@ -139,7 +139,7 @@
                                 <a class="notification notification-flush notification-unread" href="">
                                     <div class="notification-avatar">
                                         <div class="avatar avatar-2xl me-3">
-                                            <img class="rounded-circle" src="{{ asset('assets/dashboard/img/team/3-thumb.png') }}" alt="" />
+                                            <img class="rounded-circle" src="{{ asset('assets/dashboard/img/team/avatar-thumb.jpg') }}" alt="" />
                                         </div>
                                     </div>
                                     <div class="notification-body">
@@ -199,7 +199,7 @@
                                 <div class="col-4">
                                     <a class="d-block hover-bg-200 px-2 py-3 rounded-3 text-center text-decoration-none" href="" target="_blank">
                                         <div class="avatar avatar-2xl">
-                                            <img class="rounded-circle" src="{{ asset('assets/dashboard/img/team/2.jpg') }}" alt="" />
+                                            <img class="rounded-circle" src="{{ asset('assets/dashboard/img/team/avatar.jpg') }}" alt="" />
                                         </div>
                                         <p class="mb-0 fw-medium text-800 text-truncate fs-11">Вы</p>
                                     </a>
@@ -256,7 +256,7 @@
         <li class="nav-item dropdown">
             <a class="nav-link pe-0 ps-2" id="navbarDropdownUser" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="avatar avatar-xl">
-                    <img class="rounded-circle" src="{{ asset('assets/dashboard/img/team/2.jpg') }}" alt="" />
+                    <img class="rounded-circle" src="{{ asset('assets/dashboard/img/team/avatar.jpg') }}" alt="" />
                 </div>
             </a>
             <div class="dropdown-menu dropdown-caret dropdown-caret dropdown-menu-end py-0" aria-labelledby="navbarDropdownUser">
@@ -291,7 +291,7 @@
                         @endif
 
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="">Профиль</a>
+                        <a class="dropdown-item" href="{{ route('dashboard.user.profile', ['id' => Auth::id()]) }}">Профиль</a>
                         <a class="dropdown-item" href="">Поделиться</a>
 
                         <div class="dropdown-divider"></div>

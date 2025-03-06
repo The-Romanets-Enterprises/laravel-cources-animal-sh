@@ -103,7 +103,7 @@
   --falcon-link-color: #00d27a;
   --falcon-link-color-rgb: 44, 123, 229;
   --falcon-link-decoration: none;
-  --falcon-link-hover-color: #2362b7;
+  --falcon-link-hover-color: #00693d;
   --falcon-link-hover-color-rgb: 35, 98, 183;
   --falcon-link-hover-decoration: underline;
   --falcon-code-color: #ff679b;
@@ -175,7 +175,7 @@
   --falcon-dark-border-subtle: #4d5969;
   --falcon-heading-color: var(--falcon-secondary-color);
   --falcon-link-color: #00d27a;
-  --falcon-link-hover-color: #2362b7;
+  --falcon-link-hover-color: #00693d;
   --falcon-link-color-rgb: 44, 123, 229;
   --falcon-link-hover-color-rgb: 35, 98, 183;
   --falcon-code-color: #ff679b;
@@ -284,7 +284,7 @@
   --falcon-btn-falcon-dark-active-color: #091320;
   --falcon-input-btn-focus-color: rgba(44, 123, 229, 0.25);
   --falcon-btn-link-color: var(--falcon-link-color);
-  --falcon-btn-link-hover-color: #2362b7;
+  --falcon-btn-link-hover-color: #00693d;
   --falcon-btn-disabled-color: #748194;
   --falcon-input-focus-border-color-global: #96bdf2;
   --falcon-input-placeholder-color-global: var(--falcon-gray-400);
@@ -4474,10 +4474,10 @@ fieldset:disabled .tox .tox-dialog__footer .tox-button--secondary,
   --falcon-btn-border-color: #00d27a;
   --falcon-btn-hover-color: #fff;
   --falcon-btn-hover-bg: #2569c3;
-  --falcon-btn-hover-border-color: #2362b7;
+  --falcon-btn-hover-border-color: #00693d;
   --falcon-btn-focus-shadow-rgb: 76, 143, 233;
   --falcon-btn-active-color: #fff;
-  --falcon-btn-active-bg: #2362b7;
+  --falcon-btn-active-bg: #00693d;
   --falcon-btn-active-border-color: #215cac;
   --falcon-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
   --falcon-btn-disabled-color: #fff;

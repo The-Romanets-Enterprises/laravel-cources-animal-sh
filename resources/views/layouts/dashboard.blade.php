@@ -38,8 +38,6 @@
     <link href="{{ asset('assets/dashboard/css/user-rtl.css') }}" rel="stylesheet" id="user-style-rtl">
     <link href="{{ asset('assets/dashboard/css/user.css') }}" rel="stylesheet" id="user-style-default">
 
-    @yield('styles')
-
     <script>
         var isRTL = JSON.parse(localStorage.getItem('isRTL'));
         if (isRTL) {
@@ -55,8 +53,6 @@
             userLinkRTL.setAttribute('disabled', true);
         }
     </script>
-
-    @yield('scripts-head')
 
 </head>
 
@@ -106,6 +102,7 @@
 <script src="{{ asset('assets/dashboard/js/theme.js') }}"></script>
 
 @yield('scripts')
+@stack('scripts')
 
 </body>
 

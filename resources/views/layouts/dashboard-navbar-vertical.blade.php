@@ -274,20 +274,43 @@
                         <a class="nav-link {{ Route::is('dashboard.user.home') ? 'active' : '' }}" href="{{ route('dashboard.user.home') }}" role="button">
                             <div class="d-flex align-items-center">
                                     <span class="nav-link-icon">
+                                        <span class="fas fa-th-large"></span>
+                                    </span>
+                                <span class="nav-link-text ps-1">Главная</span>
+                                <span class="badge rounded-pill ms-2 badge-subtle-dark">BETA</span>
+                            </div>
+                        </a>
+                        <a class="nav-link {{ Route::is('dashboard.user.profile') ? 'active' : '' }}" href="{{ route('dashboard.user.profile', ['id' => Auth::id()]) }}" role="button">
+                            <div class="d-flex align-items-center">
+                                    <span class="nav-link-icon">
                                         <span class="fas fa-user"></span>
                                     </span>
                                 <span class="nav-link-text ps-1">Профиль</span>
                             </div>
                         </a>
-                        <a class="nav-link" href="" role="button">
+                        <a class="nav-link dropdown-indicator" href="#myticket" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="forms">
                             <div class="d-flex align-items-center">
-                                    <span class="nav-link-icon">
-                                        <span class="fas fa-edit"></span>
-                                    </span>
+                                <span class="nav-link-icon">
+                                    <span class="fas fa-flag"></span>
+                                </span>
                                 <span class="nav-link-text ps-1">Мои заявки</span>
-                                <span class="badge rounded-pill ms-2 badge-subtle-dark">BETA</span>
+                                <span class="badge rounded-pill ms-2 badge-subtle-primary">НОВОЕ</span>
                             </div>
                         </a>
+                        <ul class="nav collapse" id="myticket">
+                            <li class="nav-item">
+                                <a class="nav-link" href="">
+                                    <div class="d-flex align-items-center">
+                                        <span class="nav-link-text ps-1">Все</span>
+                                    </div>
+                                </a>
+                                <a class="nav-link" href="">
+                                    <div class="d-flex align-items-center">
+                                        <span class="nav-link-text ps-1">Создать</span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
                         <!--
                         <a class="nav-link" href="" role="button">
                             <div class="d-flex align-items-center">

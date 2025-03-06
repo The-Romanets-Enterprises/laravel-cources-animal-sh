@@ -97,7 +97,12 @@ Route::prefix('panel')->name('dashboard.')->middleware(['auth', 'verified'])->gr
 
         // --- Обычный пользователь ---
         Route::controller(UserController::class)->group(function () {
-            Route::get('/index', 'home')->name('user.home');
+            Route::get('/user/home', 'home')->name('user.home');
         });
+    });
+
+    // Профиль пользователя (доступен всем авторизованным)
+    Route::controller(UserController::class)->group(function () {
+        Route::get('/user/id{id}', 'profile')->name('user.profile');
     });
 });
