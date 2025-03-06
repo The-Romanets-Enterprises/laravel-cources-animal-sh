@@ -14,22 +14,11 @@
                             <div class="position-relative z-2">
                                 <div>
                                     <h3 class="text-primary mb-1">{{ $greeting }}, {{ auth()->user()->name }}!</h3>
-                                    <p>Сегодня: {{ $date }} | <span id="live-time"></span>, {{ $dayName }} <br>
-                                        Краткие данные приложения за сегодня
-                                    </p>
-                                </div>
-                                <div class="d-flex py-3">
-                                    <div class="pe-3">
-                                        <p class="text-600 fs-10 fw-medium">Новых пользователей <br>за сегодня</p>
-                                        <h4 class="text-800 mb-0">7</h4>
-                                    </div>
-                                    <div class="ps-3">
-                                        <p class="text-600 fs-10">Количество заявок <br>обработанных сотрудниками</p>
-                                        <h4 class="text-800 mb-0">18</h4>
-                                    </div>
+                                    <p>Сегодня: {{ $date }} | <span id="live-time"></span>, {{ $dayName }}</p>
                                 </div>
                             </div>
                         </div>
+                        <!--
                         <div class="card-body p-0">
                             <ul class="mb-0 list-unstyled list-group font-sans-serif">
                                 <li class="list-group-item mb-0 rounded-0 py-3 px-x1 list-group-item-danger border-x-0 border-top-0">
@@ -79,6 +68,7 @@
                                 </li>
                             </ul>
                         </div>
+                        -->
                     </div>
                 </div>
             </div>

@@ -98,6 +98,7 @@ Route::prefix('panel')->name('dashboard.')->middleware(['auth', 'verified'])->gr
         // --- Обычный пользователь ---
         Route::controller(UserController::class)->group(function () {
             Route::get('/user/home', 'home')->name('user.home');
+            Route::get('/user/applications', 'applications')->name('user.applications');
         });
     });
 

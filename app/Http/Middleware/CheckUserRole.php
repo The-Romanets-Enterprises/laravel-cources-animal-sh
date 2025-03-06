@@ -27,12 +27,12 @@ class CheckUserRole
         }
 
         // Владелец может заходить в админ и сотрудник и обычный пользователь
-        if ($user->isOwner() && $request->routeIs('dashboard.owner.*', 'dashboard.admin.*', 'dashboard.employee.*')) {
+        if ($user->isOwner() && $request->routeIs('dashboard.owner.*', 'dashboard.admin.*', 'dashboard.employee.*', 'dashboard.user.*')) {
             return $next($request);
         }
 
         // Админ может заходить в админ и сотрудник
-        if ($user->isAdmin() && $request->routeIs('dashboard.admin.*', 'dashboard.employee.*')) {
+        if ($user->isAdmin() && $request->routeIs('dashboard.admin.*', 'dashboard.employee.*', 'dashboard.user.*')) {
             return $next($request);
         }
 

@@ -20,7 +20,7 @@
                                 <small class="fa fa-check-circle text-primary-verif" data-fa-transform="shrink-4 down-2"></small>
                         </span>
                     </h4>
-                    <h5 class="fs-9 fw-normal">Место для цитаты</h5>
+                    <h5 class="fs-9 fw-normal">Место для статуса</h5>
                     <p class="text-500">Был в сети: 5 минут назад</p>
                     <button class="btn btn-falcon-primary btn-sm px-3" type="button">Подписаться</button>
                     <button class="btn btn-falcon-default btn-sm px-3 ms-2" type="button">Написать сообщение</button>
@@ -52,7 +52,7 @@
                 </div>
             </div>
             <div class="card-footer bg-body-tertiary p-0 border-top">
-                <button class="btn btn-link d-block w-100 btn-intro-collapse" type="button" data-bs-toggle="collapse" data-bs-target="#profile-intro" aria-expanded="true" aria-controls="profile-intro">Показать
+                <button class="btn btn-link d-block w-100 btn-intro-collapse" type="button" data-bs-toggle="collapse" data-bs-target="#profile-intro" aria-expanded="аф" aria-controls="profile-intro">Показать
                     <span class="less">меньше<span class="fas fa-chevron-up ms-2 fs-11"></span></span>
                     <span class="full">больше<span class="fas fa-chevron-down ms-2 fs-11"></span></span>
                 </button>

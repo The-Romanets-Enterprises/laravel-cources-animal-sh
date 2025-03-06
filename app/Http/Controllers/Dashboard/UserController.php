@@ -27,4 +27,10 @@ class UserController extends Controller
 
         return view('dashboard.user.profile', compact('user', 'title'));
     }
+
+    public function applications()
+    {
+        $title = __('dashboard.titles.user.applications');
+        return view('dashboard.user.applications', compact('title'));
+    }
 }

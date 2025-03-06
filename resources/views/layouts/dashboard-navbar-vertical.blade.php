@@ -43,6 +43,7 @@
                                         </div>
                                     </a>
                                 </li>
+                                <!--
                                 <li class="nav-item">
                                     <a class="nav-link dropdown-indicator" href="#managementt" data-bs-toggle="collapse" aria-expanded="false" aria-controls="forms">
                                         <div class="d-flex align-items-center">
@@ -134,6 +135,7 @@
                                         </li>
                                     </ul>
                                 </li>
+                                -->
                                 <!--
                                 <li class="nav-item">
                                     <a class="nav-link" href="">
@@ -202,7 +204,7 @@
                                     <span class="fas fa-flag"></span>
                                 </span>
                                     <span class="nav-link-text ps-1">Заявки</span>
-                                    <span class="badge rounded-pill ms-2 badge-subtle-dark">BETA</span>
+                                    <span class="badge rounded-pill ms-2 badge-subtle-primary">НОВОЕ</span>
                                 </div>
                             </a>
                             <ul class="nav collapse" id="applications">
@@ -232,6 +234,7 @@
                                     </a>
                                 </li>
                             </ul>
+                            <!--
                             <a class="nav-link" href="" role="button">
                                 <div class="d-flex align-items-center">
                                 <span class="nav-link-icon">
@@ -242,7 +245,7 @@
                                     <span class="badge rounded-pill ms-2 badge-subtle-dark">BETA</span>
                                 </div>
                             </a>
-                            <!--
+
                             <a class="nav-link dropdown-indicator" href="#moderation" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="forms">
                                 <div class="d-flex align-items-center">
                                 <span class="nav-link-icon">
@@ -264,88 +267,76 @@
                         </li>
                     @endif
 
-                    <li class="nav-item">
-                        <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
-                            <div class="col-auto navbar-vertical-label">Главное меню</div>
-                            <div class="col ps-0">
-                                <hr class="mb-0 navbar-vertical-divider" />
+                    @if(Auth::user()->isOwner() || Auth::user()->isAdmin() || Auth::user()->isEmployee() || Auth::user()->isUser())
+                        <li class="nav-item">
+                            <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
+                                <div class="col-auto navbar-vertical-label">Главное меню</div>
+                                <div class="col ps-0">
+                                    <hr class="mb-0 navbar-vertical-divider" />
+                                </div>
                             </div>
-                        </div>
-                        <a class="nav-link {{ Route::is('dashboard.user.home') ? 'active' : '' }}" href="{{ route('dashboard.user.home') }}" role="button">
-                            <div class="d-flex align-items-center">
+                            <a class="nav-link {{ Route::is('dashboard.user.home') ? 'active' : '' }}" href="{{ route('dashboard.user.home') }}" role="button">
+                                <div class="d-flex align-items-center">
                                     <span class="nav-link-icon">
                                         <span class="fas fa-th-large"></span>
                                     </span>
-                                <span class="nav-link-text ps-1">Главная</span>
-                                <span class="badge rounded-pill ms-2 badge-subtle-dark">BETA</span>
-                            </div>
-                        </a>
-                        <a class="nav-link {{ Route::is('dashboard.user.profile') ? 'active' : '' }}" href="{{ route('dashboard.user.profile', ['id' => Auth::id()]) }}" role="button">
-                            <div class="d-flex align-items-center">
+                                    <span class="nav-link-text ps-1">Главная</span>
+                                    <span class="badge rounded-pill ms-2 badge-subtle-dark">BETA</span>
+                                </div>
+                            </a>
+                            <a class="nav-link {{ Route::is('dashboard.user.profile') ? 'active' : '' }}" href="{{ route('dashboard.user.profile', ['id' => Auth::id()]) }}" role="button">
+                                <div class="d-flex align-items-center">
                                     <span class="nav-link-icon">
                                         <span class="fas fa-user"></span>
                                     </span>
-                                <span class="nav-link-text ps-1">Профиль</span>
-                            </div>
-                        </a>
-                        <a class="nav-link dropdown-indicator" href="#myticket" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="forms">
-                            <div class="d-flex align-items-center">
-                                <span class="nav-link-icon">
-                                    <span class="fas fa-flag"></span>
-                                </span>
-                                <span class="nav-link-text ps-1">Мои заявки</span>
-                                <span class="badge rounded-pill ms-2 badge-subtle-primary">НОВОЕ</span>
-                            </div>
-                        </a>
-                        <ul class="nav collapse" id="myticket">
-                            <li class="nav-item">
-                                <a class="nav-link" href="">
-                                    <div class="d-flex align-items-center">
-                                        <span class="nav-link-text ps-1">Все</span>
-                                    </div>
-                                </a>
-                                <a class="nav-link" href="">
-                                    <div class="d-flex align-items-center">
-                                        <span class="nav-link-text ps-1">Создать</span>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                        <!--
-                        <a class="nav-link" href="" role="button">
-                            <div class="d-flex align-items-center">
+                                    <span class="nav-link-text ps-1">Профиль</span>
+                                </div>
+                            </a>
+                            <a class="nav-link {{ Route::is('dashboard.user.applications') ? 'active' : '' }}" href="{{ route('dashboard.user.applications') }}" role="button">
+                                <div class="d-flex align-items-center">
+                                    <span class="nav-link-icon">
+                                        <span class="fas fa-flag"></span>
+                                    </span>
+                                    <span class="nav-link-text ps-1">Мои заявки</span>
+                                    <span class="badge rounded-pill ms-2 badge-subtle-primary">НОВОЕ</span>
+                                </div>
+                            </a>
+                            <!--
+                            <a class="nav-link" href="" role="button">
+                                <div class="d-flex align-items-center">
                                     <span class="nav-link-icon">
                                         <span class="far fa-comment"></span>
                                     </span>
-                                <span class="nav-link-text ps-1">Сообщения</span>
-                            </div>
-                        </a>
-                        -->
-                    </li>
-                    <li class="nav-item">
-                        <div class="row navbar-vertical-label-wrapper mt-1 mb-1">
-                            <div class="col ps-0">
-                                <hr class="mb-0 navbar-vertical-divider" />
-                            </div>
-                        </div>
-                        <a class="nav-link" href="{{ route('mainwebsite.index') }}" role="button">
-                            <div class="d-flex align-items-center">
+                                    <span class="nav-link-text ps-1">Сообщения</span>
+                                </div>
+                            </a>
+                            -->
+                        </li>
+                        <li class="nav-item">
+                                <div class="row navbar-vertical-label-wrapper mt-1 mb-1">
+                                    <div class="col ps-0">
+                                        <hr class="mb-0 navbar-vertical-divider" />
+                                    </div>
+                                </div>
+                                <a class="nav-link" href="{{ route('mainwebsite.index') }}" role="button">
+                                    <div class="d-flex align-items-center">
                                     <span class="nav-link-icon">
                                         <span class="fas fa-bookmark"></span>
                                     </span>
-                                <span class="nav-link-text ps-1">На главную сайта</span>
-                            </div>
-                        </a>
-                        <a class="nav-link" href="" role="button">
-                            <div class="d-flex align-items-center">
+                                        <span class="nav-link-text ps-1">На главную сайта</span>
+                                    </div>
+                                </a>
+                                <a class="nav-link" href="" role="button">
+                                    <div class="d-flex align-items-center">
                                     <span class="nav-link-icon">
                                         <span class="fas fa-question-circle"></span>
                                     </span>
-                                <span class="nav-link-text ps-1">Помощь</span>
-                                <span class="badge rounded-pill ms-2 badge-subtle-dark">BETA</span>
-                            </div>
-                        </a>
-                    </li>
+                                        <span class="nav-link-text ps-1">Помощь</span>
+                                        <span class="badge rounded-pill ms-2 badge-subtle-dark">BETA</span>
+                                    </div>
+                                </a>
+                            </li>
+                    @endif
                 @endauth
             </ul>
         </div>
