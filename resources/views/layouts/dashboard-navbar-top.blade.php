@@ -146,9 +146,7 @@
                                         <p class="mb-1">
                                             <strong>Ольга Смирнова</strong> ответил(-а) на ваш комментарий : "Ок"
                                         </p>
-                                        <span class="notification-time">
-                                                        <span class="me-2" role="img" aria-label="Emoji">💬</span>Только что
-                                                    </span>
+                                        <span class="notification-time">Только что</span>
                                     </div>
                                 </a>
                             </div>
@@ -163,9 +161,7 @@
                                     </div>
                                     <div class="notification-body">
                                         <p class="mb-1">Прогноз на сегодня показывает минимум 20&#8451; в Калифорнии. Смотрите сегодняшнюю погоду.</p>
-                                        <span class="notification-time">
-                                                        <span class="me-2" role="img" aria-label="Emoji">🌤️</span>1д. назад
-                                                    </span>
+                                        <span class="notification-time">1д. назад</span>
                                     </div>
                                 </a>
                             </div>
@@ -295,7 +291,7 @@
                         <a class="dropdown-item" href="">Поделиться</a>
 
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="">Настройки</a>
+                        <a class="dropdown-item" href="{{ route('dashboard.user.settings') }}">Настройки</a>
                         <a class="dropdown-item" href="">Помощь</a>
 
                         <div class="dropdown-divider"></div>

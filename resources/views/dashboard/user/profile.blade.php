@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('title') {{ $title ?? 'Профиль' }} @endsection
+@section('title') {{ $title ?? null }} @endsection
 
 @section('content')
     <div class="card mb-3">

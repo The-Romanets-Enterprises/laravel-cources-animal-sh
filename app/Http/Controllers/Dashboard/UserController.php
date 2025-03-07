@@ -33,4 +33,10 @@ class UserController extends Controller
         $title = __('dashboard.titles.user.applications');
         return view('dashboard.user.applications', compact('title'));
     }
+
+    public function settings()
+    {
+        $title = __('dashboard.titles.user.settings');
+        return view('dashboard.user.settings', compact('title'));
+    }
 }

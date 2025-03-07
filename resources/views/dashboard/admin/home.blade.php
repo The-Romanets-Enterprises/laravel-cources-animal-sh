@@ -52,7 +52,7 @@
                                         <div class="col">
                                             <div class="d-flex">
                                                 <div class="fas fa-circle mt-1 fs-11"></div>
-                                                <p class="fs-10 ps-2 mb-0"><strong>2 сотрудника</strong> в сети</p>
+                                                <p class="fs-10 ps-2 mb-0"><strong>Новое обращение</strong> на смену данных</p>
                                             </div>
                                         </div>
                                         <div class="col-auto d-flex align-items-center">

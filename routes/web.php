@@ -99,6 +99,7 @@ Route::prefix('panel')->name('dashboard.')->middleware(['auth', 'verified'])->gr
         Route::controller(UserController::class)->group(function () {
             Route::get('/user/home', 'home')->name('user.home');
             Route::get('/user/applications', 'applications')->name('user.applications');
+            Route::get('/user/settings', 'settings')->name('user.settings');
         });
     });
 
