@@ -34,6 +34,12 @@ class UserController extends Controller
         return view('dashboard.user.applications', compact('title'));
     }
 
+    public function notifications()
+    {
+        $title = __('dashboard.titles.user.notifications');
+        return view('dashboard.user.notifications', compact('title'));
+    }
+
     public function settings()
     {
         $title = __('dashboard.titles.user.settings');

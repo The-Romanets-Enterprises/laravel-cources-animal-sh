@@ -37,48 +37,10 @@
                                 </a>
                             </td>
                             <td class="status align-middle fs-9 white-space-nowrap">
-                                <small class="badge rounded badge-subtle-warning">В ожидании</small>
+                                <small class="badge rounded badge-subtle-secondary dark__bg-1000">В ожидании</small>
                             </td>
                             <td class="created_at align-middle py-2">06.03.2025 (10:00:00)</td>
                             <td class="updated_at align-middle py-2">-</td>
-                        </tr>
-                        <tr class="btn-reveal-trigger">
-                            <td class="nickname align-middle white-space-nowrap py-2">
-                                <a href="">
-                                    <div class="d-flex d-flex align-items-center">
-                                        <div class="avatar avatar-xl me-2">
-                                            <img class="rounded-circle" src="{{ asset('assets/dashboard/img/team/avatar.jpg') }}" alt="" />
-                                        </div>
-                                        <div class="flex-1">
-                                            <h5 class="mb-0 fs-10">Имя Фамилия</h5>
-                                        </div>
-                                    </div>
-                                </a>
-                            </td>
-                            <td class="status align-middle fs-9 white-space-nowrap">
-                                <small class="badge rounded badge-subtle-success">Одобрено</small>
-                            </td>
-                            <td class="created_at align-middle py-2">06.03.2025 (10:00:00)</td>
-                            <td class="updated_at align-middle py-2">06.03.2025 (11:15:10)</td>
-                        </tr>
-                        <tr class="btn-reveal-trigger">
-                            <td class="nickname align-middle white-space-nowrap py-2">
-                                <a href="">
-                                    <div class="d-flex d-flex align-items-center">
-                                        <div class="avatar avatar-xl me-2">
-                                            <img class="rounded-circle" src="{{ asset('assets/dashboard/img/team/avatar.jpg') }}" alt="" />
-                                        </div>
-                                        <div class="flex-1">
-                                            <h5 class="mb-0 fs-10">Имя Фамилия</h5>
-                                        </div>
-                                    </div>
-                                </a>
-                            </td>
-                            <td class="status align-middle fs-9 white-space-nowrap">
-                                <small class="badge rounded badge-subtle-danger">Отказано</small>
-                            </td>
-                            <td class="created_at align-middle py-2">06.03.2025 (10:00:00)</td>
-                            <td class="updated_at align-middle py-2">06.03.2025 (11:05:10)</td>
                         </tr>
                     </tbody>
                 </table>

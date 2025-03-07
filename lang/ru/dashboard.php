@@ -59,6 +59,7 @@ return [
         'user' => [
             'home' => 'Новости',
             'applications' => 'Все заявки',
+            'notifications' => 'Ваши уведомления',
             'settings' => 'Настройки профиля',
         ],
     ],

@@ -102,6 +102,7 @@ Route::prefix('panel')->name('dashboard.')->middleware(['auth', 'verified'])->gr
             Route::get('/user/home', 'home')->name('user.home');
             Route::get('/user/applications', 'applications')->name('user.applications');
             Route::get('/user/settings', 'settings')->name('user.settings');
+            Route::get('/user/notifications', 'notifications')->name('user.notifications');
         });
     });
 

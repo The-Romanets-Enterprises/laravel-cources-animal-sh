@@ -116,8 +116,8 @@
                 <span class="notification-indicator-number">1</span>
             </a>
         </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link notification-indicator notification-indicator-primary px-0 fa-icon-wait" id="navbarDropdownNotification" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-hide-on-body-scroll="data-hide-on-body-scroll">
+        <li class="nav-item dropdown"> <!-- notification-indicator notification-indicator-primary -->
+            <a class="nav-link px-0 fa-icon-wait" id="navbarDropdownNotification" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-hide-on-body-scroll="data-hide-on-body-scroll">
                 <span class="fas fa-bell" data-fa-transform="shrink-6" style="font-size: 33px;"></span>
             </a>
             <div class="dropdown-menu dropdown-caret dropdown-caret dropdown-menu-end dropdown-menu-card dropdown-menu-notification dropdown-caret-bg" aria-labelledby="navbarDropdownNotification">
@@ -139,12 +139,12 @@
                                 <a class="notification notification-flush notification-unread" href="">
                                     <div class="notification-avatar">
                                         <div class="avatar avatar-2xl me-3">
-                                            <img class="rounded-circle" src="{{ asset('assets/dashboard/img/team/avatar-thumb.jpg') }}" alt="" />
+                                            <img class="rounded-circle" src="{{ asset('assets/mainwebsite/img/logo_admin.png') }}" alt="" />
                                         </div>
                                     </div>
                                     <div class="notification-body">
                                         <p class="mb-1">
-                                            <strong>Ольга Смирнова</strong> ответил(-а) на ваш комментарий : "Ок"
+                                            <strong>Администрация</strong> одобрила вашу заявку на смену ваших личных данных.
                                         </p>
                                         <span class="notification-time">Только что</span>
                                     </div>
@@ -156,11 +156,27 @@
                                 <a class="notification notification-flush" href="">
                                     <div class="notification-avatar">
                                         <div class="avatar avatar-2xl me-3">
-                                            <img class="rounded-circle" src="{{ asset('assets/dashboard/img/icons/weather-sm.jpg') }}" alt="" />
+                                            <img class="rounded-circle" src="{{ asset('assets/mainwebsite/img/logo_admin.png') }}" alt="" />
                                         </div>
                                     </div>
                                     <div class="notification-body">
-                                        <p class="mb-1">Прогноз на сегодня показывает минимум 20&#8451; в Калифорнии. Смотрите сегодняшнюю погоду.</p>
+                                        <p class="mb-1">
+                                            <strong>Администрация</strong> отклонила вашу заявку на смену ваших личных данных. Причина: причина.
+                                        </p>
+                                        <span class="notification-time">10мин. назад</span>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="list-group-item">
+                                <a class="notification notification-flush" href="">
+                                    <div class="notification-avatar">
+                                        <div class="avatar avatar-2xl me-3">
+                                            <img class="rounded-circle" src="{{ asset('assets/mainwebsite/img/logo.png') }}" alt="" />
+                                        </div>
+                                    </div>
+                                    <div class="notification-body">
+                                        <p class="mb-1"><strong>Добро пожаловать!</strong> Вы подтвердили свою эл.почту.</p>
                                         <span class="notification-time">1д. назад</span>
                                     </div>
                                 </a>
@@ -168,7 +184,7 @@
                         </div>
                     </div>
                     <div class="card-footer text-center border-top">
-                        <a class="card-link d-block" href="">Показать всё</a>
+                        <a class="card-link d-block" href="{{ route('dashboard.user.notifications') }}">Показать всё</a>
                     </div>
                 </div>
             </div>

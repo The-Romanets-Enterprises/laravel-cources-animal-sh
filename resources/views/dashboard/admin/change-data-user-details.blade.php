@@ -12,7 +12,7 @@
                     </h5>
                 </div>
                 <div class="col-auto d-none d-sm-block">
-                    <h6 class="text-uppercase text-600">Пользователь<span class="fas fa-user ms-2"></span></h6>
+                    <h6 class="text-uppercase text-600">Рассматривает: имя фамилия администратора<span class="fas fa-user ms-2"></span></h6>
                 </div>
             </div>
         </div>
@@ -21,7 +21,7 @@
                 <span class="fas fa-user text-success me-2" data-fa-transform="down-5"></span>
                 <div class="flex-1">
                     <p class="mb-0">Пользователь создал заявку на смену данных</p>
-                    <p class="fs-10 mb-0 text-600">06.03.2025, 10:00</p>
+                    <p class="fs-10 mb-0 text-600">06.03.2025, 10:00:00</p>
                 </div>
             </div>
         </div>
@@ -96,7 +96,7 @@
         </div>
         <div class="card-footer border-top">
             <form action="">
-                <div class="col-lg-12">
+                <div class="col-lg-8">
                     <label class="form-label" for="denial-comment">Комментарий для отказа (если одобрено, комментарий оставить пустым!)</label>
                     <input class="form-control" id="denial-comment" type="text" value="" />
                 </div>
@@ -110,6 +110,15 @@
             <button class="btn btn-falcon-default btn-sm ms-2 text-success" type="submit">
                 <span class="fas fa-check fs-11 me-1"></span>Одобрить
             </button>
+        </div>
+
+        <div class="card-footer border-top">
+            <label class="form-label" for="denial-comment">Администратор: Имя, <strong class="text-danger">отклонил</strong> заявку. Причина: причина</label>
+            <label class="form-label" for="denial-comment">Администратор: Имя, <strong class="text-success">одобрил</strong> заявку.</label>
+        </div>
+
+        <div class="card-footer border-top">
+            <label class="form-label" for="denial-comment">Дата: 06.03.2025, чт <br> Время: 11:00:00</label>
         </div>
     </div>
 @endsection

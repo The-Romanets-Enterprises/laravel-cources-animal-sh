@@ -56,7 +56,7 @@
                                             </div>
                                         </div>
                                         <div class="col-auto d-flex align-items-center">
-                                            <a class="fs-10 fw-medium text-warning-emphasis" href="">Просмотреть
+                                            <a class="fs-10 fw-medium text-warning-emphasis" href="{{ route('dashboard.admin.change-data') }}">Просмотреть
                                                 <i class="fas fa-chevron-right ms-1 fs-11"></i>
                                             </a>
                                         </div>

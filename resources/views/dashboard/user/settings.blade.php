@@ -73,7 +73,7 @@
                             <input class="form-control" id="status" type="text" value="" />
                         </div>
                         <div class="col-lg-12">
-                            <label class="form-label" for="status">Часовой пояс</label>
+                            <label class="form-label" for="timezone">Часовой пояс</label>
                             <label class="form-label text-success">*</label>
                             <select class="form-select form-select-sm" aria-label="Bulk actions">
                                 <option value="">GMT+3 (Москва, Россия)</option>

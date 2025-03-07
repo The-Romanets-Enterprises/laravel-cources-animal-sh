@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('title') {{ $title ?? 'Новости' }} @endsection
+@section('title') {{ $title ?? null }} @endsection
 
 @section('content')
     <div class="row g-3">
