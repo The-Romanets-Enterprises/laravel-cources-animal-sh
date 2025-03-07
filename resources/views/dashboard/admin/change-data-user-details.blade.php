@@ -94,13 +94,22 @@
                 </div>
             </div>
         </div>
+        <div class="card-footer border-top">
+            <form action="">
+                <div class="col-lg-12">
+                    <label class="form-label" for="denial-comment">Комментарий для отказа (если одобрено, комментарий оставить пустым!)</label>
+                    <input class="form-control" id="denial-comment" type="text" value="" />
+                </div>
+            </form>
+        </div>
+
         <div class="card-footer border-top text-end">
-            <a class="btn btn-falcon-default btn-sm text-danger" href="">
+            <button class="btn btn-falcon-default btn-sm text-danger" type="submit">
                 <span class="fas fa-exclamation-triangle fs-11 me-1"></span>Отклонить
-            </a>
-            <a class="btn btn-falcon-default btn-sm ms-2 text-success" href="">
+            </button>
+            <button class="btn btn-falcon-default btn-sm ms-2 text-success" type="submit">
                 <span class="fas fa-check fs-11 me-1"></span>Одобрить
-            </a>
+            </button>
         </div>
     </div>
 @endsection
