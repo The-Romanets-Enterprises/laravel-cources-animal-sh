@@ -36,4 +36,16 @@ class AdminController extends Controller
         $title = __('dashboard.titles.admin.home');
         return view('dashboard.admin.home', compact('greeting', 'date', 'dayName', 'title'));
     }
+
+    public function change_data()
+    {
+        $title = __('dashboard.titles.admin.change-data');
+        return view('dashboard.admin.change-data', compact('title'));
+    }
+
+    public function change_data_id()
+    {
+        $title = __('dashboard.titles.admin.change-data-user-details');
+        return view('dashboard.admin.change-data-user-details', compact('title'));
+    }
 }

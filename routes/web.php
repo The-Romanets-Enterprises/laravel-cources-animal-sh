@@ -88,6 +88,8 @@ Route::prefix('panel')->name('dashboard.')->middleware(['auth', 'verified'])->gr
         // --- Администратор ---
         Route::controller(AdminController::class)->group(function () {
             Route::get('/admin/home', 'home')->name('admin.home');
+            Route::get('/admin/change-data', 'change_data')->name('admin.change-data');
+            Route::get('/admin/change-data/id', 'change_data_id')->name('admin.change-data-id');
         });
 
         // --- Сотрудник ---

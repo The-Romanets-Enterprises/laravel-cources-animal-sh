@@ -178,6 +178,34 @@
                                     </a>
                                 </li>
                                 -->
+                                <li class="nav-item">
+                                    <a class="nav-link dropdown-indicator" href="#ticketmngmnt" data-bs-toggle="collapse" aria-expanded="false" aria-controls="forms">
+                                        <div class="d-flex align-items-center">
+                                            <span class="nav-link-text ps-1">Обращения</span>
+                                            <span class="badge rounded-pill ms-2 badge-subtle-primary">НОВОЕ</span>
+                                        </div>
+                                    </a>
+                                    <ul class="nav collapse" id="ticketmngmnt">
+                                        <li class="nav-item">
+                                            <a class="nav-link {{ Route::is('dashboard.admin.change-data') ? 'active' : '' }}" href="{{ route('dashboard.admin.change-data') }}">
+                                                <div class="d-flex align-items-center">
+                                                    <span class="nav-link-text ps-1">Смена данных</span>
+                                                    <span class="badge rounded-pill ms-2 badge-subtle-success">1</span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <!--
+                                <li class="nav-item">
+                                    <a class="nav-link" href="">
+                                        <div class="d-flex align-items-center">
+                                            <span class="nav-link-text ps-1">Аналитика</span>
+                                            <span class="badge rounded-pill ms-2 badge-subtle-dark">BETA</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                -->
                             </ul>
                         </li>
                     @endif

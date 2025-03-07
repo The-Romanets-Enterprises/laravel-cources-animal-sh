@@ -62,6 +62,13 @@
                             <input class="form-control" id="phone" type="text" value="" />
                         </div>
                         <div class="col-lg-12">
+                            <label class="form-label" for="status">Пол</label>
+                            <label class="form-label text-success">*</label>
+                            <select class="form-select form-select-sm" aria-label="Bulk actions">
+                                <option value="">Не выбран</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-12">
                             <label class="form-label" for="status">Статус</label>
                             <input class="form-control" id="status" type="text" value="" />
                         </div>
@@ -69,7 +76,7 @@
                             <label class="form-label" for="status">Часовой пояс</label>
                             <label class="form-label text-success">*</label>
                             <select class="form-select form-select-sm" aria-label="Bulk actions">
-                                <option value="Delete">GMT+3 (Москва, Россия)</option>
+                                <option value="">GMT+3 (Москва, Россия)</option>
                             </select>
                         </div>
                         <div class="col-lg-12">
