@@ -105,7 +105,7 @@ class AuthController extends Controller
     {
         $title = __('messages.auth.reset-password');
 
-        return view('admin.auth.reset-password', compact('title'));
+        return view('auth.reset-password', compact('title'));
     }
 
     public function passwordResetStore(ResetPasswordRequest $request)

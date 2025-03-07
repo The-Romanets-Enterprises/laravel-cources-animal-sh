@@ -27,9 +27,13 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('guest')->group(function () {
-    Route::get('/password/reset', [AuthController::class, 'passwordReset'])->name('password.reset');
+    Route::get('/forgot-password', [AuthController::class, 'forgotPassword'])->name('user.forgot-password.show');
+    Route::post('/forgot-password', [AuthController::class, 'forgotPasswordStore'])->name('user.forgot-password.store');
+
+    Route::get('/password/reset/{token}', [AuthController::class, 'passwordReset'])->name('password.reset');
     Route::post('/password/reset', [AuthController::class, 'passwordResetStore'])->name('password.update');
 });
+
 
 Route::middleware('auth')->group(function () {
     Route::controller(AuthController::class)->group(function () {
@@ -41,8 +45,6 @@ Route::prefix('/user')->name('user.')->group(function () {
     Route::middleware('auth')->group(function () {
         Route::controller(AuthController::class)->group(function () {
             Route::get('/', 'index')->name('home');
-            Route::get('/forgot-password', 'forgotPassword')->name('forgot-password.show');
-            Route::get('/forgot-password', 'forgotPasswordStore')->name('forgot-password.store');
         });
         Route::controller(ProfileController::class)->group(function () {
             Route::get('/profile', 'index')->name('profile');
