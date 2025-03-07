@@ -20,12 +20,6 @@
                             <p>На вашу почту отправлено письмо для подтверждения аккаунта.</p>
                             <p>Если письмо не пришло, нажмите кнопку ниже, чтобы отправить его повторно.</p>
 
-                            @if(session('success'))
-                                <div class="alert alert-success">
-                                    {{ session('success') }}
-                                </div>
-                            @endif
-
                             <form action="{{ route('verification.send') }}" method="post">
                                 @csrf
                                 <button type="submit" class="btn btn-primary">

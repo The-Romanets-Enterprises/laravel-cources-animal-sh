@@ -57,6 +57,7 @@
                     <div class="col-4">
                         <button type="submit" class="btn btn-primary w-100">Войти</button>
                     </div>
+                    <a href="{{ route('user.forgot-password.show') }}">Забыли пароль?</a>
                 </div>
                 <div class="mt-3">
                     <a href="{{ route('register.show') }}" class="btn btn-success w-100">Зарегистрироваться</a>
