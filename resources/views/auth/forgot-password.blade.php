@@ -14,7 +14,7 @@
 <body class="hold-transition register-page">
 <div class="register-box">
     <div class="register-logo">
-        <b>{{ $title ?? ''  }}</b>
+        <b>Смена пароля</b>
         <img src="{{ asset('assets/admin/img/dog-house.png') }}" alt="Dog-House Logo " class="brand-image img-circle img-size-64 elevation-4" style="opacity: .9">
     </div>
 
@@ -26,7 +26,7 @@
             <form action="{{ route('admin.login.auth') }}" method="post">
                 @csrf
                 <div class="input-group mb-3">
-                    <input type="text" name="email" class="form-control" placeholder="Логин"
+                    <input type="text" name="email" class="form-control" placeholder="Логин(почта)"
                            value="{{ old('email') }}">
                     <div class="input-group-append">
                         <div class="input-group-text">
@@ -35,7 +35,15 @@
                     </div>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="password" name="password" class="form-control" placeholder="Пароль">
+                    <input type="password" name="password" class="form-control" placeholder="Старый пароль">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="password" name="password" class="form-control" placeholder="Новый пароль">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-lock"></span>
@@ -43,33 +51,13 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-8">
-                        <div class="icheck-primary">
-                            <input type="checkbox" id="remember" name="remember">
-                            <label for="remember">
-                                Запомнить меня
-                            </label>
-                        </div>
+                    <!-- /.col -->
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-success btn-block">Сменить пароль</button>
                     </div>
                     <!-- /.col -->
-                        <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Войти</button>
-                        </div>
-                    <!-- /.col -->
                 </div>
             </form>
-            <form action="{{ route('user.register.store') }}" method="post">
-                @csrf
-                <div class="input-group mt-2">
-                    <button type="submit" class="btn btn-success btn-block">Зарегистрироваться</button>
-                </div>
-
-            </form>
-            <div>
-                <a class="text-gray-dark align-content-center" href="{{ route('forgot-password.store') }}">
-                    <b>Забыли пароль?</b>
-                </a>
-            </div>
         </div>
         <!-- /.form-box -->
     </div><!-- /.card -->

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\ForgotPasswordRequest;
+use App\Http\Requests\ResetPasswordRequest;
 use App\Models\AnimalPet;
 use App\Models\Animal;
 use App\Models\Address;
@@ -102,5 +104,42 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect()->route('admin.login.show');
+    }
+
+    public function forgotPassword()
+    {
+        $title = __('messages.auth.forgot_password');
+
+        return view('auth.forgot-password', compact('title'));
+    }
+
+    public function forgotPasswordStore(ForgotPasswordRequest $request)
+    {
+        $status = Password::sendResetLink($request->only('email'));
+
+        return back()->with('success', trans($status));
+    }
+
+    public function passwordReset(Request $request)
+    {
+        $title = __('messages.auth.reset_password');
+
+        return view('admin.auth.reset-password', compact('title'));
+    }
+
+    public function passwordResetStore(ResetPasswordRequest $request)
+    {
+        $status = Password::reset($request->validated(), function (User $user) use ($request) {
+            $user->forceFill([
+                'password' => bcrypt($request->password),
+                'remember_token' => Str::random(60),
+            ])->save();
+        });
+
+        if ($status === Password::PASSWORD_RESET) {
+            return redirect()->route('admin.login.show')->with('success', __($status));
+        }
+
+        return back()->withInput($request->only('email'))->withErrors(['email'=> __($status)]);
     }
 }

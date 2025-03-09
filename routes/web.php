@@ -20,6 +20,8 @@ Route::middleware('guest')->controller(AuthController::class)->group(function ()
     Route::post('/login', 'auth')->name('login');
     Route::get('/register', 'register')->name('register.show');
     Route::post('/register', 'reg')->name('reg');
+    Route::get('/forgot-password', 'forgotPassword')->name('forgot-password.show');
+    Route::post('/forgot-password', 'forgotPasswordStore')->name('forgot-password.store');
 });
 
 Route::prefix('/admin')->name('admin.')->group(function () {
