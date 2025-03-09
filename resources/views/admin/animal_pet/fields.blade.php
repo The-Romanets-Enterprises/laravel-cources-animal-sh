@@ -102,7 +102,7 @@
         @foreach ($animalPet->photos as $photo)
             <label>
                 <input type="checkbox" name="photos_to_delete[]" value="{{ $photo->id }}">
-                <img src="{{ asset('storage/' . $photo->path) }}" width="100" height="75" alt="Фото {{ $animalPet->name }}">
+                <img src="{{ asset('storage/' . $photo->path) }}" width="150" height="150" alt="Фото {{ $animalPet->name }}">
             </label><br>
         @endforeach
     </div>
@@ -124,7 +124,7 @@
         @foreach ($animalPet->videos as $video)
             <label>
                 <input type="checkbox" name="videos_to_delete[]" value="{{ $video->id }}">
-                <video width="100" height="75" controls>
+                <video width="150" height="150" controls>
                     <source src="{{ asset('storage/' . $video->path) }}" type="video/mp4">
                 </video>
             </label><br>

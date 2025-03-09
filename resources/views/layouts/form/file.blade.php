@@ -18,10 +18,10 @@
                     <a href="{{ $value }}" target="_blank">Документ</a>
                 </div>
             @endif
-        @else
-            <div>
-                <img src="{{ $value }}" alt="{{ $name }}" class="img-thumbnail mt-2" width="500" @isset($dark_image) style="background: #303030;" @endisset>
-            </div>
+{{--        @else--}}
+{{--            <div>--}}
+{{--                <img src="{{ $value }}" alt="{{ $name }}" class="img-thumbnail mt-2" width="500" @isset($dark_image) style="background: #303030;" @endisset>--}}
+{{--            </div>--}}
         @endisset
     @endisset
 </div>
