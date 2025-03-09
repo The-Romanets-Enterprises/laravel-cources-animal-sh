@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Enum\Role;
 use App\Http\Requests\RegisterRequest;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -85,7 +86,11 @@ class User extends Authenticatable
         $data = $request->validated();
         $data['password'] = Hash::make($data['password']);
 
-        return self::query()->create($data);
+        $user = self::query()->create($data);
+
+        event(new Registered($user));
+
+        return $user;
     }
 
     public static function createUser(UserRequest $request)

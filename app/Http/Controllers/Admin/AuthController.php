@@ -16,6 +16,8 @@ use App\Models\User;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Str;
 
 // Class work with authentication and Admin main page
 class AuthController extends Controller
@@ -95,6 +97,19 @@ class AuthController extends Controller
         Auth::login($user, true);
         return to_route('index')->with('success', __('messages.register.success'));
 
+    }
+
+    public function store(RegisterRequest $request)
+    {
+        $is_accepted = User::registerUser($request);
+
+        if ($is_accepted)
+        {
+            session()->flash('error', __('messages.register.success'));
+            return redirect()->route('admin.home');
+        }
+
+        return redirect()-> back()->with('error', __('messages.register.error'));
     }
     // Logout from the account
     public function logout(Request $request)
