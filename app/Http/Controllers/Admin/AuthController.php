@@ -8,9 +8,9 @@ use App\Http\Requests\RegisterRequest;
 use App\Models\AnimalPet;
 use App\Models\Animal;
 use App\Models\Address;
-use App\Models\Photo;
+//use App\Models\Photo;
 use App\Models\User;
-use App\Models\Video;
+//use App\Models\Video;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,13 +18,25 @@ use Illuminate\Support\Facades\Auth;
 // Class work with authentication and Admin main page
 class AuthController extends Controller
 {
+
+    public function welcome()
+    {
+
+        $title = __('messages.main_page');
+
+        return view('welcome', compact(
+                'title',
+            )
+        );
+    }
+
     // Admin Main Page
     public function index()
     {
         $title = __('messages.main_page');
         $address_count = Address::query()->count();
-        $video_count = Video::query()->count();
-        $photo_count = Photo::query()->count();
+//        $video_count = Video::query()->count();
+//        $photo_count = Photo::query()->count();
         $animalPet_count = AnimalPet::query()->count();
         $animal_count = Animal::query()->count();
         $user_count = User::query()->count();
@@ -35,8 +47,8 @@ class AuthController extends Controller
                 'animal_count',
                 'animalPet_count',
                 'address_count',
-                'video_count',
-                'photo_count',
+//                'video_count',
+//                'photo_count',
             )
         );
     }

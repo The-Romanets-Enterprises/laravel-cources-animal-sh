@@ -12,9 +12,15 @@ use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\User\UserAuthController;
 use Illuminate\Support\Facades\Route;
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+Route::get('/', [AuthController::class, 'welcome'])->name('index');
+
+// Единые маршруты для авторизации и регистрации
+Route::middleware('guest')->controller(AuthController::class)->group(function () {
+    Route::get('/login', 'login')->name('login.show');
+    Route::post('/login', 'auth')->name('login');
+    Route::get('/register', 'register')->name('register.show');
+    Route::post('/register', 'reg')->name('reg');
+});
 
 Route::prefix('/admin')->name('admin.')->group(function () {
     Route::middleware('guest')->controller(AuthController::class)->group(function () {
