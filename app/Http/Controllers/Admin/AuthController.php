@@ -16,6 +16,7 @@ use App\Models\User;
 use App\Models\Video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 // Class work with authentication and Admin main page
 class AuthController extends Controller
@@ -74,11 +75,15 @@ class AuthController extends Controller
         ]);
 
         if (!$user) {
+            Log::error('Failed to create user for email: ' . $request->email);
             return back()->with('error', __('messages.register.error'));
         }
+        $user->sendEmailVerificationNotification();
 
-        Auth::login($user, true);
-        return to_route('index')->with('success', __('messages.register.success'));
+        //Auth::login($user, true);
+        return to_route('login.show')
+            ->with('success', __('messages.register.success'))
+            ->with('email', $request->email); // Передаём email в сессию
 
     }
 
@@ -102,6 +107,14 @@ class AuthController extends Controller
             return back()->with('error', __('messages.auth.error'));
         }
 
+        if (!Auth::user()->hasVerifiedEmail()) {
+            $email = Auth::user()->email;
+            Auth::logout();
+            return back()
+                ->with('error', __('messages.auth.email_not_verified'))
+                ->with('email', $email);
+        }
+
         $redirectRoute = Auth::user()->role == Role::ADMIN ? 'admin.home' : 'index';
         return to_route($redirectRoute)->with('success', __('messages.auth.success'));
     }
@@ -115,5 +128,54 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
 
         return redirect()->route('index')->with('success', __('messages.auth.logout.success'));
+    }
+
+    public function verifyEmail(Request $request, $id, $hash)
+    {
+        $user = User::findOrFail($id);
+
+        Log::info("Email verification attempt for user ID: $id");
+
+        if (!hash_equals((string) $hash, sha1($user->getEmailForVerification()))) {
+            return redirect()->route('index')->with('error', __('messages.auth.verify_email_error_link'));
+        }
+
+        if ($user->hasVerifiedEmail()) {
+            return redirect()->route('index')->with('success', __('messages.auth.verify_email_already_success'));
+        }
+
+        $user->markEmailAsVerified();
+        Log::info('Email verified for user: ' . $user->email);
+
+        Auth::login($user);
+
+        return redirect()->route('index')->with('success', __('messages.auth.verify_email_success'));
+    }
+
+    public function showResendForm(Request $request)
+    {
+        $email = $request->query('email');
+        return view('auth.resend-verification', [
+            'title' => __('messages.auth.verify_email_resent_title'),
+            'email' => $email,
+        ]);
+    }
+
+    // Повторная отправка ссылки
+    public function resendVerificationEmail(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email|exists:users,email',
+        ]);
+
+        $user = User::where('email', $request->email)->first();
+
+        if ($user->hasVerifiedEmail()) {
+            return redirect()->route('login.show')->with('success', __('messages.auth.verify_email_already_success'));
+        }
+
+        $user->sendEmailVerificationNotification();
+
+        return redirect()->route('login.show')->with('success', __('messages.auth.verify_email_resent'));
     }
 }

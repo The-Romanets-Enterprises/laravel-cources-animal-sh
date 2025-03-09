@@ -15,6 +15,18 @@ use Illuminate\Support\Facades\Route;
 // Главная страница для всех
 Route::get('/', [AuthController::class, 'welcome'])->name('index');
 
+Route::get('/email/verify/{id}/{hash}', [AuthController::class, 'verifyEmail'])
+    ->middleware('signed')
+    ->name('verification.verify');
+
+Route::middleware('guest')->group(function () {
+    Route::get('/email/resend', [AuthController::class, 'showResendForm'])
+        ->name('verification.resend.show');
+    Route::post('/email/resend', [AuthController::class, 'resendVerificationEmail'])
+        ->middleware('throttle:5,1')
+        ->name('verification.send');
+});
+
 // Единые маршруты для авторизации и регистрации
 Route::middleware('guest')->controller(AuthController::class)->group(function () {
     Route::get('/login', 'login')->name('login.show');

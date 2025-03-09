@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Enums\Role;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\User\UserRequest;
@@ -13,11 +12,12 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements \Illuminate\Contracts\Auth\MustVerifyEmail
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable, MustVerifyEmail, HasApiTokens;
@@ -58,6 +58,13 @@ class User extends Authenticatable
             'password' => 'hashed',
             'role' => Role::class,
         ];
+    }
+
+    // Кастомное уведомление для верификации email
+    public function sendEmailVerificationNotification()
+    {
+        Log::info('Sending verification notification for: ' . $this->email);
+        $this->notify(new \App\Notifications\VerifyEmailCustom);
     }
 
     public function photos() : MorphMany
