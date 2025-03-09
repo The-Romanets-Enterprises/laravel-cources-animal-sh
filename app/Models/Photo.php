@@ -5,11 +5,14 @@ namespace App\Models;
 use App\Http\Requests\PhotoRequest;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
+use App\Traits\MediaTrait;
+use Illuminate\Support\Facades\Storage;
 
 class Photo extends Model
 {
     /** @use HasFactory<\Database\Factories\PhotoFactory> */
-    use HasFactory;
+    use HasFactory, MediaTrait;
 
     protected $fillable = [
         'path',
@@ -29,16 +32,20 @@ class Photo extends Model
         return $this->morphTo();
     }
 
-    public function animal_pet()
-    {
-        return $this->belongsTo(Animal_pet::class);
-    }
-
     public static function createPhoto(PhotoRequest $request)
     {
-        $data = $request->validated();
+        if ($request->hasFile('photos')) {
+            foreach ($request->file('photos') as $photoFile) {
+                $path = $photoFile->store('photos', 'public');
+                self::query()->create([
+                    'path' => $path,
+                    'imageable_id' => $request->input('imageable_id'),
+                    'imageable_type' => $request->input('imageable_type'),
+                ]);
+            }
+        }
 
-        return self::query()->create($data);
+        return true;
     }
 
     public static function updatePhoto(PhotoRequest $request, self $photo)
@@ -50,7 +57,26 @@ class Photo extends Model
 
     public static function deletePhoto(self $photo)
     {
+        if ($photo->path)
+        {
+            Storage::delete($photo->path);
+        }
         return $photo->delete();
 
+    }
+
+    public static function uploadPhoto(Request $request, $image = null)
+    {
+        return self::uploadMedia(
+            key: 'path',
+            path: 'animals_and_users',
+            request: $request,
+            image: $image,
+        );
+    }
+
+    public function getPhoto()
+    {
+        return self::getMedia('path');
     }
 }

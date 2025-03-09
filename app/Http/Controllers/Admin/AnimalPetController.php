@@ -5,8 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AnimalPetRequest;
 use App\Models\Animal;
+use App\Models\Photo;
+use App\Models\Video;
 use App\Models\User;
 use App\Models\AnimalPet;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Log;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 
@@ -34,8 +39,8 @@ class AnimalPetController extends Controller
     public function create()
     {
         $title = __('messages.request.create');
-        $users = User::all();
-        $animals = Animal::all();
+        $users = User::query()->orderBy('firstname', 'ASC')->get();
+        $animals = Animal::query()->orderBy('name')->get();
 
         return view('admin.animalPet.create', compact('title','users', 'animals'));
     }
@@ -70,10 +75,10 @@ class AnimalPetController extends Controller
         $redirect = to_route('admin.animalPets.index');
 
         if (!$animalPet) {
-            return $redirect->with('error', __('messages.animalPets.error.update'));
+            return $redirect->with('error', __('messages.request.error.update'));
         }
 
-        return $redirect->with('success', __('messages.animalPets.success.update'));
+        return $redirect->with('success', __('messages.request.success.update'));
     }
 
     public function destroy(AnimalPet $animalPet)

@@ -15,6 +15,7 @@
 <div class="register-box">
     <div class="register-logo">
         <b>{{ $title ?? ''  }}</b>
+        <img src="{{ asset('assets/admin/img/dog-house.png') }}" alt="Dog-House Logo " class="brand-image img-circle img-size-64 elevation-4" style="opacity: .9">
     </div>
 
     <div class="card">
@@ -58,6 +59,7 @@
                 </div>
             </form>
             <form action="{{ route('user.register.store') }}" method="post">
+                @csrf
                 <div class="input-group mt-2">
                     <button type="submit" class="btn btn-success btn-block">Зарегистрироваться</button>
                 </div>
