@@ -21,7 +21,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{ route('admin.animalPets.store') }}" method="post"
+                        <form action="{{ route('admin.animal-pets.store') }}" method="post"
                               enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">

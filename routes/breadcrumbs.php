@@ -68,21 +68,21 @@ Breadcrumbs::for('admin.users.edit', function (BreadcrumbTrail $trail, User $use
 
 // Request
 // Home > Request
-Breadcrumbs::for('admin.animalPets.index', function (BreadcrumbTrail $trail) {
+Breadcrumbs::for('admin.animal-pets.index', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.home');
-    $trail->push(__('messages.request.plural'), route('admin.animalPets.index'));
+    $trail->push(__('messages.request.plural'), route('admin.animal-pets.index'));
 });
 
 // Home > Request > Create
-Breadcrumbs::for('admin.animalPets.create', function (BreadcrumbTrail $trail) {
-    $trail->parent('admin.animalPets.index');
-    $trail->push(__('messages.request.create'), route('admin.animalPets.create'));
+Breadcrumbs::for('admin.animal-pets.create', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.animal-pets.index');
+    $trail->push(__('messages.request.create'), route('admin.animal-pets.create'));
 });
 
 // Home > Request > Edit
-Breadcrumbs::for('admin.animalPets.edit', function (BreadcrumbTrail $trail, AnimalPet $animalPet) {
-    $trail->parent('admin.animalPets.index');
-    $trail->push($animalPet->id, route('admin.animalPets.edit', $animalPet));
+Breadcrumbs::for('admin.animal-pets.edit', function (BreadcrumbTrail $trail, AnimalPet $animalPet) {
+    $trail->parent('admin.animal-pets.index');
+    $trail->push($animalPet->id, route('admin.animal-pets.edit', $animalPet));
 });
 
 // Animal

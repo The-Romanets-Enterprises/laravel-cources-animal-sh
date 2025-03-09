@@ -95,13 +95,13 @@
 ])
 
 @include('layouts.form.switch', [
-    'title' => 'Вакцинацинирован*',
+    'title' => 'Вакцинирован*',
     'name' => 'has_vaccination',
     'value' => $animal_pet->has_vaccination ?? false,
 ])
 
 @include('layouts.form.switch', [
-    'title' => 'Подтверждение заявки*',
+    'title' => 'Одобрена*',
     'name' => 'is_confirmed',
     'value' => $animal_pet->is_confirmed ?? false,
 ])

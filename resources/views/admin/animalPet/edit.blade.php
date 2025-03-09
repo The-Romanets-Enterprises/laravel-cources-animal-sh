@@ -19,7 +19,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{ route('admin.animalPets.update', [$animalPet]) }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.animal-pets.update', [$animalPet]) }}" method="post" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="card-body">

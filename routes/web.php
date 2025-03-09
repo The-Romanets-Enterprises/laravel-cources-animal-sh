@@ -35,7 +35,7 @@ Route::prefix('/admin')->name('admin.')->group(function () {
 
         Route::middleware('super-admin')->group(function () {
             Route::resource('/users', UserController::class);
-            Route::resource('/animalPets', AnimalPetController::class );
+            Route::resource('/animal-pets', AnimalPetController::class );
             Route::resource('/cities', CityController::class );
             Route::resource('/countries', CountryController::class );
             Route::resource('/addresses', AddressController::class );

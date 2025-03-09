@@ -50,7 +50,7 @@ class AnimalPetController extends Controller
         $user = User::findOrFail($request->input('user_id'));
         $animalPet = AnimalPet::createAnimalPet($request, $user);
 
-        $redirect = to_route('admin.animalPets.index');
+        $redirect = to_route('admin.animal-pets.index');
 
         if (!$animalPet) {
             return $redirect->with('error', __('messages.request.error.store'));
@@ -61,7 +61,7 @@ class AnimalPetController extends Controller
 
     public function edit(AnimalPet $animalPet)
     {
-        $title = __('messages.request.edit',['animalPet' => $animalPet->name]);
+        $title = __('messages.request.edit',['animalPet' => $animalPet->id]);
         $users = User::query()->get();
         $animals = Animal::query()->get();
 
@@ -72,7 +72,7 @@ class AnimalPetController extends Controller
     {
         $animalPet = AnimalPet::updateAnimalPet($request, $animalPet);
 
-        $redirect = to_route('admin.animalPets.index');
+        $redirect = to_route('admin.animal-pets.index');
 
         if (!$animalPet) {
             return $redirect->with('error', __('messages.request.error.update'));

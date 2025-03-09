@@ -498,7 +498,7 @@
                                 <div class="icon">
                                     <i class="fas fa-solid fa-book"></i>
                                 </div>
-                                <a href="<?=route('admin.animalPets.index')?>" class="small-box-footer">{{ __('messages.more') }}
+                                <a href="<?=route('admin.animal-pets.index')?>" class="small-box-footer">{{ __('messages.more') }}
                                     <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>

@@ -16,7 +16,7 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <a href="{{ route("admin.animalPets.create") }}"
+                <a href="{{ route("admin.animal-pets.create") }}"
                    class="btn btn-dark mb-3">{{ __('messages.request.create') }}</a>
 
                 @if(count($animalPets))
@@ -24,7 +24,7 @@
                         <thead>
                         <tr>
                             <th style="width: 10px">#</th>
-                            <th>Подтверждение заявки</th>
+                            <th>Одобрена</th>
                             <th>Вид</th>
                             <th>Пол</th>
                             <th>Заявитель</th>
@@ -46,7 +46,7 @@
                                 <td>{{ $animalPet->sex->getTitle() }}</td>
                                 <td>{{ $animalPet->user->full_name }}</td>
                                 <td>Описание: {!! $animalPet->description !!}<br>Характер: {!! $animalPet->character !!}</br><br>Тип шерсти: {!! $animalPet->wool_type !!}</br></td>
-                                <td>{{ $animalPet->birth_date->format('Y-m-d') }}</td>
+                                <td>{{ $animalPet->birth_date->format('d-M-Y') }}</td>
                                 <td>{{ $animalPet->is_sterilized ? 'Да' : 'Нет' }}</td>
                                 <td>{{ $animalPet->has_vaccination ? 'Да' : 'Нет' }}</td>
                                 <td>
@@ -74,12 +74,12 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{ route("admin.animalPets.edit", ['animalPet' => $animalPet->id]) }}"
+                                    <a href="{{ route("admin.animal-pets.edit", [$animalPet]) }}"
                                        class="btn btn-info btn-sm float-left">
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
                                     @if(auth()->user()->role == \App\Enum\Role::ADMIN)
-                                        <form action="{{ route("admin.animalPets.destroy", ['animalPet' => $animalPet->id]) }}"
+                                        <form action="{{ route("admin.animal-pets.destroy", [$animalPet]) }}"
                                               method="post" class="float-left ml-1">
                                             @csrf
                                             @method('DELETE')
